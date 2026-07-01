@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Solar Savings Calculator — Payback Period & ROI Estimate | PVSize</title>
+  <meta name="description" content="Calculate your solar savings and payback period. Enter monthly electricity bill, local utility rate, and system size to see annual savings, ROI timeline, and 25-year total return.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>:root { --pv-yellow: #F5A623; --pv-navy: #1a2a3a; } select.min-w-select { min-width: 200px; }</style>
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "xczyltw8tn");
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How much can I save with solar panels?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Savings depend on your electricity rate, system size, and local sun hours. With US average rates at $0.168/kWh and a typical 6-8 kW system, homeowners save $1,000-$2,500 per year. In high-rate states like California ($0.32/kWh), annual savings can exceed $3,000. Use the PVSize Savings Calculator to get a personalized estimate based on your monthly bill and system size."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What factors affect solar savings?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Key factors include: 1) Local electricity rate — higher rates mean faster payback; 2) System size in kW — larger systems offset more of your bill; 3) Peak sun hours in your location — more sun means more generation; 4) Net metering policy in your state — full retail-rate net metering maximizes savings; 5) Panel efficiency and degradation rate — premium panels like LONGi Hi-MO X10 with 0.35%/year degradation preserve output over 30 years; 6) System cost after federal ITC (30% through 2032)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the typical solar payback period?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The average US solar payback period is 6-10 years. In states with high electricity rates and strong sun (California, Arizona), payback can be 5-7 years. With the 30% federal tax credit, a $16,000 system (after ITC) saving $1,800/year pays back in about 9 years. After payback, panels continue producing free electricity for 15-20+ more years."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does solar increase home value?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Multiple studies including Zillow and Lawrence Berkeley National Lab research show solar panels increase home value by 3-4% on average. A $400,000 home with solar can see a $12,000-$16,000 value premium. Solar homes also sell 20% faster than comparable non-solar homes in most markets."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body class="bg-gray-50 text-gray-800">
+  <!-- Navbar -->
+  <nav class="bg-[#1a2a3a] text-white sticky top-0 z-50 shadow-md">
+    <div class="max-w-7xl mx-auto px-4 flex items-center justify-between h-16">
+      <a href="/" class="text-2xl font-bold" style="color:#F5A623">PVSize</a>
+      <div class="hidden md:flex space-x-6 text-sm font-medium">
+        <a href="/calculators/" class="text-[#F5A623] font-semibold">Calculators</a>
+        <a href="/insights/" class="hover:text-[#F5A623]">Insights</a>
+        <a href="/learn/" class="hover:text-[#F5A623]">Learn</a>
+      </div>
+      <a href="/business" class="bg-[#F5A623] text-[#1a2a3a] px-4 py-2 rounded font-semibold text-sm hover:opacity-90">Business</a>
+    </div>
+  </nav>
+
+  <section class="bg-[#1a2a3a] text-white py-16 px-4 text-center" style="padding-top:76px">
+    <h1 class="text-3xl md:text-4xl font-bold mb-3">Electricity Savings Calculator</h1>
+    <p class="text-gray-300 text-lg">See how much you can save with solar — annual savings, payback period, and ROI.</p>
+  </section>
+
+  <section class="max-w-3xl mx-auto py-12 px-4">
+    <div class="bg-white rounded-2xl shadow-lg p-8">
+      <h2 class="text-xl font-bold mb-6" style="color:#1a2a3a">Enter Your Details</h2>
+
+      <div class="space-y-5">
+        <div>
+          <label class="block text-sm font-semibold mb-1 text-gray-700">Monthly Electricity Bill ($)</label>
+          <input type="number" id="monthlyBill" class="border rounded-lg px-4 py-3 w-full" placeholder="e.g. 150" min="0" step="0.01" />
+        </div>
+
+        <div>
+          <label class="block text-sm font-semibold mb-1 text-gray-700">Local Electricity Rate ($/kWh)</label>
+          <select id="rateSelect" class="border rounded-lg px-4 py-3 w-full min-w-select bg-white">
+            <option value="0.12">$0.12/kWh — US Average</option>
+            <option value="0.15">$0.15/kWh — Moderate</option>
+            <option value="0.20">$0.20/kWh — Northeast</option>
+            <option value="0.30" selected>$0.30/kWh — California</option>
+            <option value="0.40">$0.40/kWh — Hawaii / High-cost</option>
+          </select>
+          <input type="number" id="rateCustom" class="border rounded-lg px-4 py-3 w-full mt-2" placeholder="Or enter custom rate ($/kWh)" step="0.01" min="0.01" />
+        </div>
+
+        <div>
+          <label class="block text-sm font-semibold mb-1 text-gray-700">Solar System Capacity (kW)</label>
+          <input type="number" id="systemSize" class="border rounded-lg px-4 py-3 w-full" placeholder="e.g. 6.0" min="0.1" step="0.1" />
+        </div>
+
+        <div>
+          <label class="block text-sm font-semibold mb-1 text-gray-700">System Cost ($, optional)</label>
+          <input type="number" id="systemCost" class="border rounded-lg px-4 py-3 w-full" placeholder="Installed cost (default: $3.00/W)" step="0.01" min="0" />
+        </div>
+
+        <button id="calcBtn" class="w-full py-4 rounded-xl font-bold text-lg text-[#1a2a3a] hover:opacity-90 transition" style="background:#F5A623">
+          Calculate Savings
+        </button>
+      </div>
+
+      <div id="results" class="mt-8 hidden">
+        <div class="bg-gray-50 rounded-xl p-6">
+          <h3 class="text-lg font-bold mb-4" style="color:#1a2a3a">Results</h3>
+          <div class="grid grid-cols-2 gap-4 text-center">
+            <div class="bg-white rounded-lg p-4 shadow-sm">
+              <div class="text-3xl font-bold" style="color:#F5A623" id="annualSavings">—</div>
+              <div class="text-sm text-gray-600 mt-1">Annual Savings ($)</div>
+            </div>
+            <div class="bg-white rounded-lg p-4 shadow-sm">
+              <div class="text-3xl font-bold" style="color:#F5A623" id="monthlySavings">—</div>
+              <div class="text-sm text-gray-600 mt-1">Monthly Savings ($)</div>
+            </div>
+            <div class="bg-white rounded-lg p-4 shadow-sm">
+              <div class="text-3xl font-bold" style="color:#F5A623" id="paybackYears">—</div>
+              <div class="text-sm text-gray-600 mt-1">Payback Period (years)</div>
+            </div>
+            <div class="bg-white rounded-lg p-4 shadow-sm">
+              <div class="text-3xl font-bold" style="color:#F5A623" id="savings25yr">—</div>
+              <div class="text-sm text-gray-600 mt-1">25-Year Savings ($)</div>
+            </div>
+          </div>
+          <p class="text-xs text-gray-500 mt-4">Assumptions: 5 peak sun hours/day, 78% system efficiency, no rate escalation. Actual savings depend on local conditions and net metering policies.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-[#1a2a3a] text-gray-400 py-10 px-4 text-sm mt-16">
+    <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-8">
+      <div>
+        <div class="text-xl font-bold mb-3" style="color:#F5A623">PVSize</div>
+        <p>Free solar energy calculators and sizing tools.</p>
+      </div>
+      <div>
+        <h4 class="text-white font-semibold mb-3">Pages</h4>
+        <ul class="space-y-1">
+          <li><a href="/about" class="hover:text-[#F5A623]">About</a></li>
+          <li><a href="/editorial-policy" class="hover:text-[#F5A623]">Editorial Policy</a></li>
+          <li><a href="/sponsored-disclosure" class="hover:text-[#F5A623]">Sponsored Disclosure</a></li>
+          <li><a href="/privacy" class="hover:text-[#F5A623]">Privacy Policy</a></li>
+          <li><a href="/terms" class="hover:text-[#F5A623]">Terms of Service</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white font-semibold mb-3">Calculators</h4>
+        <ul class="space-y-1">
+          <li><a href="/calculators/panel-count/" class="hover:text-[#F5A623]">Panel Count</a></li>
+          <li><a href="/calculators/savings/" class="hover:text-[#F5A623]">Savings</a></li>
+          <li><a href="/calculators/battery-sizing/" class="hover:text-[#F5A623]">Battery Sizing</a></li>
+          <li><a href="/calculators/carbon/" class="hover:text-[#F5A623]">Carbon Reduction</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="max-w-7xl mx-auto mt-8 pt-6 border-t border-gray-700 text-center text-xs">
+      © 2024 PVSize. All content by PVSize Editorial Team. No professional engineering or NABCEP certification claimed.
+    </div>
+    <p style="font-size:0.8rem;color:#999;text-align:center;margin-top:2rem;">Estimates based on NREL PVWatts methodology. Actual results vary by location, equipment, and installation conditions.</p>
+  </footer>
+
+  <script>
+  document.getElementById('calcBtn').addEventListener('click', function(){
+    const monthlyBill = parseFloat(document.getElementById('monthlyBill').value);
+    const systemSizeKw = parseFloat(document.getElementById('systemSize').value);
+    const rateSelect = parseFloat(document.getElementById('rateSelect').value);
+    const rateCustom = document.getElementById('rateCustom').value;
+    let systemCost = document.getElementById('systemCost').value;
+
+    if (isNaN(monthlyBill) || monthlyBill < 0) { alert('Please enter a valid monthly bill.'); return; }
+    if (isNaN(systemSizeKw) || systemSizeKw <= 0) { alert('Please enter a valid system size.'); return; }
+
+    const rate = rateCustom ? parseFloat(rateCustom) : rateSelect;
+    // Annual solar generation
+    const annualGen = systemSizeKw * 5.0 * 365 * 0.78;
+    const annualSavings = annualGen * rate;
+    const monthlySavings = annualSavings / 12;
+    const savings25yr = annualSavings * 25;
+
+    // System cost
+    let cost = systemCost ? parseFloat(systemCost) : systemSizeKw * 1000 * 3.00;
+    if (isNaN(cost) || cost <= 0) cost = systemSizeKw * 1000 * 3.00;
+
+    const payback = cost / annualSavings;
+
+    document.getElementById('annualSavings').textContent = '$' + annualSavings.toLocaleString(undefined, {maximumFractionDigits:0});
+    document.getElementById('monthlySavings').textContent = '$' + monthlySavings.toLocaleString(undefined, {maximumFractionDigits:0});
+    document.getElementById('paybackYears').textContent = payback.toFixed(1) + ' yrs';
+    document.getElementById('savings25yr').textContent = '$' + savings25yr.toLocaleString(undefined, {maximumFractionDigits:0});
+    document.getElementById('results').classList.remove('hidden');
+    document.getElementById('results').scrollIntoView({behavior:'smooth'});
+  });
+  </script>
+</body>
+</html>

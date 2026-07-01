@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Solar Panel Count Calculator — How Many Panels Fit Your Roof | PVSize</title>
+  <meta name="description" content="Calculate how many solar panels fit on your roof. Enter roof area, panel wattage, and location to get exact panel count and estimated annual kWh generation. Free online tool.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>:root { --pv-yellow: #F5A623; --pv-navy: #1a2a3a; } select.min-w-select { min-width: 200px; }</style>
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "xczyltw8tn");
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "Solar Panel Count Calculator",
+  "description": "Calculate how many solar panels fit your roof by entering roof area, panel wattage, and location.",
+  "step": [
+    {
+      "@type": "HowToStep",
+      "name": "Enter Roof Area",
+      "text": "Input your available roof area in square feet (sq ft) or square metres (m²). This is the usable south-facing or flat roof surface where panels will be installed."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Select Panel Wattage",
+      "text": "Choose the wattage of the panels you plan to use, ranging from 350W standard polycrystalline to 700W+ premium monocrystalline like LONGi Hi-MO X10."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Enter Efficiency Coefficient",
+      "text": "Specify the derate factor to account for real-world losses from temperature, inverter efficiency, wiring, and shading. Typical values range from 0.75 to 0.85."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Select State for Sun Hours",
+      "text": "Choose your state to apply the average peak sun hours per day for your region. This determines the annual energy generation estimate."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "View Results",
+      "text": "The calculator outputs total panel count, system capacity in kW, estimated annual kWh generation, and a visual roof layout chart."
+    }
+  ]
+}
+</script>
+</head>
+<body class="bg-gray-50 text-gray-800">
+  <!-- Navbar -->
+  <nav class="bg-[#1a2a3a] text-white sticky top-0 z-50 shadow-md">
+    <div class="max-w-7xl mx-auto px-4 flex items-center justify-between h-16">
+      <a href="/" class="text-2xl font-bold" style="color:#F5A623">PVSize</a>
+      <div class="hidden md:flex space-x-6 text-sm font-medium">
+        <a href="/calculators/" class="text-[#F5A623] font-semibold">Calculators</a>
+        <a href="/insights/" class="hover:text-[#F5A623]">Insights</a>
+        <a href="/learn/" class="hover:text-[#F5A623]">Learn</a>
+      </div>
+      <a href="/business" class="bg-[#F5A623] text-[#1a2a3a] px-4 py-2 rounded font-semibold text-sm hover:opacity-90">Business</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="bg-[#1a2a3a] text-white py-16 px-4 text-center" style="padding-top:76px">
+    <h1 class="text-3xl md:text-4xl font-bold mb-3">How many panels do I need?</h1>
+    <p class="text-gray-300 text-lg">Find out how many solar panels fit your roof and your annual generation estimate.</p>
+  </section>
+
+  <!-- Calculator -->
+  <section class="max-w-3xl mx-auto py-12 px-4">
+    <div class="bg-white rounded-2xl shadow-lg p-8">
+      <h2 class="text-xl font-bold mb-6" style="color:#1a2a3a">Input Your Details</h2>
+
+      <div class="space-y-5">
+        <!-- Roof Area -->
+        <div>
+          <label class="block text-sm font-semibold mb-1 text-gray-700">Roof Area</label>
+          <div class="flex gap-2">
+            <input type="number" id="roofArea" class="border rounded-lg px-4 py-3 w-full" placeholder="e.g. 1500" min="1" />
+            <select id="areaUnit" class="border rounded-lg px-3 py-3 min-w-select bg-white">
+              <option value="sqft">sq ft</option>
+              <option value="sqm">m²</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Panel Wattage -->
+        <div>
+          <label class="block text-sm font-semibold mb-1 text-gray-700">Panel Model (Watts)</label>
+          <select id="panelWattage" class="border rounded-lg px-4 py-3 w-full min-w-select bg-white" onchange="updatePanelArea()">
+            <option value="700" data-area="29.1" data-name="LONGi Hi-MO X10">LONGi Hi-MO X10 — 700W (25.9% efficiency)</option>
+            <option value="620" data-area="30.1" data-name="Jinko Tiger Neo">Jinko Tiger Neo — 620W (23.32% efficiency)</option>
+            <option value="550" data-area="21.5" data-name="Trina Vertex S+">Trina Vertex S+ — 550W (23.7% efficiency)</option>
+            <option value="500" data-area="21.3" data-name="Canadian Solar TOPBiHiKu7">Canadian Solar TOPBiHiKu7 — 500W</option>
+            <option value="400" data-area="18.7" data-name="Qcells Q.TRON">Qcells Q.TRON — 400W</option>
+          </select>
+        </div>
+
+        <!-- Location -->
+        <div>
+          <label class="block text-sm font-semibold mb-1 text-gray-700">Location (Sun Hours)</label>
+          <select id="location" class="border rounded-lg px-4 py-3 w-full min-w-select bg-white">
+            <option value="4.0">Northeast US — ~4.0 peak sun hours</option>
+            <option value="4.5">Midwest US — ~4.5 peak sun hours</option>
+            <option value="5.0" selected>Southwest US — ~5.0 peak sun hours</option>
+            <option value="5.5">Southern California / Arizona — ~5.5</option>
+            <option value="3.5">Northwest US — ~3.5 peak sun hours</option>
+            <option value="3.0">Northern Europe — ~3.0</option>
+            <option value="6.0">Middle East / North Africa — ~6.0</option>
+          </select>
+        </div>
+
+        <!-- Panel Area Override -->
+        <div>
+          <label class="block text-sm font-semibold mb-1 text-gray-700">Panel Area (sq ft, auto-set by model)</label>
+          <input type="number" id="panelArea" class="border rounded-lg px-4 py-3 w-full" placeholder="Auto: 29.1 sq ft (LONGi Hi-MO X10)" step="0.1" />
+        </div>
+
+        <button id="calcBtn" class="w-full py-4 rounded-xl font-bold text-lg text-[#1a2a3a] hover:opacity-90 transition" style="background:#F5A623">
+          Calculate
+        </button>
+      </div>
+
+      <!-- Results -->
+      <div id="results" class="mt-8 hidden">
+        <div class="bg-gray-50 rounded-xl p-6">
+          <h3 class="text-lg font-bold mb-4" style="color:#1a2a3a">Results</h3>
+          <div class="grid grid-cols-2 gap-4 text-center">
+            <div class="bg-white rounded-lg p-4 shadow-sm">
+              <div class="text-3xl font-bold" style="color:#F5A623" id="panelCount">—</div>
+              <div class="text-sm text-gray-600 mt-1">Solar Panels</div>
+            </div>
+            <div class="bg-white rounded-lg p-4 shadow-sm">
+              <div class="text-3xl font-bold" style="color:#F5A623" id="systemSize">—</div>
+              <div class="text-sm text-gray-600 mt-1">System Size (kW)</div>
+            </div>
+            <div class="bg-white rounded-lg p-4 shadow-sm">
+              <div class="text-3xl font-bold" style="color:#F5A623" id="annualGen">—</div>
+              <div class="text-sm text-gray-600 mt-1">Annual Generation (kWh)</div>
+            </div>
+            <div class="bg-white rounded-lg p-4 shadow-sm">
+              <div class="text-3xl font-bold" style="color:#F5A623" id="roofUtil">—</div>
+              <div class="text-sm text-gray-600 mt-1">Roof Utilization</div>
+            </div>
+          </div>
+          <!-- Battery Recommendation -->
+          <div id="batteryRec" class="mt-6 bg-white rounded-xl p-6 shadow-sm hidden">
+            <h4 class="text-base font-bold mb-3" style="color:#0d9488">Battery Recommendation</h4>
+            <p class="text-sm text-gray-600 mb-3" id="batterySummary"></p>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-3" id="batteryOptions"></div>
+            <p class="text-xs text-gray-400 mt-4">Battery recommendations are sizing estimates. Actual requirements depend on your daily energy usage, backup needs, and local utility rates. Visit our <a href="/calculators/battery-sizing/" class="underline" style="color:#0d9488">Battery Sizing Calculator</a> for a detailed analysis.</p>
+          </div>
+          <p class="text-xs text-gray-500 mt-4">Estimates based on standard conditions. Actual results vary by roof pitch, shading, and local climate.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-[#1a2a3a] text-gray-400 py-10 px-4 text-sm mt-16">
+    <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-8">
+      <div>
+        <div class="text-xl font-bold mb-3" style="color:#F5A623">PVSize</div>
+        <p>Free solar energy calculators and sizing tools.</p>
+      </div>
+      <div>
+        <h4 class="text-white font-semibold mb-3">Pages</h4>
+        <ul class="space-y-1">
+          <li><a href="/about" class="hover:text-[#F5A623]">About</a></li>
+          <li><a href="/editorial-policy" class="hover:text-[#F5A623]">Editorial Policy</a></li>
+          <li><a href="/sponsored-disclosure" class="hover:text-[#F5A623]">Sponsored Disclosure</a></li>
+          <li><a href="/privacy" class="hover:text-[#F5A623]">Privacy Policy</a></li>
+          <li><a href="/terms" class="hover:text-[#F5A623]">Terms of Service</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white font-semibold mb-3">Calculators</h4>
+        <ul class="space-y-1">
+          <li><a href="/calculators/panel-count/" class="hover:text-[#F5A623]">Panel Count</a></li>
+          <li><a href="/calculators/savings/" class="hover:text-[#F5A623]">Savings</a></li>
+          <li><a href="/calculators/battery-sizing/" class="hover:text-[#F5A623]">Battery Sizing</a></li>
+          <li><a href="/calculators/carbon/" class="hover:text-[#F5A623]">Carbon Reduction</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="max-w-7xl mx-auto mt-8 pt-6 border-t border-gray-700 text-center text-xs">
+      © 2024 PVSize. All content by PVSize Editorial Team. No professional engineering or NABCEP certification claimed.
+    </div>
+    <p style="font-size:0.8rem;color:#999;text-align:center;margin-top:2rem;">Estimates based on NREL PVWatts methodology. Actual results vary by location, equipment, and installation conditions.</p>
+  </footer>
+
+  <script>
+  // Auto-update panel area placeholder when model changes
+  function updatePanelArea() {
+    const sel = document.getElementById('panelWattage');
+    const opt = sel.options[sel.selectedIndex];
+    const area = opt.getAttribute('data-area');
+    const name = opt.getAttribute('data-name');
+    const input = document.getElementById('panelArea');
+    input.placeholder = 'Auto: ' + area + ' sq ft (' + name + ')';
+  }
+
+  document.getElementById('calcBtn').addEventListener('click', function(){
+    const roofArea = parseFloat(document.getElementById('roofArea').value);
+    const areaUnit = document.getElementById('areaUnit').value;
+    const panelWattage = parseInt(document.getElementById('panelWattage').value);
+    const sunHours = parseFloat(document.getElementById('location').value);
+    let panelAreaInput = document.getElementById('panelArea').value;
+
+    if (isNaN(roofArea) || roofArea <= 0) {
+      alert('Please enter a valid roof area.');
+      return;
+    }
+
+    // Convert roof area to sq ft
+    let roofAreaSqFt = areaUnit === 'sqm' ? roofArea * 10.7639 : roofArea;
+    // Default panel area from selected model's data-area attribute
+    const sel = document.getElementById('panelWattage');
+    const defaultArea = parseFloat(sel.options[sel.selectedIndex].getAttribute('data-area')) || 17.6;
+    let panelSqFt = panelAreaInput ? parseFloat(panelAreaInput) : defaultArea;
+    if (isNaN(panelSqFt) || panelSqFt <= 0) panelSqFt = defaultArea;
+
+    // Usable roof (~75% for spacing/mounting)
+    const usableArea = roofAreaSqFt * 0.75;
+    const panelCountRaw = Math.floor(usableArea / panelSqFt);
+    const panelCount = panelCountRaw > 0 ? panelCountRaw : 1;
+
+    const systemSizeKw = (panelCount * panelWattage) / 1000;
+    const annualGen = systemSizeKw * sunHours * 365 * 0.80; // 80% system efficiency (2026 inverters)
+
+    document.getElementById('panelCount').textContent = panelCount.toLocaleString();
+    document.getElementById('systemSize').textContent = systemSizeKw.toFixed(2) + ' kW';
+    document.getElementById('annualGen').textContent = annualGen.toLocaleString(undefined, {maximumFractionDigits:0}) + ' kWh';
+    document.getElementById('roofUtil').textContent = ((usableArea / roofAreaSqFt) * 100).toFixed(0) + '%';
+
+    // Battery recommendation
+    const batteries = [
+      { name: 'Tesla Powerwall 3', kwh: 13.5, cost: 8400, cycle: 5000 },
+      { name: 'BYD Battery-Box HVS 10.2', kwh: 10.24, cost: 7500, cycle: 6000 },
+      { name: 'LG Chem RESU 16H Prime', kwh: 16, cost: 8500, cycle: 4000 },
+      { name: 'BYD Battery-Box HVM 16.6', kwh: 16.6, cost: 11000, cycle: 6000 }
+    ];
+    const targetKwh = systemSizeKw * 1.3;
+    document.getElementById('batterySummary').textContent =
+      'Based on your ' + systemSizeKw.toFixed(1) + ' kW system, we recommend ~' + targetKwh.toFixed(1) + ' kWh of battery storage. Select an option below:';
+    var optsHtml = '';
+    batteries.forEach(function(b) {
+      var qty = Math.max(1, Math.ceil(targetKwh / b.kwh));
+      var totalKwh = (qty * b.kwh).toFixed(1);
+      var totalCost = qty * b.cost;
+      optsHtml += '<div class="bg-gray-50 rounded-lg p-3 text-center">' +
+        '<div class="font-semibold text-sm" style="color:#1a2a3a">' + b.name + '</div>' +
+        '<div class="text-xs text-gray-500 mt-1">' + b.kwh + ' kWh × ' + qty + '</div>' +
+        '<div class="text-xs mt-1" style="color:#0d9488">' + totalKwh + ' kWh total</div>' +
+        '<div class="text-xs font-semibold mt-1" style="color:#F5A623">$' + totalCost.toLocaleString() + '</div>' +
+        '<div class="text-xs text-gray-400 mt-0.5">' + b.cycle.toLocaleString() + ' cycles</div>' +
+        '</div>';
+    });
+    document.getElementById('batteryOptions').innerHTML = optsHtml;
+    document.getElementById('batteryRec').classList.remove('hidden');
+
+    document.getElementById('results').classList.remove('hidden');
+    document.getElementById('results').scrollIntoView({behavior:'smooth'});
+  });
+  </script>
+</body>
+</html>

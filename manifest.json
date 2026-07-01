@@ -1,0 +1,188 @@
+{
+  "index.html": {
+    "file": "index.html",
+    "sha": "ddf1c4955f03c97c236ef24fad29049832097ff8",
+    "size": 4975,
+    "full_path": "/Users/xiaotudou/Desktop/\u96c6\u56e2\u534f\u4f5c/Marvis/pvsize-full/src/index.html"
+  },
+  "vercel.json": {
+    "file": "vercel.json",
+    "sha": "ddc4087ee78a60560790018af69f26ec83d389d4",
+    "size": 49,
+    "full_path": "/Users/xiaotudou/Desktop/\u96c6\u56e2\u534f\u4f5c/Marvis/pvsize-full/src/vercel.json"
+  },
+  "ads.txt": {
+    "file": "ads.txt",
+    "sha": "759501db0ee456e7c748be8af82a80c99f7455f6",
+    "size": 58,
+    "full_path": "/Users/xiaotudou/Desktop/\u96c6\u56e2\u534f\u4f5c/Marvis/pvsize-full/src/ads.txt"
+  },
+  "script.js": {
+    "file": "script.js",
+    "sha": "aad4eb5afe9e251f8f9b13e113883b378190910b",
+    "size": 5493,
+    "full_path": "/Users/xiaotudou/Desktop/\u96c6\u56e2\u534f\u4f5c/Marvis/pvsize-full/src/script.js"
+  },
+  "package.json": {
+    "file": "package.json",
+    "sha": "c349d89c64206a7d7d05c7259cf93e95d6b9ffa4",
+    "size": 64,
+    "full_path": "/Users/xiaotudou/Desktop/\u96c6\u56e2\u534f\u4f5c/Marvis/pvsize-full/src/package.json"
+  },
+  "style.css": {
+    "file": "style.css",
+    "sha": "1074a7114cbe0d8eb46b71e9ed6c56fa6bd0caa6",
+    "size": 16738,
+    "full_path": "/Users/xiaotudou/Desktop/\u96c6\u56e2\u534f\u4f5c/Marvis/pvsize-full/src/style.css"
+  },
+  "sitemap.xml": {
+    "file": "sitemap.xml",
+    "sha": "ced355fbb3abe1211dd79faf0dc81ccd065dbfcd",
+    "size": 417,
+    "full_path": "/Users/xiaotudou/Desktop/\u96c6\u56e2\u534f\u4f5c/Marvis/pvsize-full/src/sitemap.xml"
+  },
+  "robots.txt": {
+    "file": "robots.txt",
+    "sha": "b9415060e76a5a04eed34e2817d57ed8b159b3db",
+    "size": 64,
+    "full_path": "/Users/xiaotudou/Desktop/\u96c6\u56e2\u534f\u4f5c/Marvis/pvsize-full/src/robots.txt"
+  },
+  "sponsored-disclosure/index.html": {
+    "file": "sponsored-disclosure/index.html",
+    "sha": "a6c1fb56b2a51095fe7347c48eaf2b6381740ef0",
+    "size": 7036,
+    "full_path": "/Users/xiaotudou/Desktop/\u96c6\u56e2\u534f\u4f5c/Marvis/pvsize-full/src/sponsored-disclosure/index.html"
+  },
+  "insights/index.html": {
+    "file": "insights/index.html",
+    "sha": "e1315ed5a8c1d006ef835721b37ca7e101d18572",
+    "size": 8040,
+    "full_path": "/Users/xiaotudou/Desktop/\u96c6\u56e2\u534f\u4f5c/Marvis/pvsize-full/src/insights/index.html"
+  },
+  "insights/battery-trends/index.html": {
+    "file": "insights/battery-trends/index.html",
+    "sha": "c00670bf40d4ace3ac175f8cee5c2f21ee32f526",
+    "size": 3184,
+    "full_path": "/Users/xiaotudou/Desktop/\u96c6\u56e2\u534f\u4f5c/Marvis/pvsize-full/src/insights/battery-trends/index.html"
+  },
+  "insights/efficiency/index.html": {
+    "file": "insights/efficiency/index.html",
+    "sha": "78e35f4747609d13b78e1fa79d0a4651583eabd7",
+    "size": 3142,
+    "full_path": "/Users/xiaotudou/Desktop/\u96c6\u56e2\u534f\u4f5c/Marvis/pvsize-full/src/insights/efficiency/index.html"
+  },
+  "insights/solar-costs/index.html": {
+    "file": "insights/solar-costs/index.html",
+    "sha": "25f31e13aa7df8039c0b2a15948ad2d04996c7d3",
+    "size": 3150,
+    "full_path": "/Users/xiaotudou/Desktop/\u96c6\u56e2\u534f\u4f5c/Marvis/pvsize-full/src/insights/solar-costs/index.html"
+  },
+  "insights/current-systems/index.html": {
+    "file": "insights/current-systems/index.html",
+    "sha": "af3a33f476c1e3bdba5f9f1e097a14a5c79135a5",
+    "size": 3366,
+    "full_path": "/Users/xiaotudou/Desktop/\u96c6\u56e2\u534f\u4f5c/Marvis/pvsize-full/src/insights/current-systems/index.html"
+  },
+  "insights/china-brands/index.html": {
+    "file": "insights/china-brands/index.html",
+    "sha": "993ec83164ca723b3cd09f880fcb7441eb4e38a1",
+    "size": 12258,
+    "full_path": "/Users/xiaotudou/Desktop/\u96c6\u56e2\u534f\u4f5c/Marvis/pvsize-full/src/insights/china-brands/index.html"
+  },
+  "insights/net-metering/index.html": {
+    "file": "insights/net-metering/index.html",
+    "sha": "3c1fa1bde321104d8d49fbbd56d7e571697111e6",
+    "size": 3160,
+    "full_path": "/Users/xiaotudou/Desktop/\u96c6\u56e2\u534f\u4f5c/Marvis/pvsize-full/src/insights/net-metering/index.html"
+  },
+  "learn/index.html": {
+    "file": "learn/index.html",
+    "sha": "b1784d3762dbfca987220bda8daa25df3d1824b7",
+    "size": 8447,
+    "full_path": "/Users/xiaotudou/Desktop/\u96c6\u56e2\u534f\u4f5c/Marvis/pvsize-full/src/learn/index.html"
+  },
+  "privacy/index.html": {
+    "file": "privacy/index.html",
+    "sha": "2699fa27926e60943a1c77847a8a987649aa6946",
+    "size": 10468,
+    "full_path": "/Users/xiaotudou/Desktop/\u96c6\u56e2\u534f\u4f5c/Marvis/pvsize-full/src/privacy/index.html"
+  },
+  "batteries/index.html": {
+    "file": "batteries/index.html",
+    "sha": "e279ab6a02b727beae70a65e95e02e5d580cfdeb",
+    "size": 16051,
+    "full_path": "/Users/xiaotudou/Desktop/\u96c6\u56e2\u534f\u4f5c/Marvis/pvsize-full/src/batteries/index.html"
+  },
+  "panels/index.html": {
+    "file": "panels/index.html",
+    "sha": "b9d7b117aa15e7100c6543282a20f16946a7c990",
+    "size": 20579,
+    "full_path": "/Users/xiaotudou/Desktop/\u96c6\u56e2\u534f\u4f5c/Marvis/pvsize-full/src/panels/index.html"
+  },
+  "terms/index.html": {
+    "file": "terms/index.html",
+    "sha": "afcd7e21f3aead915ed944e98d5ee9b343b19966",
+    "size": 10926,
+    "full_path": "/Users/xiaotudou/Desktop/\u96c6\u56e2\u534f\u4f5c/Marvis/pvsize-full/src/terms/index.html"
+  },
+  "about/index.html": {
+    "file": "about/index.html",
+    "sha": "23a3afb0163a58b7752ce78ac9128a6d014fa364",
+    "size": 6682,
+    "full_path": "/Users/xiaotudou/Desktop/\u96c6\u56e2\u534f\u4f5c/Marvis/pvsize-full/src/about/index.html"
+  },
+  "partners/index.html": {
+    "file": "partners/index.html",
+    "sha": "e2fa113ef51fef8ddf5f746078875f33441ef3c5",
+    "size": 8815,
+    "full_path": "/Users/xiaotudou/Desktop/\u96c6\u56e2\u534f\u4f5c/Marvis/pvsize-full/src/partners/index.html"
+  },
+  "editorial-policy/index.html": {
+    "file": "editorial-policy/index.html",
+    "sha": "610dfd79caf4cab6fe0af7039ec394cbf03fde18",
+    "size": 9486,
+    "full_path": "/Users/xiaotudou/Desktop/\u96c6\u56e2\u534f\u4f5c/Marvis/pvsize-full/src/editorial-policy/index.html"
+  },
+  "calculators/index.html": {
+    "file": "calculators/index.html",
+    "sha": "38660b53e7c47b2f4b9a1c6bf4a697ac57fe849f",
+    "size": 5280,
+    "full_path": "/Users/xiaotudou/Desktop/\u96c6\u56e2\u534f\u4f5c/Marvis/pvsize-full/src/calculators/index.html"
+  },
+  "calculators/battery-sizing/index.html": {
+    "file": "calculators/battery-sizing/index.html",
+    "sha": "1c09c0bd6e7b43b56e91ac914da45bb5e4626d14",
+    "size": 8692,
+    "full_path": "/Users/xiaotudou/Desktop/\u96c6\u56e2\u534f\u4f5c/Marvis/pvsize-full/src/calculators/battery-sizing/index.html"
+  },
+  "calculators/savings/index.html": {
+    "file": "calculators/savings/index.html",
+    "sha": "614d2a663b52a77bca32d36bfa9ba01b88afb54f",
+    "size": 8679,
+    "full_path": "/Users/xiaotudou/Desktop/\u96c6\u56e2\u534f\u4f5c/Marvis/pvsize-full/src/calculators/savings/index.html"
+  },
+  "calculators/carbon/index.html": {
+    "file": "calculators/carbon/index.html",
+    "sha": "a192efae7ddd614d8aeeec0083f5afc472cc5260",
+    "size": 8096,
+    "full_path": "/Users/xiaotudou/Desktop/\u96c6\u56e2\u534f\u4f5c/Marvis/pvsize-full/src/calculators/carbon/index.html"
+  },
+  "calculators/panel-count/index.html": {
+    "file": "calculators/panel-count/index.html",
+    "sha": "ad2edc499dc99dad7e95257b3314ae75a0cad187",
+    "size": 9287,
+    "full_path": "/Users/xiaotudou/Desktop/\u96c6\u56e2\u534f\u4f5c/Marvis/pvsize-full/src/calculators/panel-count/index.html"
+  },
+  "api/calculate.js": {
+    "file": "api/calculate.js",
+    "sha": "8b38939d872aa09820a6dd8a540f1f4bfb28d082",
+    "size": 30,
+    "full_path": "/Users/xiaotudou/Desktop/\u96c6\u56e2\u534f\u4f5c/Marvis/pvsize-full/src/api/calculate.js"
+  },
+  "inverters/index.html": {
+    "file": "inverters/index.html",
+    "sha": "a5441b659faff9827f67738b5f4105ba67e45087",
+    "size": 16223,
+    "full_path": "/Users/xiaotudou/Desktop/\u96c6\u56e2\u534f\u4f5c/Marvis/pvsize-full/src/inverters/index.html"
+  }
+}

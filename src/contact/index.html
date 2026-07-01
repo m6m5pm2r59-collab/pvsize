@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact PVSize — Get in Touch | PVSize</title>
+  <meta name="description" content="Contact the PVSize team. Reach out for questions about solar calculators, partnerships, or feedback. Email contact@pvsize.com.">
+  <link rel="canonical" href="https://pvsize.com/contact/">
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    .contact-page { max-width: 680px; margin: 0 auto; padding: 56px 24px 64px; }
+    .contact-page h1 { font-size: 2rem; font-weight: 700; margin-bottom: 8px; }
+    .contact-page .subtitle { font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 36px; }
+    .contact-email { background: var(--primary-light); border-left: 4px solid var(--primary); padding: 16px 20px; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; margin-bottom: 36px; font-size: 1.05rem; }
+    .contact-email a { font-weight: 600; }
+    .contact-form { display: flex; flex-direction: column; gap: 18px; }
+    .contact-form label { font-weight: 600; font-size: 0.92rem; color: var(--text); }
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-size: 1rem;
+      font-family: inherit;
+      transition: border-color 0.2s;
+      background: var(--card-bg);
+    }
+    .contact-form input:focus,
+    .contact-form textarea:focus { border-color: var(--primary); outline: none; }
+    .contact-form textarea { min-height: 140px; resize: vertical; }
+    .contact-form button {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 14px 32px;
+      border-radius: var(--radius-sm);
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.2s;
+      align-self: flex-start;
+    }
+    .contact-form button:hover { background: var(--primary-dark); }
+  </style>
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "xczyltw8tn");
+</script>
+</head>
+<body>
+<nav class="navbar"><div class="nav-container"><a href="/" class="nav-logo">PVSize</a><ul class="nav-links"><li><a href="/panels/">Panels</a></li><li><a href="/inverters/">Inverters</a></li><li><a href="/batteries/">Batteries</a></li><li><a href="/calculators/">Calculators</a></li><li><a href="/insights/">Insights</a></li><li><a href="/learn/">Learn</a></li><li><a href="/contact/">Contact</a></li></ul></div></nav>
+
+<main class="contact-page">
+  <h1>Contact PVSize</h1>
+  <p class="subtitle">Have a question about our solar calculators, want to collaborate, or have feedback? We'd love to hear from you.</p>
+
+  <div class="contact-email">
+    <strong>Email:</strong> <a href="mailto:contact@pvsize.com">contact@pvsize.com</a>
+  </div>
+
+  <form class="contact-form" id="contactForm" onsubmit="handleSubmit(event)">
+    <div>
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" placeholder="Your name" required>
+    </div>
+    <div>
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="your@email.com" required>
+    </div>
+    <div>
+      <label for="message">Message</label>
+      <textarea id="message" name="message" placeholder="How can we help?" required></textarea>
+    </div>
+    <button type="submit" id="submitBtn">Send Message</button>
+    <p id="formMsg" style="display:none;margin-top:12px;padding:12px 18px;background:var(--primary-light);border-radius:var(--radius-sm);font-weight:500;"></p>
+  </form>
+  <script>
+    function handleSubmit(e) {
+      e.preventDefault();
+      var btn = document.getElementById('submitBtn');
+      var msg = document.getElementById('formMsg');
+      btn.disabled = true;
+      btn.textContent = 'Sending...';
+      msg.style.display = 'none';
+      fetch('https://formsubmit.co/ajax/contact@pvsize.com', {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: new FormData(e.target)
+      })
+      .then(function(r) {
+        if (r.ok) {
+          msg.style.display = 'block';
+          msg.textContent = 'Message sent — we\'ll get back to you within 24 hours.';
+          e.target.reset();
+        } else {
+          return r.json().then(function(d) { throw new Error(d.error || 'Unknown error'); });
+        }
+      })
+      .catch(function(err) {
+        msg.style.display = 'block';
+        msg.style.background = '#fef2f2';
+        msg.textContent = 'Delivery failed. Please email us directly at contact@pvsize.com.';
+      })
+      .finally(function() {
+        btn.disabled = false;
+        btn.textContent = 'Send Message';
+      });
+    }
+  </script>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>PVSize</h4>
+        <a href="/about/">About</a>
+        <a href="/editorial-policy/">Editorial Policy</a>
+        <a href="/sponsored-disclosure/">Sponsored Disclosure</a>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <a href="/privacy/">Privacy Policy</a>
+        <a href="/terms/">Terms of Service</a>
+        <a href="/contact/">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Tools</h4>
+        <a href="/calculators/panel-count/">Panel Count</a>
+        <a href="/calculators/savings/">Savings</a>
+        <a href="/calculators/battery-sizing/">Battery Sizing</a>
+        <a href="/calculators/carbon/">Carbon Reduction</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p><a href="/about/">About</a> &middot; <a href="/editorial-policy/">Editorial Policy</a> &middot; <a href="/sponsored-disclosure/">Sponsored Disclosure</a> &middot; <a href="/privacy/">Privacy</a> &middot; <a href="/terms/">Terms</a> &middot; <a href="/contact/">Contact</a></p>
+      <p style="font-size:0.85rem;color:var(--text-muted);margin-top:12px;">&copy; 2024 PVSize. All content by PVSize Editorial Team.</p>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

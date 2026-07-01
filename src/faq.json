@@ -1,0 +1,302 @@
+[
+  {
+    "id": 1,
+    "keywords": ["calculator", "which", "panel count", "solar estimate", "best"],
+    "question": "Which calculator should I use?",
+    "answer": "It depends on what you need: (1) Solar Panel Calculator — estimate how many panels you need based on roof size and energy usage; (2) Solar Savings Calculator — calculate your potential savings and payback period; (3) Solar Battery Calculator — find the right battery size for your system. If you're just starting, try the Solar Panel Calculator first!"
+  },
+  {
+    "id": 2,
+    "keywords": ["electricity bill", "calculate", "monthly", "cost", "bill estimate"],
+    "question": "How do I calculate my electricity bill savings with solar?",
+    "answer": "Use our Solar Savings Calculator. Enter your average monthly bill, your location (for sun hours and local rates), and system size. The calculator will estimate annual savings and your payback period. On average, US homeowners save $1,500+/year."
+  },
+  {
+    "id": 3,
+    "keywords": ["rooftop", "panels fit", "roof area", "square feet", "space"],
+    "question": "How many panels will fit on my roof?",
+    "answer": "Use the Solar Panel Calculator and enter your usable roof area in square feet. A typical residential panel is about 17.5 sq ft. The calculator accounts for spacing and tilt. Most homes fit 20–35 panels."
+  },
+  {
+    "id": 4,
+    "keywords": ["battery", "storage", "size", "capacity", "kWh battery"],
+    "question": "What size battery do I need?",
+    "answer": "Use our Solar Battery Calculator. Enter your daily energy usage, desired backup duration, and whether you want whole-home or partial backup. A typical home needs 10–15 kWh of storage for essential loads."
+  },
+  {
+    "id": 5,
+    "keywords": ["payback", "ROI", "break even", "return on investment"],
+    "question": "How long is the solar payback period?",
+    "answer": "The average payback period in the US is 6–10 years, depending on electricity rates, incentives, and system cost. Use our Solar Savings Calculator for a personalized estimate. After payback, you enjoy free electricity for the remaining 15–20 years of panel life."
+  },
+  {
+    "id": 6,
+    "keywords": ["net metering", "sell back", "grid export", "credit"],
+    "question": "What is Net Metering and how does it work?",
+    "answer": "Net Metering is a billing mechanism where your utility credits you for excess solar energy sent back to the grid. When your panels produce more than you use, your meter runs backward. At the end of the billing cycle, you only pay for the net amount consumed. Policies vary by state — check your local utility."
+  },
+  {
+    "id": 7,
+    "keywords": ["NEM", "net energy metering", "1.0", "2.0", "3.0"],
+    "question": "What's the difference between NEM 1.0, 2.0, and 3.0?",
+    "answer": "NEM 1.0 (legacy): Full retail rate credit for excess generation. NEM 2.0: Retail rate credit minus small non-bypassable charges, plus time-of-use rates. NEM 3.0 (California): Much lower export compensation based on avoided-cost rates, making battery storage more valuable. Always check your state's current net metering policy."
+  },
+  {
+    "id": 8,
+    "keywords": ["kWh", "kilowatt hour", "unit", "energy measure"],
+    "question": "What does kWh mean?",
+    "answer": "kWh (kilowatt-hour) is a unit of energy equal to using 1,000 watts for one hour. Your electricity bill is measured in kWh. For context: an average US home uses about 900 kWh per month. A 400W solar panel in good sun produces roughly 1.6–2.0 kWh per day."
+  },
+  {
+    "id": 9,
+    "keywords": ["kW", "kilowatt", "power", "vs", "difference"],
+    "question": "What's the difference between kW and kWh?",
+    "answer": "kW (kilowatt) measures power — the rate of energy production or consumption at a given moment. kWh (kilowatt-hour) measures energy — the total amount used over time. Think of it like speed (kW) vs. distance (kWh). A 5 kW solar system running at peak for 5 hours produces 25 kWh of energy."
+  },
+  {
+    "id": 10,
+    "keywords": ["DC", "AC", "direct current", "alternating", "conversion"],
+    "question": "What's the difference between DC and AC in solar systems?",
+    "answer": "Solar panels produce DC (direct current) electricity. Your home uses AC (alternating current). The inverter converts DC to AC. DC-coupled batteries are more efficient for solar storage; AC-coupled batteries are easier to retrofit onto existing systems."
+  },
+  {
+    "id": 11,
+    "keywords": ["ITC", "investment tax credit", "federal", "tax credit 30"],
+    "question": "What is the Federal Solar Investment Tax Credit (ITC)?",
+    "answer": "The ITC allows you to claim 30% of your solar installation cost as a federal tax credit. For example, a $25,000 system yields a $7,500 credit on your tax return. It applies to both residential and commercial systems. The 30% rate is locked in through 2032 under the Inflation Reduction Act."
+  },
+  {
+    "id": 12,
+    "keywords": ["state incentives", "rebates", "DSIRE", "local", "subsidy"],
+    "question": "What state-level solar incentives are available?",
+    "answer": "Every state has different incentives — rebates, tax credits, SRECs (Solar Renewable Energy Certificates), and performance-based incentives. We recommend searching the DSIRE database (dsireusa.org) for your state. Popular programs include California's SGIP battery rebate and New York's NY-Sun incentive."
+  },
+  {
+    "id": 13,
+    "keywords": ["inflation reduction act", "IRA", "solar", "2022"],
+    "question": "How does the Inflation Reduction Act affect solar?",
+    "answer": "The IRA (2022) extended the 30% ITC through 2032, added a standalone 30% credit for battery storage (even without solar), and introduced bonus credits for domestic content and projects in energy communities. It's the most significant solar policy in US history."
+  },
+  {
+    "id": 14,
+    "keywords": ["PERC", "cell technology", "passivated emitter"],
+    "question": "What is PERC solar cell technology?",
+    "answer": "PERC (Passivated Emitter and Rear Cell) adds a reflective layer on the back of the cell, capturing light that passes through and reflecting it back for a second absorption pass. This boosts efficiency to 21–23% and improves low-light performance. It's the current mainstream technology for residential panels."
+  },
+  {
+    "id": 15,
+    "keywords": ["TOPCon", "N-type", "tunnel oxide", "next gen"],
+    "question": "What is TOPCon solar cell technology?",
+    "answer": "TOPCon (Tunnel Oxide Passivated Contact) is an advanced N-type cell technology achieving 24–26% efficiency. It offers lower degradation, better temperature coefficient, and higher bifaciality than PERC. Major manufacturers like Jinko, LONGi, and Trina are scaling TOPCon production. It's becoming the new industry standard."
+  },
+  {
+    "id": 16,
+    "keywords": ["HJT", "heterojunction", "high efficiency", "premium"],
+    "question": "What is HJT (Heterojunction) solar technology?",
+    "answer": "HJT combines crystalline silicon with thin-film amorphous silicon layers, achieving 24–27% efficiency. Benefits include the lowest temperature coefficient, excellent bifaciality, and simpler manufacturing. Brands like REC Alpha and Meyer Burger use HJT. It's a premium option with higher upfront cost."
+  },
+  {
+    "id": 17,
+    "keywords": ["bifacial", "double sided", "both sides"],
+    "question": "What are bifacial solar panels?",
+    "answer": "Bifacial panels generate electricity from both sides — the front captures direct sunlight while the back captures reflected light (albedo). They can boost total output by 5–30%, especially over light-colored surfaces like white roofs or gravel. TOPCon and HJT cells naturally support bifacial designs."
+  },
+  {
+    "id": 18,
+    "keywords": ["degradation", "panel life", "warranty", "longevity"],
+    "question": "How fast do solar panels degrade?",
+    "answer": "Most quality panels degrade at 0.3–0.5% per year. Tier-1 manufacturers offer 25–30 year performance warranties guaranteeing at least 85–90% output at year 25. N-type (TOPCon/HJT) panels degrade slower than P-type (PERC). After 30 years, panels still produce 80%+ of their original output."
+  },
+  {
+    "id": 19,
+    "keywords": ["monocrystalline", "polycrystalline", "mono", "poly", "difference"],
+    "question": "Monocrystalline vs. Polycrystalline panels — which is better?",
+    "answer": "Monocrystalline panels are made from single silicon crystals — 20–24% efficient, uniform black appearance, better in low light and heat. Polycrystalline panels are made from multiple fragments — 15–18% efficient, blue speckled look, slightly cheaper. For residential, monocrystalline (PERC/TOPCon) is the clear winner."
+  },
+  {
+    "id": 20,
+    "keywords": ["panel brands", "best", "Tier 1", "manufacturer", "quality"],
+    "question": "Which solar panel brands are the best?",
+    "answer": "Tier-1 brands with strong track records include: REC Group (premium), QCells (great value), LONGi (largest manufacturer), JinkoSolar, Trina Solar, and Canadian Solar. For US-made: Qcells (Georgia factory), First Solar (utility-scale thin-film). Look for 25-year product + performance warranties."
+  },
+  {
+    "id": 21,
+    "keywords": ["string inverter", "microinverter", "power optimizer", "difference"],
+    "question": "String inverter vs. Microinverter — which should I choose?",
+    "answer": "String inverters: One central inverter for all panels, cost-effective, good for unshaded roofs (SolarEdge, SMA). Microinverters: One per panel, maximizes each panel independently, ideal for partial shading, panel-level monitoring (Enphase). Power optimizers: Hybrid approach — optimizer per panel + central inverter (SolarEdge)."
+  },
+  {
+    "id": 22,
+    "keywords": ["Enphase", "SolarEdge", "IQ8", "microinverter brand"],
+    "question": "Enphase vs. SolarEdge — which inverter system is better?",
+    "answer": "Enphase (microinverters): Panel-level MPPT, no single point of failure, easy expansion, sunlight backup with IQ8. SolarEdge (optimizers + string): Slightly lower cost, high efficiency, but single inverter is a failure point. Both are excellent — choose based on your shading situation and expansion plans."
+  },
+  {
+    "id": 23,
+    "keywords": ["lithium", "LFP", "NMC", "battery chemistry", "LiFePO4"],
+    "question": "What battery chemistry is best for home solar — LFP or NMC?",
+    "answer": "LFP (Lithium Iron Phosphate / LiFePO4): Longer lifespan (6,000–10,000 cycles), safer (no thermal runaway), slightly lower energy density. NMC (Nickel Manganese Cobalt): Higher energy density, more compact, shorter cycle life. LFP is now dominant for home storage (Tesla Powerwall 3, most new batteries)."
+  },
+  {
+    "id": 24,
+    "keywords": ["Tesla", "Powerwall", "battery brand", "comparison"],
+    "question": "Is the Tesla Powerwall the best home battery?",
+    "answer": "Tesla Powerwall 3 (LFP, 13.5 kWh, 11.5 kW continuous) is the market leader. Strong competitors include: Enphase IQ Battery 5P (5 kWh modular), FranklinWH aPower (13.6 kWh, 15-year warranty), and EG4 (value option). Powerwall excels in integration and software; competitors offer more flexibility."
+  },
+  {
+    "id": 25,
+    "keywords": ["off grid", "grid tied", "hybrid", "system type"],
+    "question": "Grid-tied, off-grid, or hybrid — which solar system type do I need?",
+    "answer": "Grid-tied: Connected to utility, no battery required, cheapest option, but no backup during outages. Hybrid: Grid-tied with battery backup — power during outages plus grid benefits. Off-grid: 100% self-sufficient, requires large battery bank and possibly generator, highest cost. Most homeowners choose hybrid for resilience."
+  },
+  {
+    "id": 26,
+    "keywords": ["install", "installation", "steps", "process", "timeline"],
+    "question": "What is the solar installation process step by step?",
+    "answer": "Typical timeline (4–12 weeks): 1) Site assessment (roof condition, shading analysis). 2) System design and proposal. 3) Permitting (building + electrical permits, 1–4 weeks). 4) Installation (1–3 days). 5) Inspection by local authority. 6) Utility interconnection approval and Permission to Operate (PTO). 7) System turned on!"
+  },
+  {
+    "id": 27,
+    "keywords": ["install cost", "price", "per watt", "average", "2025"],
+    "question": "How much does solar installation cost in 2025?",
+    "answer": "Average US residential cost: $2.50–$3.50 per watt before incentives. A typical 7 kW system costs $17,500–$24,500 before the 30% ITC ($5,250–$7,350 credit). After ITC, net cost is $12,250–$17,150. Prices vary by state, roof complexity, and equipment choice."
+  },
+  {
+    "id": 28,
+    "keywords": ["installer", "choose", "certified", "NABCEP", "qualifications"],
+    "question": "How do I choose a reliable solar installer?",
+    "answer": "Look for: (1) NABCEP certification (North American Board of Certified Energy Practitioners). (2) 5+ years in business with local references. (3) Tier-1 equipment with manufacturer warranties. (4) Workmanship warranty (10+ years). (5) Transparent pricing with no hidden fees. Get 3+ quotes and check reviews on EnergySage or SolarReviews."
+  },
+  {
+    "id": 29,
+    "keywords": ["DIY", "install myself", "self install", "kit"],
+    "question": "Can I install solar panels myself?",
+    "answer": "DIY installation is possible but complex. You'll need: electrical knowledge, building code compliance, permit applications, and utility interconnection paperwork. Most jurisdictions require a licensed electrician for grid connection. DIY kits (like from Signature Solar) can save 50% on labor but void some manufacturer warranties."
+  },
+  {
+    "id": 30,
+    "keywords": ["permit", "permission", "HOA", "homeowners association"],
+    "question": "Do I need HOA approval for solar panels?",
+    "answer": "Most states have solar access laws that prevent HOAs from unreasonably restricting solar installations. However, you may still need to submit design plans for architectural review. The HOA cannot outright ban solar, but can impose reasonable placement restrictions that don't significantly impact performance."
+  },
+  {
+    "id": 31,
+    "keywords": ["maintenance", "cleaning", "upkeep", "care"],
+    "question": "How much maintenance do solar panels need?",
+    "answer": "Solar panels require minimal maintenance. Rain naturally cleans most panels. In dusty areas, clean 1–2 times per year with water (no abrasive cleaners). Annual inspection: check for microcracks, loose wiring, and inverter error codes. Monitoring apps (Enphase/SolarEdge) alert you to performance issues."
+  },
+  {
+    "id": 32,
+    "keywords": ["winter", "snow", "cold weather", "performance", "cloudy"],
+    "question": "Do solar panels work in winter or on cloudy days?",
+    "answer": "Yes! Panels still produce electricity on cloudy days at 10–25% of rated output. In winter, cold temperatures actually improve panel efficiency (panels perform better at lower temps). Snow usually slides off tilted panels. Annual production variation between summer and winter is factored into system design."
+  },
+  {
+    "id": 33,
+    "keywords": ["business", "B2B", "partnership", "cooperation", "collaboration"],
+    "question": "How can I partner with PVSize for B2B collaboration?",
+    "answer": "We partner with solar installers, equipment manufacturers, and energy consultants. Opportunities include: white-label calculator embedding, co-branded landing pages, lead generation, and API access. PVSize serves 50,000+ monthly users with strong organic traffic. Contact us at partners@pvsize.com for details."
+  },
+  {
+    "id": 34,
+    "keywords": ["traffic", "users", "audience", "monthly", "metrics"],
+    "question": "What are PVSize's traffic and audience metrics?",
+    "answer": "PVSize attracts 50,000+ monthly unique visitors, primarily US homeowners researching solar (ages 30–65, high purchase intent). Traffic sources: 65% organic search, 20% direct, 15% referral/social. Top pages: Solar Panel Calculator, Solar Savings Calculator, and our solar education guides."
+  },
+  {
+    "id": 35,
+    "keywords": ["contact", "email", "reach", "support", "phone"],
+    "question": "How do I contact PVSize?",
+    "answer": "For general inquiries: hello@pvsize.com. For business partnerships: partners@pvsize.com. For technical support: support@pvsize.com. We typically respond within 24 hours on business days. You can also reach us through the chat widget on any PVSize page."
+  },
+  {
+    "id": 36,
+    "keywords": ["white label", "API", "integrate", "embed", "iframe"],
+    "question": "Can I embed PVSize calculators on my website?",
+    "answer": "Yes! We offer white-label and iframe embedding for our solar calculators. Your visitors get the full calculator experience with your branding. Pricing depends on traffic volume and customization level. Contact partners@pvsize.com with your requirements for a demo and pricing."
+  },
+  {
+    "id": 37,
+    "keywords": ["data", "privacy", "GDPR", "personal", "information"],
+    "question": "How does PVSize handle my personal data?",
+    "answer": "We take privacy seriously. Calculator inputs (location, bill amounts, roof size) are processed in-browser and not stored on our servers. We use GA4 and Microsoft Clarity for anonymous analytics. Email addresses (if provided) are never shared with third parties. See our Privacy Policy for full details."
+  },
+  {
+    "id": 38,
+    "keywords": ["hello", "hi", "hey", "greetings", "start"],
+    "question": "Hello!",
+    "answer": "Hi there! 👋 I'm the PVSize assistant. I can help you choose the right solar calculator, explain solar terms (kW, kWh, Net Metering, ITC), guide you on equipment selection, or answer questions about incentives and installation. What would you like to know?"
+  },
+  {
+    "id": 39,
+    "keywords": ["thanks", "thank you", "appreciate", "helpful"],
+    "question": "Thank you!",
+    "answer": "You're welcome! Glad I could help. If you have more questions about solar energy, calculators, or anything PVSize-related, I'm here 24/7. Feel free to reach out anytime!"
+  },
+  {
+    "id": 40,
+    "keywords": ["bye", "goodbye", "see you", "farewell"],
+    "question": "Goodbye!",
+    "answer": "Goodbye! Thanks for chatting with PVSize. Don't forget to try our calculators for your solar estimate. Have a great day!"
+  },
+  {
+    "id": 41,
+    "keywords": ["unknown", "dont know", "cant answer", "not sure"],
+    "question": "I'm not sure how to answer that.",
+    "answer": "That's a great question! Unfortunately, my FAQ database doesn't cover this topic yet. You can email us at hello@pvsize.com and our team will get back to you with a detailed answer within 24 hours."
+  },
+  {
+    "id": 42,
+    "keywords": ["SREC", "solar renewable energy", "certificate", "sell", "market"],
+    "question": "What are SRECs and how do they work?",
+    "answer": "SRECs (Solar Renewable Energy Certificates) represent the environmental benefit of 1 MWh of solar generation. In states with Renewable Portfolio Standards (NJ, MA, MD, DC, PA, OH, IL), you can sell SRECs to utilities. Each SREC is worth $30–$400 depending on the state market. This is additional income on top of electricity savings."
+  },
+  {
+    "id": 43,
+    "keywords": ["EV", "electric vehicle", "charging", "car", "extra panels"],
+    "question": "How many extra panels do I need for an electric vehicle?",
+    "answer": "An average EV drives 13,500 miles/year, consuming about 4,000 kWh. You'd need roughly 6–8 additional 400W panels (2.5–3 kW extra capacity). Our Solar Panel Calculator can factor this in — just add your estimated EV energy needs to your annual usage. Pairing solar with an EV maximizes both investments."
+  },
+  {
+    "id": 44,
+    "keywords": ["efficiency", "efficient panel", "how efficient", "rating"],
+    "question": "What's a good solar panel efficiency rating?",
+    "answer": "Residential panel efficiency ranges: Budget (18–20% PERC), Mainstream (20–22% PERC), Premium (22–24% TOPCon/HJT). The efficiency affects how much power you get per square foot. Higher efficiency matters most if you have limited roof space. For most homes, 20–22% PERC panels offer the best value."
+  },
+  {
+    "id": 45,
+    "keywords": ["lease", "PPA", "power purchase", "loan", "cash", "finance"],
+    "question": "Should I buy, finance, lease, or choose a PPA for solar?",
+    "answer": "Cash purchase: Highest long-term savings, immediate ownership, full ITC benefit. Solar loan: Own the system with monthly payments, still get ITC. Lease: $0 upfront, fixed monthly payments, installer owns and maintains — no ITC for you. PPA: Pay per kWh produced, no ownership. Buy or finance is typically best long-term."
+  },
+  {
+    "id": 46,
+    "keywords": ["virtual power plant", "VPP", "utility program", "grid services"],
+    "question": "What is a Virtual Power Plant (VPP) program?",
+    "answer": "A VPP aggregates many home batteries into a network the utility can draw from during peak demand. Homeowners earn credits or cash payments for participating. Examples: Tesla Virtual Power Plant (CA), Sunrun's VPP, OhmConnect. Your battery stays above a reserve threshold so you always have backup power."
+  },
+  {
+    "id": 47,
+    "keywords": ["microgrid", "community solar", "shared solar", "renters"],
+    "question": "Can I go solar if I rent or live in an apartment?",
+    "answer": "Yes! Community solar programs let you subscribe to a share of a local solar farm and receive credits on your electricity bill — no rooftop needed. Available in 22+ states. You typically save 5–15% on your bill. Check EnergySage or your utility's website for community solar projects near you."
+  },
+  {
+    "id": 48,
+    "keywords": ["warranty", "product warranty", "performance", "guarantee"],
+    "question": "What warranties should I look for in a solar system?",
+    "answer": "Three key warranties: (1) Product warranty: 12–25 years against manufacturing defects (REC offers 25 years). (2) Performance warranty: 25–30 years, guarantees 85–90% output. (3) Workmanship warranty: 10–25 years from installer covering roof leaks and labor. Also check inverter warranty (10–12 years standard, extendable)."
+  },
+  {
+    "id": 49,
+    "keywords": ["shade", "shading", "trees", "partial", "optimizer"],
+    "question": "Does partial shading ruin solar panel output?",
+    "answer": "With traditional string inverters, yes — shading on one panel can reduce the entire string's output. Solution: microinverters (Enphase) or power optimizers (SolarEdge) allow each panel to operate independently. With these, only the shaded panel's output drops — the rest produce at full power."
+  },
+  {
+    "id": 50,
+    "keywords": ["free", "cost nothing", "no cost solar", "government program"],
+    "question": "Are there really free solar panel programs?",
+    "answer": "There is no truly 'free' government solar program. Beware of ads claiming otherwise — these are usually solar leases or PPAs with $0 upfront but long-term payments. Legitimate low-income solar programs exist (like California's DAC-SASH, GRID Alternatives), but they have strict eligibility requirements. The 30% ITC is the best incentive for most homeowners."
+  }
+]

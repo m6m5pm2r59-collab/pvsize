@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home Battery Storage: The Complete Guide — PVSize Learning Center</title>
+  <meta name="description" content="A complete guide to home battery storage: LFP vs NMC chemistry, depth of discharge, cycle life, AC vs DC coupling, 2026 product comparison (Tesla Powerwall 3, BYD Battery-Box, LG Chem RESU), and NEM 3.0 payback analysis.">
+  <link rel="canonical" href="https://pvsize.com/learn/battery-storage.html">
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    .learn-page { max-width: 800px; margin: 0 auto; padding: 48px 24px 64px; }
+    .learn-page h1 { font-size: 2rem; font-weight: 700; margin-bottom: 8px; }
+    .learn-page .lead { font-size: 1.08rem; color: #57534e; margin-bottom: 32px; line-height: 1.7; }
+    .learn-page h2 { font-size: 1.35rem; font-weight: 600; margin: 32px 0 12px; color: #1c1917; }
+    .learn-page h3 { font-size: 1.15rem; font-weight: 600; margin: 24px 0 8px; color: #292524; }
+    .learn-page p { font-size: 1.05rem; line-height: 1.8; color: #292524; margin-bottom: 16px; }
+    .learn-page ul { margin: 12px 0 20px 24px; font-size: 1.02rem; line-height: 1.75; }
+    .learn-page li { margin-bottom: 8px; }
+    .learn-page table { width: 100%; border-collapse: collapse; margin: 20px 0 28px; font-size: 0.95rem; }
+    .learn-page th { background: #1a2a3a; color: #fff; padding: 10px 12px; text-align: left; font-weight: 600; }
+    .learn-page td { padding: 10px 12px; border-bottom: 1px solid #e4dfd8; }
+    .learn-page tr:nth-child(even) td { background: #faf7f2; }
+    .learn-page .sources { margin-top: 48px; padding: 24px; background: #f5f5f4; border-radius: 8px; font-size: 0.88rem; color: #57534e; }
+    .learn-page .sources h3 { font-size: 1rem; margin-bottom: 8px; color: #1a2a3a; }
+    .learn-page .sources ol { margin: 8px 0 0 20px; line-height: 1.6; }
+    .learn-page .byline { margin-top: 40px; padding-top: 20px; border-top: 1px solid #e4dfd8; font-size: 0.9rem; color: #78716c; }
+  </style>
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "xczyltw8tn");
+</script>
+</head>
+<body>
+<nav class="navbar">
+  <div class="nav-container">
+    <a href="/" class="nav-logo">PVSize</a>
+    <ul class="nav-links">
+      <li><a href="/panels/">Panels</a></li>
+      <li><a href="/inverters/">Inverters</a></li>
+      <li><a href="/batteries/">Batteries</a></li>
+      <li><a href="/calculators/">Calculators</a></li>
+      <li><a href="/insights/">Insights</a></li>
+      <li><a href="/learn/">Learn</a></li><li><a href="/contact/">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+<main class="learn-page">
+  <h1>Home Battery Storage: The Complete Guide</h1>
+  <p class="lead">A solar system generates power when the sun shines. A battery lets you use that power when it doesn't. Home battery adoption in the United States grew 57% year-over-year in 2025, with 2.1 GW of residential storage installed (SEIA/Wood Mackenzie, March 2026). Here is everything you need to know about the technology, the products, and the economics.</p>
+
+  <h2>Battery Chemistry: LFP vs. NMC vs. Lead-Acid</h2>
+
+  <h3>Lithium Iron Phosphate (LFP / LiFePO&#8324;)</h3>
+  <p>LFP has become the dominant chemistry for residential storage, accounting for approximately 68% of new U.S. home battery installations in 2025. The advantages are compelling: 6,000-10,000 cycle life (15-20 years at one cycle per day), inherent thermal stability eliminating thermal runaway risk, zero cobalt, and lower cost per kWh. The trade-off is lower energy density (90-120 Wh/kg) compared to NMC, meaning LFP batteries are physically larger for the same capacity.</p>
+
+  <h3>Nickel Manganese Cobalt (NMC)</h3>
+  <p>NMC offers higher energy density (150-220 Wh/kg), making it suitable for applications where space is constrained. The original Tesla Powerwall 2 used NMC cells. However, NMC batteries typically have shorter cycle lives (3,000-5,000 cycles), require more sophisticated thermal management, and rely on cobalt — a mineral with significant supply chain and ethical concerns. Tesla transitioned the Powerwall 3 to LFP cells, signaling the industry direction.</p>
+
+  <h3>Lead-Acid</h3>
+  <p>Flooded lead-acid and sealed AGM batteries remain in use for off-grid applications due to their low upfront cost ($100-$150/kWh) and established recycling infrastructure (99% recycling rate in the U.S.). However, they have severe limitations for modern home storage: 50% depth of discharge, 500-1,200 cycle life, high maintenance (flooded types), and poor round-trip efficiency (70-85%). They are increasingly obsolete for grid-connected residential applications.</p>
+
+  <table>
+    <thead><tr><th>Chemistry</th><th>Cycle Life</th><th>DoD</th><th>Energy Density</th><th>Cost ($/kWh)</th><th>Thermal Risk</th></tr></thead>
+    <tbody>
+      <tr><td>LFP</td><td>6,000-10,000</td><td>90-100%</td><td>90-120 Wh/kg</td><td>$250-$400</td><td>Very Low</td></tr>
+      <tr><td>NMC</td><td>3,000-5,000</td><td>80-90%</td><td>150-220 Wh/kg</td><td>$300-$450</td><td>Moderate</td></tr>
+      <tr><td>Lead-Acid</td><td>500-1,200</td><td>50%</td><td>30-50 Wh/kg</td><td>$100-$150</td><td>Low (hydrogen venting)</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Depth of Discharge (DoD) and Usable Capacity</h2>
+  <p>Depth of discharge measures how much of a battery's nominal capacity can be used without causing premature degradation. A battery rated at 10 kWh with 90% DoD provides 9 kWh of usable energy. LFP batteries from top manufacturers now commonly support 100% DoD — meaning the full nameplate capacity is usable. For example, the Tesla Powerwall 3 is rated at 13.5 kWh total capacity with 13.5 kWh usable (100% DoD). When comparing products, always look at usable capacity, not nominal capacity.</p>
+
+  <h2>AC-Coupled vs. DC-Coupled Battery Systems</h2>
+  <p><strong>AC-coupled systems</strong> (like the Tesla Powerwall with a non-Tesla inverter) connect on the AC side of the solar inverter. They are ideal for retrofitting batteries to existing solar installations, as they require no changes to the existing PV system. The electricity path is: PV DC → Inverter → AC → Battery Inverter → Battery DC (and reverse for discharge). This double conversion reduces round-trip efficiency by 2-4%.</p>
+  <p><strong>DC-coupled systems</strong> connect the battery directly to the PV array on the DC side before the inverter. This eliminates one conversion step, improving round-trip efficiency to approximately 97-98% vs. 90-94% for AC-coupled. The Tesla Powerwall 3 supports both AC and DC coupling; when paired with the Tesla Solar Inverter, it operates in DC-coupled mode for maximum efficiency. DC coupling typically requires a hybrid inverter that integrates both MPPT charge controllers and battery management — such as the SolarEdge Home Hub or Tesla Solar Inverter.</p>
+
+  <h2>2026 Leading Home Battery Products</h2>
+  <table>
+    <thead><tr><th>Product</th><th>Usable Capacity</th><th>Chemistry</th><th>Continuous Power</th><th>Warranty</th><th>Est. Price (installed)</th></tr></thead>
+    <tbody>
+      <tr><td>Tesla Powerwall 3</td><td>13.5 kWh</td><td>LFP</td><td>11.5 kW</td><td>10 yrs / 37.8 MWh</td><td>$9,300-$11,500</td></tr>
+      <tr><td>BYD Battery-Box HVS 10.2</td><td>10.24 kWh</td><td>LFP</td><td>10.24 kW</td><td>10 yrs</td><td>$6,500-$8,500</td></tr>
+      <tr><td>LG Chem RESU 16H Prime</td><td>16.0 kWh</td><td>NMC</td><td>7.0 kW</td><td>10 yrs / 27.4 MWh</td><td>$8,000-$10,000</td></tr>
+      <tr><td>Enphase IQ Battery 5P</td><td>5.0 kWh</td><td>LFP</td><td>3.84 kW</td><td>15 yrs / 6,000 cycles</td><td>$3,500-$4,500</td></tr>
+    </tbody>
+  </table>
+  <p><em>Prices are estimated installed costs before the 30% federal ITC, as of Q2 2026. Actual pricing varies by installer, region, and electrical work complexity.</em></p>
+
+  <h2>Sizing Your Battery: The Formula</h2>
+  <p>A practical rule of thumb for sizing residential battery storage comes from your daily energy consumption and the loads you want to back up during an outage:</p>
+  <ol>
+    <li><strong>Essential backup (lights, fridge, WiFi, outlets):</strong> Target 5-7 kWh usable capacity. Typical daily consumption for essential loads is 4-6 kWh.</li>
+    <li><strong>Whole-home backup (all circuits including HVAC):</strong> Target your average daily consumption plus 20% margin. For the average U.S. home consuming 30 kWh/day (EIA 2025), this means approximately 36 kWh — roughly three Powerwall 3 units.</li>
+    <li><strong>Time-of-use (TOU) arbitrage only (no backup):</strong> Calculate the spread between peak and off-peak rates. In California under NEM 3.0, export rates during peak evening hours (4-9 PM) can reach $0.40-$0.60/kWh, making a 10-13.5 kWh battery sufficient to capture the daily arbitrage opportunity.</li>
+  </ol>
+  <p>Use our free <a href="/calculators/battery-sizing/">Battery Sizing Calculator</a> to get a personalized estimate based on your utility rate plan and consumption profile.</p>
+
+  <h2>NEM 3.0 and Battery Payback Economics</h2>
+  <p>California's NEM 3.0 (Net Billing Tariff), effective April 2023, fundamentally changed the solar + storage economic equation. Under NEM 2.0, solar exports were credited at near-retail rates ($0.25-$0.35/kWh). Under NEM 3.0, export credits are based on the Avoided Cost Calculator (ACC) — averaging $0.05-$0.08/kWh for midday solar exports but reaching $0.40-$0.60/kWh during peak evening hours (4-9 PM, especially in September).</p>
+  <p>This creates a massive incentive for battery storage: store your midday solar generation and export it during peak evening hours when rates are 5-8x higher. Lawrence Berkeley National Laboratory (LBNL) analysis of NEM 3.0 shows that a 10 kW solar system paired with 13.5 kWh of storage achieves a payback period of 6-8 years, compared to 9-12 years for solar-only under the same tariff. The 30% federal ITC further improves these economics, reducing net battery cost by nearly one-third.</p>
+  <p>As more states consider successor tariffs to net metering (Arizona, New York, and Illinois all have active proceedings as of mid-2026), the NEM 3.0 model is increasingly the template — and batteries are the hedge.</p>
+
+  <div class="sources">
+    <h3>Sources</h3>
+    <ol>
+      <li>SEIA / Wood Mackenzie, "U.S. Solar Market Insight Q4 2025," March 2026.</li>
+      <li>U.S. EIA, "Residential Energy Consumption Survey (RECS) 2025," February 2026.</li>
+      <li>Lawrence Berkeley National Laboratory, "Impact of NEM 3.0 on Residential Solar + Storage Economics," LBNL-2001587, January 2026.</li>
+      <li>Tesla, Inc., "Powerwall 3 Datasheet," updated Q1 2026.</li>
+      <li>BYD, "Battery-Box Premium HVS Product Specifications," 2026.</li>
+      <li>LG Energy Solution, "RESU 16H Prime Datasheet," 2025.</li>
+      <li>Enphase Energy, "IQ Battery 5P Datasheet," 2026.</li>
+      <li>California Public Utilities Commission, "Net Billing Tariff Implementation Report," April 2026.</li>
+    </ol>
+  </div>
+
+  <div class="byline">PVSize Editorial Team &middot; June 2026</div>
+  <p style="margin-top:28px;"><a href="/learn/">← Back to Learning Center</a></p>
+</main>
+</body>
+</html>

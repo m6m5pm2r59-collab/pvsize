@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Home Battery Sizing Calculator — kWh Capacity & Backup Estimate 2026 | PVSize</title>
+  <meta name="description" content="Size your home battery backup system. Enter daily energy use, backup days, and battery type for recommended kWh capacity and cost estimate. Free online tool.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>:root { --pv-yellow: #F5A623; --pv-navy: #1a2a3a; } select.min-w-select { min-width: 200px; }</style>
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "xczyltw8tn");
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What size battery do I need for my home?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For most homes, a 10-15 kWh battery provides sufficient overnight and backup power for essential loads. To calculate your needs: multiply daily energy usage (kWh) by backup days needed, then divide by depth of discharge (typically 0.9 for LiFePO4). Example: 30 kWh/day × 2 days ÷ 0.9 = ~67 kWh total capacity. Use the PVSize Battery Sizing Calculator to get a precise recommendation."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between LiFePO4 and NMC batteries?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "LiFePO4 (Lithium Iron Phosphate) batteries offer 6,000+ cycles (16+ years of daily cycling), superior thermal stability, and no risk of thermal runaway. NMC (Nickel Manganese Cobalt) batteries have higher energy density but typically 3,000-4,000 cycles. For home storage, LiFePO4 is the dominant choice — systems like BYD Battery-Box HVS/HVM use LiFePO4 chemistry."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much does a home battery system cost?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Home battery systems cost $600-$1,200 per kWh installed. A typical 10 kWh system costs $6,000-$12,000 before incentives. The 30% federal tax credit applies to batteries charged exclusively by solar, reducing net cost to $4,200-$8,400. BYD Battery-Box HVS (5.1-12.8 kWh) and HVM (8.3-66.2 kWh) series offer scalable LiFePO4 storage starting at approximately $600/kWh."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long do home batteries last?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Modern LiFePO4 home batteries are rated for 6,000-8,000 cycles, equivalent to 16-22 years of daily cycling. BYD Battery-Box HVS/HVM is rated for 6,000 cycles. Most manufacturers warrant 70% capacity retention after 10 years or the rated cycle count. Temperature, depth of discharge, and charge/discharge rate all affect actual lifespan."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body class="bg-gray-50 text-gray-800">
+  <nav class="bg-[#1a2a3a] text-white sticky top-0 z-50 shadow-md">
+    <div class="max-w-7xl mx-auto px-4 flex items-center justify-between h-16">
+      <a href="/" class="text-2xl font-bold" style="color:#F5A623">PVSize</a>
+      <div class="hidden md:flex space-x-6 text-sm font-medium">
+        <a href="/calculators/" class="text-[#F5A623] font-semibold">Calculators</a>
+        <a href="/insights/" class="hover:text-[#F5A623]">Insights</a>
+        <a href="/learn/" class="hover:text-[#F5A623]">Learn</a>
+      </div>
+      <a href="/business" class="bg-[#F5A623] text-[#1a2a3a] px-4 py-2 rounded font-semibold text-sm hover:opacity-90">Business</a>
+    </div>
+  </nav>
+
+  <section class="bg-[#1a2a3a] text-white py-16 px-4 text-center" style="padding-top:76px">
+    <h1 class="text-3xl md:text-4xl font-bold mb-3">What size battery for my home?</h1>
+    <p class="text-gray-300 text-lg">Find the right battery capacity for your home backup needs.</p>
+  </section>
+
+  <section class="max-w-3xl mx-auto py-12 px-4">
+    <div class="bg-white rounded-2xl shadow-lg p-8">
+      <h2 class="text-xl font-bold mb-6" style="color:#1a2a3a">Battery Configuration</h2>
+
+      <div class="space-y-5">
+        <div>
+          <label class="block text-sm font-semibold mb-1 text-gray-700">Daily Energy Usage (kWh)</label>
+          <input type="number" id="dailyUsage" class="border rounded-lg px-4 py-3 w-full" placeholder="e.g. 30" min="1" step="0.1" />
+        </div>
+
+        <div>
+          <label class="block text-sm font-semibold mb-1 text-gray-700">Backup Days Needed</label>
+          <select id="backupDays" class="border rounded-lg px-4 py-3 w-full min-w-select bg-white">
+            <option value="1">1 day — Emergency backup</option>
+            <option value="2" selected>2 days — Weekend backup</option>
+            <option value="3">3 days — Extended backup</option>
+            <option value="5">5 days — Storm readiness</option>
+            <option value="7">7 days — Full off-grid</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-sm font-semibold mb-1 text-gray-700">Battery Type</label>
+          <select id="batteryType" class="border rounded-lg px-4 py-3 w-full min-w-select bg-white">
+            <option value="lifepo4" selected>LiFePO4 (Lithium Iron Phosphate)</option>
+            <option value="lead-acid">Lead-Acid (Flooded / AGM)</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-sm font-semibold mb-1 text-gray-700">Depth of Discharge (% DoD)</label>
+          <input type="number" id="dod" class="border rounded-lg px-4 py-3 w-full" placeholder="Default: 90% LiFePO4 / 50% Lead-Acid" min="10" max="100" step="1" />
+        </div>
+
+        <button id="calcBtn" class="w-full py-4 rounded-xl font-bold text-lg text-[#1a2a3a] hover:opacity-90 transition" style="background:#F5A623">
+          Calculate Battery Size
+        </button>
+      </div>
+
+      <div id="results" class="mt-8 hidden">
+        <div class="bg-gray-50 rounded-xl p-6">
+          <h3 class="text-lg font-bold mb-4" style="color:#1a2a3a">Recommended Battery Configuration</h3>
+          <div class="grid grid-cols-2 gap-4 text-center">
+            <div class="bg-white rounded-lg p-4 shadow-sm">
+              <div class="text-3xl font-bold" style="color:#F5A623" id="usableCapacity">—</div>
+              <div class="text-sm text-gray-600 mt-1">Usable Capacity (kWh)</div>
+            </div>
+            <div class="bg-white rounded-lg p-4 shadow-sm">
+              <div class="text-3xl font-bold" style="color:#F5A623" id="totalCapacity">—</div>
+              <div class="text-sm text-gray-600 mt-1">Total Rated Capacity (kWh)</div>
+            </div>
+            <div class="bg-white rounded-lg p-4 shadow-sm">
+              <div class="text-3xl font-bold" style="color:#F5A623" id="estCost">—</div>
+              <div class="text-sm text-gray-600 mt-1">Estimated Cost ($)</div>
+            </div>
+            <div class="bg-white rounded-lg p-4 shadow-sm">
+              <div class="text-3xl font-bold" style="color:#F5A623" id="equivUnits">—</div>
+              <div class="text-sm text-gray-600 mt-1" id="equivLabel">Equivalent Units</div>
+            </div>
+          </div>
+          <p class="text-xs text-gray-500 mt-4">Cost estimates: ~$450/kWh LiFePO4 installed, ~$250/kWh Lead-Acid installed. Actual pricing varies by installer and region.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-[#1a2a3a] text-gray-400 py-10 px-4 text-sm mt-16">
+    <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-8">
+      <div>
+        <div class="text-xl font-bold mb-3" style="color:#F5A623">PVSize</div>
+        <p>Free solar energy calculators and sizing tools.</p>
+      </div>
+      <div>
+        <h4 class="text-white font-semibold mb-3">Pages</h4>
+        <ul class="space-y-1">
+          <li><a href="/about" class="hover:text-[#F5A623]">About</a></li>
+          <li><a href="/editorial-policy" class="hover:text-[#F5A623]">Editorial Policy</a></li>
+          <li><a href="/sponsored-disclosure" class="hover:text-[#F5A623]">Sponsored Disclosure</a></li>
+          <li><a href="/privacy" class="hover:text-[#F5A623]">Privacy Policy</a></li>
+          <li><a href="/terms" class="hover:text-[#F5A623]">Terms of Service</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white font-semibold mb-3">Calculators</h4>
+        <ul class="space-y-1">
+          <li><a href="/calculators/panel-count/" class="hover:text-[#F5A623]">Panel Count</a></li>
+          <li><a href="/calculators/savings/" class="hover:text-[#F5A623]">Savings</a></li>
+          <li><a href="/calculators/battery-sizing/" class="hover:text-[#F5A623]">Battery Sizing</a></li>
+          <li><a href="/calculators/carbon/" class="hover:text-[#F5A623]">Carbon Reduction</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="max-w-7xl mx-auto mt-8 pt-6 border-t border-gray-700 text-center text-xs">
+      © 2024 PVSize. All content by PVSize Editorial Team. No professional engineering or NABCEP certification claimed.
+    </div>
+    <p style="font-size:0.8rem;color:#999;text-align:center;margin-top:2rem;">Estimates based on NREL PVWatts methodology. Actual results vary by location, equipment, and installation conditions.</p>
+  </footer>
+
+  <script>
+  document.getElementById('calcBtn').addEventListener('click', function(){
+    const dailyUsage = parseFloat(document.getElementById('dailyUsage').value);
+    const backupDays = parseInt(document.getElementById('backupDays').value);
+    const batteryType = document.getElementById('batteryType').value;
+    let dodInput = document.getElementById('dod').value;
+    let dod;
+
+    if (isNaN(dailyUsage) || dailyUsage <= 0) { alert('Please enter valid daily usage.'); return; }
+
+    if (dodInput) {
+      dod = parseFloat(dodInput);
+      if (isNaN(dod) || dod <= 0 || dod > 100) { alert('DoD must be between 1 and 100.'); return; }
+    } else {
+      dod = batteryType === 'lifepo4' ? 90 : 50;
+    }
+
+    // Total usable energy needed
+    const usableNeeded = dailyUsage * backupDays;
+    // Total rated capacity considering DoD
+    const totalCapacity = usableNeeded / (dod / 100);
+
+    // Cost estimation
+    const costPerKwh = batteryType === 'lifepo4' ? 450 : 250;
+    const estCost = totalCapacity * costPerKwh;
+
+    // Equivalent units (e.g., Tesla Powerwall = 13.5 kWh)
+    const unitSize = batteryType === 'lifepo4' ? 13.5 : 10.0;
+    const eqvUnits = Math.ceil(totalCapacity / unitSize);
+    const equivLabel = batteryType === 'lifepo4' ? '≈ Powerwall Units' : '≈ 10kWh Lead-Acid Banks';
+
+    document.getElementById('usableCapacity').textContent = usableNeeded.toFixed(1) + ' kWh';
+    document.getElementById('totalCapacity').textContent = totalCapacity.toFixed(1) + ' kWh';
+    document.getElementById('estCost').textContent = '$' + estCost.toLocaleString(undefined, {maximumFractionDigits:0});
+    document.getElementById('equivUnits').textContent = eqvUnits;
+    document.getElementById('equivLabel').textContent = equivLabel;
+    document.getElementById('results').classList.remove('hidden');
+    document.getElementById('results').scrollIntoView({behavior:'smooth'});
+  });
+  </script>
+</body>
+</html>

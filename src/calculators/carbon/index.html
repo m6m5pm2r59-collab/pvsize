@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Solar Carbon Offset Calculator — CO₂ Reduction & Trees Equivalent | PVSize</title>
+  <meta name="description" content="Calculate how much CO₂ your solar system offsets. Enter system size and grid emission factor to see annual carbon reduction in metric tons and equivalent number of trees planted.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>:root { --pv-yellow: #F5A623; --pv-navy: #1a2a3a; } select.min-w-select { min-width: 200px; }</style>
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "xczyltw8tn");
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How much CO₂ does a solar panel system offset?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A typical 6 kW residential solar system offsets 4-8 metric tons of CO₂ per year, depending on location and grid emission factor. In the US (386 g CO₂/kWh average), a 6 kW system producing 9,000 kWh/year offsets approximately 3.5 metric tons of CO₂ annually — equivalent to planting about 130 trees each year. Use the PVSize Carbon Offset Calculator for a personalized estimate."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is carbon offset calculated for solar panels?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Carbon offset is calculated as: System Size (kW) × Annual Production (kWh/kW) × Grid Emission Factor (kg CO₂/kWh). The grid emission factor varies by region — US average is 386 g/kWh, California is 210 g/kWh, Texas is 590 g/kWh, and the EU average is 230 g/kWh. This represents the CO₂ that would have been emitted by the grid to produce the same electricity your solar system generates."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How many trees is my solar system equivalent to?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The EPA estimates one mature tree absorbs approximately 48 pounds (22 kg) of CO₂ per year. A 6 kW solar system offsetting 3.5 metric tons of CO₂ annually is equivalent to planting and growing about 160 trees to maturity. Over a 30-year system lifespan, that's the equivalent carbon sequestration of approximately 4,800 tree-years."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which grid emission factor should I use?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Use the emission factor for your local grid region from eGRID (EPA) or your national energy authority. US average: 386 g CO₂/kWh; California: 210 g/kWh (cleaner grid with natural gas and renewables); Texas: 590 g/kWh (coal and gas heavy); EU average: 230 g/kWh; France: 60 g/kWh (nuclear dominant); China average: 430 g/kWh. Higher emission factors mean your solar system offsets more carbon."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body class="bg-gray-50 text-gray-800">
+  <nav class="bg-[#1a2a3a] text-white sticky top-0 z-50 shadow-md">
+    <div class="max-w-7xl mx-auto px-4 flex items-center justify-between h-16">
+      <a href="/" class="text-2xl font-bold" style="color:#F5A623">PVSize</a>
+      <div class="hidden md:flex space-x-6 text-sm font-medium">
+        <a href="/calculators/" class="text-[#F5A623] font-semibold">Calculators</a>
+        <a href="/insights/" class="hover:text-[#F5A623]">Insights</a>
+        <a href="/learn/" class="hover:text-[#F5A623]">Learn</a>
+      </div>
+      <a href="/business" class="bg-[#F5A623] text-[#1a2a3a] px-4 py-2 rounded font-semibold text-sm hover:opacity-90">Business</a>
+    </div>
+  </nav>
+
+  <section class="bg-[#1a2a3a] text-white py-16 px-4 text-center" style="padding-top:76px">
+    <h1 class="text-3xl md:text-4xl font-bold mb-3">Carbon Reduction Calculator</h1>
+    <p class="text-gray-300 text-lg">Measure your solar system's environmental impact in CO₂ offset.</p>
+  </section>
+
+  <section class="max-w-3xl mx-auto py-12 px-4">
+    <div class="bg-white rounded-2xl shadow-lg p-8">
+      <h2 class="text-xl font-bold mb-6" style="color:#1a2a3a">Solar System Details</h2>
+
+      <div class="space-y-5">
+        <div>
+          <label class="block text-sm font-semibold mb-1 text-gray-700">System Capacity (kW)</label>
+          <input type="number" id="systemSize" class="border rounded-lg px-4 py-3 w-full" placeholder="e.g. 6.0" min="0.1" step="0.1" />
+        </div>
+
+        <div>
+          <label class="block text-sm font-semibold mb-1 text-gray-700">Grid Emission Factor (g CO₂/kWh)</label>
+          <select id="emissionSelect" class="border rounded-lg px-4 py-3 w-full min-w-select bg-white">
+            <option value="386" selected>US Average — 386 g CO₂/kWh</option>
+            <option value="210">California — 210 g CO₂/kWh</option>
+            <option value="590">Texas — 590 g CO₂/kWh</option>
+            <option value="430">China Average — 430 g CO₂/kWh</option>
+            <option value="230">EU Average — 230 g CO₂/kWh</option>
+            <option value="60">France — 60 g CO₂/kWh</option>
+            <option value="820">India — 820 g CO₂/kWh</option>
+          </select>
+          <input type="number" id="emissionCustom" class="border rounded-lg px-4 py-3 w-full mt-2" placeholder="Or enter custom factor (g CO₂/kWh)" step="1" min="0" />
+        </div>
+
+        <button id="calcBtn" class="w-full py-4 rounded-xl font-bold text-lg text-[#1a2a3a] hover:opacity-90 transition" style="background:#F5A623">
+          Calculate Carbon Offset
+        </button>
+      </div>
+
+      <div id="results" class="mt-8 hidden">
+        <div class="bg-gray-50 rounded-xl p-6">
+          <h3 class="text-lg font-bold mb-4" style="color:#1a2a3a">Your Carbon Impact</h3>
+          <div class="grid grid-cols-2 gap-4 text-center">
+            <div class="bg-white rounded-lg p-4 shadow-sm">
+              <div class="text-3xl font-bold" style="color:#F5A623" id="annualGen">—</div>
+              <div class="text-sm text-gray-600 mt-1">Annual Generation (kWh)</div>
+            </div>
+            <div class="bg-white rounded-lg p-4 shadow-sm">
+              <div class="text-3xl font-bold" style="color:#F5A623" id="co2Offset">—</div>
+              <div class="text-sm text-gray-600 mt-1">CO₂ Offset (metric tons/year)</div>
+            </div>
+            <div class="bg-white rounded-lg p-4 shadow-sm">
+              <div class="text-3xl font-bold" style="color:#F5A623" id="treesPlanted">—</div>
+              <div class="text-sm text-gray-600 mt-1">Equivalent Trees Planted</div>
+            </div>
+            <div class="bg-white rounded-lg p-4 shadow-sm">
+              <div class="text-3xl font-bold" style="color:#F5A623" id="carMiles">—</div>
+              <div class="text-sm text-gray-600 mt-1">Car Miles Avoided</div>
+            </div>
+          </div>
+          <p class="text-xs text-gray-500 mt-4">Based on average US grid emission factor. 1 tree absorbs ~21.8 kg CO₂/year. 1 gallon gasoline = 8,887 g CO₂.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-[#1a2a3a] text-gray-400 py-10 px-4 text-sm mt-16">
+    <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-8">
+      <div>
+        <div class="text-xl font-bold mb-3" style="color:#F5A623">PVSize</div>
+        <p>Free solar energy calculators and sizing tools.</p>
+      </div>
+      <div>
+        <h4 class="text-white font-semibold mb-3">Pages</h4>
+        <ul class="space-y-1">
+          <li><a href="/about" class="hover:text-[#F5A623]">About</a></li>
+          <li><a href="/editorial-policy" class="hover:text-[#F5A623]">Editorial Policy</a></li>
+          <li><a href="/sponsored-disclosure" class="hover:text-[#F5A623]">Sponsored Disclosure</a></li>
+          <li><a href="/privacy" class="hover:text-[#F5A623]">Privacy Policy</a></li>
+          <li><a href="/terms" class="hover:text-[#F5A623]">Terms of Service</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white font-semibold mb-3">Calculators</h4>
+        <ul class="space-y-1">
+          <li><a href="/calculators/panel-count/" class="hover:text-[#F5A623]">Panel Count</a></li>
+          <li><a href="/calculators/savings/" class="hover:text-[#F5A623]">Savings</a></li>
+          <li><a href="/calculators/battery-sizing/" class="hover:text-[#F5A623]">Battery Sizing</a></li>
+          <li><a href="/calculators/carbon/" class="hover:text-[#F5A623]">Carbon Reduction</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="max-w-7xl mx-auto mt-8 pt-6 border-t border-gray-700 text-center text-xs">
+      © 2024 PVSize. All content by PVSize Editorial Team. No professional engineering or NABCEP certification claimed.
+    </div>
+    <p style="font-size:0.8rem;color:#999;text-align:center;margin-top:2rem;">Estimates based on NREL PVWatts methodology. Actual results vary by location, equipment, and installation conditions.</p>
+  </footer>
+
+  <script>
+  document.getElementById('calcBtn').addEventListener('click', function(){
+    const systemSize = parseFloat(document.getElementById('systemSize').value);
+    const emissionSelect = parseFloat(document.getElementById('emissionSelect').value);
+    const emissionCustom = document.getElementById('emissionCustom').value;
+
+    if (isNaN(systemSize) || systemSize <= 0) { alert('Please enter a valid system capacity.'); return; }
+
+    const emissionFactor = emissionCustom ? parseFloat(emissionCustom) : emissionSelect;
+    // Annual generation: 5 peak sun hours, 365 days, 78% efficiency
+    const annualGen = systemSize * 5.0 * 365 * 0.78;
+    // CO2 offset: annual_gen(kWh) * emission_factor(g/kWh) / 1,000,000 = metric tons
+    const co2Offset = (annualGen * emissionFactor) / 1000000;
+    // Equivalent trees: 1 tree absorbs ~21.8 kg CO2/year = 0.0218 metric tons
+    const treesPlanted = co2Offset / 0.0218;
+    // Car miles: 1 gallon = 8,887g CO2. Assume avg 25 mpg → 355.5 g CO2/mile
+    const carMiles = (annualGen * emissionFactor) / 355.5;
+
+    document.getElementById('annualGen').textContent = annualGen.toLocaleString(undefined, {maximumFractionDigits:0}) + ' kWh';
+    document.getElementById('co2Offset').textContent = co2Offset.toFixed(2) + ' t';
+    document.getElementById('treesPlanted').textContent = treesPlanted.toLocaleString(undefined, {maximumFractionDigits:0});
+    document.getElementById('carMiles').textContent = carMiles.toLocaleString(undefined, {maximumFractionDigits:0}) + ' mi';
+    document.getElementById('results').classList.remove('hidden');
+    document.getElementById('results').scrollIntoView({behavior:'smooth'});
+  });
+  </script>
+</body>
+</html>
