@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="msvalidate.01" content="C6723C6C8D6D6808B860E39114AF8D8D" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Solar Panel Count Calculator — How Many Panels Fit Your Roof | PVSize</title>
   <meta name="description" content="Calculate how many solar panels fit on your roof. Enter roof area, panel wattage, and location to get exact panel count and estimated annual kWh generation. Free online tool.">
@@ -160,6 +161,47 @@
     </div>
   </section>
 
+  <!-- Share Buttons -->
+  <div style="max-width:800px; margin:32px auto 0; text-align:center">
+    <p style="color:#64748b; font-size:0.9rem; margin-bottom:8px">Share your solar estimate</p>
+    <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap">
+      <button onclick="window.open('https://twitter.com/intent/tweet?text='+encodeURIComponent('Check out my solar panel estimate at PVSize.com '+window.location.href),'_blank')" style="background:#1DA1F2; color:#fff; border:none; padding:8px 16px; border-radius:6px; cursor:pointer; font-weight:600">Twitter</button>
+      <button onclick="window.open('https://www.reddit.com/submit?url='+encodeURIComponent(window.location.href),'_blank')" style="background:#FF4500; color:#fff; border:none; padding:8px 16px; border-radius:6px; cursor:pointer; font-weight:600">Reddit</button>
+      <button onclick="window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(window.location.href),'_blank')" style="background:#1877F2; color:#fff; border:none; padding:8px 16px; border-radius:6px; cursor:pointer; font-weight:600">Facebook</button>
+    </div>
+  </div>
+
+  <!-- Lead Capture -->
+  <div class="lead-capture" style="max-width:800px; margin:40px auto; padding:32px 24px; background:linear-gradient(135deg,#eff6ff,#dbeafe); border:1px solid #bfdbfe; border-radius:12px; text-align:center">
+    <h3 style="font-size:1.3rem; font-weight:700; margin-bottom:8px; color:#1a2a3a">Get Your Personalized Solar Report</h3>
+    <p style="color:#475569; margin-bottom:20px; max-width:500px; margin-left:auto; margin-right:auto">Based on your calculation above — a detailed PDF with panel recommendations, ROI projections, and local installer quotes.</p>
+    <form id="lead-form" style="display:flex; gap:8px; max-width:420px; margin:0 auto; flex-wrap:wrap; justify-content:center">
+      <input type="email" placeholder="Your email address" required style="flex:1; min-width:200px; padding:12px 16px; border:1px solid #cbd5e1; border-radius:8px; font-size:1rem">
+      <button type="submit" style="background:#F5A623; color:#1a2a3a; border:none; padding:12px 24px; border-radius:8px; font-weight:700; cursor:pointer; font-size:1rem; white-space:nowrap">Send My Free Report &rarr;</button>
+    </form>
+    <p style="font-size:0.8rem; color:#94a3b8; margin-top:12px">No spam. One report, unsubscribe anytime.</p>
+  </div>
+  <script>
+  document.getElementById('lead-form').addEventListener('submit',function(e){
+    e.preventDefault();
+    var email=this.querySelector('input').value;
+    fetch('/api/lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:email,source:window.location.pathname})})
+    .then(function(r){return r.json()})
+    .then(function(d){
+      document.getElementById('lead-form').innerHTML='<div style="padding:16px;color:#166534;font-weight:600">&check; Report sent! Check your inbox.</div>';
+    })
+    .catch(function(err){
+      document.getElementById('lead-form').innerHTML='<div style="padding:16px;color:#dc2626;font-weight:600">Something went wrong. Please try again.</div>';
+    });
+  });
+  </script>
+
+  <!-- Installer CTA -->
+  <div style="text-align:center; margin:24px auto 48px">
+    <a href="/contact/" style="display:inline-block; background:#1a2a3a; color:#F5A623; padding:14px 32px; border-radius:8px; font-weight:700; text-decoration:none; font-size:1.05rem">Get Quotes from Local Installers &rarr;</a>
+    <p style="color:#64748b; font-size:0.85rem; margin-top:8px">Compare 3+ quotes from pre-vetted solar installers in your area. Free, no obligation.</p>
+  </div>
+
   <footer class="bg-[#1a2a3a] text-gray-400 py-10 px-4 text-sm mt-16">
     <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-8">
       <div>
@@ -187,7 +229,7 @@
       </div>
     </div>
     <div class="max-w-7xl mx-auto mt-8 pt-6 border-t border-gray-700 text-center text-xs">
-      © 2024 PVSize. All content by PVSize Editorial Team. No professional engineering or NABCEP certification claimed.
+      © 2026 PVSize. All content by PVSize Editorial Team. No professional engineering or NABCEP certification claimed.
     </div>
     <p style="font-size:0.8rem;color:#999;text-align:center;margin-top:2rem;">Estimates based on NREL PVWatts methodology. Actual results vary by location, equipment, and installation conditions.</p>
   </footer>
