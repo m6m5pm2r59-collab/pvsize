@@ -1,3 +1,9 @@
+---
+type: raw
+domain: [shared]
+tags: [shared]
+---
+
 # PVSize — Free Solar Calculator Suite
 
 ## SEO 配置
