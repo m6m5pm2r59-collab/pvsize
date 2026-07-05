@@ -21,7 +21,7 @@ fi
 
 echo "[3/3] 部署到 Vercel..."
 export PATH="/opt/homebrew/bin:$PATH"
-cd /Users/xiaotudou/Documents/Obsidian\ Vault/Marvis/pvsize-full/src
+cd "$(dirname "$0")/src"
 vercel --prod
 
 echo ""
