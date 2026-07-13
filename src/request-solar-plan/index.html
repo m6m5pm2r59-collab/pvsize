@@ -229,14 +229,15 @@
       consent: 'yes',
       source: new URL(window.location.href).searchParams.get('source') || window.location.pathname
     };
+    var body = new FormData();
+    Object.keys(payload).forEach(function(key) {
+      body.append(key, payload[key]);
+    });
 
     fetch('https://formsubmit.co/ajax/contact@pvsize.com', {
       method: 'POST',
       headers: { 'Accept': 'application/json' },
-      body: Object.keys(payload).reduce(function(fd, key) {
-        fd.append(key, payload[key]);
-        return fd;
-      }, new FormData())
+      body: body
     })
     .then(function(r) {
       if (!r.ok) { throw new Error('Form delivery failed'); }
