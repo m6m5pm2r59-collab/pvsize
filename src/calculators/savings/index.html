@@ -134,6 +134,19 @@
             </div>
           </div>
           <p class="text-xs text-gray-500 mt-4">Assumptions: 5 peak sun hours/day, 78% system efficiency, no rate escalation. Actual savings depend on local conditions and net metering policies.</p>
+          <div id="savingsResultCta" class="mt-6 bg-white rounded-xl p-6 shadow-sm border border-amber-100 hidden" data-pv-event-scope="savings_result">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+              <div>
+                <h4 class="text-base font-bold mb-2" style="color:#1a2a3a">Ready to turn these savings into a solar plan?</h4>
+                <p class="text-sm text-gray-600" id="savingsCtaSummary">Use this estimate to compare your next step or ask PVSize to review the plan.</p>
+              </div>
+              <div class="flex flex-col sm:flex-row gap-3 md:justify-end">
+                <a id="savingsPanelLink" href="/calculators/panel-count/?source=savings-result" class="text-center px-4 py-3 rounded-lg font-semibold text-sm bg-[#F5A623] text-[#1a2a3a] hover:opacity-90" data-pv-event="result_explainer_cta_click" data-pv-source="savings-result" data-pv-cta="panel_count" data-pv-destination="/calculators/panel-count/">Compare with panel count</a>
+                <a id="savingsContactLink" href="/contact/?source=savings-result" class="text-center px-4 py-3 rounded-lg font-semibold text-sm bg-[#1a2a3a] text-[#F5A623] hover:opacity-90" data-pv-event="result_explainer_cta_click" data-pv-source="savings-result" data-pv-cta="contact" data-pv-destination="/contact/">Ask PVSize to review this estimate</a>
+              </div>
+            </div>
+            <p class="text-xs text-gray-400 mt-4">PVSize estimates are planning inputs, not engineering or financial advice. A licensed installer should verify roof structure, code requirements, utility rules, and final equipment selection.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -213,6 +226,18 @@
   </footer>
 
   <script>
+  function trackPvsizeEvent(name, detail) {
+    try {
+      if (typeof window.clarity === 'function') {
+        window.clarity('event', name, detail || {});
+      }
+    } catch (e) {}
+    try {
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: name, ...(detail && typeof detail === 'object' ? detail : {}) });
+    } catch (e) {}
+  }
+
   document.getElementById('calcBtn').addEventListener('click', function(){
     const monthlyBill = parseFloat(document.getElementById('monthlyBill').value);
     const systemSizeKw = parseFloat(document.getElementById('systemSize').value);
@@ -241,7 +266,25 @@
     document.getElementById('paybackYears').textContent = payback.toFixed(1) + ' yrs';
     document.getElementById('savings25yr').textContent = '$' + savings25yr.toLocaleString(undefined, {maximumFractionDigits:0});
     document.getElementById('results').classList.remove('hidden');
+    document.getElementById('savingsResultCta').classList.remove('hidden');
+    document.getElementById('savingsCtaSummary').textContent = 'Your estimate can now flow into panel count or a review request.';
+    trackPvsizeEvent('result_explainer_cta_view', {
+      calculator_type: 'savings',
+      cta_type: 'panel_count_or_contact',
+      source: 'savings-result'
+    });
     document.getElementById('results').scrollIntoView({behavior:'smooth'});
+  });
+
+  document.querySelectorAll('[data-pv-event]').forEach(function(el) {
+    el.addEventListener('click', function() {
+      trackPvsizeEvent(el.getAttribute('data-pv-event'), {
+        calculator_type: 'savings',
+        cta_type: el.getAttribute('data-pv-cta'),
+        source: el.getAttribute('data-pv-source'),
+        destination: el.getAttribute('data-pv-destination')
+      });
+    });
   });
   </script>
 </body>

@@ -125,6 +125,19 @@
             </div>
           </div>
           <p class="text-xs text-gray-500 mt-4">Based on average US grid emission factor. 1 tree absorbs ~21.8 kg CO₂/year. 1 gallon gasoline = 8,887 g CO₂.</p>
+          <div id="carbonResultCta" class="mt-6 bg-white rounded-xl p-6 shadow-sm border border-amber-100 hidden" data-pv-event-scope="carbon_result">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+              <div>
+                <h4 class="text-base font-bold mb-2" style="color:#1a2a3a">Want to compare this carbon offset with bill savings?</h4>
+                <p class="text-sm text-gray-600" id="carbonCtaSummary">You can compare the offset with savings or ask PVSize to review the estimate.</p>
+              </div>
+              <div class="flex flex-col sm:flex-row gap-3 md:justify-end">
+                <a id="carbonSavingsLink" href="/calculators/savings/?source=carbon-result" class="text-center px-4 py-3 rounded-lg font-semibold text-sm bg-[#F5A623] text-[#1a2a3a] hover:opacity-90" data-pv-event="result_explainer_cta_click" data-pv-source="carbon-result" data-pv-cta="savings" data-pv-destination="/calculators/savings/">Compare with savings</a>
+                <a id="carbonContactLink" href="/contact/?source=carbon-result" class="text-center px-4 py-3 rounded-lg font-semibold text-sm bg-[#1a2a3a] text-[#F5A623] hover:opacity-90" data-pv-event="result_explainer_cta_click" data-pv-source="carbon-result" data-pv-cta="contact" data-pv-destination="/contact/">Ask PVSize to review this estimate</a>
+              </div>
+            </div>
+            <p class="text-xs text-gray-400 mt-4">PVSize estimates are planning inputs, not engineering or financial advice. A licensed installer should verify roof structure, code requirements, utility rules, and final equipment selection.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -204,6 +217,18 @@
   </footer>
 
   <script>
+  function trackPvsizeEvent(name, detail) {
+    try {
+      if (typeof window.clarity === 'function') {
+        window.clarity('event', name, detail || {});
+      }
+    } catch (e) {}
+    try {
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: name, ...(detail && typeof detail === 'object' ? detail : {}) });
+    } catch (e) {}
+  }
+
   document.getElementById('calcBtn').addEventListener('click', function(){
     const systemSize = parseFloat(document.getElementById('systemSize').value);
     const emissionSelect = parseFloat(document.getElementById('emissionSelect').value);
@@ -226,7 +251,25 @@
     document.getElementById('treesPlanted').textContent = treesPlanted.toLocaleString(undefined, {maximumFractionDigits:0});
     document.getElementById('carMiles').textContent = carMiles.toLocaleString(undefined, {maximumFractionDigits:0}) + ' mi';
     document.getElementById('results').classList.remove('hidden');
+    document.getElementById('carbonResultCta').classList.remove('hidden');
+    document.getElementById('carbonCtaSummary').textContent = 'Compare this offset with savings or ask for a review if you need a planning check.';
+    trackPvsizeEvent('result_explainer_cta_view', {
+      calculator_type: 'carbon',
+      cta_type: 'savings_or_contact',
+      source: 'carbon-result'
+    });
     document.getElementById('results').scrollIntoView({behavior:'smooth'});
+  });
+
+  document.querySelectorAll('[data-pv-event]').forEach(function(el) {
+    el.addEventListener('click', function() {
+      trackPvsizeEvent(el.getAttribute('data-pv-event'), {
+        calculator_type: 'carbon',
+        cta_type: el.getAttribute('data-pv-cta'),
+        source: el.getAttribute('data-pv-source'),
+        destination: el.getAttribute('data-pv-destination')
+      });
+    });
   });
   </script>
 </body>
