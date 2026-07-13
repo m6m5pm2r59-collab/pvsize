@@ -155,6 +155,19 @@
             <div class="grid grid-cols-2 md:grid-cols-4 gap-3" id="batteryOptions"></div>
             <p class="text-xs text-gray-400 mt-4">Battery recommendations are sizing estimates. Actual requirements depend on your daily energy usage, backup needs, and local utility rates. Visit our <a href="/calculators/battery-sizing/" class="underline" style="color:#0d9488">Battery Sizing Calculator</a> for a detailed analysis.</p>
           </div>
+          <div id="panelResultCta" class="mt-6 bg-white rounded-xl p-6 shadow-sm border border-amber-100 hidden" data-pv-event-scope="panel_count_result">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+              <div>
+                <h4 class="text-base font-bold mb-2" style="color:#1a2a3a">Ready to turn this panel count into a plan?</h4>
+                <p class="text-sm text-gray-600" id="panelCtaSummary">Review your estimate, then compare savings or ask for installer input.</p>
+              </div>
+              <div class="flex flex-col sm:flex-row gap-3 md:justify-end">
+                <a id="panelSavingsLink" href="/calculators/savings/?source=panel-count-result" class="text-center px-4 py-3 rounded-lg font-semibold text-sm bg-[#F5A623] text-[#1a2a3a] hover:opacity-90" data-pv-event="result_explainer_cta_click" data-pv-source="panel-count-result" data-pv-cta="savings" data-pv-destination="/calculators/savings/">Compare this panel count with your bill savings</a>
+                <a id="panelContactLink" href="/contact/?source=panel-count-result" class="text-center px-4 py-3 rounded-lg font-semibold text-sm bg-[#1a2a3a] text-[#F5A623] hover:opacity-90" data-pv-event="result_explainer_cta_click" data-pv-source="panel-count-result" data-pv-cta="contact" data-pv-destination="/contact/">Ask PVSize to review this estimate</a>
+              </div>
+            </div>
+            <p class="text-xs text-gray-400 mt-4">PVSize estimates are planning inputs, not engineering or financial advice. A licensed installer should verify roof structure, code requirements, utility rules, and final equipment selection.</p>
+          </div>
           <p class="text-xs text-gray-500 mt-4">Estimates based on standard conditions. Actual results vary by roof pitch, shading, and local climate.</p>
         </div>
       </div>
@@ -235,6 +248,18 @@
   </footer>
 
   <script>
+  function trackPvsizeEvent(name, detail) {
+    try {
+      if (typeof window.clarity === 'function') {
+        window.clarity('event', name, detail || {});
+      }
+    } catch (e) {}
+    try {
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: name, ...(detail && typeof detail === 'object' ? detail : {}) });
+    } catch (e) {}
+  }
+
   // Auto-update panel area placeholder when model changes
   function updatePanelArea() {
     const sel = document.getElementById('panelWattage');
@@ -277,6 +302,22 @@
     document.getElementById('systemSize').textContent = systemSizeKw.toFixed(2) + ' kW';
     document.getElementById('annualGen').textContent = annualGen.toLocaleString(undefined, {maximumFractionDigits:0}) + ' kWh';
     document.getElementById('roofUtil').textContent = ((usableArea / roofAreaSqFt) * 100).toFixed(0) + '%';
+    const sourceParams = new URLSearchParams({
+      source: 'panel-count-result',
+      panels: String(panelCount),
+      kw: systemSizeKw.toFixed(2)
+    });
+    document.getElementById('panelCtaSummary').textContent =
+      'Your estimate fits about ' + panelCount.toLocaleString() + ' panels for a ' +
+      systemSizeKw.toFixed(2) + ' kW system. Next, compare bill savings or ask an installer to review the roof fit.';
+    document.getElementById('panelSavingsLink').href = '/calculators/savings/?' + sourceParams.toString();
+    document.getElementById('panelContactLink').href = '/contact/?' + sourceParams.toString();
+    document.getElementById('panelResultCta').classList.remove('hidden');
+    trackPvsizeEvent('result_explainer_cta_view', {
+      calculator_type: 'panel_count',
+      cta_type: 'savings_or_contact',
+      source: 'panel-count-result'
+    });
 
     // Battery recommendation
     const batteries = [
@@ -306,6 +347,17 @@
 
     document.getElementById('results').classList.remove('hidden');
     document.getElementById('results').scrollIntoView({behavior:'smooth'});
+  });
+
+  document.querySelectorAll('[data-pv-event]').forEach(function(el) {
+    el.addEventListener('click', function() {
+      trackPvsizeEvent(el.getAttribute('data-pv-event'), {
+        calculator_type: 'panel_count',
+        cta_type: el.getAttribute('data-pv-cta'),
+        source: el.getAttribute('data-pv-source'),
+        destination: el.getAttribute('data-pv-destination')
+      });
+    });
   });
   </script>
 </body>
