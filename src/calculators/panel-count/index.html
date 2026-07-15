@@ -15,6 +15,7 @@
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "xczyltw8tn");
 </script>
+<script src="/pv-analytics.js" defer></script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -50,6 +51,7 @@
   ]
 }
 </script>
+<link rel="canonical" href="https://pvsize.com/calculators/panel-count/">
 </head>
 <body class="bg-gray-50 text-gray-800">
   <!-- Navbar -->
@@ -159,7 +161,7 @@
             <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
               <div>
                 <h4 class="text-base font-bold mb-2" style="color:#1a2a3a">Ready to turn this panel count into a plan?</h4>
-                <p class="text-sm text-gray-600" id="panelCtaSummary">Review your estimate, then compare savings or ask for installer input.</p>
+                <p class="text-sm text-gray-600" id="panelCtaSummary">Review your estimate, then compare savings or ask for a planning review.</p>
               </div>
               <div class="flex flex-col sm:flex-row gap-3 md:justify-end">
                 <a id="panelSavingsLink" href="/calculators/savings/?source=panel-count-result" class="text-center px-4 py-3 rounded-lg font-semibold text-sm bg-[#F5A623] text-[#1a2a3a] hover:opacity-90" data-pv-event="result_explainer_cta_click" data-pv-source="panel-count-result" data-pv-cta="savings" data-pv-destination="/calculators/savings/">Compare this panel count with your bill savings</a>
@@ -201,11 +203,11 @@
 
   <!-- Lead Capture -->
   <div class="lead-capture" style="max-width:800px; margin:40px auto; padding:32px 24px; background:linear-gradient(135deg,#eff6ff,#dbeafe); border:1px solid #bfdbfe; border-radius:12px; text-align:center">
-    <h3 style="font-size:1.3rem; font-weight:700; margin-bottom:8px; color:#1a2a3a">Get Your Personalized Solar Report</h3>
-    <p style="color:#475569; margin-bottom:20px; max-width:500px; margin-left:auto; margin-right:auto">Based on your calculation above — a detailed PDF with panel recommendations, ROI projections, and local installer quotes.</p>
-    <form id="lead-form" style="display:flex; gap:8px; max-width:420px; margin:0 auto; flex-wrap:wrap; justify-content:center">
+    <h3 style="font-size:1.3rem; font-weight:700; margin-bottom:8px; color:#1a2a3a">Get a Free Planning Summary</h3>
+    <p style="color:#475569; margin-bottom:20px; max-width:500px; margin-left:auto; margin-right:auto">Based on your calculation above, PVSize can send a free planning summary to your inbox. Ordinary calculator use stays free and does not require a phone number or installer contact.</p>
+    <form id="lead-form" data-pv-form="calculator_report" style="display:flex; gap:8px; max-width:420px; margin:0 auto; flex-wrap:wrap; justify-content:center">
       <input type="email" placeholder="Your email address" required style="flex:1; min-width:200px; padding:12px 16px; border:1px solid #cbd5e1; border-radius:8px; font-size:1rem">
-      <button type="submit" style="background:#F5A623; color:#1a2a3a; border:none; padding:12px 24px; border-radius:8px; font-weight:700; cursor:pointer; font-size:1rem; white-space:nowrap">Send My Free Report &rarr;</button>
+      <button type="submit" style="background:#F5A623; color:#1a2a3a; border:none; padding:12px 24px; border-radius:8px; font-weight:700; cursor:pointer; font-size:1rem; white-space:nowrap">Send My Free Summary &rarr;</button>
     </form>
     <p style="font-size:0.8rem; color:#94a3b8; margin-top:12px">No spam. One report, unsubscribe anytime.</p>
   </div>
@@ -213,21 +215,34 @@
   document.getElementById('lead-form').addEventListener('submit',function(e){
     e.preventDefault();
     var email=this.querySelector('input').value;
-    fetch('/api/lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:email,source:window.location.pathname})})
-    .then(function(r){return r.json()})
-    .then(function(d){
-      document.getElementById('lead-form').innerHTML='<div style="padding:16px;color:#166534;font-weight:600">&check; Report sent! Check your inbox.</div>';
+    var source = new URL(window.location.href).searchParams.get('source') || window.location.pathname;
+    var payload = { email: email, source: source, formType: 'calculator_report', calculator_type: 'panel_count' };
+    fetch('/api/lead',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(payload)})
+    .then(function(r){
+      return r.json().then(function(d){
+        if (!r.ok) throw new Error(d && d.error ? d.error : 'Lead delivery failed');
+        return d;
+      });
+    })
+    .then(function(){
+      document.getElementById('lead-form').innerHTML='<div style="padding:16px;color:#166534;font-weight:600">&check; Summary request received. Check your inbox.</div>';
+      if (typeof window.pvTrack === 'function') {
+        window.pvTrack('lead_submit', { form_type: 'calculator_report', calculator_type: 'panel_count', source: source });
+      }
     })
     .catch(function(err){
       document.getElementById('lead-form').innerHTML='<div style="padding:16px;color:#dc2626;font-weight:600">Something went wrong. Please try again.</div>';
+      if (typeof window.pvTrack === 'function') {
+        window.pvTrack('form_error', { form_type: 'calculator_report', calculator_type: 'panel_count', source: source, reason: err && err.message ? err.message : 'lead_submit_failed' });
+      }
     });
   });
   </script>
 
   <!-- Installer CTA -->
   <div style="text-align:center; margin:24px auto 48px">
-    <a href="/contact/" style="display:inline-block; background:#1a2a3a; color:#F5A623; padding:14px 32px; border-radius:8px; font-weight:700; text-decoration:none; font-size:1.05rem">Get Quotes from Local Installers &rarr;</a>
-    <p style="color:#64748b; font-size:0.85rem; margin-top:8px">Compare 3+ quotes from pre-vetted solar installers in your area. Free, no obligation.</p>
+    <a href="/contact/" style="display:inline-block; background:#1a2a3a; color:#F5A623; padding:14px 32px; border-radius:8px; font-weight:700; text-decoration:none; font-size:1.05rem">Request a Detailed Solar Plan &rarr;</a>
+    <p style="color:#64748b; font-size:0.85rem; margin-top:8px">Use the detailed plan request if you want PVSize to review your inputs. Quote matching requires separate, explicit consent.</p>
   </div>
 
   <footer class="bg-[#1a2a3a] text-gray-400 py-10 px-4 text-sm mt-16">
@@ -264,6 +279,10 @@
 
   <script>
   function trackPvsizeEvent(name, detail) {
+    if (typeof window.pvTrack === 'function') {
+      window.pvTrack(name, detail || {});
+      return;
+    }
     try {
       if (typeof window.clarity === 'function') {
         window.clarity('event', name, detail || {});
@@ -296,6 +315,12 @@
       alert('Please enter a valid roof area.');
       return;
     }
+    trackPvsizeEvent('calculator_start', {
+      calculator_type: 'panel_count',
+      input_area: roofArea,
+      area_unit: areaUnit,
+      panel_wattage: panelWattage
+    });
 
     // Convert roof area to sq ft
     let roofAreaSqFt = areaUnit === 'sqm' ? roofArea * 10.7639 : roofArea;
@@ -328,6 +353,16 @@
     document.getElementById('panelSavingsLink').href = '/calculators/savings/?' + sourceParams.toString();
     document.getElementById('panelContactLink').href = '/contact/?' + sourceParams.toString();
     document.getElementById('panelResultCta').classList.remove('hidden');
+    trackPvsizeEvent('calculator_complete', {
+      calculator_type: 'panel_count',
+      panel_count: panelCount,
+      system_kw: Number(systemSizeKw.toFixed(2)),
+      annual_generation_kwh: Number(annualGen.toFixed(0))
+    });
+    trackPvsizeEvent('result_view', {
+      calculator_type: 'panel_count',
+      source: 'panel-count-result'
+    });
     trackPvsizeEvent('result_explainer_cta_view', {
       calculator_type: 'panel_count',
       cta_type: 'savings_or_contact',

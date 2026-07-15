@@ -39,6 +39,8 @@
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "xczyltw8tn");
 </script>
+<script src="/pv-analytics.js" defer></script>
+<meta name="robots" content="noindex,follow">
 </head>
 <body>
 
@@ -73,7 +75,7 @@
   <div class="container">
     <div class="section-heading">
       <h2>Our Services</h2>
-      <p>Four revenue channels, one partner. Choose what fits your go-to-market strategy.</p>
+      <p>Early-stage partner options for brands that want clear labeling, useful education, and transparent opt-in lead handling.</p>
     </div>
     <div class="services-grid">
       <div class="service-card">
@@ -93,8 +95,8 @@
       </div>
       <div class="service-card">
         <div class="service-icon">📦</div>
-        <h3>Amazon Listing Operation</h3>
-        <p>End-to-end Amazon storefront management for Chinese solar brands. Factory account setup, listing optimization, A+ Content creation, PPC campaign management, and review strategy. Revenue share: 3-8% of attributable sales. (Model A only — we operate your account; you retain full ownership.)</p>
+        <h3>Future Commerce Partnerships</h3>
+        <p>PVSize may later evaluate clearly disclosed equipment partnerships or affiliate placements, but this is not active by default and will not affect calculator access or editorial recommendations.</p>
       </div>
     </div>
   </div>
@@ -108,7 +110,7 @@
     <div class="trust-grid">
       <div class="trust-item">
         <strong>Independent</strong>
-        <p>We don't sell solar panels. We don't take commissions from installers. Our editorial team operates without manufacturer influence.</p>
+        <p>PVSize does not charge users for ordinary calculators. Sponsored or partner content must be clearly labeled and separated from calculator results.</p>
       </div>
       <div class="trust-item">
         <strong>Editorial-First</strong>
@@ -116,7 +118,7 @@
       </div>
       <div class="trust-item">
         <strong>No Conflict of Interest</strong>
-        <p>We don't rank manufacturers we partner with higher than those we don't. Our <a href="/editorial-policy/">Editorial Policy</a> and <a href="/sponsored-disclosure/">Disclosure Policy</a> are public.</p>
+        <p>Partner relationships do not change calculator outputs. Our <a href="/editorial-policy/">Editorial Policy</a> and <a href="/sponsored-disclosure/">Disclosure Policy</a> are public.</p>
       </div>
       <div class="trust-item">
         <strong>Transparent</strong>
@@ -129,11 +131,11 @@
 <section class="partners-contact">
   <div class="container">
     <h2>Get in Touch</h2>
-    <p>Tell us about your brand, target markets, and goals. We'll respond with a tailored proposal within 1-2 business days.</p>
+    <p>Tell us about your brand, target markets, and goals. PVSize will review partner inquiries as the early program develops.</p>
 
-    <form id="lead-form" style="max-width:520px;margin:24px auto 0;text-align:left;">
+    <form id="lead-form" data-pv-form="partner_inquiry" style="max-width:520px;margin:24px auto 0;text-align:left;">
       <div id="lead-success" style="display:none;background:#16a34a;color:#fff;padding:20px 24px;border-radius:8px;text-align:center;font-size:1.05rem;margin-bottom:16px;">
-        Thank you! We've received your inquiry and will respond within 1-2 business days.
+        Thank you! We've received your inquiry and will review it for the early partner program.
       </div>
       <div id="lead-error" style="display:none;background:#dc2626;color:#fff;padding:14px 20px;border-radius:8px;text-align:center;margin-bottom:16px;font-size:0.95rem;"></div>
 
@@ -161,7 +163,7 @@
       <button type="submit" id="lead-submit" style="width:100%;padding:14px;background:var(--primary);color:#fff;border:none;border-radius:8px;font-size:1.05rem;font-weight:700;cursor:pointer;">Submit Inquiry →</button>
     </form>
 
-    <p class="response-time">Response within 48 hours, guaranteed.</p>
+    <p class="response-time">Early program inquiries are reviewed manually. No fixed response window is promised.</p>
   </div>
 </section>
 
@@ -184,19 +186,36 @@ document.getElementById('lead-form').addEventListener('submit',async function(e)
   var btn=document.getElementById('lead-submit');
   var ok=document.getElementById('lead-success');
   var err=document.getElementById('lead-error');
+  var payload = {
+    companyName:document.getElementById('companyName').value,
+    annualCapacity:document.getElementById('annualCapacity').value,
+    productCategory:document.getElementById('productCategory').value,
+    email:document.getElementById('email').value,
+    message:document.getElementById('message').value,
+    source:new URL(window.location.href).searchParams.get('source') || window.location.pathname,
+    formType:'partner_inquiry'
+  };
   btn.disabled=true;btn.textContent='Sending...';err.style.display='none';
   try{
-    var r=await fetch('/api/lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({
-      companyName:document.getElementById('companyName').value,
-      annualCapacity:document.getElementById('annualCapacity').value,
-      productCategory:document.getElementById('productCategory').value,
-      email:document.getElementById('email').value,
-      message:document.getElementById('message').value
-    })});
+    var r=await fetch('/api/lead',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(payload)});
     var d=await r.json();
-    if(r.ok){ok.style.display='block';this.reset();}
+    if(r.ok){
+      ok.style.display='block';
+      if (typeof window.pvTrack === 'function') {
+        window.pvTrack('partner_inquiry_submit', { form_type: 'partner_inquiry', source: payload.source });
+      }
+      this.reset();
+    }
     else{err.textContent=d.error||'Submission failed. Please try again.';err.style.display='block';}
-  }catch(ex){err.textContent='Network error. Please try again.';err.style.display='block';}
+    if(!r.ok && typeof window.pvTrack === 'function'){
+      window.pvTrack('form_error', { form_type: 'partner_inquiry', source: payload.source, reason: d && d.error ? d.error : 'partner_submit_failed' });
+    }
+  }catch(ex){
+    err.textContent='Network error. Please try again.';err.style.display='block';
+    if (typeof window.pvTrack === 'function') {
+      window.pvTrack('form_error', { form_type: 'partner_inquiry', source: payload.source, reason: ex && ex.message ? ex.message : 'network_error' });
+    }
+  }
   btn.disabled=false;btn.textContent='Submit Inquiry →';
 });
 </script>

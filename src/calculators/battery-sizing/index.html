@@ -15,6 +15,7 @@
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "xczyltw8tn");
 </script>
+<script src="/pv-analytics.js" defer></script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -41,7 +42,7 @@
       "name": "How much does a home battery system cost?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Home battery systems cost $600-$1,200 per kWh installed. A typical 10 kWh system costs $6,000-$12,000 before incentives. The 30% federal tax credit applies to batteries charged exclusively by solar, reducing net cost to $4,200-$8,400. BYD Battery-Box HVS (5.1-12.8 kWh) and HVM (8.3-66.2 kWh) series offer scalable LiFePO4 storage starting at approximately $600/kWh."
+        "text": "Home battery system costs vary by usable capacity, inverter requirements, installation complexity, local labor rates, and any incentives that are valid for the project location and installation date. Treat PVSize cost outputs as planning estimates and verify final pricing with a qualified provider."
       }
     },
     {
@@ -55,6 +56,7 @@
   ]
 }
 </script>
+<link rel="canonical" href="https://pvsize.com/calculators/battery-sizing/">
 </head>
 <body class="bg-gray-50 text-gray-800">
   <nav class="bg-[#1a2a3a] text-white sticky top-0 z-50 shadow-md">
@@ -177,11 +179,11 @@
 
   <!-- Lead Capture -->
   <div class="lead-capture" style="max-width:800px; margin:40px auto; padding:32px 24px; background:linear-gradient(135deg,#eff6ff,#dbeafe); border:1px solid #bfdbfe; border-radius:12px; text-align:center">
-    <h3 style="font-size:1.3rem; font-weight:700; margin-bottom:8px; color:#1a2a3a">Get Your Personalized Solar Report</h3>
-    <p style="color:#475569; margin-bottom:20px; max-width:500px; margin-left:auto; margin-right:auto">Based on your calculation above — a detailed PDF with panel recommendations, ROI projections, and local installer quotes.</p>
-    <form id="lead-form" style="display:flex; gap:8px; max-width:420px; margin:0 auto; flex-wrap:wrap; justify-content:center">
+    <h3 style="font-size:1.3rem; font-weight:700; margin-bottom:8px; color:#1a2a3a">Get a Free Planning Summary</h3>
+    <p style="color:#475569; margin-bottom:20px; max-width:500px; margin-left:auto; margin-right:auto">Based on your calculation above, PVSize can send a free planning summary to your inbox. Ordinary calculator use stays free and does not require a phone number or installer contact.</p>
+    <form id="lead-form" data-pv-form="calculator_report" style="display:flex; gap:8px; max-width:420px; margin:0 auto; flex-wrap:wrap; justify-content:center">
       <input type="email" placeholder="Your email address" required style="flex:1; min-width:200px; padding:12px 16px; border:1px solid #cbd5e1; border-radius:8px; font-size:1rem">
-      <button type="submit" style="background:#F5A623; color:#1a2a3a; border:none; padding:12px 24px; border-radius:8px; font-weight:700; cursor:pointer; font-size:1rem; white-space:nowrap">Send My Free Report &rarr;</button>
+      <button type="submit" style="background:#F5A623; color:#1a2a3a; border:none; padding:12px 24px; border-radius:8px; font-weight:700; cursor:pointer; font-size:1rem; white-space:nowrap">Send My Free Summary &rarr;</button>
     </form>
     <p style="font-size:0.8rem; color:#94a3b8; margin-top:12px">No spam. One report, unsubscribe anytime.</p>
   </div>
@@ -189,21 +191,34 @@
   document.getElementById('lead-form').addEventListener('submit',function(e){
     e.preventDefault();
     var email=this.querySelector('input').value;
-    fetch('/api/lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:email,source:window.location.pathname})})
-    .then(function(r){return r.json()})
-    .then(function(d){
-      document.getElementById('lead-form').innerHTML='<div style="padding:16px;color:#166534;font-weight:600">&check; Report sent! Check your inbox.</div>';
+    var source = new URL(window.location.href).searchParams.get('source') || window.location.pathname;
+    var payload = { email: email, source: source, formType: 'calculator_report', calculator_type: 'battery_sizing' };
+    fetch('/api/lead',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(payload)})
+    .then(function(r){
+      return r.json().then(function(d){
+        if (!r.ok) throw new Error(d && d.error ? d.error : 'Lead delivery failed');
+        return d;
+      });
+    })
+    .then(function(){
+      document.getElementById('lead-form').innerHTML='<div style="padding:16px;color:#166534;font-weight:600">&check; Summary request received. Check your inbox.</div>';
+      if (typeof window.pvTrack === 'function') {
+        window.pvTrack('lead_submit', { form_type: 'calculator_report', calculator_type: 'battery_sizing', source: source });
+      }
     })
     .catch(function(err){
       document.getElementById('lead-form').innerHTML='<div style="padding:16px;color:#dc2626;font-weight:600">Something went wrong. Please try again.</div>';
+      if (typeof window.pvTrack === 'function') {
+        window.pvTrack('form_error', { form_type: 'calculator_report', calculator_type: 'battery_sizing', source: source, reason: err && err.message ? err.message : 'lead_submit_failed' });
+      }
     });
   });
   </script>
 
   <!-- Installer CTA -->
   <div style="text-align:center; margin:24px auto 48px">
-    <a href="/contact/" style="display:inline-block; background:#1a2a3a; color:#F5A623; padding:14px 32px; border-radius:8px; font-weight:700; text-decoration:none; font-size:1.05rem">Get Quotes from Local Installers &rarr;</a>
-    <p style="color:#64748b; font-size:0.85rem; margin-top:8px">Compare 3+ quotes from pre-vetted solar installers in your area. Free, no obligation.</p>
+    <a href="/contact/" style="display:inline-block; background:#1a2a3a; color:#F5A623; padding:14px 32px; border-radius:8px; font-weight:700; text-decoration:none; font-size:1.05rem">Request a Detailed Solar Plan &rarr;</a>
+    <p style="color:#64748b; font-size:0.85rem; margin-top:8px">Use the detailed plan request if you want PVSize to review your inputs. Quote matching requires separate, explicit consent.</p>
   </div>
 
   <footer class="bg-[#1a2a3a] text-gray-400 py-10 px-4 text-sm mt-16">
@@ -240,6 +255,10 @@
 
   <script>
   function trackPvsizeEvent(name, detail) {
+    if (typeof window.pvTrack === 'function') {
+      window.pvTrack(name, detail || {});
+      return;
+    }
     try {
       if (typeof window.clarity === 'function') {
         window.clarity('event', name, detail || {});
@@ -259,6 +278,12 @@
     let dod;
 
     if (isNaN(dailyUsage) || dailyUsage <= 0) { alert('Please enter valid daily usage.'); return; }
+    trackPvsizeEvent('calculator_start', {
+      calculator_type: 'battery_sizing',
+      input_daily_usage: dailyUsage,
+      backup_days: backupDays,
+      battery_type: batteryType
+    });
 
     if (dodInput) {
       dod = parseFloat(dodInput);
@@ -289,8 +314,18 @@
     document.getElementById('results').classList.remove('hidden');
     document.getElementById('batteryResultCta').classList.remove('hidden');
     document.getElementById('batteryCtaSummary').textContent = 'This battery size can now flow into savings or a review request.';
+    trackPvsizeEvent('calculator_complete', {
+      calculator_type: 'battery_sizing',
+      usable_capacity_kwh: Number(usableNeeded.toFixed(1)),
+      total_capacity_kwh: Number(totalCapacity.toFixed(1)),
+      estimated_cost: Number(estCost.toFixed(0))
+    });
+    trackPvsizeEvent('result_view', {
+      calculator_type: 'battery_sizing',
+      source: 'battery-sizing-result'
+    });
     trackPvsizeEvent('result_explainer_cta_view', {
-      calculator_type: 'battery-sizing',
+      calculator_type: 'battery_sizing',
       cta_type: 'savings_or_contact',
       source: 'battery-sizing-result'
     });
@@ -300,7 +335,7 @@
   document.querySelectorAll('[data-pv-event]').forEach(function(el) {
     el.addEventListener('click', function() {
       trackPvsizeEvent(el.getAttribute('data-pv-event'), {
-        calculator_type: 'battery-sizing',
+        calculator_type: 'battery_sizing',
         cta_type: el.getAttribute('data-pv-cta'),
         source: el.getAttribute('data-pv-source'),
         destination: el.getAttribute('data-pv-destination')

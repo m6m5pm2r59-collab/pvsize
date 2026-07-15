@@ -51,6 +51,7 @@
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "xczyltw8tn");
 </script>
+<script src="/pv-analytics.js" defer></script>
 </head>
 <body>
 <nav class="navbar"><div class="nav-container"><a href="/" class="nav-logo">PVSize</a><ul class="nav-links"><li><a href="/panels/">Panels</a></li><li><a href="/inverters/">Inverters</a></li><li><a href="/batteries/">Batteries</a></li><li><a href="/calculators/">Calculators</a></li><li><a href="/insights/">Insights</a></li><li><a href="/learn/">Learn</a></li><li><a href="/contact/">Contact</a></li></ul></div></nav>
@@ -63,7 +64,7 @@
     <strong>Email:</strong> <a href="mailto:xhs13689060096@gmail.com">xhs13689060096@gmail.com</a>
   </div>
 
-  <form class="contact-form" id="contactForm" onsubmit="handleSubmit(event)">
+  <form class="contact-form" id="contactForm" data-pv-form="contact" onsubmit="handleSubmit(event)">
     <div>
       <label for="name">Name</label>
       <input type="text" id="name" name="name" placeholder="Your name" required>
@@ -84,18 +85,30 @@
       e.preventDefault();
       var btn = document.getElementById('submitBtn');
       var msg = document.getElementById('formMsg');
+      var payload = {
+        formType: 'contact',
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        message: document.getElementById('message').value,
+        source: new URL(window.location.href).searchParams.get('source') || window.location.pathname
+      };
       btn.disabled = true;
       btn.textContent = 'Sending...';
       msg.style.display = 'none';
-      fetch('https://formsubmit.co/ajax/c9945756a98664c3328f6bb9a15eadb8', {
+      fetch('/api/lead', {
         method: 'POST',
-        headers: { 'Accept': 'application/json' },
-        body: new FormData(e.target)
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(payload)
       })
       .then(function(r) {
         if (r.ok) {
           msg.style.display = 'block';
-          msg.textContent = 'Message sent — we\'ll get back to you within 24 hours.';
+          msg.style.background = 'var(--primary-light)';
+          msg.style.color = '';
+          msg.textContent = 'Message sent. PVSize will review it as soon as practical.';
+          if (typeof window.pvTrack === 'function') {
+            window.pvTrack('contact_submit', { form_type: 'contact', source: payload.source });
+          }
           e.target.reset();
         } else {
           return r.json().then(function(d) { throw new Error(d.error || 'Unknown error'); });
@@ -104,7 +117,11 @@
       .catch(function(err) {
         msg.style.display = 'block';
         msg.style.background = '#fef2f2';
+        msg.style.color = '#991b1b';
         msg.textContent = 'Delivery failed. Please email us directly at xhs13689060096@gmail.com.';
+        if (typeof window.pvTrack === 'function') {
+          window.pvTrack('form_error', { form_type: 'contact', source: payload.source, reason: err && err.message ? err.message : 'contact_submit_failed' });
+        }
       })
       .finally(function() {
         btn.disabled = false;
