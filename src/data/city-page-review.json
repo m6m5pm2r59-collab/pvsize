@@ -1,0 +1,257 @@
+{
+  "generated_at": "2026-07-15T10:07:42.508Z",
+  "rename": [
+    {
+      "from": "ann-arbor-city",
+      "to": "ann-arbor",
+      "note": "Ann Arbor city, MI -> Ann Arbor, MI"
+    },
+    {
+      "from": "boise-city",
+      "to": "boise",
+      "note": "Boise City, ID -> Boise, ID"
+    },
+    {
+      "from": "burbank-city",
+      "to": "burbank-ca",
+      "note": "Burbank city, CA -> Burbank, CA"
+    },
+    {
+      "from": "carmel",
+      "to": "carmel-in",
+      "note": "Carmel, IN -> Carmel, IN"
+    },
+    {
+      "from": "fairfield",
+      "to": "fairfield-ca",
+      "note": "Fairfield, CA -> Fairfield, CA"
+    },
+    {
+      "from": "flint-city",
+      "to": "flint-mi",
+      "note": "Flint city, MI -> Flint, MI"
+    },
+    {
+      "from": "frankfurt",
+      "to": "frankfurt-de",
+      "note": "Frankfurt, Germany -> Frankfurt, Germany"
+    },
+    {
+      "from": "grand-rapids-city",
+      "to": "grand-rapids-mi",
+      "note": "Grand Rapids city, MI -> Grand Rapids, MI"
+    },
+    {
+      "from": "hanover",
+      "to": "hanover-de",
+      "note": "Hanover, Germany -> Hanover, Germany"
+    },
+    {
+      "from": "kalamazoo-city",
+      "to": "kalamazoo-mi",
+      "note": "Kalamazoo city, MI -> Kalamazoo, MI"
+    },
+    {
+      "from": "lancaster",
+      "to": "lancaster-ca",
+      "note": "Lancaster, CA -> Lancaster, CA"
+    },
+    {
+      "from": "lansing-city",
+      "to": "lansing-mi",
+      "note": "Lansing city, MI -> Lansing, MI"
+    },
+    {
+      "from": "mesquite-city",
+      "to": "mesquite-tx",
+      "note": "Mesquite city, TX -> Mesquite, TX"
+    },
+    {
+      "from": "mountain-view-city",
+      "to": "mountain-view-ca",
+      "note": "Mountain View city, CA -> Mountain View, CA"
+    },
+    {
+      "from": "oakland",
+      "to": "oakland-ca",
+      "note": "Oakland, California -> Oakland, California"
+    },
+    {
+      "from": "orange",
+      "to": "orange-au",
+      "note": "Orange, Australia -> Orange, Australia"
+    },
+    {
+      "from": "paradise",
+      "to": "paradise-nv",
+      "note": "Paradise, NV -> Paradise, NV"
+    },
+    {
+      "from": "paris",
+      "to": "paris-fr",
+      "note": "Paris, France -> Paris, France"
+    },
+    {
+      "from": "plantation-city",
+      "to": "plantation-fl",
+      "note": "Plantation city, FL -> Plantation, FL"
+    },
+    {
+      "from": "portsmouth",
+      "to": "portsmouth-uk",
+      "note": "Portsmouth, UK -> Portsmouth, UK"
+    },
+    {
+      "from": "reading-city",
+      "to": "reading-pa",
+      "note": "Reading city, PA -> Reading, PA"
+    },
+    {
+      "from": "rochester",
+      "to": "rochester-mn",
+      "note": "Rochester, MN -> Rochester, MN"
+    },
+    {
+      "from": "rochester-city",
+      "to": "rochester-ny",
+      "note": "Rochester city, NY -> Rochester, NY"
+    },
+    {
+      "from": "salem",
+      "to": "salem-or",
+      "note": "Salem, OR -> Salem, OR"
+    },
+    {
+      "from": "southfield-city",
+      "to": "southfield-mi",
+      "note": "Southfield city, MI -> Southfield, MI"
+    },
+    {
+      "from": "sunderland",
+      "to": "sunderland-uk",
+      "note": "Sunderland, UK -> Sunderland, UK"
+    },
+    {
+      "from": "troy-city",
+      "to": "troy-mi",
+      "note": "Troy city, MI -> Troy, MI"
+    },
+    {
+      "from": "urban-honolulu",
+      "to": "honolulu",
+      "note": "Urban Honolulu, HI -> Honolulu, HI"
+    },
+    {
+      "from": "warren-city",
+      "to": "warren-mi",
+      "note": "Warren city, MI -> Warren, MI"
+    }
+  ],
+  "remove": [
+    {
+      "from": "arlington",
+      "to": "arlington-va",
+      "reason": "Duplicate of region-qualified Arlington, VA page."
+    },
+    {
+      "from": "aurora",
+      "to": "aurora-il",
+      "reason": "Duplicate of region-qualified Aurora, IL page."
+    },
+    {
+      "from": "bloomington",
+      "to": "bloomington-il",
+      "reason": "Duplicate of region-qualified Bloomington, IL page."
+    },
+    {
+      "from": "glendale",
+      "to": "glendale-ca",
+      "reason": "Duplicate of region-qualified Glendale, CA page."
+    },
+    {
+      "from": "lafayette",
+      "to": "lafayette-in",
+      "reason": "Duplicate of region-qualified Lafayette, IN page."
+    },
+    {
+      "from": "pasadena",
+      "to": "pasadena-ca",
+      "reason": "Duplicate of region-qualified Pasadena, CA page."
+    },
+    {
+      "from": "richmond",
+      "to": "richmond-ca",
+      "reason": "Duplicate of region-qualified Richmond, CA page."
+    },
+    {
+      "from": "springfield",
+      "to": "springfield-il",
+      "reason": "Duplicate of region-qualified Springfield, IL page."
+    },
+    {
+      "from": "westminster",
+      "to": "westminster-ca",
+      "reason": "Duplicate of region-qualified Westminster, CA page."
+    }
+  ],
+  "keep_noindex": [
+    {
+      "slug": "athens-clarke-county",
+      "reason": "County-level page; keep out of index until rewritten as Athens, GA or regional content."
+    },
+    {
+      "slug": "augusta-richmond-county",
+      "reason": "County-level consolidated government page; keep out of index until rewritten."
+    },
+    {
+      "slug": "clarkstown",
+      "reason": "Town-level page; keep out of index until there is a stronger local template."
+    },
+    {
+      "slug": "clinton-charter-township",
+      "reason": "Township page; keep out of index until rewritten."
+    },
+    {
+      "slug": "dale-city",
+      "reason": "CDP/special locality page; keep out of index until validated."
+    },
+    {
+      "slug": "hamilton-township",
+      "reason": "Township page; keep out of index until rewritten."
+    },
+    {
+      "slug": "macon-bibb-county",
+      "reason": "County-level consolidated government page; keep out of index until rewritten as Macon, GA."
+    },
+    {
+      "slug": "north-hempstead",
+      "reason": "Town-level page; keep out of index until there is a stronger local template."
+    },
+    {
+      "slug": "shelby-charter-township",
+      "reason": "Township page; keep out of index until rewritten."
+    },
+    {
+      "slug": "town-n-country",
+      "reason": "Special locality spelling; keep out of index until validated."
+    }
+  ],
+  "allow_index": [
+    {
+      "slug": "kansas-city-mo",
+      "reason": "Valid region-qualified Kansas City, MO page."
+    },
+    {
+      "slug": "kuwait-city",
+      "reason": "Valid city name."
+    },
+    {
+      "slug": "missouri-city",
+      "reason": "Valid city name in Texas."
+    },
+    {
+      "slug": "west-valley-city",
+      "reason": "Valid city name in Utah."
+    }
+  ]
+}

@@ -4,6 +4,9 @@
   "private": true,
   "scripts": {
     "audit:city": "node tools/audit-city-pages.js",
-    "report:traffic": "node tools/report-traffic.js"
+    "clean:city-review": "node tools/clean-reviewed-city-pages.js",
+    "generate:sitemap": "node tools/generate-sitemap.js",
+    "report:traffic": "node tools/report-traffic.js",
+    "report:traffic:data": "node tools/report-traffic.js --json-out data/traffic-report.json"
   }
 }

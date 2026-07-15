@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex,nofollow">
+  <title>PVSize Internal Traffic Daily</title>
+  <style>
+    :root {
+      --ink: #17202a;
+      --muted: #64748b;
+      --line: #d8dee8;
+      --panel: #ffffff;
+      --bg: #f6f8fb;
+      --accent: #0f766e;
+      --warn: #b45309;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+    }
+    main {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 28px 18px 56px;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: flex-end;
+      margin-bottom: 22px;
+    }
+    h1 {
+      margin: 0 0 6px;
+      font-size: 1.55rem;
+      letter-spacing: 0;
+    }
+    .subtle {
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.5;
+    }
+    .status {
+      min-width: 210px;
+      padding: 12px 14px;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      border-radius: 8px;
+      text-align: right;
+    }
+    .grid {
+      display: grid;
+      gap: 14px;
+    }
+    .metrics {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      margin-bottom: 16px;
+    }
+    .metric, section {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      border-radius: 8px;
+    }
+    .metric {
+      padding: 16px;
+      min-height: 94px;
+    }
+    .metric strong {
+      display: block;
+      font-size: 1.8rem;
+      margin-bottom: 4px;
+    }
+    .metric span {
+      color: var(--muted);
+      font-size: 0.86rem;
+    }
+    .tables {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    section {
+      overflow: hidden;
+    }
+    section h2 {
+      margin: 0;
+      padding: 14px 16px;
+      font-size: 1rem;
+      border-bottom: 1px solid var(--line);
+      background: #fbfcfe;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    td {
+      padding: 10px 16px;
+      border-bottom: 1px solid #edf1f7;
+      vertical-align: top;
+    }
+    td:last-child {
+      width: 84px;
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+      color: var(--accent);
+      font-weight: 700;
+    }
+    tr:last-child td {
+      border-bottom: 0;
+    }
+    .empty {
+      padding: 16px;
+      color: var(--muted);
+    }
+    .warning {
+      margin: 16px 0;
+      padding: 12px 14px;
+      border: 1px solid #f1c27d;
+      border-radius: 8px;
+      background: #fff8eb;
+      color: var(--warn);
+      font-size: 0.92rem;
+      line-height: 1.5;
+    }
+    @media (max-width: 860px) {
+      header { align-items: stretch; flex-direction: column; }
+      .status { text-align: left; }
+      .metrics, .tables { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <div>
+        <h1>PVSize Internal Traffic Daily</h1>
+        <div class="subtle">Operational snapshot from Vercel production logs and PVSize self-tracking events.</div>
+      </div>
+      <div class="status">
+        <div id="generatedAt">Loading...</div>
+        <div id="range" class="subtle"></div>
+      </div>
+    </header>
+
+    <div id="warning" class="warning" hidden></div>
+
+    <div class="grid metrics" id="metrics"></div>
+
+    <div class="grid tables">
+      <section><h2>Top Landing Pages</h2><div id="topLandingPages"></div></section>
+      <section><h2>Top Event Names</h2><div id="topEventNames"></div></section>
+      <section><h2>Top Page Types</h2><div id="topPageTypes"></div></section>
+      <section><h2>Top Traffic Sources</h2><div id="topTrafficSources"></div></section>
+      <section><h2>Lead Success By Form</h2><div id="leadSuccess"></div></section>
+      <section><h2>Lead Errors By Reason</h2><div id="leadErrors"></div></section>
+    </div>
+  </main>
+
+  <script>
+    const metricLabels = [
+      ['page_view_events', 'Page views tracked'],
+      ['unique_session_ids', 'Unique sessions'],
+      ['calculator_complete_events', 'Calculator completes'],
+      ['lead_submit_success_events', 'Lead submits'],
+      ['event_requests', 'Event API requests'],
+      ['lead_requests', 'Lead API requests'],
+      ['lead_submit_error_events', 'Lead errors'],
+      ['runtime_config_requests', 'Runtime config requests']
+    ];
+
+    function formatDate(value) {
+      if (!value) return 'No snapshot yet';
+      return new Date(value).toLocaleString();
+    }
+
+    function renderMetrics(report) {
+      const wrap = document.getElementById('metrics');
+      wrap.innerHTML = metricLabels.map(([key, label]) => {
+        const value = report.metrics && Number.isFinite(Number(report.metrics[key])) ? report.metrics[key] : 0;
+        return `<div class="metric"><strong>${value}</strong><span>${label}</span></div>`;
+      }).join('');
+    }
+
+    function renderTable(id, rows) {
+      const target = document.getElementById(id);
+      if (!rows || !rows.length) {
+        target.innerHTML = '<div class="empty">No data in this snapshot.</div>';
+        return;
+      }
+      target.innerHTML = `<table><tbody>${rows.slice(0, 12).map(([label, count]) => {
+        return `<tr><td>${escapeHtml(label || '(blank)')}</td><td>${count}</td></tr>`;
+      }).join('')}</tbody></table>`;
+    }
+
+    function escapeHtml(value) {
+      return String(value)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    }
+
+    fetch('/data/traffic-report.json', { cache: 'no-store' })
+      .then((response) => {
+        if (!response.ok) throw new Error('Missing traffic report data.');
+        return response.json();
+      })
+      .then((report) => {
+        document.getElementById('generatedAt').textContent = formatDate(report.generated_at);
+        document.getElementById('range').textContent = `${report.since || '24h'} / ${report.raw_log_rows || 0} log rows`;
+        renderMetrics(report);
+        renderTable('topLandingPages', report.top_landing_pages);
+        renderTable('topEventNames', report.top_event_names);
+        renderTable('topPageTypes', report.top_page_types);
+        renderTable('topTrafficSources', report.top_traffic_sources);
+        renderTable('leadSuccess', report.lead_success_by_form);
+        renderTable('leadErrors', report.lead_errors_by_reason);
+        if (!report.metrics || !report.metrics.page_view_events) {
+          const warning = document.getElementById('warning');
+          warning.hidden = false;
+          warning.textContent = 'No real page-view events in this snapshot yet. City pages were just connected to analytics, so the next snapshots should become more useful after search and direct visits arrive.';
+        }
+      })
+      .catch((error) => {
+        document.getElementById('generatedAt').textContent = 'No report data';
+        document.getElementById('metrics').innerHTML = '';
+        const warning = document.getElementById('warning');
+        warning.hidden = false;
+        warning.textContent = error.message;
+      });
+  </script>
+</body>
+</html>

@@ -15,14 +15,18 @@ const allowedCityEndingSlugs = new Set([
   'johnson-city',
   'kansas-city',
   'kansas-city-ks',
+  'kansas-city-mo',
+  'kuwait-city',
   'league-city',
+  'missouri-city',
   'oklahoma-city',
   'quebec-city',
   'quezon-city',
   'rapid-city',
   'redwood-city',
   'salt-lake-city',
-  'sioux-city'
+  'sioux-city',
+  'west-valley-city'
 ]);
 
 const ambiguousRootsNeedingRegion = new Set([
@@ -69,7 +73,34 @@ function slugFromFile(file) {
 }
 
 function rootWithoutQualifier(slug) {
-  const qualifiers = ['ca', 'tx', 'va', 'ks', 'ct', 'mo', 'mn', 'ma', 'az', 'in', 'au'];
+  const qualifiers = [
+    'al',
+    'az',
+    'au',
+    'ca',
+    'co',
+    'ct',
+    'de',
+    'fl',
+    'fr',
+    'ga',
+    'id',
+    'il',
+    'in',
+    'ks',
+    'ma',
+    'mi',
+    'mn',
+    'mo',
+    'nv',
+    'ny',
+    'or',
+    'pa',
+    'tx',
+    'uk',
+    'ut',
+    'va'
+  ];
   const parts = slug.split('-');
   if (parts.length > 1 && qualifiers.includes(parts[parts.length - 1])) {
     return parts.slice(0, -1).join('-');

@@ -1,4 +1,5 @@
 const { spawnSync } = require('child_process');
+const fs = require('fs');
 const path = require('path');
 
 const projectRoot = path.join(__dirname, '..', '..');
@@ -82,11 +83,7 @@ function printTop(label, entries, limit) {
   });
 }
 
-function main() {
-  const since = parseArg('--since', '24h');
-  const limit = Number(parseArg('--limit', '500')) || 500;
-  const rows = runVercelLogs(since, limit);
-
+function buildReport(since, limit, rows) {
   const topPaths = new Map();
   const topPages = new Map();
   const topPageTypes = new Map();
@@ -135,32 +132,77 @@ function main() {
     }
   });
 
-  console.log(`PVSize traffic report (${since}, max ${limit} log rows)`);
-  console.log(`- raw log rows: ${rows.length}`);
-  console.log(`- /api/event requests: ${eventRequests}`);
-  console.log(`- /api/lead requests: ${leadRequests}`);
-  console.log(`- /api/runtime-config requests: ${runtimeConfigRequests}`);
-  console.log(`- pv_page_view events: ${pageViewEvents}`);
-  console.log(`- calculator_complete events: ${calculatorCompleteEvents}`);
-  console.log(`- lead_submit_success events: ${leadSubmitSuccessEvents}`);
-  console.log(`- lead_submit_error events: ${leadSubmitErrorEvents}`);
-  console.log(`- unique anonymous ids: ${anonymousIds.size}`);
-  console.log(`- unique session ids: ${sessionIds.size}`);
+  return {
+    generated_at: new Date().toISOString(),
+    since,
+    limit,
+    raw_log_rows: rows.length,
+    metrics: {
+      event_requests: eventRequests,
+      lead_requests: leadRequests,
+      runtime_config_requests: runtimeConfigRequests,
+      page_view_events: pageViewEvents,
+      calculator_complete_events: calculatorCompleteEvents,
+      lead_submit_success_events: leadSubmitSuccessEvents,
+      lead_submit_error_events: leadSubmitErrorEvents,
+      unique_anonymous_ids: anonymousIds.size,
+      unique_session_ids: sessionIds.size
+    },
+    top_request_paths: sortEntries(topPaths),
+    top_event_names: sortEntries(topEvents),
+    top_landing_pages: sortEntries(topPages),
+    top_page_types: sortEntries(topPageTypes),
+    top_traffic_sources: sortEntries(topSources),
+    lead_success_by_form: sortEntries(topLeadForms),
+    lead_errors_by_reason: sortEntries(topLeadErrors)
+  };
+}
+
+function printReport(report) {
+  console.log(`PVSize traffic report (${report.since}, max ${report.limit} log rows)`);
+  console.log(`- raw log rows: ${report.raw_log_rows}`);
+  console.log(`- /api/event requests: ${report.metrics.event_requests}`);
+  console.log(`- /api/lead requests: ${report.metrics.lead_requests}`);
+  console.log(`- /api/runtime-config requests: ${report.metrics.runtime_config_requests}`);
+  console.log(`- pv_page_view events: ${report.metrics.page_view_events}`);
+  console.log(`- calculator_complete events: ${report.metrics.calculator_complete_events}`);
+  console.log(`- lead_submit_success events: ${report.metrics.lead_submit_success_events}`);
+  console.log(`- lead_submit_error events: ${report.metrics.lead_submit_error_events}`);
+  console.log(`- unique anonymous ids: ${report.metrics.unique_anonymous_ids}`);
+  console.log(`- unique session ids: ${report.metrics.unique_session_ids}`);
   console.log('');
 
-  printTop('Top request paths', sortEntries(topPaths), 10);
+  printTop('Top request paths', report.top_request_paths, 10);
   console.log('');
-  printTop('Top event names', sortEntries(topEvents), 10);
+  printTop('Top event names', report.top_event_names, 10);
   console.log('');
-  printTop('Top landing pages', sortEntries(topPages), 10);
+  printTop('Top landing pages', report.top_landing_pages, 10);
   console.log('');
-  printTop('Top page types', sortEntries(topPageTypes), 10);
+  printTop('Top page types', report.top_page_types, 10);
   console.log('');
-  printTop('Top traffic sources', sortEntries(topSources), 10);
+  printTop('Top traffic sources', report.top_traffic_sources, 10);
   console.log('');
-  printTop('Lead success by form', sortEntries(topLeadForms), 10);
+  printTop('Lead success by form', report.lead_success_by_form, 10);
   console.log('');
-  printTop('Lead errors by reason', sortEntries(topLeadErrors), 10);
+  printTop('Lead errors by reason', report.lead_errors_by_reason, 10);
+}
+
+function main() {
+  const since = parseArg('--since', '24h');
+  const limit = Number(parseArg('--limit', '500')) || 500;
+  const jsonOut = parseArg('--json-out', '');
+  const rows = runVercelLogs(since, limit);
+  const report = buildReport(since, limit, rows);
+
+  printReport(report);
+
+  if (jsonOut) {
+    const outputPath = path.isAbsolute(jsonOut) ? jsonOut : path.join(__dirname, '..', jsonOut);
+    fs.mkdirSync(path.dirname(outputPath), { recursive: true });
+    fs.writeFileSync(outputPath, `${JSON.stringify(report, null, 2)}\n`);
+    console.log('');
+    console.log(`Wrote JSON report: ${outputPath}`);
+  }
 }
 
 main();

@@ -1,4 +1,196 @@
 {
   "cleanUrls": true,
-  "trailingSlash": true
+  "trailingSlash": true,
+  "redirects": [
+    {
+      "source": "/city/ann-arbor-city-solar-calculator/",
+      "destination": "/city/ann-arbor-solar-calculator/",
+      "permanent": true
+    },
+    {
+      "source": "/city/boise-city-solar-calculator/",
+      "destination": "/city/boise-solar-calculator/",
+      "permanent": true
+    },
+    {
+      "source": "/city/burbank-city-solar-calculator/",
+      "destination": "/city/burbank-ca-solar-calculator/",
+      "permanent": true
+    },
+    {
+      "source": "/city/carmel-solar-calculator/",
+      "destination": "/city/carmel-in-solar-calculator/",
+      "permanent": true
+    },
+    {
+      "source": "/city/fairfield-solar-calculator/",
+      "destination": "/city/fairfield-ca-solar-calculator/",
+      "permanent": true
+    },
+    {
+      "source": "/city/flint-city-solar-calculator/",
+      "destination": "/city/flint-mi-solar-calculator/",
+      "permanent": true
+    },
+    {
+      "source": "/city/frankfurt-solar-calculator/",
+      "destination": "/city/frankfurt-de-solar-calculator/",
+      "permanent": true
+    },
+    {
+      "source": "/city/grand-rapids-city-solar-calculator/",
+      "destination": "/city/grand-rapids-mi-solar-calculator/",
+      "permanent": true
+    },
+    {
+      "source": "/city/hanover-solar-calculator/",
+      "destination": "/city/hanover-de-solar-calculator/",
+      "permanent": true
+    },
+    {
+      "source": "/city/kalamazoo-city-solar-calculator/",
+      "destination": "/city/kalamazoo-mi-solar-calculator/",
+      "permanent": true
+    },
+    {
+      "source": "/city/lancaster-solar-calculator/",
+      "destination": "/city/lancaster-ca-solar-calculator/",
+      "permanent": true
+    },
+    {
+      "source": "/city/lansing-city-solar-calculator/",
+      "destination": "/city/lansing-mi-solar-calculator/",
+      "permanent": true
+    },
+    {
+      "source": "/city/mesquite-city-solar-calculator/",
+      "destination": "/city/mesquite-tx-solar-calculator/",
+      "permanent": true
+    },
+    {
+      "source": "/city/mountain-view-city-solar-calculator/",
+      "destination": "/city/mountain-view-ca-solar-calculator/",
+      "permanent": true
+    },
+    {
+      "source": "/city/oakland-solar-calculator/",
+      "destination": "/city/oakland-ca-solar-calculator/",
+      "permanent": true
+    },
+    {
+      "source": "/city/orange-solar-calculator/",
+      "destination": "/city/orange-au-solar-calculator/",
+      "permanent": true
+    },
+    {
+      "source": "/city/paradise-solar-calculator/",
+      "destination": "/city/paradise-nv-solar-calculator/",
+      "permanent": true
+    },
+    {
+      "source": "/city/paris-solar-calculator/",
+      "destination": "/city/paris-fr-solar-calculator/",
+      "permanent": true
+    },
+    {
+      "source": "/city/plantation-city-solar-calculator/",
+      "destination": "/city/plantation-fl-solar-calculator/",
+      "permanent": true
+    },
+    {
+      "source": "/city/portsmouth-solar-calculator/",
+      "destination": "/city/portsmouth-uk-solar-calculator/",
+      "permanent": true
+    },
+    {
+      "source": "/city/reading-city-solar-calculator/",
+      "destination": "/city/reading-pa-solar-calculator/",
+      "permanent": true
+    },
+    {
+      "source": "/city/rochester-solar-calculator/",
+      "destination": "/city/rochester-mn-solar-calculator/",
+      "permanent": true
+    },
+    {
+      "source": "/city/rochester-city-solar-calculator/",
+      "destination": "/city/rochester-ny-solar-calculator/",
+      "permanent": true
+    },
+    {
+      "source": "/city/salem-solar-calculator/",
+      "destination": "/city/salem-or-solar-calculator/",
+      "permanent": true
+    },
+    {
+      "source": "/city/southfield-city-solar-calculator/",
+      "destination": "/city/southfield-mi-solar-calculator/",
+      "permanent": true
+    },
+    {
+      "source": "/city/sunderland-solar-calculator/",
+      "destination": "/city/sunderland-uk-solar-calculator/",
+      "permanent": true
+    },
+    {
+      "source": "/city/troy-city-solar-calculator/",
+      "destination": "/city/troy-mi-solar-calculator/",
+      "permanent": true
+    },
+    {
+      "source": "/city/urban-honolulu-solar-calculator/",
+      "destination": "/city/honolulu-solar-calculator/",
+      "permanent": true
+    },
+    {
+      "source": "/city/warren-city-solar-calculator/",
+      "destination": "/city/warren-mi-solar-calculator/",
+      "permanent": true
+    },
+    {
+      "source": "/city/arlington-solar-calculator/",
+      "destination": "/city/arlington-va-solar-calculator/",
+      "permanent": true
+    },
+    {
+      "source": "/city/aurora-solar-calculator/",
+      "destination": "/city/aurora-il-solar-calculator/",
+      "permanent": true
+    },
+    {
+      "source": "/city/bloomington-solar-calculator/",
+      "destination": "/city/bloomington-il-solar-calculator/",
+      "permanent": true
+    },
+    {
+      "source": "/city/glendale-solar-calculator/",
+      "destination": "/city/glendale-ca-solar-calculator/",
+      "permanent": true
+    },
+    {
+      "source": "/city/lafayette-solar-calculator/",
+      "destination": "/city/lafayette-in-solar-calculator/",
+      "permanent": true
+    },
+    {
+      "source": "/city/pasadena-solar-calculator/",
+      "destination": "/city/pasadena-ca-solar-calculator/",
+      "permanent": true
+    },
+    {
+      "source": "/city/richmond-solar-calculator/",
+      "destination": "/city/richmond-ca-solar-calculator/",
+      "permanent": true
+    },
+    {
+      "source": "/city/springfield-solar-calculator/",
+      "destination": "/city/springfield-il-solar-calculator/",
+      "permanent": true
+    },
+    {
+      "source": "/city/westminster-solar-calculator/",
+      "destination": "/city/westminster-ca-solar-calculator/",
+      "permanent": true
+    }
+  ]
 }
