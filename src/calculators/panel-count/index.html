@@ -31,7 +31,7 @@
     {
       "@type": "HowToStep",
       "name": "Select Panel Wattage",
-      "text": "Choose the wattage of the panels you plan to use, ranging from 350W standard polycrystalline to 700W+ premium monocrystalline like LONGi Hi-MO X10."
+      "text": "Choose the wattage of the panels you plan to use. The calculator uses the selected wattage as a planning input."
     },
     {
       "@type": "HowToStep",
@@ -95,11 +95,11 @@
         <div>
           <label class="block text-sm font-semibold mb-1 text-gray-700">Panel Model (Watts)</label>
           <select id="panelWattage" class="border rounded-lg px-4 py-3 w-full min-w-select bg-white" onchange="updatePanelArea()">
-            <option value="700" data-area="29.1" data-name="LONGi Hi-MO X10">LONGi Hi-MO X10 — 700W (25.9% efficiency)</option>
-            <option value="620" data-area="30.1" data-name="Jinko Tiger Neo">Jinko Tiger Neo — 620W (23.32% efficiency)</option>
-            <option value="550" data-area="21.5" data-name="Trina Vertex S+">Trina Vertex S+ — 550W (23.7% efficiency)</option>
-            <option value="500" data-area="21.3" data-name="Canadian Solar TOPBiHiKu7">Canadian Solar TOPBiHiKu7 — 500W</option>
-            <option value="400" data-area="18.7" data-name="Qcells Q.TRON">Qcells Q.TRON — 400W</option>
+            <option value="700" data-area="29.1" data-name="700W high-efficiency panel">700W high-efficiency panel</option>
+            <option value="620" data-area="30.1" data-name="620W high-efficiency panel">620W high-efficiency panel</option>
+            <option value="550" data-area="21.5" data-name="550W residential panel">550W residential panel</option>
+            <option value="500" data-area="21.3" data-name="500W residential panel">500W residential panel</option>
+            <option value="400" data-area="18.7" data-name="400W residential panel">400W residential panel</option>
           </select>
         </div>
 
@@ -120,7 +120,7 @@
         <!-- Panel Area Override -->
         <div>
           <label class="block text-sm font-semibold mb-1 text-gray-700">Panel Area (sq ft, auto-set by model)</label>
-          <input type="number" id="panelArea" class="border rounded-lg px-4 py-3 w-full" placeholder="Auto: 29.1 sq ft (LONGi Hi-MO X10)" step="0.1" />
+          <input type="number" id="panelArea" class="border rounded-lg px-4 py-3 w-full" placeholder="Auto: 29.1 sq ft (700W panel)" step="0.1" />
         </div>
 
         <button id="calcBtn" class="w-full py-4 rounded-xl font-bold text-lg text-[#1a2a3a] hover:opacity-90 transition" style="background:#F5A623">
@@ -185,7 +185,11 @@
               <a href="/learn/solar-system-size-for-home.html" class="block rounded-lg border border-gray-200 bg-white px-4 py-3 hover:border-[#F5A623] hover:shadow-sm">What size solar system do I need?</a>
             </div>
           </div>
-          <p class="text-xs text-gray-500 mt-4">Estimates based on standard conditions. Actual results vary by roof pitch, shading, and local climate.</p>
+          <div class="mt-4 rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-xs text-gray-600 space-y-1">
+            <p><strong>Assumptions:</strong> Roof area, panel wattage, and location-based sun-hours drive the output shown above.</p>
+            <p><strong>Data source:</strong> User inputs plus PVWatts-style planning assumptions and panel specification defaults in the calculator.</p>
+            <p><strong>Last updated:</strong> July 15, 2026.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -375,10 +379,10 @@
 
     // Battery recommendation
     const batteries = [
-      { name: 'Tesla Powerwall 3', kwh: 13.5, cost: 8400, cycle: 5000 },
-      { name: 'BYD Battery-Box HVS 10.2', kwh: 10.24, cost: 7500, cycle: 6000 },
-      { name: 'LG Chem RESU 16H Prime', kwh: 16, cost: 8500, cycle: 4000 },
-      { name: 'BYD Battery-Box HVM 16.6', kwh: 16.6, cost: 11000, cycle: 6000 }
+      { name: '13.5 kWh LiFePO4 battery class', kwh: 13.5, cost: 8400, cycle: 5000 },
+      { name: '10.2 kWh LiFePO4 battery class', kwh: 10.24, cost: 7500, cycle: 6000 },
+      { name: '16.0 kWh NMC battery class', kwh: 16, cost: 8500, cycle: 4000 },
+      { name: '16.6 kWh LiFePO4 battery class', kwh: 16.6, cost: 11000, cycle: 6000 }
     ];
     const targetKwh = systemSizeKw * 1.3;
     document.getElementById('batterySummary').textContent =
