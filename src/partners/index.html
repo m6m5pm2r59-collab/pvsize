@@ -160,6 +160,8 @@
       <label style="display:block;font-size:0.92rem;font-weight:600;margin-bottom:4px;color:#d6d3d1;">Message (optional)</label>
       <textarea id="message" rows="3" placeholder="Tell us about your target markets and goals..." style="width:100%;padding:12px 14px;border:1px solid #44403c;border-radius:6px;background:#292524;color:#fff;font-size:0.95rem;margin-bottom:18px;resize:vertical;"></textarea>
 
+      <div data-pv-turnstile style="min-height:0;margin-bottom:18px;"></div>
+
       <button type="submit" id="lead-submit" style="width:100%;padding:14px;background:var(--primary);color:#fff;border:none;border-radius:8px;font-size:1.05rem;font-weight:700;cursor:pointer;">Submit Inquiry →</button>
     </form>
 
@@ -195,6 +197,9 @@ document.getElementById('lead-form').addEventListener('submit',async function(e)
     source:new URL(window.location.href).searchParams.get('source') || window.location.pathname,
     formType:'partner_inquiry'
   };
+  if (typeof window.pvLeadMeta === 'function') {
+    Object.assign(payload, window.pvLeadMeta(this));
+  }
   btn.disabled=true;btn.textContent='Sending...';err.style.display='none';
   try{
     var r=await fetch('/api/lead',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(payload)});
@@ -202,18 +207,18 @@ document.getElementById('lead-form').addEventListener('submit',async function(e)
     if(r.ok){
       ok.style.display='block';
       if (typeof window.pvTrack === 'function') {
-        window.pvTrack('partner_inquiry_submit', { form_type: 'partner_inquiry', source: payload.source });
+        window.pvTrack('lead_submit_success', { form_type: 'partner_inquiry', source: payload.source });
       }
       this.reset();
     }
     else{err.textContent=d.error||'Submission failed. Please try again.';err.style.display='block';}
     if(!r.ok && typeof window.pvTrack === 'function'){
-      window.pvTrack('form_error', { form_type: 'partner_inquiry', source: payload.source, reason: d && d.error ? d.error : 'partner_submit_failed' });
+      window.pvTrack('lead_submit_error', { form_type: 'partner_inquiry', source: payload.source, reason: d && d.error ? d.error : 'partner_submit_failed' });
     }
   }catch(ex){
     err.textContent='Network error. Please try again.';err.style.display='block';
     if (typeof window.pvTrack === 'function') {
-      window.pvTrack('form_error', { form_type: 'partner_inquiry', source: payload.source, reason: ex && ex.message ? ex.message : 'network_error' });
+      window.pvTrack('lead_submit_error', { form_type: 'partner_inquiry', source: payload.source, reason: ex && ex.message ? ex.message : 'network_error' });
     }
   }
   btn.disabled=false;btn.textContent='Submit Inquiry →';

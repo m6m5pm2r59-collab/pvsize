@@ -137,6 +137,8 @@
         </label>
       </div>
 
+      <div data-pv-turnstile style="min-height:0;"></div>
+
       <div class="actions">
         <button type="submit" class="submit-btn" id="submitBtn">Request detailed plan</button>
         <a class="ghost-link" href="/calculators/">Use the free calculators instead</a>
@@ -211,7 +213,7 @@
       msg.style.display = 'block';
       msg.textContent = 'Please check the consent box if you want PVSize to share your details with installers or providers.';
       if (typeof window.pvTrack === 'function') {
-        window.pvTrack('form_error', { form_type: 'solar_plan', source: source, reason: 'consent_required' });
+        window.pvTrack('lead_submit_error', { form_type: 'solar_plan', source: source, reason: 'consent_required' });
       }
       return;
     }
@@ -235,6 +237,9 @@
       source: source,
       formType: 'solar_plan'
     };
+    if (typeof window.pvLeadMeta === 'function') {
+      Object.assign(payload, window.pvLeadMeta(e.target));
+    }
 
     fetch('/api/lead', {
       method: 'POST',
@@ -247,7 +252,7 @@
       msg.style.color = '#166534';
       msg.textContent = 'Thanks — your detailed-plan request has been sent. If needed, we will follow up using the contact details you provided.';
       if (typeof window.pvTrack === 'function') {
-        window.pvTrack('solar_plan_submit', { form_type: 'solar_plan', source: payload.source });
+        window.pvTrack('lead_submit_success', { form_type: 'solar_plan', source: payload.source });
       }
       e.target.reset();
     })
@@ -256,7 +261,7 @@
       msg.style.color = '#b45309';
       msg.innerHTML = 'We could not verify form delivery just now. <a href="' + buildMailto(payload) + '">Open an email draft to send the same request</a>.';
       if (typeof window.pvTrack === 'function') {
-        window.pvTrack('form_error', { form_type: 'solar_plan', source: payload.source, reason: err && err.message ? err.message : 'solar_plan_submit_failed' });
+        window.pvTrack('lead_submit_error', { form_type: 'solar_plan', source: payload.source, reason: err && err.message ? err.message : 'solar_plan_submit_failed' });
       }
     })
     .finally(function() {

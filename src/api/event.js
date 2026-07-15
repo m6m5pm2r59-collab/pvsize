@@ -21,6 +21,12 @@ export default async function handler(req, res) {
     return;
   }
 
+  var contentType = pickString(req.headers['content-type'] || '', 120);
+  if (contentType.indexOf('application/json') === -1) {
+    res.status(415).json({ error: 'Unsupported content type' });
+    return;
+  }
+
   console.log(
     JSON.stringify({
       type: 'pv_event',
@@ -35,6 +41,12 @@ export default async function handler(req, res) {
       destination: pickString(body.destination, 200),
       source: pickString(body.source, 120),
       form_type: pickString(body.form_type, 80),
+      anonymous_id: pickString(body.anonymous_id, 120),
+      session_id: pickString(body.session_id, 120),
+      utm_source: pickString(body.utm_source, 120),
+      utm_medium: pickString(body.utm_medium, 120),
+      utm_campaign: pickString(body.utm_campaign, 120),
+      internal_traffic: !!body.internal_traffic,
       result_value: pickNumber(body.result_value),
       ts: pickString(body.ts, 80),
       server_ts: new Date().toISOString()
