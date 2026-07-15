@@ -5,4 +5,5 @@ node_modules/
 !.env.example
 deployment.json
 uploaded.json
+reports/
 .DS_Store

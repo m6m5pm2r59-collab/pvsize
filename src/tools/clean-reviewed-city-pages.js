@@ -132,7 +132,19 @@ function updateVercelRedirects(redirects) {
   const existing = Array.isArray(config.redirects) ? config.redirects : [];
   const seen = new Set(existing.map((item) => item.source));
   redirects.forEach((item) => {
-    if (!seen.has(item.source)) existing.push(item);
+    if (!seen.has(item.source)) {
+      existing.push(item);
+      seen.add(item.source);
+    }
+    const htmlSource = item.source.endsWith('/') ? item.source.slice(0, -1) + '.html' : '';
+    if (htmlSource && !seen.has(htmlSource)) {
+      existing.push({
+        source: htmlSource,
+        destination: item.destination,
+        permanent: item.permanent
+      });
+      seen.add(htmlSource);
+    }
   });
   config.redirects = existing;
   fs.writeFileSync(vercelPath, `${JSON.stringify(config, null, 2)}\n`);

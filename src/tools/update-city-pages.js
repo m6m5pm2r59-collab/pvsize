@@ -2,9 +2,13 @@ const fs = require('fs');
 const path = require('path');
 
 const cityDir = path.join(__dirname, '..', 'city');
+const policyPath = path.join(__dirname, '..', 'data', 'city-index-policy.json');
 const CITY_SUFFIX = '-solar-calculator.html';
 const analyticsScript = '<script src="/pv-analytics.js" defer></script>';
 const shareCardScript = '<script src="/pvsize-share-card.js" defer></script>';
+const indexPolicy = JSON.parse(fs.readFileSync(policyPath, 'utf8'));
+const pilotIndexSlugs = new Set(indexPolicy.pilot_index_slugs || []);
+const alwaysNoindexSlugs = new Set(indexPolicy.always_noindex_slugs || []);
 
 const allowedCityEndingSlugs = new Set([
   'daly-city',
@@ -134,9 +138,10 @@ function updateFile(file) {
   let html = fs.readFileSync(fullPath, 'utf8');
   let changed = false;
 
-  const desiredRobots = flagged
-    ? '<meta name="robots" content="noindex,follow">'
-    : '<meta name="robots" content="index,follow">';
+  const shouldIndex = pilotIndexSlugs.has(slug) && !alwaysNoindexSlugs.has(slug) && !flagged;
+  const desiredRobots = shouldIndex
+    ? '<meta name="robots" content="index,follow">'
+    : '<meta name="robots" content="noindex,follow">';
 
   if (html.includes('<meta name="robots" content="noindex,follow">')) {
     html = html.replace('<meta name="robots" content="noindex,follow">', desiredRobots);
@@ -176,7 +181,9 @@ function main() {
     const result = updateFile(file);
     if (result.changed) changedCount += 1;
     if (result.flagged) flaggedCount += 1;
-    else indexedCount += 1;
+    if (pilotIndexSlugs.has(slugFromFile(file)) && !result.flagged && !alwaysNoindexSlugs.has(slugFromFile(file))) {
+      indexedCount += 1;
+    }
   });
 
   console.log(`City pages processed: ${files.length}`);

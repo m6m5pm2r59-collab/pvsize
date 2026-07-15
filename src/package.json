@@ -5,8 +5,10 @@
   "scripts": {
     "audit:city": "node tools/audit-city-pages.js",
     "clean:city-review": "node tools/clean-reviewed-city-pages.js",
+    "enforce:city-index": "node tools/enforce-city-index-policy.js",
     "generate:sitemap": "node tools/generate-sitemap.js",
     "report:traffic": "node tools/report-traffic.js",
-    "report:traffic:data": "node tools/report-traffic.js --json-out data/traffic-report.json"
+    "report:traffic:local": "node tools/report-traffic.js --json-out ../reports/traffic-report.json",
+    "verify:city-migrations": "node tools/verify-city-migrations.js"
   }
 }
