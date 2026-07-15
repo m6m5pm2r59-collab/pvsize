@@ -24,6 +24,39 @@ async function checkRedirect(oldPath, expectedPath) {
   };
 }
 
+async function checkRedirectChain(oldPath, expectedPath) {
+  const hops = [];
+  let currentUrl = `${origin}${oldPath}`;
+
+  for (let i = 0; i < 5; i += 1) {
+    const response = await fetch(currentUrl, { redirect: 'manual' });
+    const location = response.headers.get('location') || '';
+    const normalizedLocation = location.startsWith('http') ? new URL(location).pathname : location;
+    hops.push({
+      status: response.status,
+      location: normalizedLocation
+    });
+
+    if (![301, 302, 307, 308].includes(response.status) || !location) {
+      return {
+        final_status: response.status,
+        final_path: new URL(currentUrl).pathname,
+        hops,
+        ok: new URL(currentUrl).pathname === expectedPath && response.status === 200
+      };
+    }
+
+    currentUrl = new URL(location, currentUrl).toString();
+  }
+
+  return {
+    final_status: null,
+    final_path: new URL(currentUrl).pathname,
+    hops,
+    ok: false
+  };
+}
+
 async function checkNewPage(newPath) {
   const response = await fetch(`${origin}${newPath}`, { redirect: 'manual' });
   const html = await response.text();
@@ -57,6 +90,7 @@ async function main() {
     const newPath = toCleanPath(item.to);
     const redirect = await checkRedirect(oldPath, newPath);
     const htmlRedirect = await checkRedirect(oldHtmlPath, newPath);
+    const htmlChain = await checkRedirectChain(oldHtmlPath, newPath);
     const page = await checkNewPage(newPath);
     rows.push({
       type: item.type,
@@ -69,6 +103,11 @@ async function main() {
       old_html_status: htmlRedirect.status,
       old_html_redirect_location: htmlRedirect.location,
       old_html_redirect_ok: htmlRedirect.ok,
+      old_html_final_status: htmlChain.final_status,
+      old_html_final_path: htmlChain.final_path,
+      old_html_chain_hops: htmlChain.hops.length,
+      old_html_chain_ok: htmlChain.ok,
+      old_html_extra_hop: !htmlRedirect.ok && htmlChain.ok,
       new_status: page.status,
       canonical: page.canonical,
       canonical_ok: page.canonical_ok,
@@ -78,7 +117,7 @@ async function main() {
       expected_in_sitemap: page.indexable,
       ok:
         redirect.ok &&
-        htmlRedirect.ok &&
+        htmlChain.ok &&
         page.status === 200 &&
         page.canonical_ok &&
         !sitemap.includes(`${origin}${oldPath}`) &&
