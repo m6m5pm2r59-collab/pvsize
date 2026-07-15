@@ -215,25 +215,6 @@
   </div>
 </section>
 
-<!-- ===== LIVE COUNTER ===== -->
-<section class="live-counter">
-  <h2>Solar's Growing Impact</h2>
-  <div class="counter-grid">
-    <div class="counter-item">
-      <div class="counter-value" id="counter-panels">0</div>
-      <div class="counter-label">Panels Installed Today (US)</div>
-    </div>
-    <div class="counter-item">
-      <div class="counter-value" id="counter-co2">0</div>
-      <div class="counter-label">Metric Tons CO₂ Avoided Today</div>
-    </div>
-    <div class="counter-item">
-      <div class="counter-value" id="counter-homes">0</div>
-      <div class="counter-label">Homes Powered by Solar</div>
-    </div>
-  </div>
-</section>
-
 <!-- ===== FOOTER ===== -->
 <footer class="site-footer">
   <div class="footer-container">
@@ -317,21 +298,6 @@
   document.getElementById('qe-home-size').addEventListener('change', recalc);
   document.getElementById('qe-bill').addEventListener('change', recalc);
 
-  // Live counter animation
-  function animateCounters() {
-    const now = new Date();
-    const startOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-    const secondsToday = (now - startOfDay) / 1000;
-    const panelsSec = 1200 / 86400; // panels per second
-    const co2Sec = 45000 / 86400;
-    const homesSec = 1900000 / 86400;
-
-    document.getElementById('counter-panels').textContent = Math.floor(secondsToday * panelsSec).toLocaleString();
-    document.getElementById('counter-co2').textContent = Math.floor(secondsToday * co2Sec).toLocaleString();
-    document.getElementById('counter-homes').textContent = Math.floor(secondsToday * homesSec).toLocaleString();
-  }
-  animateCounters();
-  setInterval(animateCounters, 15000);
 })();
 </script>
 </body>
