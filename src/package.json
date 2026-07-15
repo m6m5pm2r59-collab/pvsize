@@ -1,5 +1,9 @@
 {
   "name": "pvsize",
   "version": "1.0.0",
-  "private": true
+  "private": true,
+  "scripts": {
+    "audit:city": "node tools/audit-city-pages.js",
+    "report:traffic": "node tools/report-traffic.js"
+  }
 }
