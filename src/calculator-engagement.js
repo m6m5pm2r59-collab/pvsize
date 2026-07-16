@@ -270,7 +270,12 @@
     if (params.get('autocalc') === '1') {
       window.setTimeout(function () {
         var button = document.getElementById('calcBtn');
-        if (button) button.click();
+        if (!button) return;
+        button.dataset.pvAutoTriggered = '1';
+        button.click();
+        window.setTimeout(function () {
+          delete button.dataset.pvAutoTriggered;
+        }, 0);
       }, 350);
     }
   }

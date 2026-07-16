@@ -281,6 +281,7 @@
   }
 
   document.getElementById('calcBtn').addEventListener('click', function(){
+    const autoTriggered = this.dataset && this.dataset.pvAutoTriggered === '1';
     const dailyUsage = parseFloat(document.getElementById('dailyUsage').value);
     const backupDays = parseInt(document.getElementById('backupDays').value);
     const batteryType = document.getElementById('batteryType').value;
@@ -288,12 +289,14 @@
     let dod;
 
     if (isNaN(dailyUsage) || dailyUsage <= 0) { alert('Please enter valid daily usage.'); return; }
-    trackPvsizeEvent('calculator_start', {
-      calculator_type: 'battery_sizing',
-      input_daily_usage: dailyUsage,
-      backup_days: backupDays,
-      battery_type: batteryType
-    });
+    if (!autoTriggered) {
+      trackPvsizeEvent('calculator_start', {
+        calculator_type: 'battery_sizing',
+        input_daily_usage: dailyUsage,
+        backup_days: backupDays,
+        battery_type: batteryType
+      });
+    }
 
     if (dodInput) {
       dod = parseFloat(dodInput);
@@ -324,12 +327,14 @@
     document.getElementById('results').classList.remove('hidden');
     document.getElementById('batteryResultCta').classList.remove('hidden');
     document.getElementById('batteryCtaSummary').textContent = 'This battery size can now flow into savings or a review request.';
-    trackPvsizeEvent('calculator_complete', {
-      calculator_type: 'battery_sizing',
-      usable_capacity_kwh: Number(usableNeeded.toFixed(1)),
-      total_capacity_kwh: Number(totalCapacity.toFixed(1)),
-      estimated_cost: Number(estCost.toFixed(0))
-    });
+    if (!autoTriggered) {
+      trackPvsizeEvent('calculator_complete', {
+        calculator_type: 'battery_sizing',
+        usable_capacity_kwh: Number(usableNeeded.toFixed(1)),
+        total_capacity_kwh: Number(totalCapacity.toFixed(1)),
+        estimated_cost: Number(estCost.toFixed(0))
+      });
+    }
     trackPvsizeEvent('result_view', {
       calculator_type: 'battery_sizing',
       source: 'battery-sizing-result'

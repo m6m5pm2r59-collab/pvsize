@@ -280,6 +280,7 @@
   }
 
   document.getElementById('calcBtn').addEventListener('click', function(){
+    const autoTriggered = this.dataset && this.dataset.pvAutoTriggered === '1';
     const monthlyBill = parseFloat(document.getElementById('monthlyBill').value);
     const systemSizeKw = parseFloat(document.getElementById('systemSize').value);
     const rateSelect = parseFloat(document.getElementById('rateSelect').value);
@@ -288,12 +289,14 @@
 
     if (isNaN(monthlyBill) || monthlyBill < 0) { alert('Please enter a valid monthly bill.'); return; }
     if (isNaN(systemSizeKw) || systemSizeKw <= 0) { alert('Please enter a valid system size.'); return; }
-    trackPvsizeEvent('calculator_start', {
-      calculator_type: 'savings',
-      input_monthly_bill: monthlyBill,
-      input_system_kw: systemSizeKw,
-      rate_source: rateCustom ? 'custom' : 'preset'
-    });
+    if (!autoTriggered) {
+      trackPvsizeEvent('calculator_start', {
+        calculator_type: 'savings',
+        input_monthly_bill: monthlyBill,
+        input_system_kw: systemSizeKw,
+        rate_source: rateCustom ? 'custom' : 'preset'
+      });
+    }
 
     const rate = rateCustom ? parseFloat(rateCustom) : rateSelect;
     // Annual solar generation
@@ -315,12 +318,14 @@
     document.getElementById('results').classList.remove('hidden');
     document.getElementById('savingsResultCta').classList.remove('hidden');
     document.getElementById('savingsCtaSummary').textContent = 'Your estimate can now flow into panel count or a review request.';
-    trackPvsizeEvent('calculator_complete', {
-      calculator_type: 'savings',
-      annual_savings: Number(annualSavings.toFixed(2)),
-      payback_years: Number(payback.toFixed(2)),
-      monthly_savings: Number(monthlySavings.toFixed(2))
-    });
+    if (!autoTriggered) {
+      trackPvsizeEvent('calculator_complete', {
+        calculator_type: 'savings',
+        annual_savings: Number(annualSavings.toFixed(2)),
+        payback_years: Number(payback.toFixed(2)),
+        monthly_savings: Number(monthlySavings.toFixed(2))
+      });
+    }
     trackPvsizeEvent('result_view', {
       calculator_type: 'savings',
       source: 'savings-result'

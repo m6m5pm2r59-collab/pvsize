@@ -267,16 +267,19 @@
   }
 
   document.getElementById('calcBtn').addEventListener('click', function(){
+    const autoTriggered = this.dataset && this.dataset.pvAutoTriggered === '1';
     const systemSize = parseFloat(document.getElementById('systemSize').value);
     const emissionSelect = parseFloat(document.getElementById('emissionSelect').value);
     const emissionCustom = document.getElementById('emissionCustom').value;
 
     if (isNaN(systemSize) || systemSize <= 0) { alert('Please enter a valid system capacity.'); return; }
-    trackPvsizeEvent('calculator_start', {
-      calculator_type: 'carbon',
-      input_system_kw: systemSize,
-      emission_source: emissionCustom ? 'custom' : 'preset'
-    });
+    if (!autoTriggered) {
+      trackPvsizeEvent('calculator_start', {
+        calculator_type: 'carbon',
+        input_system_kw: systemSize,
+        emission_source: emissionCustom ? 'custom' : 'preset'
+      });
+    }
 
     const emissionFactor = emissionCustom ? parseFloat(emissionCustom) : emissionSelect;
     // Annual generation: 5 peak sun hours, 365 days, 78% efficiency
@@ -295,12 +298,14 @@
     document.getElementById('results').classList.remove('hidden');
     document.getElementById('carbonResultCta').classList.remove('hidden');
     document.getElementById('carbonCtaSummary').textContent = 'Compare this offset with savings or ask for a review if you need a planning check.';
-    trackPvsizeEvent('calculator_complete', {
-      calculator_type: 'carbon',
-      annual_generation_kwh: Number(annualGen.toFixed(0)),
-      co2_offset_tons: Number(co2Offset.toFixed(2)),
-      car_miles_avoided: Number(carMiles.toFixed(0))
-    });
+    if (!autoTriggered) {
+      trackPvsizeEvent('calculator_complete', {
+        calculator_type: 'carbon',
+        annual_generation_kwh: Number(annualGen.toFixed(0)),
+        co2_offset_tons: Number(co2Offset.toFixed(2)),
+        car_miles_avoided: Number(carMiles.toFixed(0))
+      });
+    }
     trackPvsizeEvent('result_view', {
       calculator_type: 'carbon',
       source: 'carbon-result'

@@ -314,6 +314,7 @@
   }
 
   document.getElementById('calcBtn').addEventListener('click', function(){
+    const autoTriggered = this.dataset && this.dataset.pvAutoTriggered === '1';
     const roofArea = parseFloat(document.getElementById('roofArea').value);
     const areaUnit = document.getElementById('areaUnit').value;
     const panelWattage = parseInt(document.getElementById('panelWattage').value);
@@ -324,12 +325,14 @@
       alert('Please enter a valid roof area.');
       return;
     }
-    trackPvsizeEvent('calculator_start', {
-      calculator_type: 'panel_count',
-      input_area: roofArea,
-      area_unit: areaUnit,
-      panel_wattage: panelWattage
-    });
+    if (!autoTriggered) {
+      trackPvsizeEvent('calculator_start', {
+        calculator_type: 'panel_count',
+        input_area: roofArea,
+        area_unit: areaUnit,
+        panel_wattage: panelWattage
+      });
+    }
 
     // Convert roof area to sq ft
     let roofAreaSqFt = areaUnit === 'sqm' ? roofArea * 10.7639 : roofArea;
@@ -362,12 +365,14 @@
     document.getElementById('panelSavingsLink').href = '/calculators/savings/?' + sourceParams.toString();
     document.getElementById('panelContactLink').href = '/contact/?' + sourceParams.toString();
     document.getElementById('panelResultCta').classList.remove('hidden');
-    trackPvsizeEvent('calculator_complete', {
-      calculator_type: 'panel_count',
-      panel_count: panelCount,
-      system_kw: Number(systemSizeKw.toFixed(2)),
-      annual_generation_kwh: Number(annualGen.toFixed(0))
-    });
+    if (!autoTriggered) {
+      trackPvsizeEvent('calculator_complete', {
+        calculator_type: 'panel_count',
+        panel_count: panelCount,
+        system_kw: Number(systemSizeKw.toFixed(2)),
+        annual_generation_kwh: Number(annualGen.toFixed(0))
+      });
+    }
     trackPvsizeEvent('result_view', {
       calculator_type: 'panel_count',
       source: 'panel-count-result'
