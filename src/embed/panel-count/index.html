@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex,follow" />
+  <title>PVSize Panel Count Embed</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html, body { margin: 0; background: #f8fafc; color: #0f172a; }
+    .shell { max-width: 960px; margin: 0 auto; padding: 14px; }
+    .frame { width: 100%; border: 0; display: block; border-radius: 16px; background: white; }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <div class="mb-3 flex items-center justify-between gap-3">
+      <div>
+        <p class="text-xs font-semibold uppercase tracking-wide text-amber-600">PVSize embed</p>
+        <h1 class="text-xl font-bold text-slate-950">Panel Count</h1>
+      </div>
+      <a href="/calculators/panel-count/" class="text-sm font-semibold text-slate-700 underline">Powered by PVSize</a>
+    </div>
+    <iframe id="pv-frame" class="frame" title="PVSize Panel Count Calculator" loading="lazy"></iframe>
+  </div>
+
+  <script>
+  (function () {
+    var frame = document.getElementById('pv-frame');
+    var search = window.location.search || '';
+    var src = '/calculators/panel-count/' + search.replace(/^\?/, '?');
+    if (search.indexOf('embed=1') === -1) {
+      src += (search ? '&' : '?') + 'embed=1';
+    }
+    frame.src = src;
+
+    function resizeFrame() {
+      try {
+        var doc = frame.contentWindow && frame.contentWindow.document;
+        if (!doc || !doc.body) return;
+        var height = Math.max(doc.body.scrollHeight, doc.documentElement.scrollHeight, 920);
+        frame.style.height = height + 'px';
+      } catch (err) {
+        frame.style.height = '1320px';
+      }
+    }
+
+    frame.addEventListener('load', function () {
+      resizeFrame();
+      var timer = window.setInterval(resizeFrame, 500);
+      window.setTimeout(resizeFrame, 250);
+      window.setTimeout(resizeFrame, 900);
+      window.setTimeout(function () { window.clearInterval(timer); }, 5000);
+    });
+    window.addEventListener('resize', resizeFrame);
+  })();
+  </script>
+</body>
+</html>

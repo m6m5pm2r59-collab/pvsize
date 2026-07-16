@@ -166,6 +166,28 @@
     }, 2400);
   }
 
+  function applyEmbedMode() {
+    var params = new URLSearchParams(window.location.search);
+    if (params.get('embed') !== '1') return;
+    document.documentElement.classList.add('pv-embed-mode');
+    document.body.classList.add('pv-embed-mode');
+    if (document.getElementById('pv-embed-style')) return;
+    var style = document.createElement('style');
+    style.id = 'pv-embed-style';
+    style.textContent = [
+      'body.pv-embed-mode nav,',
+      'body.pv-embed-mode #pv-main-hero,',
+      'body.pv-embed-mode #pv-share-strip,',
+      'body.pv-embed-mode #pv-lead-capture,',
+      'body.pv-embed-mode #pv-installer-cta,',
+      'body.pv-embed-mode #pv-site-footer { display: none !important; }',
+      'body.pv-embed-mode #pv-calculator-shell { padding-top: 16px !important; padding-bottom: 16px !important; }',
+      'body.pv-embed-mode #pv-calculator-shell > div { border-radius: 16px !important; padding: 16px !important; box-shadow: none !important; }',
+      'body.pv-embed-mode #results { margin-top: 20px !important; }'
+    ].join('\n');
+    document.head.appendChild(style);
+  }
+
   function makeButton(label, action) {
     var button = document.createElement('button');
     button.type = 'button';
@@ -284,6 +306,7 @@
     var config = getConfig();
     if (!config) return;
     var params = new URLSearchParams(window.location.search);
+    applyEmbedMode();
     applyPrefill(config);
 
     if (params.get('utm_source') || params.get('utm_medium') || params.get('utm_campaign') || isExternalReferrer()) {
