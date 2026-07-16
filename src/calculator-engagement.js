@@ -114,7 +114,7 @@
   }
 
   function collectSummary(config) {
-    var parts = ['PVSize result'];
+    var parts = ['Technical feedback wanted: assumptions are editable and easy to challenge.', 'PVSize result'];
     config.results.forEach(function (id) {
       var el = document.getElementById(id);
       if (!el) return;
@@ -122,6 +122,7 @@
       if (!value || value === '-') return;
       parts.push((config.labels[id] || id) + ': ' + value);
     });
+    parts.push('Editable inputs: tweak the calculator page assumptions, then share or copy the result.');
     parts.push('Calculator: ' + window.location.origin + window.location.pathname);
     return parts.join('\n');
   }
@@ -136,6 +137,7 @@
     url.searchParams.set('utm_source', 'result_share');
     url.searchParams.set('utm_medium', 'copy_link');
     url.searchParams.set('utm_campaign', config.type + '_result');
+    url.searchParams.set('utm_content', 'technical_feedback_wanted');
     return url.toString();
   }
 
