@@ -84,6 +84,16 @@
     }
   }
 
+  function isExternalReferrer() {
+    if (!document.referrer) return false;
+    try {
+      var referrerUrl = new URL(document.referrer);
+      return referrerUrl.host && referrerUrl.host !== window.location.host;
+    } catch (err) {
+      return false;
+    }
+  }
+
   function setFieldValue(id, value) {
     if (value == null || value === '') return;
     var field = document.getElementById(id);
@@ -269,7 +279,7 @@
     var params = new URLSearchParams(window.location.search);
     applyPrefill(config);
 
-    if (params.get('utm_source') || params.get('source') || document.referrer) {
+    if (params.get('utm_source') || params.get('utm_medium') || params.get('utm_campaign') || isExternalReferrer()) {
       track('external_landing', {
         calculator_type: config.type,
         source: params.get('source') || '',

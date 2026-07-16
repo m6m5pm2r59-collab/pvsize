@@ -241,6 +241,13 @@
       Object.assign(payload, window.pvLeadMeta(e.target));
     }
 
+    if (typeof window.pvTrack === 'function') {
+      window.pvTrack('solar_plan_submit', {
+        form_type: 'solar_plan',
+        source: payload.source
+      });
+    }
+
     fetch('/api/lead', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
