@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Off-Grid Cabin Solar and Battery Sizing Example | PVSize</title>
+  <meta name="description" content="Worked example: solar and battery sizing for an off-grid cabin using 8 kWh per day, with winter sun, battery capacity, inverter margin, and editable calculator links.">
+  <link rel="canonical" href="https://pvsize.com/examples/off-grid-cabin-8-kwh-day/">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/pv-analytics.js" defer></script>
+</head>
+<body class="bg-slate-50 text-slate-800">
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <a href="/learn/off-grid-solar-system-sizing-guide.html" class="text-sm font-semibold text-amber-600">PVSize off-grid guide</a>
+    <h1 class="text-3xl md:text-4xl font-bold text-slate-950 mt-4">Solar and battery sizing for an off-grid cabin using 8 kWh/day</h1>
+    <p class="mt-4 text-lg text-slate-600">A full example for a small cabin where winter sun and backup margin matter more than annual average output.</p>
+
+    <section class="mt-8 bg-white border border-slate-200 rounded-xl p-6">
+      <h2 class="text-xl font-bold text-slate-950">Load and weather assumptions</h2>
+      <ul class="mt-4 space-y-2 text-slate-700">
+        <li>Daily energy use: <strong>8 kWh/day</strong></li>
+        <li>Winter sun assumption: <strong>3 peak sun-hours/day</strong></li>
+        <li>System loss factor: <strong>25%</strong></li>
+        <li>Backup target: <strong>2 days</strong></li>
+        <li>Battery chemistry: <strong>LiFePO4 at 90% DoD</strong></li>
+      </ul>
+    </section>
+
+    <section class="mt-6 bg-white border border-slate-200 rounded-xl p-6">
+      <h2 class="text-xl font-bold text-slate-950">Sizing result</h2>
+      <div class="mt-4 grid gap-4 md:grid-cols-3">
+        <div class="rounded-lg bg-slate-50 p-4"><div class="text-sm text-slate-500">PV array</div><div class="text-2xl font-bold text-slate-950">3.6 kW</div></div>
+        <div class="rounded-lg bg-slate-50 p-4"><div class="text-sm text-slate-500">Rated battery</div><div class="text-2xl font-bold text-slate-950">17.8 kWh</div></div>
+        <div class="rounded-lg bg-slate-50 p-4"><div class="text-sm text-slate-500">Inverter planning</div><div class="text-2xl font-bold text-slate-950">3-5 kW</div></div>
+      </div>
+      <p class="mt-4 text-slate-700">PV array formula: 8 kWh/day divided by 3 winter sun-hours divided by 0.75 system efficiency = about 3.6 kW. Battery formula: 8 kWh/day x 2 backup days divided by 0.90 DoD = about 17.8 kWh rated capacity.</p>
+    </section>
+
+    <section class="mt-6 bg-amber-50 border border-amber-200 rounded-xl p-6">
+      <h2 class="text-xl font-bold text-slate-950">Open the editable calculators</h2>
+      <div class="mt-5 flex flex-col sm:flex-row gap-3">
+        <a class="text-center rounded-lg bg-amber-500 px-5 py-3 font-bold text-slate-950" href="/calculators/panel-count/?roof_area=420&area_unit=sqft&panel_wattage=400&sun_hours=3.0&autocalc=1&utm_source=case_page&utm_medium=example&utm_campaign=off_grid_cabin">Open prefilled panel calculator</a>
+        <a class="text-center rounded-lg border border-slate-300 bg-white px-5 py-3 font-bold text-slate-800" href="/calculators/battery-sizing/?daily_usage=8&backup_days=2&battery_type=lifepo4&dod=90&autocalc=1&utm_source=case_page&utm_medium=example&utm_campaign=off_grid_cabin">Open prefilled battery calculator</a>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

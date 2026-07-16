@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1,500 kWh per Month Solar Panel Sizing Example | PVSize</title>
+  <meta name="description" content="Worked example: estimate solar panel count for a home using 1,500 kWh per month, with system size, 400W panel count, roof area, and editable calculator inputs.">
+  <link rel="canonical" href="https://pvsize.com/examples/1500-kwh-per-month-solar-panels/">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/pv-analytics.js" defer></script>
+</head>
+<body class="bg-slate-50 text-slate-800">
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <a href="/calculators/" class="text-sm font-semibold text-amber-600">PVSize calculators</a>
+    <h1 class="text-3xl md:text-4xl font-bold text-slate-950 mt-4">How many solar panels for 1,500 kWh per month?</h1>
+    <p class="mt-4 text-lg text-slate-600">A transparent worked example for a high-usage home. Change the sun-hours, panel wattage, and roof assumptions in the calculator link below.</p>
+
+    <section class="mt-8 bg-white border border-slate-200 rounded-xl p-6">
+      <h2 class="text-xl font-bold text-slate-950">Scenario</h2>
+      <ul class="mt-4 space-y-2 text-slate-700">
+        <li>Monthly electricity use: <strong>1,500 kWh</strong></li>
+        <li>Daily electricity use: <strong>about 50 kWh/day</strong></li>
+        <li>Peak sun-hours assumption: <strong>5.0 hours/day</strong></li>
+        <li>System loss factor: <strong>20%</strong></li>
+        <li>Panel size: <strong>400W residential panels</strong></li>
+      </ul>
+    </section>
+
+    <section class="mt-6 bg-white border border-slate-200 rounded-xl p-6">
+      <h2 class="text-xl font-bold text-slate-950">Calculation</h2>
+      <div class="mt-4 grid gap-4 md:grid-cols-3">
+        <div class="rounded-lg bg-slate-50 p-4"><div class="text-sm text-slate-500">Daily load</div><div class="text-2xl font-bold text-slate-950">50 kWh</div></div>
+        <div class="rounded-lg bg-slate-50 p-4"><div class="text-sm text-slate-500">Estimated system</div><div class="text-2xl font-bold text-slate-950">12.5 kW</div></div>
+        <div class="rounded-lg bg-slate-50 p-4"><div class="text-sm text-slate-500">400W panels</div><div class="text-2xl font-bold text-slate-950">32 panels</div></div>
+      </div>
+      <p class="mt-4 text-slate-700">Formula: 50 kWh/day divided by 5 sun-hours divided by 0.80 system efficiency = about 12.5 kW DC. With 400W panels, that is about 32 panels before roof layout constraints.</p>
+      <p class="mt-3 text-slate-700">A 400W panel often needs roughly 18-20 sq ft. With spacing and roof setbacks, this example should be checked against usable roof area, not total roof area.</p>
+    </section>
+
+    <section class="mt-6 bg-amber-50 border border-amber-200 rounded-xl p-6">
+      <h2 class="text-xl font-bold text-slate-950">Open the editable calculator</h2>
+      <p class="mt-2 text-slate-700">This link preloads a 400W panel, 5.0 sun-hours, and enough roof area for about 32 panels. Change the roof area or panel wattage to test your own case.</p>
+      <div class="mt-5 flex flex-col sm:flex-row gap-3">
+        <a class="text-center rounded-lg bg-amber-500 px-5 py-3 font-bold text-slate-950" href="/calculators/panel-count/?roof_area=820&area_unit=sqft&panel_wattage=400&sun_hours=5.0&autocalc=1&utm_source=case_page&utm_medium=example&utm_campaign=panel_1500kwh">Open prefilled panel calculator</a>
+        <a class="text-center rounded-lg border border-slate-300 bg-white px-5 py-3 font-bold text-slate-800" href="/calculators/battery-sizing/?daily_usage=50&backup_days=1&battery_type=lifepo4&dod=90&autocalc=1&utm_source=case_page&utm_medium=example&utm_campaign=panel_1500kwh">Check battery backup for this load</a>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Overnight Home Battery Backup Sizing Example | PVSize</title>
+  <meta name="description" content="Worked example: size a home battery for an overnight outage with fridge, lights, router, TV, and essential loads. Includes editable PVSize battery calculator link.">
+  <link rel="canonical" href="https://pvsize.com/examples/overnight-home-battery-backup/">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/pv-analytics.js" defer></script>
+</head>
+<body class="bg-slate-50 text-slate-800">
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <a href="/calculators/battery-sizing/" class="text-sm font-semibold text-amber-600">PVSize battery calculator</a>
+    <h1 class="text-3xl md:text-4xl font-bold text-slate-950 mt-4">What size battery for an overnight outage?</h1>
+    <p class="mt-4 text-lg text-slate-600">A practical essential-load example for one night of backup power. It separates usable capacity from rated capacity.</p>
+
+    <section class="mt-8 bg-white border border-slate-200 rounded-xl p-6">
+      <h2 class="text-xl font-bold text-slate-950">Essential loads</h2>
+      <div class="mt-4 overflow-x-auto">
+        <table class="w-full text-left text-sm">
+          <thead><tr class="border-b"><th class="py-2">Load</th><th>Watts</th><th>Hours</th><th>Energy</th></tr></thead>
+          <tbody class="divide-y">
+            <tr><td class="py-2">Refrigerator average</td><td>120W</td><td>12h</td><td>1.4 kWh</td></tr>
+            <tr><td class="py-2">Lights</td><td>80W</td><td>6h</td><td>0.5 kWh</td></tr>
+            <tr><td class="py-2">Router and devices</td><td>50W</td><td>12h</td><td>0.6 kWh</td></tr>
+            <tr><td class="py-2">TV / small electronics</td><td>150W</td><td>3h</td><td>0.5 kWh</td></tr>
+            <tr><td class="py-2">Margin for startup and losses</td><td>-</td><td>-</td><td>2.0 kWh</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="mt-4 text-slate-700">Planning total: <strong>about 5 kWh usable</strong>. With LiFePO4 at 90% depth of discharge, rated capacity should be about 5.6 kWh before inverter and installation constraints.</p>
+    </section>
+
+    <section class="mt-6 bg-white border border-slate-200 rounded-xl p-6">
+      <h2 class="text-xl font-bold text-slate-950">Why usable and rated capacity differ</h2>
+      <p class="mt-3 text-slate-700">A battery advertised as 10 kWh does not always mean 10 kWh should be used in every outage. Chemistry, allowed depth of discharge, inverter losses, temperature, and reserve settings all affect usable energy.</p>
+    </section>
+
+    <section class="mt-6 bg-amber-50 border border-amber-200 rounded-xl p-6">
+      <h2 class="text-xl font-bold text-slate-950">Open the editable calculator</h2>
+      <p class="mt-2 text-slate-700">This preloads 5 kWh/day, one backup day, LiFePO4 chemistry, and 90% depth of discharge.</p>
+      <a class="mt-5 inline-block rounded-lg bg-amber-500 px-5 py-3 font-bold text-slate-950" href="/calculators/battery-sizing/?daily_usage=5&backup_days=1&battery_type=lifepo4&dod=90&autocalc=1&utm_source=case_page&utm_medium=example&utm_campaign=battery_backup">Open prefilled battery calculator</a>
+    </section>
+  </main>
+</body>
+</html>

@@ -5,7 +5,7 @@ const root = path.join(__dirname, '..');
 const cityDir = path.join(root, 'city');
 const sitemapPath = path.join(root, 'sitemap.xml');
 const siteOrigin = 'https://pvsize.com';
-const lastmod = '2026-07-15';
+const lastmod = '2026-07-16';
 
 const fixedUrls = [
   ['/', 'weekly', '1.0'],
@@ -14,6 +14,9 @@ const fixedUrls = [
   ['/calculators/savings/', 'weekly', '0.9'],
   ['/calculators/battery-sizing/', 'weekly', '0.9'],
   ['/calculators/carbon/', 'weekly', '0.9'],
+  ['/examples/1500-kwh-per-month-solar-panels/', 'weekly', '0.8'],
+  ['/examples/overnight-home-battery-backup/', 'weekly', '0.8'],
+  ['/examples/off-grid-cabin-8-kwh-day/', 'weekly', '0.8'],
   ['/request-solar-plan/', 'weekly', '0.8'],
   ['/contact/', 'weekly', '0.8'],
   ['/learn/', 'weekly', '0.8'],

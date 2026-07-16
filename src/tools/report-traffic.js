@@ -96,11 +96,16 @@ function buildReport(since, limit, rows) {
 
   let eventRequests = 0;
   let leadRequests = 0;
+  let feedbackRequests = 0;
   let runtimeConfigRequests = 0;
   let pageViewEvents = 0;
   let calculatorCompleteEvents = 0;
   let leadSubmitSuccessEvents = 0;
   let leadSubmitErrorEvents = 0;
+  let externalLandingEvents = 0;
+  let resultCopyEvents = 0;
+  let resultShareEvents = 0;
+  let feedbackSubmitEvents = 0;
 
   rows.forEach((row) => {
     increment(topPaths, row.requestPath || 'unknown');
@@ -108,9 +113,12 @@ function buildReport(since, limit, rows) {
     if (row.requestPath === '/api/runtime-config/') runtimeConfigRequests += 1;
     if (row.requestPath === '/api/event/') eventRequests += 1;
     if (row.requestPath === '/api/lead/') leadRequests += 1;
+    if (row.requestPath === '/api/feedback/') feedbackRequests += 1;
 
     const payload = parseEmbeddedJson(row);
     if (!payload) return;
+    if (payload.event === 'codex_probe' || payload.source_param === 'codex_check') return;
+    if (payload.internal_traffic) return;
 
     increment(topEvents, payload.event || 'unknown');
     increment(topPages, payload.landing_page || 'unknown');
@@ -121,7 +129,11 @@ function buildReport(since, limit, rows) {
     if (payload.session_id) sessionIds.add(payload.session_id);
 
     if (payload.event === 'pv_page_view') pageViewEvents += 1;
+    if (payload.event === 'external_landing') externalLandingEvents += 1;
     if (payload.event === 'calculator_complete') calculatorCompleteEvents += 1;
+    if (payload.event === 'result_copy') resultCopyEvents += 1;
+    if (payload.event === 'result_share') resultShareEvents += 1;
+    if (payload.event === 'feedback_submit') feedbackSubmitEvents += 1;
     if (payload.event === 'lead_submit_success') {
       leadSubmitSuccessEvents += 1;
       increment(topLeadForms, payload.form_type || 'unknown');
@@ -140,9 +152,14 @@ function buildReport(since, limit, rows) {
     metrics: {
       event_requests: eventRequests,
       lead_requests: leadRequests,
+      feedback_requests: feedbackRequests,
       runtime_config_requests: runtimeConfigRequests,
       page_view_events: pageViewEvents,
       calculator_complete_events: calculatorCompleteEvents,
+      external_landing_events: externalLandingEvents,
+      result_copy_events: resultCopyEvents,
+      result_share_events: resultShareEvents,
+      feedback_submit_events: feedbackSubmitEvents,
       lead_submit_success_events: leadSubmitSuccessEvents,
       lead_submit_error_events: leadSubmitErrorEvents,
       unique_anonymous_ids: anonymousIds.size,
@@ -163,9 +180,14 @@ function printReport(report) {
   console.log(`- raw log rows: ${report.raw_log_rows}`);
   console.log(`- /api/event requests: ${report.metrics.event_requests}`);
   console.log(`- /api/lead requests: ${report.metrics.lead_requests}`);
+  console.log(`- /api/feedback requests: ${report.metrics.feedback_requests}`);
   console.log(`- /api/runtime-config requests: ${report.metrics.runtime_config_requests}`);
   console.log(`- pv_page_view events: ${report.metrics.page_view_events}`);
   console.log(`- calculator_complete events: ${report.metrics.calculator_complete_events}`);
+  console.log(`- external_landing events: ${report.metrics.external_landing_events}`);
+  console.log(`- result_copy events: ${report.metrics.result_copy_events}`);
+  console.log(`- result_share events: ${report.metrics.result_share_events}`);
+  console.log(`- feedback_submit events: ${report.metrics.feedback_submit_events}`);
   console.log(`- lead_submit_success events: ${report.metrics.lead_submit_success_events}`);
   console.log(`- lead_submit_error events: ${report.metrics.lead_submit_error_events}`);
   console.log(`- unique anonymous ids: ${report.metrics.unique_anonymous_ids}`);
