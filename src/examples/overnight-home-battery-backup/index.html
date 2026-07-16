@@ -14,6 +14,9 @@
     <a href="/calculators/battery-sizing/" class="text-sm font-semibold text-amber-600">PVSize battery calculator</a>
     <h1 class="text-3xl md:text-4xl font-bold text-slate-950 mt-4">What size battery for an overnight outage?</h1>
     <p class="mt-4 text-lg text-slate-600">A practical essential-load example for one night of backup power. It separates usable capacity from rated capacity.</p>
+    <div class="mt-5 rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-slate-700">
+      <strong class="text-slate-950">Technical feedback wanted:</strong> if the load mix, reserve margin, or depth-of-discharge assumption looks off, copy the result summary or share link and send a correction.
+    </div>
 
     <section class="mt-8 bg-white border border-slate-200 rounded-xl p-6">
       <h2 class="text-xl font-bold text-slate-950">Essential loads</h2>
@@ -42,6 +45,22 @@
       <p class="mt-2 text-slate-700">This preloads 5 kWh/day, one backup day, LiFePO4 chemistry, and 90% depth of discharge.</p>
       <a class="mt-5 inline-block rounded-lg bg-amber-500 px-5 py-3 font-bold text-slate-950" href="/calculators/battery-sizing/?daily_usage=5&backup_days=1&battery_type=lifepo4&dod=90&autocalc=1&utm_source=case_page&utm_medium=example&utm_campaign=battery_backup">Open prefilled battery calculator</a>
       <p class="mt-4 text-sm text-slate-600">You can edit the inputs, then copy or share the result if you want another technical opinion.</p>
+    </section>
+
+    <section class="mt-6 bg-white border border-slate-200 rounded-xl p-6">
+      <h2 class="text-xl font-bold text-slate-950">Related worked examples</h2>
+      <div class="mt-4 grid gap-3 sm:grid-cols-2">
+        <a class="rounded-lg border border-slate-200 p-4 hover:border-amber-400" href="/examples/1500-kwh-per-month-solar-panels/">
+          <div class="text-sm font-semibold text-amber-600">High usage home</div>
+          <div class="mt-1 font-bold text-slate-950">1,500 kWh/month panel count</div>
+          <div class="mt-1 text-sm text-slate-600">Useful if you want to compare backup sizing with whole-home panel count.</div>
+        </a>
+        <a class="rounded-lg border border-slate-200 p-4 hover:border-amber-400" href="/examples/off-grid-cabin-8-kwh-day/">
+          <div class="text-sm font-semibold text-amber-600">Off-grid case</div>
+          <div class="mt-1 font-bold text-slate-950">Off-grid cabin, 8 kWh/day</div>
+          <div class="mt-1 text-sm text-slate-600">Useful if you want a winter-sun and backup-days comparison.</div>
+        </a>
+      </div>
     </section>
   </main>
 </body>

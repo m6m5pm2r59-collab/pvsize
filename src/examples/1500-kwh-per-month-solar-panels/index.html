@@ -14,6 +14,9 @@
     <a href="/calculators/" class="text-sm font-semibold text-amber-600">PVSize calculators</a>
     <h1 class="text-3xl md:text-4xl font-bold text-slate-950 mt-4">How many solar panels for 1,500 kWh per month?</h1>
     <p class="mt-4 text-lg text-slate-600">A transparent worked example for a high-usage home. Change the sun-hours, panel wattage, and roof assumptions in the calculator link below.</p>
+    <div class="mt-5 rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-slate-700">
+      <strong class="text-slate-950">Technical feedback wanted:</strong> if the loss factor, sun-hours, or roof utilization looks off, copy the result summary or share link from the calculator and send the correction back.
+    </div>
 
     <section class="mt-8 bg-white border border-slate-200 rounded-xl p-6">
       <h2 class="text-xl font-bold text-slate-950">Scenario</h2>
@@ -45,6 +48,22 @@
         <a class="text-center rounded-lg border border-slate-300 bg-white px-5 py-3 font-bold text-slate-800" href="/calculators/battery-sizing/?daily_usage=50&backup_days=1&battery_type=lifepo4&dod=90&autocalc=1&utm_source=case_page&utm_medium=example&utm_campaign=panel_1500kwh">Check battery backup for this load</a>
       </div>
       <p class="mt-4 text-sm text-slate-600">If the assumptions feel off, copy the result summary or share link from the calculator and leave feedback on the estimate.</p>
+    </section>
+
+    <section class="mt-6 bg-white border border-slate-200 rounded-xl p-6">
+      <h2 class="text-xl font-bold text-slate-950">Related worked examples</h2>
+      <div class="mt-4 grid gap-3 sm:grid-cols-2">
+        <a class="rounded-lg border border-slate-200 p-4 hover:border-amber-400" href="/examples/overnight-home-battery-backup/">
+          <div class="text-sm font-semibold text-amber-600">Battery backup</div>
+          <div class="mt-1 font-bold text-slate-950">Overnight home battery backup</div>
+          <div class="mt-1 text-sm text-slate-600">Useful if the question is backup coverage rather than panel count.</div>
+        </a>
+        <a class="rounded-lg border border-slate-200 p-4 hover:border-amber-400" href="/examples/off-grid-cabin-8-kwh-day/">
+          <div class="text-sm font-semibold text-amber-600">Off-grid case</div>
+          <div class="mt-1 font-bold text-slate-950">Off-grid cabin, 8 kWh/day</div>
+          <div class="mt-1 text-sm text-slate-600">Useful if winter sun and backup margin matter more than annual average.</div>
+        </a>
+      </div>
     </section>
   </main>
 </body>
