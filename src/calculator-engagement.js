@@ -276,7 +276,7 @@
       });
     }));
     actions.appendChild(makeButton('Download / print result', function () {
-      track('result_share', { calculator_type: config.type, share_type: 'print' });
+      track('result_print', { calculator_type: config.type, print_type: 'result_tools' });
       window.print();
     }));
 

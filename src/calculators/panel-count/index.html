@@ -17,6 +17,7 @@
 </script>
 <script src="/pv-analytics.js" defer></script>
 <script src="/calculator-engagement.js" defer></script>
+<script src="/solar-project-flow.js" defer></script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -118,11 +119,13 @@
           </select>
         </div>
 
-        <!-- Panel Area Override -->
-        <div>
-          <label class="block text-sm font-semibold mb-1 text-gray-700">Panel Area (sq ft, auto-set by model)</label>
-          <input type="number" id="panelArea" class="border rounded-lg px-4 py-3 w-full" placeholder="Auto: 29.1 sq ft (700W panel)" step="0.1" />
-        </div>
+        <details class="rounded-xl border border-gray-200 bg-gray-50 p-4">
+          <summary class="cursor-pointer text-sm font-semibold text-gray-700">Advanced settings</summary>
+          <div class="mt-4">
+            <label class="block text-sm font-semibold mb-1 text-gray-700">Panel Area (sq ft, auto-set by model)</label>
+            <input type="number" id="panelArea" class="border rounded-lg px-4 py-3 w-full" placeholder="Auto: 29.1 sq ft (700W panel)" step="0.1" />
+          </div>
+        </details>
 
         <button id="calcBtn" class="w-full py-4 rounded-xl font-bold text-lg text-[#1a2a3a] hover:opacity-90 transition" style="background:#F5A623">
           Calculate

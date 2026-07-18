@@ -177,6 +177,14 @@ img { max-width: 100%; height: auto; }
   box-shadow: 0 6px 20px rgba(245,166,35,0.35);
   color: #fff;
 }
+.cta-secondary {
+  display: inline-block;
+  margin-top: 16px;
+  color: var(--text-primary);
+  font-weight: 700;
+  text-decoration: none;
+  border-bottom: 2px solid var(--primary);
+}
 
 /* ---- Calculator Grid ---- */
 .calculator-grid {
