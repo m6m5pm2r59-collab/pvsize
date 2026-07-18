@@ -6,77 +6,100 @@
     '/calculators/panel-count/': {
       type: 'panel_count',
       inputs: {
+        country: 'country',
+        monthly_kwh: 'monthlyKwh',
         roof_area: 'roofArea',
         area_unit: 'areaUnit',
         panel_wattage: 'panelWattage',
-        sun_hours: 'location',
+        sun_hours: 'sunHours',
+        system_loss: 'systemLoss',
+        electricity_rate: 'electricityRate',
         panel_area: 'panelArea'
       },
       inputLabels: {
+        country: 'Country defaults',
+        monthly_kwh: 'Monthly electricity use',
         roof_area: 'Roof area',
         area_unit: 'Area unit',
         panel_wattage: 'Panel wattage',
         sun_hours: 'Peak sun-hours',
+        system_loss: 'System losses',
+        electricity_rate: 'Electricity rate',
         panel_area: 'Panel area'
       },
-      results: ['panelCount', 'systemSize', 'annualGen', 'roofUtil'],
+      results: ['panelCount', 'maxPanelsFit', 'systemSize', 'annualGen'],
       labels: {
-        panelCount: 'Panels',
-        systemSize: 'System size',
-        annualGen: 'Annual generation',
-        roofUtil: 'Roof utilization'
+        panelCount: 'Panels needed for usage',
+        maxPanelsFit: 'Maximum panels that fit',
+        systemSize: 'Target system size',
+        annualGen: 'Target annual generation'
       },
-      assumptions: 'Uses usable roof area, selected panel wattage, location sun-hours, and real-world system losses.',
+      assumptions: 'Uses monthly electricity use, selected panel wattage, editable peak sun-hours and system losses, plus 75% of gross roof area as a planning allowance.',
       boundary: 'Planning estimate only. Roof setbacks, shade, code rules, structural limits, inverter selection, and installer layout can change the final design.'
     },
     '/calculators/battery-sizing/': {
       type: 'battery_sizing',
       inputs: {
+        country: 'country',
+        load_mode: 'loadMode',
+        backup_hours: 'backupHours',
+        custom_load_kw: 'customLoadKw',
         daily_usage: 'dailyUsage',
-        backup_days: 'backupDays',
         battery_type: 'batteryType',
-        dod: 'dod'
+        dod: 'dod',
+        reserve: 'reserve'
       },
       inputLabels: {
+        country: 'Country context',
+        load_mode: 'Load profile',
+        backup_hours: 'Backup hours',
+        custom_load_kw: 'Custom load',
         daily_usage: 'Daily usage',
-        backup_days: 'Backup days',
         battery_type: 'Battery type',
-        dod: 'Depth of discharge'
+        dod: 'Depth of discharge',
+        reserve: 'Reserve margin'
       },
-      results: ['usableCapacity', 'totalCapacity', 'estCost', 'equivUnits'],
+      results: ['estimatedLoad', 'backupDuration', 'usableCapacity', 'totalCapacity'],
       labels: {
+        estimatedLoad: 'Estimated continuous load',
+        backupDuration: 'Backup duration',
         usableCapacity: 'Usable capacity',
-        totalCapacity: 'Total rated capacity',
-        estCost: 'Estimated cost',
-        equivUnits: 'Equivalent units'
+        totalCapacity: 'Suggested nominal capacity'
       },
-      assumptions: 'Uses daily energy, backup days, battery chemistry, depth of discharge, and rough installed cost assumptions.',
+      assumptions: 'Uses a selected critical-load profile or custom load, backup hours, 92% inverter efficiency, depth of discharge, and reserve margin.',
       boundary: 'Planning estimate only. Inverter limits, surge loads, code equipment, temperature, warranty settings, and actual load lists can change the final system.'
     },
     '/calculators/savings/': {
       type: 'savings',
       inputs: {
+        country: 'country',
         monthly_bill: 'monthlyBill',
-        rate: 'rateSelect',
-        custom_rate: 'rateCustom',
+        monthly_kwh: 'monthlyKwh',
+        electricity_rate: 'electricityRate',
+        sun_hours: 'sunHours',
+        system_loss: 'systemLoss',
         system_kw: 'systemSize',
         system_cost: 'systemCost'
       },
       inputLabels: {
+        country: 'Country defaults',
         monthly_bill: 'Monthly bill',
-        rate: 'Electricity rate preset',
-        custom_rate: 'Custom electricity rate',
+        monthly_kwh: 'Monthly electricity use',
+        electricity_rate: 'Electricity rate',
+        sun_hours: 'Peak sun-hours',
+        system_loss: 'System losses',
         system_kw: 'System size',
         system_cost: 'System cost'
       },
-      results: ['annualSavings', 'monthlySavings', 'paybackYears', 'savings25yr'],
+      results: ['annualGen', 'annualSavings', 'monthlySavings', 'paybackYears', 'savings25yr'],
       labels: {
+        annualGen: 'Annual solar generation',
         annualSavings: 'Annual savings',
         monthlySavings: 'Monthly savings',
         paybackYears: 'Payback period',
         savings25yr: '25-year savings'
       },
-      assumptions: 'Uses monthly bill, electricity rate, system size, estimated cost, 5 peak sun-hours, and 78% system efficiency.',
+      assumptions: 'Uses monthly electricity use and bill, electricity rate, system size, editable peak sun-hours and system losses, and optional installed cost.',
       boundary: 'Planning estimate only. Net metering, incentives, degradation, rate changes, roof layout, and local utility rules can change real savings.'
     },
     '/calculators/carbon/': {
@@ -147,6 +170,7 @@
   }
 
   function collectSummary(config) {
+    if (window.PVCalculatorSummary) return window.PVCalculatorSummary + '\n\nShare link: ' + buildShareUrl(config);
     var parts = ['Technical feedback wanted: assumptions are editable and easy to challenge.', 'PVSize result'];
     var inputs = collectInputs(config);
     config.results.forEach(function (id) {
@@ -172,6 +196,11 @@
 
   function buildShareUrl(config) {
     var url = new URL(window.location.origin + window.location.pathname);
+    if (window.PVCalculationState) {
+      window.PVCalculationState.toSearchParams().forEach(function (value, key) {
+        url.searchParams.set(key, value);
+      });
+    }
     var inputs = collectInputs(config);
     Object.keys(inputs).forEach(function (key) {
       url.searchParams.set(key, inputs[key]);
@@ -251,7 +280,7 @@
     container.innerHTML =
       '<div class="flex flex-col gap-4">' +
       '<div><h4 class="text-sm font-bold text-slate-900">Use or share this result</h4>' +
-      '<p class="text-xs text-slate-500 mt-1">Copy the estimate, share a link with the same inputs, print it, or leave quick feedback.</p></div>' +
+      '<p class="text-xs text-slate-500 mt-1">Copy the estimate, share a link with the same non-sensitive inputs, print it, or leave quick feedback.</p></div>' +
       '<div data-pv-result-actions class="grid sm:grid-cols-3 gap-3"></div>' +
       '<div class="border-t border-slate-100 pt-4">' +
       '<p class="text-sm font-semibold text-slate-800 mb-3">Was this estimate useful?</p>' +
@@ -275,7 +304,7 @@
         track('result_share', { calculator_type: config.type, share_type: 'copy_link' });
       });
     }));
-    actions.appendChild(makeButton('Download / print result', function () {
+    actions.appendChild(makeButton('Print / save summary', function () {
       track('result_print', { calculator_type: config.type, print_type: 'result_tools' });
       window.print();
     }));

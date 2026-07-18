@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How Many Solar Panels for 1,000 kWh per Month? | PVSize</title>
+  <meta name="description" content="Direct solar sizing answer for 1,000 kWh per month with panel counts for 350W, 400W, and 450W panels, sun-hour sensitivity, formula, roof area, and next steps.">
+  <link rel="canonical" href="https://pvsize.com/guides/solar-panels-for-1000-kwh-per-month/">
+  <link rel="stylesheet" href="/guide-pages.css">
+  <script src="/pv-analytics.js" defer></script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebPage","name":"How Many Solar Panels for 1,000 kWh per Month?","url":"https://pvsize.com/guides/solar-panels-for-1000-kwh-per-month/","description":"A transparent worked solar sizing answer for 1,000 kWh of monthly electricity use.","isPartOf":{"@type":"WebSite","name":"PVSize","url":"https://pvsize.com/"},"breadcrumb":{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://pvsize.com/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://pvsize.com/learn/"},{"@type":"ListItem","position":3,"name":"Solar panels for 1,000 kWh per month","item":"https://pvsize.com/guides/solar-panels-for-1000-kwh-per-month/"}]}}
+  </script>
+</head>
+<body>
+  <nav class="site-nav"><div class="nav-inner"><a class="brand" href="/">PVSize</a><div class="nav-links"><a href="/calculators/">Calculators</a><a href="/data/monthly-electricity-usage-solar-panel-count/">Sizing data</a><a href="/technical-feedback/">Technical feedback</a></div></div></nav>
+  <header class="hero"><div class="hero-inner">
+    <p class="eyebrow">Specific sizing answer</p>
+    <h1>How many solar panels for 1,000 kWh per month?</h1>
+    <p class="answer"><strong>Direct answer:</strong> plan on about 19-30 x 400W panels across 5.5 to 3.5 peak sun hours/day. A medium-sun example at 4.5 hours and 20% losses needs about 9.1 kW, rounded to <strong>23 x 400W panels</strong> with roughly 431 sq ft of module surface, or about 575 sq ft of gross roof at 75% usable area.</p>
+  </div></header>
+  <main class="page">
+    <div class="breadcrumbs"><a href="/">Home</a> / <a href="/learn/">Guides</a> / 1,000 kWh per month</div>
+    <div class="metric-grid">
+      <div class="metric"><strong>9.13 kW</strong><span>required capacity at 4.5 sun hours</span></div>
+      <div class="metric"><strong>23 x 400W</strong><span>rounded installed capacity: 9.20 kW</span></div>
+      <div class="metric"><strong>431 / 575 sq ft</strong><span>module surface / gross roof at 75% usable</span></div>
+    </div>
+
+    <h2>Panel count by sun level and panel wattage</h2>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Peak sun hours/day</th><th>350W</th><th>400W</th><th>450W</th></tr></thead>
+      <tbody>
+        <tr><td><strong>3.5 low-sun</strong></td><td>34 panels / 11.90 kW</td><td>30 panels / 12.00 kW</td><td>27 panels / 12.15 kW</td></tr>
+        <tr><td><strong>4.5 medium-sun</strong></td><td>27 panels / 9.45 kW</td><td>23 panels / 9.20 kW</td><td>21 panels / 9.45 kW</td></tr>
+        <tr><td><strong>5.5 high-sun</strong></td><td>22 panels / 7.70 kW</td><td>19 panels / 7.60 kW</td><td>17 panels / 7.65 kW</td></tr>
+      </tbody>
+    </table></div>
+    <p class="source-note">All rows target 12,000 kWh/year and use 20% aggregate losses. Panel count is rounded up, so installed DC capacity is slightly above the unrounded requirement.</p>
+
+    <h2>Formula and worked calculation</h2>
+    <div class="formula">1,000 x 12 / (365 x 4.5 x 0.80) = 9.13 kW</div>
+    <p>Divide 9.13 kW by 0.40 kW per panel: 22.83. Since part of a panel cannot be installed, round up to 23 panels. The result is a 9.20 kW DC array. Using the current PVSize 400W module footprint of 18.7 sq ft, the panels themselves occupy about 431 sq ft.</p>
+
+    <h2>Country and regional parameters to replace</h2>
+    <ul>
+      <li><strong>United States:</strong> test roughly 3.5-5.5 peak sun hours, then verify local net metering, snow, shading, setbacks, and utility data.</li>
+      <li><strong>Australia:</strong> test roughly 4.0-5.5 hours and verify export limits, inverter sizing, orientation, and network requirements.</li>
+      <li><strong>United Kingdom:</strong> test roughly 2.5-3.5 hours and use a wider seasonal production check before treating annual average output as winter coverage.</li>
+    </ul>
+    <div class="boundary"><strong>Error boundary:</strong> this is an annual energy-offset estimate, not a guarantee that every monthly bill reaches zero. Seasonal production, self-consumption, export compensation, shade, panel degradation, clipping, roof geometry, and utility rules can change the result.</div>
+
+    <section class="cta-band">
+      <h2>Run the estimate through the project flow</h2>
+      <p>The first link opens a prefilled roof-fit calculation. Automatic replay may show a result, but it does not count as a human calculator start or completion. Edit an input or click Calculate for a human action.</p>
+      <div class="cta-row">
+        <a class="button" href="/calculators/panel-count/?monthly_kwh=1000&roof_area=575&area_unit=sqft&panel_wattage=400&sun_hours=4.5&system_loss=20&autocalc=1&utm_source=guide&utm_medium=internal&utm_campaign=1000kwh_to_panel_count">Check need vs roof fit</a>
+        <a class="button secondary" href="/calculators/savings/?monthly_kwh=1000&system_kw=9.2&sun_hours=4.5&system_loss=20&utm_source=guide&utm_medium=internal&utm_campaign=1000kwh_to_savings">Estimate 9.2 kW savings</a>
+        <a class="button secondary" href="/technical-feedback/?utm_source=guide&utm_medium=internal&utm_campaign=1000kwh_feedback">Challenge the assumptions</a>
+      </div>
+    </section>
+
+    <h2>Continue with related evidence</h2>
+    <div class="path-grid">
+      <div class="path-card"><strong>Full comparison table</strong><a href="/data/monthly-electricity-usage-solar-panel-count/">Compare 500-3,000 kWh/month</a></div>
+      <div class="path-card"><strong>Battery next step</strong><a href="/guides/battery-size-for-8-hour-outage/">Size an 8-hour outage load</a></div>
+      <div class="path-card"><strong>System range</strong><a href="/guides/5kw-vs-10kw-solar-system/">Compare 5 kW and 10 kW</a></div>
+    </div>
+    <p class="source-note">Last reviewed July 18, 2026. Planning estimate only; no price, rebate, installation, or engineering result is promised.</p>
+  </main>
+  <footer class="site-footer"><div class="footer-inner">PVSize provides free, editable planning estimates. A qualified local professional should verify final system design.</div></footer>
+</body>
+</html>

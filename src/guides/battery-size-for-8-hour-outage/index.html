@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>What Battery Size for an 8-Hour Outage? | PVSize</title>
+  <meta name="description" content="Calculate battery size for an 8-hour outage from average essential load, usable energy, depth of discharge, chemistry, and surge limits with worked examples.">
+  <link rel="canonical" href="https://pvsize.com/guides/battery-size-for-8-hour-outage/">
+  <link rel="stylesheet" href="/guide-pages.css">
+  <script src="/pv-analytics.js" defer></script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebPage","name":"What Battery Size for an 8-Hour Outage?","url":"https://pvsize.com/guides/battery-size-for-8-hour-outage/","description":"Worked battery sizing examples for an eight-hour outage.","isPartOf":{"@type":"WebSite","name":"PVSize","url":"https://pvsize.com/"},"breadcrumb":{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://pvsize.com/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://pvsize.com/learn/"},{"@type":"ListItem","position":3,"name":"Battery size for an 8-hour outage","item":"https://pvsize.com/guides/battery-size-for-8-hour-outage/"}]}}
+  </script>
+</head>
+<body>
+  <nav class="site-nav"><div class="nav-inner"><a class="brand" href="/">PVSize</a><div class="nav-links"><a href="/calculators/battery-sizing/">Battery calculator</a><a href="/calculators/panel-count/">Panel count</a><a href="/technical-feedback/">Technical feedback</a></div></div></nav>
+  <header class="hero"><div class="hero-inner">
+    <p class="eyebrow">Specific backup answer</p>
+    <h1>What battery size do I need for an 8-hour outage?</h1>
+    <p class="answer"><strong>Direct answer:</strong> multiply average essential-load kW by 8 hours, then adjust for inverter efficiency, usable depth of discharge, and reserve. A steady 1.0 kW load needs 8 kWh delivered; at 92% inverter efficiency, 90% depth of discharge, and 10% reserve, start near <strong>10.7 kWh nominal battery capacity</strong>.</p>
+  </div></header>
+  <main class="page">
+    <div class="breadcrumbs"><a href="/">Home</a> / <a href="/learn/">Guides</a> / 8-hour outage battery</div>
+    <div class="metric-grid">
+      <div class="metric"><strong>1.0 kW</strong><span>example average essential load</span></div>
+      <div class="metric"><strong>8.7 kWh</strong><span>usable battery after inverter loss</span></div>
+      <div class="metric"><strong>10.7 kWh</strong><span>nominal with DoD and reserve</span></div>
+    </div>
+
+    <h2>Battery size by average essential load</h2>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Average essential load</th><th>8-hour delivered energy</th><th>LiFePO4 nominal</th><th>Lead-acid nominal</th></tr></thead>
+      <tbody>
+        <tr><td><strong>0.5 kW</strong></td><td>4.0 kWh</td><td>5.4 kWh</td><td>9.7 kWh</td></tr>
+        <tr><td><strong>1.0 kW</strong></td><td>8.0 kWh</td><td>10.7 kWh</td><td>19.3 kWh</td></tr>
+        <tr><td><strong>1.5 kW</strong></td><td>12.0 kWh</td><td>16.1 kWh</td><td>29.0 kWh</td></tr>
+        <tr><td><strong>2.0 kW</strong></td><td>16.0 kWh</td><td>21.5 kWh</td><td>38.6 kWh</td></tr>
+      </tbody>
+    </table></div>
+    <p class="source-note">The table matches the calculator defaults: 92% inverter efficiency, selected depth of discharge, and 10% reserve. Temperature, aging, surge, and code constraints remain outside this energy-only estimate.</p>
+
+    <h2>Formula and worked calculation</h2>
+    <div class="formula">nominal battery kWh = (load kW x hours) / inverter efficiency / depth of discharge / (1 - reserve)</div>
+    <p>For a 1.0 kW average essential load: 1.0 x 8 = 8.0 kWh delivered. Then 8.0 / 0.92 / 0.90 / 0.90 = 10.73 kWh nominal. A practical product selection may round above that number.</p>
+    <h3>Build the load from appliances, not the main breaker</h3>
+    <ul>
+      <li>Refrigerator: use measured average energy plus compressor starting surge.</li>
+      <li>Lights, router, electronics, and fans: add watts for the hours each item will run.</li>
+      <li>Well pump, sump pump, air conditioner, heat pump, or electric heating: check inverter surge and continuous power separately from battery kWh.</li>
+      <li>Do not assume a whole home consumes its utility-service rating continuously.</li>
+    </ul>
+
+    <h2>Country and regional parameters to check</h2>
+    <ul>
+      <li><strong>United States:</strong> verify transfer equipment, critical-load panel design, local code, and whether the battery can operate during grid outage.</li>
+      <li><strong>Australia:</strong> verify inverter approval, backup-circuit limits, network requirements, and heat derating.</li>
+      <li><strong>United Kingdom:</strong> verify EPS/backup output, installer design, winter load, and equipment certification.</li>
+    </ul>
+    <div class="boundary"><strong>Error boundary:</strong> energy capacity alone does not prove that a battery can start a pump, compressor, or motor. Confirm inverter continuous kW, surge kW, transfer behavior, battery current limits, temperature range, and code requirements.</div>
+
+    <section class="cta-band">
+      <h2>Run the battery estimate, then check the solar side</h2>
+      <p>The prefilled calculator represents 8 kWh of essential outage energy for one planning period. Its result tools provide a reproducible link and Solar Project Summary.</p>
+      <div class="cta-row">
+        <a class="button" href="/calculators/battery-sizing/?load_mode=custom&custom_load_kw=1&backup_hours=8&battery_type=lifepo4&dod=90&reserve=10&autocalc=1&utm_source=guide&utm_medium=internal&utm_campaign=8hour_outage_to_battery">Open the 8-hour battery example</a>
+        <a class="button secondary" href="/calculators/panel-count/?utm_source=guide&utm_medium=internal&utm_campaign=8hour_outage_to_panel">Check required panels</a>
+        <a class="button secondary" href="/calculators/savings/?utm_source=guide&utm_medium=internal&utm_campaign=8hour_outage_to_savings">Estimate annual savings</a>
+        <a class="button secondary" href="/technical-feedback/?utm_source=guide&utm_medium=internal&utm_campaign=8hour_outage_feedback">Review the assumptions</a>
+      </div>
+    </section>
+
+    <h2>Related planning paths</h2>
+    <div class="path-grid">
+      <div class="path-card"><strong>Worked outage scenario</strong><a href="/examples/overnight-home-battery-backup/">Review overnight home backup</a></div>
+      <div class="path-card"><strong>Off-grid scenario</strong><a href="/examples/off-grid-cabin-8-kwh-day/">Review an 8 kWh/day cabin</a></div>
+      <div class="path-card"><strong>System comparison</strong><a href="/guides/5kw-vs-10kw-solar-system/">Compare solar system sizes</a></div>
+    </div>
+    <p class="source-note">Last reviewed July 18, 2026. Planning estimate only; no equipment compatibility or installation result is promised.</p>
+  </main>
+  <footer class="site-footer"><div class="footer-inner">PVSize provides free, editable planning estimates. A qualified local professional should verify battery and inverter design.</div></footer>
+</body>
+</html>

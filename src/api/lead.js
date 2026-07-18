@@ -135,6 +135,15 @@ function buildPayload(formType, body, source) {
     payload.set('message', cleanString(body.message, 2000));
   } else {
     payload.set('calculator_type', cleanString(body.calculatorType || body.calculator_type, 80));
+    var estimateSummary = cleanString(body.estimate_summary, 4000);
+    if (estimateSummary) {
+      payload.set('estimate_summary', estimateSummary);
+      payload.set(
+        '_autoresponse',
+        'Your PVSize planning estimate\n\n' + estimateSummary +
+        '\n\nThis is a planning estimate, not an installation quote, engineering design, or financial promise. Your email was not submitted for installer matching.'
+      );
+    }
   }
 
   return payload;

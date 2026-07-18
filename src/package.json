@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
+    "audit:indexing": "node tools/audit-indexing.js",
     "audit:city": "node tools/audit-city-pages.js",
     "clean:city-review": "node tools/clean-reviewed-city-pages.js",
     "enforce:city-index": "node tools/enforce-city-index-policy.js",

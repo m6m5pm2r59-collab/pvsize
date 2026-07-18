@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solar System Size for Home EV Charging | PVSize</title>
+  <meta name="description" content="Calculate home solar size with EV charging from daily miles, vehicle efficiency, charging losses, home electricity use, peak sun hours, and system losses.">
+  <link rel="canonical" href="https://pvsize.com/guides/solar-system-size-for-home-ev-charging/">
+  <link rel="stylesheet" href="/guide-pages.css">
+  <script src="/pv-analytics.js" defer></script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebPage","name":"Solar System Size for Home EV Charging","url":"https://pvsize.com/guides/solar-system-size-for-home-ev-charging/","description":"A worked solar sizing method that adds EV charging energy to household electricity use.","isPartOf":{"@type":"WebSite","name":"PVSize","url":"https://pvsize.com/"},"breadcrumb":{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://pvsize.com/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://pvsize.com/learn/"},{"@type":"ListItem","position":3,"name":"Solar system size for home EV charging","item":"https://pvsize.com/guides/solar-system-size-for-home-ev-charging/"}]}}
+  </script>
+</head>
+<body>
+  <nav class="site-nav"><div class="nav-inner"><a class="brand" href="/">PVSize</a><div class="nav-links"><a href="/calculators/panel-count/">Panel count</a><a href="/calculators/savings/">Savings</a><a href="/data/monthly-electricity-usage-solar-panel-count/">Sizing data</a></div></div></nav>
+  <header class="hero"><div class="hero-inner">
+    <p class="eyebrow">Specific electrification answer</p>
+    <h1>What solar system size is needed for home EV charging?</h1>
+    <p class="answer"><strong>Direct answer:</strong> calculate EV charging kWh and add it to home use before sizing solar. At 30 miles/day, 0.30 kWh/mile, and 10% charging losses, the EV adds about 297 kWh/month. Added to a 900 kWh/month home, a medium-sun estimate needs about <strong>10.9 kW</strong>, rounded to 28 x 400W panels.</p>
+  </div></header>
+  <main class="page">
+    <div class="breadcrumbs"><a href="/">Home</a> / <a href="/learn/">Guides</a> / Home EV charging</div>
+    <div class="metric-grid">
+      <div class="metric"><strong>297 kWh/month</strong><span>EV charging in the worked example</span></div>
+      <div class="metric"><strong>1,197 kWh/month</strong><span>home plus EV total</span></div>
+      <div class="metric"><strong>28 x 400W</strong><span>11.2 kW rounded array</span></div>
+    </div>
+
+    <h2>Step 1: estimate EV charging energy</h2>
+    <div class="formula">EV kWh/month = daily miles x kWh/mile x 30 x charging-loss factor</div>
+    <p>Worked example: 30 miles/day x 0.30 kWh/mile x 30 days x 1.10 = 297 kWh/month. Replace 0.30 with the vehicle's observed wall-to-wheel energy where available; weather, speed, tires, towing, and cabin heating or cooling change real consumption.</p>
+
+    <h2>Step 2: add home use and size solar</h2>
+    <div class="formula">required kW = (home kWh + EV kWh) x 12 / (365 x sun hours x 0.80)</div>
+    <p>Worked example: (900 + 297) x 12 / (365 x 4.5 x 0.80) = 10.93 kW. Dividing by 0.40 kW gives 27.3 panels, rounded up to <strong>28 x 400W panels</strong>. Installed DC capacity is 11.2 kW and module surface is about 524 sq ft. At the calculator's 75% usable-roof assumption, the gross roof check starts near 699 sq ft.</p>
+
+    <h2>EV load sensitivity</h2>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Driving pattern</th><th>EV assumptions</th><th>Added monthly use</th><th>Added solar at 4.5 sun hours</th></tr></thead>
+      <tbody>
+        <tr><td><strong>15 miles/day</strong></td><td>0.30 kWh/mile, 10% loss</td><td>149 kWh</td><td>About 1.36 kW</td></tr>
+        <tr><td><strong>30 miles/day</strong></td><td>0.30 kWh/mile, 10% loss</td><td>297 kWh</td><td>About 2.71 kW</td></tr>
+        <tr><td><strong>50 miles/day</strong></td><td>0.30 kWh/mile, 10% loss</td><td>495 kWh</td><td>About 4.52 kW</td></tr>
+      </tbody>
+    </table></div>
+
+    <h2>Country and regional parameters to check</h2>
+    <ul>
+      <li><strong>United States:</strong> compare home utility interval data, EV tariff or time-of-use rate, net metering, roof fit, and seasonal driving.</li>
+      <li><strong>Australia:</strong> check daytime charging potential, export limits, controlled loads, inverter limits, and high-temperature production.</li>
+      <li><strong>United Kingdom:</strong> check off-peak EV tariffs, winter driving efficiency, seasonal solar yield, export terms, and roof orientation.</li>
+    </ul>
+    <div class="boundary"><strong>Error boundary:</strong> annual solar energy does not ensure that the car charges directly from solar at night. Charging time, grid import/export rules, battery storage, charger power, household demand, and seasonal output determine actual grid interaction and savings.</div>
+
+    <section class="cta-band">
+      <h2>Check roof fit, savings, and the next project step</h2>
+      <p>The prefilled roof-fit link represents the 28-panel example. After calculating, use the built-in next-step links and Solar Project Summary to move into Savings or Battery Sizing.</p>
+      <div class="cta-row">
+        <a class="button" href="/calculators/panel-count/?monthly_kwh=1197&roof_area=699&area_unit=sqft&panel_wattage=400&sun_hours=4.5&system_loss=20&autocalc=1&utm_source=guide&utm_medium=internal&utm_campaign=ev_charging_to_panel_count">Check need vs roof fit</a>
+        <a class="button secondary" href="/calculators/savings/?monthly_kwh=1197&system_kw=11.2&sun_hours=4.5&system_loss=20&utm_source=guide&utm_medium=internal&utm_campaign=ev_charging_to_savings">Estimate 11.2 kW savings</a>
+        <a class="button secondary" href="/calculators/battery-sizing/?utm_source=guide&utm_medium=internal&utm_campaign=ev_charging_to_battery">Consider battery timing</a>
+        <a class="button secondary" href="/technical-feedback/?utm_source=guide&utm_medium=internal&utm_campaign=ev_charging_feedback">Review the assumptions</a>
+      </div>
+    </section>
+
+    <h2>Related planning evidence</h2>
+    <div class="path-grid">
+      <div class="path-card"><strong>Usage reference</strong><a href="/data/monthly-electricity-usage-solar-panel-count/">Compare monthly kWh and panel count</a></div>
+      <div class="path-card"><strong>System comparison</strong><a href="/guides/5kw-vs-10kw-solar-system/">Compare 5 kW and 10 kW</a></div>
+      <div class="path-card"><strong>Backup load</strong><a href="/guides/battery-size-for-8-hour-outage/">Size an 8-hour outage battery</a></div>
+    </div>
+    <p class="source-note">Last reviewed July 18, 2026. Planning estimate only; vehicle, tariff, price, and installation outcomes are not promised.</p>
+  </main>
+  <footer class="site-footer"><div class="footer-inner">PVSize provides free, editable planning estimates. Verify final solar, charger, battery, and electrical design locally.</div></footer>
+</body>
+</html>

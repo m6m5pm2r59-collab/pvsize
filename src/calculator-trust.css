@@ -1,0 +1,123 @@
+.pv-progress {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin: 0 auto 22px;
+  max-width: 760px;
+}
+
+.pv-progress span {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 10px;
+  border: 1px solid #dbe3ea;
+  background: #fff;
+  color: #64748b;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.pv-progress span[aria-current="step"] {
+  border-color: #f5a623;
+  background: #fff7e6;
+  color: #1a2a3a;
+}
+
+.pv-result-compare {
+  margin-top: 18px;
+  padding: 18px;
+  border: 1px solid #dbe3ea;
+  background: #fff;
+}
+
+.pv-result-compare h4 {
+  color: #1a2a3a;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.pv-meter-row {
+  display: grid;
+  grid-template-columns: minmax(110px, 160px) 1fr minmax(48px, auto);
+  gap: 10px;
+  align-items: center;
+  margin-top: 12px;
+  color: #475569;
+  font-size: 0.82rem;
+}
+
+.pv-meter-track {
+  height: 12px;
+  overflow: hidden;
+  border: 1px solid #dbe3ea;
+  background: #eef2f6;
+}
+
+.pv-meter-fill {
+  height: 100%;
+  width: 0;
+  background: #f5a623;
+  transition: width 180ms ease;
+}
+
+.pv-meter-fill.secondary { background: #0f766e; }
+.pv-meter-fill.limit { background: #b45309; }
+
+.pv-trust-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.pv-trust-card {
+  padding: 14px;
+  border: 1px solid #dbe3ea;
+  background: #fff;
+  color: #475569;
+  font-size: 0.78rem;
+  line-height: 1.55;
+}
+
+.pv-trust-card strong {
+  display: block;
+  margin-bottom: 5px;
+  color: #1a2a3a;
+}
+
+.pv-result-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.pv-result-actions a {
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 16px;
+  text-align: center;
+  font-weight: 800;
+}
+
+@media (max-width: 640px) {
+  .pv-progress span { font-size: 0.7rem; padding: 7px 4px; }
+  .pv-meter-row { grid-template-columns: 1fr auto; }
+  .pv-meter-track { grid-column: 1 / -1; grid-row: 2; }
+  .pv-trust-grid, .pv-result-actions { grid-template-columns: 1fr; }
+}
+
+@media print {
+  nav, #pv-main-hero, #pv-share-strip, #pv-lead-capture, #pv-installer-cta, #pv-site-footer,
+  #calcBtn, .pv-result-actions, #pv-result-tools button, [data-pv-feedback-buttons],
+  [data-pv-feedback-text], [data-pv-feedback-submit] { display: none !important; }
+  body { background: #fff !important; }
+  #pv-calculator-shell { padding: 0 !important; max-width: none !important; }
+  #pv-calculator-shell > div { box-shadow: none !important; padding: 0 !important; }
+  #results { display: block !important; }
+}

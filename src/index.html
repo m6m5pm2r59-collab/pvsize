@@ -30,6 +30,8 @@
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "xczyltw8tn");
 </script>
+<script src="/pv-analytics.js" defer></script>
+<script src="/calculation-state.js" defer></script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -101,9 +103,24 @@
 
 <!-- ===== HERO ===== -->
 <section class="hero">
-  <h1>Calculate your solar system size, battery needs and savings in minutes.</h1>
-  <p>Start with panel count, then carry the estimate into savings and battery sizing. Free planning estimates with editable assumptions.</p>
-  <a href="/calculators/panel-count/?utm_source=homepage&utm_medium=hero_cta&utm_campaign=core_flow" class="cta-btn">Start with panel count →</a>
+  <h1>Find the solar system size your home needs</h1>
+  <p>Start with electricity use, compare the target with your roof, then carry the same assumptions into savings and battery backup.</p>
+  <form id="homeSolarStart" class="hero-start-form">
+    <div>
+      <label for="homeMonthlyKwh">Monthly electricity use (kWh)</label>
+      <input id="homeMonthlyKwh" name="monthly_kwh" type="number" min="1" step="1" value="1000" inputmode="decimal" required>
+    </div>
+    <div>
+      <label for="homeCountry">Country defaults</label>
+      <select id="homeCountry" name="country">
+        <option value="us">United States</option>
+        <option value="au">Australia</option>
+        <option value="uk">United Kingdom</option>
+      </select>
+    </div>
+    <button type="submit" class="cta-btn">Start with monthly electricity usage</button>
+  </form>
+  <p class="hero-note">No signup. Inputs stay editable. Planning estimate only.</p>
 </section>
 
 <!-- ===== CALCULATOR HUB ===== -->
@@ -116,7 +133,7 @@
   <rect x="34" y="34" width="28" height="28" rx="3" fill="#F5A623" stroke="#1a2a3a" stroke-width="1.5"/>
 </svg></div>
     <h3>Panel Count</h3>
-    <p>Calculate how many panels fit your roof</p>
+    <p>Compare panels required by usage with the maximum that fits your roof</p>
     <span class="calc-action">Try Now →</span>
   </a>
 
@@ -181,67 +198,19 @@
   </div>
 </section>
 
-<!-- 广告位：卡片区下方 -->
-<div class="ad-placeholder" style="max-width:1100px;margin:0 auto 48px;padding:0 24px;"><span>Ad</span></div>
-
-<!-- ===== QUICK ESTIMATOR ===== -->
-<section class="quick-estimator" id="quick-estimator">
-  <h3>Quick Estimator</h3>
-  <p class="qe-subtitle">Instantly calculate your solar needs</p>
-  <p class="qe-subtitle" style="max-width:740px;margin:0 auto 24px;color:#475569">Every calculator is free to use, editable from the URL or inputs, and designed so you can copy or share the result before deciding whether to request a detailed plan.</p>
-
-  <div class="qe-row">
-    <div class="qe-field">
-      <label for="qe-state">State</label>
-      <select id="qe-state"><option value="">-- Select State --</option></select>
-    </div>
-    <div class="qe-field">
-      <label for="qe-home-size">Home Size</label>
-      <select id="qe-home-size">
-        <option value="">-- Select Size --</option>
-        <option value="1000">Small (under 1,500 sq ft)</option>
-        <option value="2000">Medium (1,500-2,500 sq ft)</option>
-        <option value="3000">Large (2,500+ sq ft)</option>
-      </select>
-    </div>
-    <div class="qe-field">
-      <label for="qe-bill">Monthly Electric Bill</label>
-      <select id="qe-bill">
-        <option value="">-- Select Range --</option>
-        <option value="100">Under $100</option>
-        <option value="175">$100-$250</option>
-        <option value="300">$250+</option>
-      </select>
-    </div>
-  </div>
-
-  <div class="qe-result" id="qe-result" style="display:none;">
-    <div class="value" id="qe-panels">--</div>
-    <div class="label">Solar Panels Needed</div>
-    <div style="margin-top:12px;">
-      <div class="value" id="qe-savings" style="font-size:1.4rem;">--</div>
-      <div class="label">Estimated Annual Savings</div>
-    </div>
-  </div>
-</section>
-
 <!-- ===== WHY PVSIZE ===== -->
 <section class="content-section">
   <div class="why-pvsize-wrapper">
     <div class="why-pvsize-text">
-      <h2>Why PVSize?</h2>
-      <p><strong>Data-Driven.</strong> We use public utility-rate references, solar-yield assumptions, and panel specification inputs to produce planning estimates. Where a calculation depends on a source or assumption, we show that context on the relevant calculator page.</p>
-      <p><strong>Free &amp; Transparent.</strong> No signup, no installer calls, no hidden fees. We provide the numbers and let you make informed decisions — whether you're sizing panels for your roof, calculating battery storage, or estimating your carbon offset. Start with the Quick Estimator above or dive into any of our specialized calculators.</p>
+      <h2>How the estimate stays consistent</h2>
+      <p><strong>One calculation state.</strong> Country, monthly use, electricity rate, sun-hours, panel wattage, losses, and roof area carry through Panel Count, Savings, and Battery Sizing. You can edit them at every step.</p>
+      <p><strong>Visible boundaries.</strong> Each result shows its formula basis, assumptions, and limitations. PVSize does not promise installer quotes, installation outcomes, or engineering approval.</p>
       <div style="margin-top:18px;padding:16px;border:1px solid #e2e8f0;border-radius:12px;background:#fffaf0;font-size:0.92rem;color:#475569">
-        <p><strong>Assumptions:</strong> Quick estimates are planning inputs, not engineering or financial promises.</p>
+        <p><strong>Assumptions:</strong> Country defaults are starting points, not claims about a specific roof or utility tariff.</p>
         <p><strong>Data source:</strong> Public rate references, PVWatts-style solar-yield assumptions, and user-selected inputs.</p>
-        <p><strong>Last updated:</strong> July 15, 2026.</p>
+        <p><strong>Last reviewed:</strong> July 18, 2026.</p>
       </div>
     </div>
-    <div class="ad-placeholder ad-sidebar" style="text-align:center;padding:24px;background:#f8fafc;border:1px dashed #cbd5e1;border-radius:8px;margin:24px 0">
-    <a href="/contact/" style="color:#F5A623;font-weight:700;text-decoration:none;font-size:1.05rem">Partner with PVSize &rarr;</a>
-    <p style="color:#64748b;font-size:0.85rem;margin-top:4px">Early partner placements are open for founding solar brands</p>
-  </div>
   </div>
 </section>
 
@@ -279,55 +248,22 @@
 <!-- ===== SCRIPTS ===== -->
 <script>
 (function() {
-  let stateData = [];
-
-  // Load states.json
-  fetch('data/states.json')
-    .then(r => r.json())
-    .then(data => {
-      stateData = data;
-      const sel = document.getElementById('qe-state');
-      data.forEach(s => {
-        const opt = document.createElement('option');
-        opt.value = s.abbr;
-        opt.textContent = s.state + ' (' + s.abbr + ')';
-        sel.appendChild(opt);
-      });
-    })
-    .catch(() => {});
-
-  // Quick Estimator logic
-  function recalc() {
-    const stateAbbr = document.getElementById('qe-state').value;
-    const homeSize = document.getElementById('qe-home-size').value;
-    const bill = document.getElementById('qe-bill').value;
-    const resultDiv = document.getElementById('qe-result');
-
-    if (!stateAbbr || !homeSize || !bill) {
-      resultDiv.style.display = 'none';
-      return;
+  document.getElementById('homeSolarStart').addEventListener('submit', function(event) {
+    event.preventDefault();
+    var monthlyKwh = Number(document.getElementById('homeMonthlyKwh').value);
+    var country = document.getElementById('homeCountry').value;
+    if (!(monthlyKwh > 0)) return;
+    var url = new URL('/calculators/panel-count/', window.location.origin);
+    url.searchParams.set('monthly_kwh', String(monthlyKwh));
+    url.searchParams.set('country', country);
+    url.searchParams.set('utm_source', 'homepage');
+    url.searchParams.set('utm_medium', 'hero_form');
+    url.searchParams.set('utm_campaign', 'monthly_usage_to_panel');
+    if (typeof window.pvTrack === 'function') {
+      window.pvTrack('homepage_calculator_start', { calculator_type: 'panel_count', country: country });
     }
-
-    const st = stateData.find(s => s.abbr === stateAbbr);
-    if (!st) { resultDiv.style.display = 'none'; return; }
-
-    const avgUsage = parseFloat(st.avg_usage);
-    const sunHours = parseFloat(st.sun_hours);
-    const rate = parseFloat(st.avg_rate);
-    const usage = parseFloat(bill) / rate * 12; // estimated annual kWh from bill
-    const systemSize = usage / (sunHours * 365) * 1.15; // kW DC (15% buffer)
-    const panels = Math.round(systemSize * 1000 / 400); // assume 400W panels
-    const annualSavings = usage * rate;
-
-    document.getElementById('qe-panels').textContent = panels;
-    document.getElementById('qe-savings').textContent = '$' + annualSavings.toLocaleString(undefined, {maximumFractionDigits:0});
-    resultDiv.style.display = 'block';
-  }
-
-  document.getElementById('qe-state').addEventListener('change', recalc);
-  document.getElementById('qe-home-size').addEventListener('change', recalc);
-  document.getElementById('qe-bill').addEventListener('change', recalc);
-
+    window.location.href = url.pathname + '?' + url.searchParams.toString();
+  });
 })();
 </script>
 </body>

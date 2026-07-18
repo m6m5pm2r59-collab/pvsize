@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="google-site-verification" content="25000f45955f1a8c" />  <meta name="msvalidate.01" content="C6723C6C8D6D6808B860E39114AF8D8D" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Request a Detailed Solar Plan — Free Planning Estimate & Quote Matching | PVSize</title>
-  <meta name="description" content="Request a detailed solar plan or quote match. Ordinary calculators stay free; this page is for users who want a more detailed planning summary and want PVSize to share project info with solar installers or equipment providers after explicit consent.">
+  <title>Request a Free Solar Project Summary | PVSize</title>
+  <meta name="description" content="Ask PVSize to review the planning inputs you submit and prepare a free project summary. No installer matching, quote, engineering design, or project outcome is promised.">
   <link rel="canonical" href="https://pvsize.com/request-solar-plan/">
   <link rel="stylesheet" href="../style.css">
   <style>
@@ -52,8 +52,8 @@
 <nav class="navbar"><div class="nav-container"><a href="/" class="nav-logo">PVSize</a><ul class="nav-links"><li><a href="/panels/">Panels</a></li><li><a href="/inverters/">Inverters</a></li><li><a href="/batteries/">Batteries</a></li><li><a href="/calculators/">Calculators</a></li><li><a href="/insights/">Insights</a></li><li><a href="/learn/">Learn</a></li><li><a href="/contact/">Contact</a></li></ul></div></nav>
 
 <main class="plan-page">
-  <h1>Request a Detailed Solar Plan</h1>
-  <p class="subtitle">Ordinary PVSize calculators stay free. If you want a more detailed planning summary or want to be matched with installer or equipment pricing, you can share project details here and explicitly let PVSize forward them to relevant solar providers.</p>
+  <h1>Request a Free Solar Project Summary</h1>
+  <p class="subtitle">Share the planning inputs you want PVSize to review. This is a manual summary of submitted assumptions, not an installer quote, engineering design, or promise of project results.</p>
 
   <div class="info-grid">
     <div class="info-card">
@@ -61,12 +61,12 @@
       <span>Use the usual panel, savings, battery, and carbon tools without entering contact info.</span>
     </div>
     <div class="info-card">
-      <strong>More detailed help</strong>
-      <span>Submit project details when you want a deeper planning summary or quote matching.</span>
+      <strong>Manual input review</strong>
+      <span>PVSize can review the information you submit and reply with a clearer project summary.</span>
     </div>
     <div class="info-card">
-      <strong>Transparent transfer consent</strong>
-      <span>PVSize only shares your information with installers, manufacturers, or equipment services after you opt in.</span>
+      <strong>No installer matching</strong>
+      <span>This form does not enroll you in an installer network or request local quotes.</span>
     </div>
   </div>
 
@@ -121,7 +121,7 @@
         </div>
         <div>
           <label for="phone">Phone (optional)</label>
-          <input type="tel" id="phone" name="phone" placeholder="Used only if you want a callback">
+          <input type="tel" id="phone" name="phone" placeholder="Only for a PVSize reply if requested">
         </div>
       </div>
 
@@ -133,24 +133,24 @@
       <div class="consent-box">
         <label for="consent">
           <input type="checkbox" id="consent" name="consent" value="yes" required>
-          <span>I agree that PVSize may share my project information with relevant solar installers, manufacturers, or equipment service providers so they can contact me with pricing or advice. I understand ordinary calculators remain free if I do not want to share this information.</span>
+          <span>I agree that PVSize may use the information I submit to prepare and reply about this project summary. PVSize will not share it with an installer or equipment provider without a separate, explicit request.</span>
         </label>
       </div>
 
       <div data-pv-turnstile style="min-height:0;"></div>
 
       <div class="actions">
-        <button type="submit" class="submit-btn" id="submitBtn">Request detailed plan</button>
+        <button type="submit" class="submit-btn" id="submitBtn">Request free project summary</button>
         <a class="ghost-link" href="/calculators/">Use the free calculators instead</a>
       </div>
 
       <div id="formMsg" class="fineprint" style="display:none;"></div>
-      <p class="fineprint">Calculator access stays free. No account, purchase, provider pricing, timeline, or project outcome is promised. If you prefer not to share details, you can keep using the free calculators and question pages.</p>
+      <p class="fineprint">Calculator access stays free. No account, purchase, provider pricing, installation, engineering approval, timeline, or project outcome is promised.</p>
     </form>
   </div>
 
   <div style="margin-top:28px;">
-    <p class="fineprint">Try the detailed-plan page from your calculator result:</p>
+    <p class="fineprint">Request a project summary from your calculator result:</p>
     <p class="fineprint"><a href="/request-solar-plan/?source=panel-count-result">Panel Count</a> · <a href="/request-solar-plan/?source=savings-result">Savings</a> · <a href="/request-solar-plan/?source=battery-sizing-result">Battery Sizing</a> · <a href="/request-solar-plan/?source=carbon-result">Carbon</a></p>
   </div>
 </main>
@@ -186,8 +186,20 @@
 </footer>
 
 <script>
+  var solarPlanStarted = false;
+  document.getElementById('solarPlanForm').addEventListener('focusin', function() {
+    if (solarPlanStarted) return;
+    solarPlanStarted = true;
+    if (typeof window.pvTrack === 'function') {
+      window.pvTrack('solar_plan_start', {
+        form_type: 'solar_plan',
+        source: new URL(window.location.href).searchParams.get('source') || window.location.pathname
+      });
+    }
+  });
+
   function buildMailto(data) {
-    var subject = encodeURIComponent('PVSize detailed solar plan request');
+    var subject = encodeURIComponent('PVSize project summary request');
     var body = encodeURIComponent(
       'Location: ' + (data.location || '') + '\\n' +
       'Monthly bill: $' + (data.bill || '') + '\\n' +
@@ -211,7 +223,7 @@
     var source = new URL(window.location.href).searchParams.get('source') || window.location.pathname;
     if (!consent) {
       msg.style.display = 'block';
-      msg.textContent = 'Please check the consent box if you want PVSize to share your details with installers or providers.';
+      msg.textContent = 'Please confirm that PVSize may use the submitted information to prepare and reply about this summary.';
       if (typeof window.pvTrack === 'function') {
         window.pvTrack('lead_submit_error', { form_type: 'solar_plan', source: source, reason: 'consent_required' });
       }
@@ -257,7 +269,7 @@
       if (!r.ok) { throw new Error('Form delivery failed'); }
       msg.style.display = 'block';
       msg.style.color = '#166534';
-      msg.textContent = 'Thanks — your detailed-plan request has been sent. If needed, we will follow up using the contact details you provided.';
+      msg.textContent = 'Thanks — your project-summary request has been sent. PVSize may follow up using the contact details you provided.';
       if (typeof window.pvTrack === 'function') {
         window.pvTrack('lead_submit_success', { form_type: 'solar_plan', source: payload.source });
       }
@@ -273,7 +285,7 @@
     })
     .finally(function() {
       btn.disabled = false;
-      btn.textContent = 'Request detailed plan';
+      btn.textContent = 'Request free project summary';
     });
   });
 </script>

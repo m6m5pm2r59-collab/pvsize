@@ -5,9 +5,10 @@
   <meta name="google-site-verification" content="25000f45955f1a8c" />  <meta name="msvalidate.01" content="C6723C6C8D6D6808B860E39114AF8D8D" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Solar Savings Calculator — Payback Period & ROI Estimate | PVSize</title>
-  <meta name="description" content="Calculate your solar savings and payback period. Enter monthly electricity bill, local utility rate, and system size to see annual savings, ROI timeline, and 25-year total return.">
+  <meta name="description" content="Estimate solar bill reduction and simple payback using editable electricity use, rate, system size, peak sun hours, system losses, and installed cost assumptions.">
   <script src="https://cdn.tailwindcss.com"></script>
   <style>:root { --pv-yellow: #F5A623; --pv-navy: #1a2a3a; } select.min-w-select { min-width: 200px; }</style>
+<link rel="stylesheet" href="/calculator-trust.css">
 <script type="text/javascript">
     (function(c,l,a,r,i,t,y){
         c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
@@ -16,46 +17,19 @@
     })(window, document, "clarity", "script", "xczyltw8tn");
 </script>
 <script src="/pv-analytics.js" defer></script>
+<script src="/calculation-state.js" defer></script>
 <script src="/calculator-engagement.js" defer></script>
 <script src="/solar-project-flow.js" defer></script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "How much can I save with solar panels?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Savings depend on your electricity rate, system size, and local sun hours. With US average rates at $0.168/kWh and a typical 6-8 kW system, homeowners save $1,000-$2,500 per year. In high-rate states like California ($0.32/kWh), annual savings can exceed $3,000. Use the PVSize Savings Calculator to get a personalized estimate based on your monthly bill and system size."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What factors affect solar savings?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Key factors include: 1) Local electricity rate — higher rates mean faster payback; 2) System size in kW — larger systems offset more of your bill; 3) Peak sun hours in your location — more sun means more generation; 4) Net metering policy in your state — full retail-rate net metering maximizes savings; 5) Panel efficiency and degradation rate — higher-efficiency modules can improve output over time; 6) System cost after any locally valid incentives. PVSize does not assume a federal credit unless the user confirms eligibility and timing."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is the typical solar payback period?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Solar payback depends on installed cost, local electricity rates, system output, financing, and incentives that are actually available at the time of installation. PVSize treats savings as a planning estimate, not a tax, financial, or installation promise."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Does solar increase home value?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Solar may affect resale value, but the impact varies by market, system ownership, equipment age, utility rates, and buyer preferences. PVSize does not treat resale value as promised savings; verify local comparable sales before using home-value assumptions."
-      }
-    }
-  ]
+  "@type": "WebApplication",
+  "name": "Solar Savings Calculator",
+  "description": "Estimate solar bill reduction and simple payback with editable production, tariff, and cost assumptions.",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Web",
+  "url": "https://pvsize.com/calculators/savings/",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
 }
 </script>
 <link rel="canonical" href="https://pvsize.com/calculators/savings/">
@@ -70,7 +44,7 @@
         <a href="/insights/" class="hover:text-[#F5A623]">Insights</a>
         <a href="/learn/" class="hover:text-[#F5A623]">Learn</a>
       </div>
-      <a href="/business" class="bg-[#F5A623] text-[#1a2a3a] px-4 py-2 rounded font-semibold text-sm hover:opacity-90">Business</a>
+      <a href="/contact/" class="bg-[#F5A623] text-[#1a2a3a] px-4 py-2 rounded font-semibold text-sm hover:opacity-90">Contact</a>
     </div>
   </nav>
 
@@ -80,12 +54,25 @@
   </section>
 
   <section id="pv-calculator-shell" class="max-w-3xl mx-auto py-12 px-4">
+    <div class="pv-progress" aria-label="Solar calculation steps">
+      <span>1. System size</span><span aria-current="step">2. Savings</span><span>3. Backup</span>
+    </div>
     <div class="bg-white rounded-2xl shadow-lg p-8">
-      <h2 class="text-xl font-bold mb-6" style="color:#1a2a3a">Enter Your Details</h2>
+      <h2 class="text-xl font-bold mb-2" style="color:#1a2a3a">Estimate bill reduction with the same solar assumptions</h2>
+      <p class="text-sm text-gray-600 mb-6">Inputs inherited from Panel Count stay editable here.</p>
 
       <div class="space-y-5">
         <div>
-          <label class="block text-sm font-semibold mb-1 text-gray-700">Monthly Electricity Bill ($)</label>
+          <label class="block text-sm font-semibold mb-1 text-gray-700" for="country">Country / planning defaults</label>
+          <select id="country" class="border rounded-lg px-4 py-3 w-full min-w-select bg-white">
+            <option value="us">United States</option>
+            <option value="au">Australia</option>
+            <option value="uk">United Kingdom</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-sm font-semibold mb-1 text-gray-700">Monthly electricity bill</label>
           <input type="number" id="monthlyBill" class="border rounded-lg px-4 py-3 w-full" placeholder="e.g. 150" min="0" step="0.01" />
         </div>
 
@@ -96,20 +83,27 @@
 
         <details class="rounded-xl border border-gray-200 bg-gray-50 p-4">
           <summary class="cursor-pointer text-sm font-semibold text-gray-700">Advanced settings</summary>
-          <div class="mt-4">
-            <label class="block text-sm font-semibold mb-1 text-gray-700">Local Electricity Rate ($/kWh)</label>
-            <select id="rateSelect" class="border rounded-lg px-4 py-3 w-full min-w-select bg-white">
-              <option value="0.12">$0.12/kWh — US Average</option>
-              <option value="0.15">$0.15/kWh — Moderate</option>
-              <option value="0.20">$0.20/kWh — Northeast</option>
-              <option value="0.30" selected>$0.30/kWh — California</option>
-              <option value="0.40">$0.40/kWh — Hawaii / High-cost</option>
-            </select>
-            <input type="number" id="rateCustom" class="border rounded-lg px-4 py-3 w-full mt-2" placeholder="Or enter custom rate ($/kWh)" step="0.01" min="0.01" />
-          </div>
-          <div class="mt-4">
+          <div class="mt-4 grid sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-sm font-semibold mb-1 text-gray-700" for="monthlyKwh">Monthly electricity use (kWh)</label>
+              <input type="number" id="monthlyKwh" class="border rounded-lg px-4 py-3 w-full" min="1" step="1" />
+            </div>
+            <div>
+              <label class="block text-sm font-semibold mb-1 text-gray-700" for="electricityRate">Electricity rate / kWh</label>
+              <input type="number" id="electricityRate" class="border rounded-lg px-4 py-3 w-full" step="0.01" min="0.01" />
+            </div>
+            <div>
+              <label class="block text-sm font-semibold mb-1 text-gray-700" for="sunHours">Peak sun hours / day</label>
+              <input type="number" id="sunHours" class="border rounded-lg px-4 py-3 w-full" min="1" max="8" step="0.1" />
+            </div>
+            <div>
+              <label class="block text-sm font-semibold mb-1 text-gray-700" for="systemLoss">System losses (%)</label>
+              <input type="number" id="systemLoss" class="border rounded-lg px-4 py-3 w-full" min="0" max="50" step="1" />
+            </div>
+            <div class="sm:col-span-2">
             <label class="block text-sm font-semibold mb-1 text-gray-700">System Cost ($, optional)</label>
             <input type="number" id="systemCost" class="border rounded-lg px-4 py-3 w-full" placeholder="Installed cost (default: $3.00/W)" step="0.01" min="0" />
+            </div>
           </div>
         </details>
 
@@ -120,88 +114,74 @@
 
       <div id="results" class="mt-8 hidden">
         <div class="bg-gray-50 rounded-xl p-6">
-          <h3 class="text-lg font-bold mb-4" style="color:#1a2a3a">Results</h3>
+          <h3 class="text-lg font-bold mb-1" style="color:#1a2a3a">Savings result</h3>
+          <p id="savingsResultSummary" class="text-sm text-gray-600 mb-4"></p>
           <div class="grid grid-cols-2 gap-4 text-center">
             <div class="bg-white rounded-lg p-4 shadow-sm">
+              <div class="text-3xl font-bold" style="color:#0f766e" id="annualGen">—</div>
+              <div class="text-sm text-gray-600 mt-1">Annual solar generation</div>
+            </div>
+            <div class="bg-white rounded-lg p-4 shadow-sm">
               <div class="text-3xl font-bold" style="color:#F5A623" id="annualSavings">—</div>
-              <div class="text-sm text-gray-600 mt-1">Annual Savings ($)</div>
+              <div class="text-sm text-gray-600 mt-1">Annual bill reduction</div>
             </div>
             <div class="bg-white rounded-lg p-4 shadow-sm">
               <div class="text-3xl font-bold" style="color:#F5A623" id="monthlySavings">—</div>
-              <div class="text-sm text-gray-600 mt-1">Monthly Savings ($)</div>
+              <div class="text-sm text-gray-600 mt-1">Monthly bill reduction</div>
             </div>
             <div class="bg-white rounded-lg p-4 shadow-sm">
               <div class="text-3xl font-bold" style="color:#F5A623" id="paybackYears">—</div>
-              <div class="text-sm text-gray-600 mt-1">Payback Period (years)</div>
+              <div class="text-sm text-gray-600 mt-1">Simple payback</div>
             </div>
             <div class="bg-white rounded-lg p-4 shadow-sm">
               <div class="text-3xl font-bold" style="color:#F5A623" id="savings25yr">—</div>
-              <div class="text-sm text-gray-600 mt-1">25-Year Savings ($)</div>
+              <div class="text-sm text-gray-600 mt-1">25-year gross bill reduction</div>
             </div>
           </div>
-          <p class="text-xs text-gray-500 mt-4">Assumptions: 5 peak sun hours/day, 78% system efficiency, no rate escalation. Actual savings depend on local conditions and net metering policies.</p>
-          <div id="savingsResultCta" class="mt-6 bg-white rounded-xl p-6 shadow-sm border border-amber-100 hidden" data-pv-event-scope="savings_result">
-            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-              <div>
-                <h4 class="text-base font-bold mb-2" style="color:#1a2a3a">Ready to turn these savings into a solar plan?</h4>
-                <p class="text-sm text-gray-600" id="savingsCtaSummary">Use this estimate to compare your next step or ask PVSize to review the plan.</p>
-              </div>
-              <div class="flex flex-col sm:flex-row gap-3 md:justify-end">
-                <a id="savingsPanelLink" href="/calculators/panel-count/?source=savings-result" class="text-center px-4 py-3 rounded-lg font-semibold text-sm bg-[#F5A623] text-[#1a2a3a] hover:opacity-90" data-pv-event="result_explainer_cta_click" data-pv-source="savings-result" data-pv-cta="panel_count" data-pv-destination="/calculators/panel-count/">Compare with panel count</a>
-                <a id="savingsPlanLink" href="/request-solar-plan/?source=savings-result" class="text-center px-4 py-3 rounded-lg font-semibold text-sm bg-white text-[#1a2a3a] border border-[#1a2a3a] hover:bg-gray-50" data-pv-event="result_explainer_cta_click" data-pv-source="savings-result" data-pv-cta="detailed_plan" data-pv-destination="/request-solar-plan/">Get a detailed solar plan</a>
-                <a id="savingsContactLink" href="/contact/?source=savings-result" class="text-center px-4 py-3 rounded-lg font-semibold text-sm bg-[#1a2a3a] text-[#F5A623] hover:opacity-90" data-pv-event="result_explainer_cta_click" data-pv-source="savings-result" data-pv-cta="contact" data-pv-destination="/contact/">Ask PVSize to review this estimate</a>
-              </div>
-            </div>
-            <p class="text-xs text-gray-400 mt-4">PVSize estimates are planning inputs, not engineering or financial advice. A licensed installer should verify roof structure, code requirements, utility rules, and final equipment selection.</p>
+          <div class="pv-result-compare" aria-label="Electricity bill before and after estimate">
+            <h4>Estimated bill comparison</h4>
+            <div class="pv-meter-row"><span>Current bill</span><div class="pv-meter-track"><div class="pv-meter-fill" style="width:100%"></div></div><strong id="billBefore">—</strong></div>
+            <div class="pv-meter-row"><span>After solar</span><div class="pv-meter-track"><div id="billAfterMeter" class="pv-meter-fill secondary"></div></div><strong id="billAfter">—</strong></div>
           </div>
-          <div class="mt-6 border-t border-gray-200 pt-5">
+          <div id="pv-related-questions" class="mt-6 border-t border-gray-200 pt-5">
             <h4 class="text-sm font-semibold mb-3" style="color:#1a2a3a">Related planning questions</h4>
             <div class="grid sm:grid-cols-2 gap-3 text-sm">
               <a href="/learn/how-much-can-i-save-with-solar-panels.html" class="block rounded-lg border border-gray-200 bg-white px-4 py-3 hover:border-[#F5A623] hover:shadow-sm">How much can I save with solar panels?</a>
               <a href="/learn/is-solar-worth-it-in-texas.html" class="block rounded-lg border border-gray-200 bg-white px-4 py-3 hover:border-[#F5A623] hover:shadow-sm">Is solar worth it in Texas?</a>
               <a href="/learn/solar-payback-period-calculator-guide.html" class="block rounded-lg border border-gray-200 bg-white px-4 py-3 hover:border-[#F5A623] hover:shadow-sm">Solar payback period calculator guide</a>
-              <a href="/learn/how-many-solar-panels-for-1000-kwh-per-month.html" class="block rounded-lg border border-gray-200 bg-white px-4 py-3 hover:border-[#F5A623] hover:shadow-sm">How many panels for 1,000 kWh per month?</a>
+              <a href="/guides/solar-panels-for-1000-kwh-per-month/" class="block rounded-lg border border-gray-200 bg-white px-4 py-3 hover:border-[#F5A623] hover:shadow-sm">How many panels for 1,000 kWh per month?</a>
               <a href="/learn/solar-panel-cost-calculator-guide.html" class="block rounded-lg border border-gray-200 bg-white px-4 py-3 hover:border-[#F5A623] hover:shadow-sm">Solar panel cost calculator guide</a>
               <a href="/learn/solar-calculator-for-cloudy-climate.html" class="block rounded-lg border border-gray-200 bg-white px-4 py-3 hover:border-[#F5A623] hover:shadow-sm">Solar calculator for cloudy climates</a>
             </div>
           </div>
           <div class="mt-4 rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-xs text-gray-600 space-y-1">
-            <p><strong>Assumptions:</strong> Monthly bill, rate, system size, and optional cost drive the savings estimate.</p>
-            <p><strong>Data source:</strong> User-entered bill and rate inputs plus PVWatts-style output assumptions used for planning estimates.</p>
-            <p><strong>Last updated:</strong> July 15, 2026.</p>
+            <p><strong>Assumptions:</strong> <span id="savingsAssumptions">—</span></p>
+            <p><strong>Data source / basis:</strong> Annual solar output uses system kW × peak sun hours × 365 × (1 − losses). Bill reduction is capped at estimated annual consumption.</p>
+            <p><strong>Limitations:</strong> This is not a quote or financial advice. Net metering, time-of-use tariffs, export credits, incentives, degradation, financing, taxes, and local installation costs can materially change savings.</p>
+            <p><strong>Last reviewed:</strong> July 18, 2026.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Share Buttons -->
-  <div id="pv-share-strip" style="max-width:800px; margin:32px auto 0; text-align:center">
-    <p style="color:#64748b; font-size:0.9rem; margin-bottom:8px">Share your solar estimate</p>
-    <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap">
-      <button onclick="window.open('https://twitter.com/intent/tweet?text='+encodeURIComponent('Check out my solar savings estimate at PVSize.com '+window.location.href),'_blank')" style="background:#1DA1F2; color:#fff; border:none; padding:8px 16px; border-radius:6px; cursor:pointer; font-weight:600">Twitter</button>
-      <button onclick="window.open('https://www.reddit.com/submit?url='+encodeURIComponent(window.location.href),'_blank')" style="background:#FF4500; color:#fff; border:none; padding:8px 16px; border-radius:6px; cursor:pointer; font-weight:600">Reddit</button>
-      <button onclick="window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(window.location.href),'_blank')" style="background:#1877F2; color:#fff; border:none; padding:8px 16px; border-radius:6px; cursor:pointer; font-weight:600">Facebook</button>
-    </div>
-  </div>
-
   <!-- Lead Capture -->
-  <div id="pv-lead-capture" class="lead-capture" style="max-width:800px; margin:40px auto; padding:32px 24px; background:linear-gradient(135deg,#eff6ff,#dbeafe); border:1px solid #bfdbfe; border-radius:12px; text-align:center">
-    <h3 style="font-size:1.3rem; font-weight:700; margin-bottom:8px; color:#1a2a3a">Get a Free Planning Summary</h3>
-    <p style="color:#475569; margin-bottom:20px; max-width:500px; margin-left:auto; margin-right:auto">Based on your calculation above, PVSize can send a free planning summary to your inbox. Ordinary calculator use stays free and does not require a phone number or installer contact.</p>
+  <div id="pv-lead-capture" class="lead-capture" style="max-width:800px; margin:40px auto; padding:32px 24px; background:#eff6ff; border:1px solid #bfdbfe; border-radius:8px; text-align:center">
+    <h3 style="font-size:1.3rem; font-weight:700; margin-bottom:8px; color:#1a2a3a">Email me this estimate</h3>
+    <p style="color:#475569; margin-bottom:20px; max-width:560px; margin-left:auto; margin-right:auto">Receive one email with the current inputs, result, assumptions, and limitations. This does not request installer quotes or share your details with an installer network.</p>
     <form id="lead-form" data-pv-form="calculator_report" style="display:flex; gap:8px; max-width:420px; margin:0 auto; flex-wrap:wrap; justify-content:center">
       <input type="email" placeholder="Your email address" required style="flex:1; min-width:200px; padding:12px 16px; border:1px solid #cbd5e1; border-radius:8px; font-size:1rem">
-      <button type="submit" style="background:#F5A623; color:#1a2a3a; border:none; padding:12px 24px; border-radius:8px; font-weight:700; cursor:pointer; font-size:1rem; white-space:nowrap">Send My Free Summary &rarr;</button>
+      <button type="submit" style="background:#F5A623; color:#1a2a3a; border:none; padding:12px 24px; border-radius:8px; font-weight:700; cursor:pointer; font-size:1rem; white-space:nowrap">Email this estimate</button>
     </form>
     <div data-pv-turnstile style="min-height:0; margin-top:12px;"></div>
-    <p style="font-size:0.8rem; color:#94a3b8; margin-top:12px">No spam. One report, unsubscribe anytime.</p>
+    <p style="font-size:0.8rem; color:#64748b; margin-top:12px">One transactional email. No account and no quote matching.</p>
   </div>
   <script>
   document.getElementById('lead-form').addEventListener('submit',function(e){
     e.preventDefault();
     var email=this.querySelector('input').value;
     var source = new URL(window.location.href).searchParams.get('source') || window.location.pathname;
-    var payload = { email: email, source: source, formType: 'calculator_report', calculator_type: 'savings' };
+    var payload = { email: email, source: source, formType: 'calculator_report', calculator_type: 'savings', estimate_summary: window.PVCalculatorSummary || '' };
     if (typeof window.pvLeadMeta === 'function') {
       Object.assign(payload, window.pvLeadMeta(this));
     }
@@ -213,7 +193,7 @@
       });
     })
     .then(function(){
-      document.getElementById('lead-form').innerHTML='<div style="padding:16px;color:#166534;font-weight:600">&check; Summary request received. Check your inbox.</div>';
+      document.getElementById('lead-form').innerHTML='<div style="padding:16px;color:#166534;font-weight:600">&check; Estimate sent. Check your inbox.</div>';
       if (typeof window.pvTrack === 'function') {
         window.pvTrack('lead_submit_success', { form_type: 'calculator_report', calculator_type: 'savings', source: source });
       }
@@ -227,10 +207,10 @@
   });
   </script>
 
-  <!-- Installer CTA -->
+  <!-- Secondary project review -->
   <div id="pv-installer-cta" style="text-align:center; margin:24px auto 48px">
-    <a href="/contact/" style="display:inline-block; background:#1a2a3a; color:#F5A623; padding:14px 32px; border-radius:8px; font-weight:700; text-decoration:none; font-size:1.05rem">Request a Detailed Solar Plan &rarr;</a>
-    <p style="color:#64748b; font-size:0.85rem; margin-top:8px">Use the detailed plan request if you want PVSize to review your inputs. Quote matching requires separate, explicit consent.</p>
+    <a href="/request-solar-plan/?source=savings-result" style="color:#1a2a3a; font-weight:700; text-decoration:underline">Request a free project summary</a>
+    <p style="color:#64748b; font-size:0.85rem; margin-top:8px">Optional manual review of the inputs you submit. No installation, quote, or financial outcome is promised.</p>
   </div>
 
   <footer id="pv-site-footer" class="bg-[#1a2a3a] text-gray-400 py-10 px-4 text-sm mt-16">
@@ -286,41 +266,58 @@
     const autoTriggered = this.dataset && this.dataset.pvAutoTriggered === '1';
     const monthlyBill = parseFloat(document.getElementById('monthlyBill').value);
     const systemSizeKw = parseFloat(document.getElementById('systemSize').value);
-    const rateSelect = parseFloat(document.getElementById('rateSelect').value);
-    const rateCustom = document.getElementById('rateCustom').value;
+    const monthlyKwh = parseFloat(document.getElementById('monthlyKwh').value);
+    const rate = parseFloat(document.getElementById('electricityRate').value);
+    const sunHours = parseFloat(document.getElementById('sunHours').value);
+    const systemLoss = parseFloat(document.getElementById('systemLoss').value);
     let systemCost = document.getElementById('systemCost').value;
 
     if (isNaN(monthlyBill) || monthlyBill < 0) { alert('Please enter a valid monthly bill.'); return; }
     if (isNaN(systemSizeKw) || systemSizeKw <= 0) { alert('Please enter a valid system size.'); return; }
+    if (isNaN(monthlyKwh) || monthlyKwh <= 0) { alert('Please enter valid monthly electricity use.'); return; }
     if (!autoTriggered) {
       trackPvsizeEvent('calculator_start', {
         calculator_type: 'savings',
         input_monthly_bill: monthlyBill,
         input_system_kw: systemSizeKw,
-        rate_source: rateCustom ? 'custom' : 'preset'
+        electricity_rate: rate,
+        sun_hours: sunHours,
+        system_loss: systemLoss
       });
     }
 
-    const rate = rateCustom ? parseFloat(rateCustom) : rateSelect;
-    // Annual solar generation
-    const annualGen = systemSizeKw * 5.0 * 365 * 0.78;
-    const annualSavings = annualGen * rate;
+    const efficiency = 1 - (systemLoss / 100);
+    const annualGen = systemSizeKw * sunHours * 365 * efficiency;
+    const annualConsumption = monthlyKwh * 12;
+    const billOffsetKwh = Math.min(annualGen, annualConsumption);
+    const annualSavings = Math.min(monthlyBill * 12, billOffsetKwh * rate);
     const monthlySavings = annualSavings / 12;
     const savings25yr = annualSavings * 25;
 
     // System cost
-    let cost = systemCost ? parseFloat(systemCost) : systemSizeKw * 1000 * 3.00;
-    if (isNaN(cost) || cost <= 0) cost = systemSizeKw * 1000 * 3.00;
+    const state = window.PVCalculationState ? window.PVCalculationState.get() : { installCostPerWatt: 3, currencySymbol: '$' };
+    const currency = state.currencySymbol || '$';
+    let cost = systemCost ? parseFloat(systemCost) : systemSizeKw * 1000 * state.installCostPerWatt;
+    if (isNaN(cost) || cost <= 0) cost = systemSizeKw * 1000 * state.installCostPerWatt;
 
-    const payback = cost / annualSavings;
+    const payback = annualSavings > 0 ? cost / annualSavings : 0;
+    const billAfter = Math.max(0, monthlyBill - monthlySavings);
+    const coverage = Math.min(100, billOffsetKwh / annualConsumption * 100);
 
-    document.getElementById('annualSavings').textContent = '$' + annualSavings.toLocaleString(undefined, {maximumFractionDigits:0});
-    document.getElementById('monthlySavings').textContent = '$' + monthlySavings.toLocaleString(undefined, {maximumFractionDigits:0});
-    document.getElementById('paybackYears').textContent = payback.toFixed(1) + ' yrs';
-    document.getElementById('savings25yr').textContent = '$' + savings25yr.toLocaleString(undefined, {maximumFractionDigits:0});
+    document.getElementById('annualGen').textContent = annualGen.toLocaleString(undefined, {maximumFractionDigits:0}) + ' kWh';
+    document.getElementById('annualSavings').textContent = currency + annualSavings.toLocaleString(undefined, {maximumFractionDigits:0});
+    document.getElementById('monthlySavings').textContent = currency + monthlySavings.toLocaleString(undefined, {maximumFractionDigits:0});
+    document.getElementById('paybackYears').textContent = payback > 0 ? payback.toFixed(1) + ' yrs' : 'N/A';
+    document.getElementById('savings25yr').textContent = currency + savings25yr.toLocaleString(undefined, {maximumFractionDigits:0});
+    document.getElementById('billBefore').textContent = currency + monthlyBill.toLocaleString(undefined, {maximumFractionDigits:0});
+    document.getElementById('billAfter').textContent = currency + billAfter.toLocaleString(undefined, {maximumFractionDigits:0});
+    document.getElementById('billAfterMeter').style.width = (monthlyBill > 0 ? Math.min(100, billAfter / monthlyBill * 100) : 0) + '%';
+    document.getElementById('savingsResultSummary').textContent = 'This planning estimate offsets about ' + coverage.toFixed(0) + '% of annual electricity use before export-credit and tariff adjustments.';
+    document.getElementById('savingsAssumptions').textContent = systemSizeKw.toFixed(2) + ' kW, ' + monthlyKwh.toLocaleString() + ' kWh/month, ' + sunHours.toFixed(1) + ' peak sun-hours/day, ' + systemLoss.toFixed(0) + '% losses, and ' + currency + rate.toFixed(2) + '/kWh.';
+    if (window.PVCalculationState) {
+      window.PVCalculationState.capture({ systemKw: Number(systemSizeKw.toFixed(2)), monthlyKwh: monthlyKwh, monthlyBill: monthlyBill });
+    }
     document.getElementById('results').classList.remove('hidden');
-    document.getElementById('savingsResultCta').classList.remove('hidden');
-    document.getElementById('savingsCtaSummary').textContent = 'Your estimate can now flow into panel count or a review request.';
     if (!autoTriggered) {
       trackPvsizeEvent('calculator_complete', {
         calculator_type: 'savings',
@@ -335,7 +332,7 @@
     });
     trackPvsizeEvent('result_explainer_cta_view', {
       calculator_type: 'savings',
-      cta_type: 'panel_count_or_contact',
+      cta_type: 'continue_or_email',
       source: 'savings-result'
     });
     document.getElementById('results').scrollIntoView({behavior:'smooth'});

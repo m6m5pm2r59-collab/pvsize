@@ -23,6 +23,26 @@
   ],
   "redirects": [
     {
+      "source": "/learn/how-many-solar-panels-for-1000-kwh-per-month/",
+      "destination": "/guides/solar-panels-for-1000-kwh-per-month/",
+      "permanent": true
+    },
+    {
+      "source": "/learn/how-many-solar-panels-for-1000-kwh-per-month.html",
+      "destination": "/guides/solar-panels-for-1000-kwh-per-month/",
+      "permanent": true
+    },
+    {
+      "source": "/learn/solar-panels-for-ev-charging-at-home/",
+      "destination": "/guides/solar-system-size-for-home-ev-charging/",
+      "permanent": true
+    },
+    {
+      "source": "/learn/solar-panels-for-ev-charging-at-home.html",
+      "destination": "/guides/solar-system-size-for-home-ev-charging/",
+      "permanent": true
+    },
+    {
       "source": "/city/ann-arbor-city-solar-calculator/",
       "destination": "/city/ann-arbor-solar-calculator/",
       "permanent": true
