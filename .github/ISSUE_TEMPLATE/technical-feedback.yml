@@ -1,0 +1,36 @@
+name: Technical feedback on solar sizing
+description: Review PVSize assumptions, formulas, warnings, or input fields.
+title: "Technical feedback: "
+labels:
+  - technical-feedback
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reviewing PVSize. Please do not include private customer data, addresses, utility bills, or personal contact details.
+  - type: dropdown
+    id: scenario
+    attributes:
+      label: Scenario
+      options:
+        - 1,500 kWh/month panel count
+        - Overnight outage battery sizing
+        - Off-grid cabin, 8 kWh/day
+        - Overall calculator feedback
+    validations:
+      required: true
+  - type: textarea
+    id: feedback
+    attributes:
+      label: Technical feedback
+      description: Which assumption, formula label, warning, or input field should PVSize change first?
+      placeholder: "Example: The panel count result should show winter sun-hour sensitivity before giving one number."
+    validations:
+      required: true
+  - type: checkboxes
+    id: boundary
+    attributes:
+      label: Boundary
+      options:
+        - label: I understand PVSize is for early planning estimates, not quotes, engineering, permitting, or installation design.
+          required: true

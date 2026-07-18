@@ -55,6 +55,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://pvsize.com/technical-feedback/</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://pvsize.com/request-solar-plan/</loc>
     <lastmod>2026-07-16</lastmod>
     <changefreq>weekly</changefreq>

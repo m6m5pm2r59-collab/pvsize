@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Technical Feedback on Solar Sizing Scenarios | PVSize</title>
+  <meta name="description" content="Review PVSize solar sizing assumptions for panel count, overnight battery backup, and off-grid cabin planning estimates.">
+  <link rel="canonical" href="https://pvsize.com/technical-feedback/">
+  <link rel="alternate" type="text/plain" href="/llms.txt" title="PVSize LLMs text">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/pv-analytics.js" defer></script>
+</head>
+<body class="bg-slate-50 text-slate-800">
+  <main class="mx-auto max-w-5xl px-4 py-10">
+    <a href="/" class="text-sm font-semibold text-amber-600">PVSize</a>
+    <section class="mt-4">
+      <p class="text-sm font-semibold uppercase tracking-wide text-slate-500">Technical feedback hub</p>
+      <h1 class="mt-2 text-3xl font-bold text-slate-950 md:text-4xl">Review three solar sizing assumptions</h1>
+      <p class="mt-4 max-w-3xl text-lg text-slate-600">PVSize is asking for technical feedback on three early-planning scenarios. This page is not a quote, design, rebate estimate, or installation recommendation.</p>
+    </section>
+
+    <section class="mt-8 rounded-xl border border-amber-200 bg-amber-50 p-5">
+      <h2 class="text-lg font-bold text-slate-950">What kind of feedback helps?</h2>
+      <ul class="mt-3 grid gap-2 text-sm text-slate-700 md:grid-cols-2">
+        <li>Are the assumptions clear enough for non-experts?</li>
+        <li>Should each result show a wider range by default?</li>
+        <li>Are the formula labels honest and easy to audit?</li>
+        <li>Which warning should appear before someone uses the result?</li>
+      </ul>
+      <p class="mt-4 text-sm text-slate-600">For the full public GitHub version, see <a class="font-semibold text-amber-700 underline" href="https://github.com/m6m5pm2r59-collab/pvsize/blob/main/docs/solar-sizing-feedback-request.md">Solar Sizing Feedback Request</a>.</p>
+    </section>
+
+    <section class="mt-8 grid gap-5">
+      <article class="rounded-xl border border-slate-200 bg-white p-6">
+        <div class="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
+          <div>
+            <h2 class="text-xl font-bold text-slate-950">1,500 kWh/month panel count</h2>
+            <p class="mt-2 text-slate-600">A high-usage home wants a first-pass panel count estimate before installer conversations.</p>
+          </div>
+          <a class="rounded-lg bg-amber-500 px-4 py-3 text-center font-bold text-slate-950" href="/calculators/panel-count/?monthly_kwh=1500&sun_hours=4.5&panel_watts=400&system_efficiency=80&autocalc=1&utm_source=pvsize&utm_medium=technical_feedback_hub&utm_campaign=scenario_review&utm_content=panel_count_1500kwh">Open editable calculator</a>
+        </div>
+        <div class="mt-5 grid gap-3 text-sm text-slate-700 md:grid-cols-3">
+          <div class="rounded-lg bg-slate-50 p-4"><strong>Load</strong><br>1,500 kWh/month, about 50 kWh/day</div>
+          <div class="rounded-lg bg-slate-50 p-4"><strong>Solar input</strong><br>4.5 sun hours, 400 W panels</div>
+          <div class="rounded-lg bg-slate-50 p-4"><strong>Efficiency</strong><br>80% simple system efficiency</div>
+        </div>
+        <p class="mt-4 text-sm text-slate-700">Simplified approach: panel daily kWh = panel watts / 1000 * sun hours * system efficiency. Under these assumptions, the planning estimate is about 35 panels before roof layout, shading, and local design constraints.</p>
+      </article>
+
+      <article class="rounded-xl border border-slate-200 bg-white p-6">
+        <div class="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
+          <div>
+            <h2 class="text-xl font-bold text-slate-950">Overnight outage battery sizing</h2>
+            <p class="mt-2 text-slate-600">A homeowner wants essential overnight backup, not a whole-home backup design.</p>
+          </div>
+          <a class="rounded-lg bg-amber-500 px-4 py-3 text-center font-bold text-slate-950" href="/calculators/battery-sizing/?daily_usage=8&backup_days=1&battery_type=lifepo4&dod=90&inverter_efficiency=90&autocalc=1&utm_source=pvsize&utm_medium=technical_feedback_hub&utm_campaign=scenario_review&utm_content=overnight_battery_backup">Open editable calculator</a>
+        </div>
+        <div class="mt-5 grid gap-3 text-sm text-slate-700 md:grid-cols-3">
+          <div class="rounded-lg bg-slate-50 p-4"><strong>Load</strong><br>8 kWh essential overnight load</div>
+          <div class="rounded-lg bg-slate-50 p-4"><strong>Backup</strong><br>1 night planning window</div>
+          <div class="rounded-lg bg-slate-50 p-4"><strong>Battery</strong><br>LiFePO4, 90% DOD, 90% inverter efficiency</div>
+        </div>
+        <p class="mt-4 text-sm text-slate-700">Simplified approach: required battery kWh = load kWh / (usable depth of discharge * inverter efficiency). Under these assumptions, the planning estimate is about 10 kWh nominal capacity.</p>
+      </article>
+
+      <article class="rounded-xl border border-slate-200 bg-white p-6">
+        <div class="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
+          <div>
+            <h2 class="text-xl font-bold text-slate-950">Off-grid cabin, 8 kWh/day</h2>
+            <p class="mt-2 text-slate-600">An off-grid cabin needs a rough panel and battery estimate before deeper system design.</p>
+          </div>
+          <div class="flex flex-col gap-2">
+            <a class="rounded-lg bg-amber-500 px-4 py-3 text-center font-bold text-slate-950" href="/calculators/panel-count/?daily_kwh=8&sun_hours=4&panel_watts=400&system_efficiency=75&autocalc=1&utm_source=pvsize&utm_medium=technical_feedback_hub&utm_campaign=scenario_review&utm_content=offgrid_cabin_panel_count">Open panel calculator</a>
+            <a class="rounded-lg border border-slate-300 bg-white px-4 py-3 text-center font-bold text-slate-800" href="/calculators/battery-sizing/?daily_usage=8&backup_days=2&battery_type=lifepo4&dod=80&autocalc=1&utm_source=pvsize&utm_medium=technical_feedback_hub&utm_campaign=scenario_review&utm_content=offgrid_cabin_battery">Open battery calculator</a>
+          </div>
+        </div>
+        <div class="mt-5 grid gap-3 text-sm text-slate-700 md:grid-cols-3">
+          <div class="rounded-lg bg-slate-50 p-4"><strong>Daily use</strong><br>8 kWh/day</div>
+          <div class="rounded-lg bg-slate-50 p-4"><strong>Solar input</strong><br>4 sun hours, 400 W panels, 75% efficiency</div>
+          <div class="rounded-lg bg-slate-50 p-4"><strong>Backup</strong><br>2 days, 80% usable battery depth</div>
+        </div>
+        <p class="mt-4 text-sm text-slate-700">Simplified approach: about 7 panels and about 20 kWh nominal battery capacity before winter sizing, generator backup, temperature derating, and charge controller limits.</p>
+      </article>
+    </section>
+
+    <section class="mt-8 rounded-xl border border-slate-200 bg-white p-6">
+      <h2 class="text-xl font-bold text-slate-950">Leave lightweight feedback</h2>
+      <p class="mt-2 text-slate-600">Please do not include private customer data, addresses, utility bills, or personal contact details. The form is for technical notes on assumptions and wording.</p>
+      <form id="feedbackForm" class="mt-5 grid gap-4">
+        <label class="grid gap-2 text-sm font-semibold text-slate-700">Scenario
+          <select id="scenario" class="rounded-lg border border-slate-300 px-3 py-2 font-normal">
+            <option value="panel_count_1500kwh">1,500 kWh/month panel count</option>
+            <option value="overnight_battery_backup">Overnight outage battery sizing</option>
+            <option value="offgrid_cabin_8kwh_day">Off-grid cabin, 8 kWh/day</option>
+            <option value="overall_feedback">Overall feedback</option>
+          </select>
+        </label>
+        <label class="grid gap-2 text-sm font-semibold text-slate-700">Technical note
+          <textarea id="feedbackText" class="min-h-32 rounded-lg border border-slate-300 px-3 py-2 font-normal" placeholder="Example: The panel count result should show winter sun-hour sensitivity before giving one number."></textarea>
+        </label>
+        <div class="flex flex-col gap-3 sm:flex-row">
+          <button type="submit" class="rounded-lg bg-slate-950 px-5 py-3 font-bold text-white">Submit feedback</button>
+          <button type="button" id="copyPrompt" class="rounded-lg border border-slate-300 bg-white px-5 py-3 font-bold text-slate-800">Copy feedback prompt</button>
+          <a class="rounded-lg border border-slate-300 bg-white px-5 py-3 text-center font-bold text-slate-800" href="/contact/?source=technical-feedback">Contact boundary</a>
+        </div>
+        <p id="feedbackMsg" class="hidden rounded-lg p-3 text-sm font-semibold"></p>
+      </form>
+      <p class="mt-4 text-xs text-slate-500">PVSize feedback does not create a quote, partnership promise, engineering review, or installation recommendation.</p>
+    </section>
+  </main>
+
+  <script>
+    (function () {
+      var form = document.getElementById('feedbackForm');
+      var msg = document.getElementById('feedbackMsg');
+      var copyBtn = document.getElementById('copyPrompt');
+
+      function showMessage(text, ok) {
+        msg.textContent = text;
+        msg.className = 'rounded-lg p-3 text-sm font-semibold ' + (ok ? 'bg-emerald-50 text-emerald-800' : 'bg-red-50 text-red-800');
+      }
+
+      function promptText() {
+        var scenario = document.getElementById('scenario').value;
+        var note = document.getElementById('feedbackText').value.trim() || '[write your technical note here]';
+        return [
+          'PVSize technical feedback',
+          'Scenario: ' + scenario,
+          'Feedback: ' + note,
+          'Question: Which assumption, formula label, warning, or input field should PVSize change first?'
+        ].join('\n');
+      }
+
+      form.addEventListener('submit', function (event) {
+        event.preventDefault();
+        var scenario = document.getElementById('scenario').value;
+        var feedback = document.getElementById('feedbackText').value.trim();
+        if (!feedback) {
+          showMessage('Please add a short technical note before submitting.', false);
+          return;
+        }
+        fetch('/api/feedback/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({
+            page: window.location.pathname,
+            calculator: 'technical_feedback_hub',
+            rating: 'technical_note',
+            message: '[' + scenario + '] ' + feedback,
+            source: 'technical_feedback_hub'
+          })
+        })
+        .then(function (response) {
+          if (!response.ok) throw new Error('feedback_submit_failed');
+          showMessage('Feedback received. Thank you for reviewing the assumptions.', true);
+          if (typeof window.pvTrack === 'function') {
+            window.pvTrack('feedback_submit', {
+              page_type: 'technical_feedback_hub',
+              scenario: scenario
+            });
+          }
+          form.reset();
+        })
+        .catch(function () {
+          showMessage('Feedback could not be sent. Use Copy feedback prompt and paste it into Contact instead.', false);
+        });
+      });
+
+      copyBtn.addEventListener('click', function () {
+        var text = promptText();
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(function () {
+            showMessage('Feedback prompt copied.', true);
+            if (typeof window.pvTrack === 'function') {
+              window.pvTrack('result_copy', {
+                page_type: 'technical_feedback_hub',
+                copy_type: 'feedback_prompt'
+              });
+            }
+          }).catch(function () {
+            showMessage(text, false);
+          });
+        } else {
+          showMessage(text, false);
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

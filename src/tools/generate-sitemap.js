@@ -17,6 +17,7 @@ const fixedUrls = [
   ['/examples/1500-kwh-per-month-solar-panels/', 'weekly', '0.8'],
   ['/examples/overnight-home-battery-backup/', 'weekly', '0.8'],
   ['/examples/off-grid-cabin-8-kwh-day/', 'weekly', '0.8'],
+  ['/technical-feedback/', 'weekly', '0.8'],
   ['/request-solar-plan/', 'weekly', '0.8'],
   ['/contact/', 'weekly', '0.8'],
   ['/learn/', 'weekly', '0.8'],

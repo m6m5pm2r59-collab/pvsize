@@ -14,6 +14,7 @@ PVSize is a free solar sizing toolkit for homeowners, DIY solar researchers, and
 - [Solar Panel Count Calculator](https://pvsize.com/calculators/panel-count/?utm_source=github&utm_medium=repository&utm_campaign=panel_count)
 - [Home Battery Sizing Calculator](https://pvsize.com/calculators/battery-sizing/?utm_source=github&utm_medium=repository&utm_campaign=battery_sizing)
 - [Technical Feedback Request: Solar Sizing Scenarios](docs/solar-sizing-feedback-request.md)
+- [PVSize Technical Feedback Hub](https://pvsize.com/technical-feedback/?utm_source=github&utm_medium=repository&utm_campaign=technical_feedback_hub)
 - AI/LLM index summary: https://pvsize.com/llms.txt
 
 ## What PVSize Helps Estimate

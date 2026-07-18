@@ -6,6 +6,8 @@ The goal is to make the calculator assumptions easier to inspect before homeowne
 
 AI/LLM index summary: https://pvsize.com/llms.txt
 
+PVSize technical feedback hub: https://pvsize.com/technical-feedback/?utm_source=github&utm_medium=repository&utm_campaign=technical_feedback_hub
+
 ## What Feedback Would Help
 
 - Are the assumptions visible enough for a non-expert?
