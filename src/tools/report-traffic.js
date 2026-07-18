@@ -99,6 +99,7 @@ function buildReport(since, limit, rows) {
   let feedbackRequests = 0;
   let runtimeConfigRequests = 0;
   let pageViewEvents = 0;
+  let calculatorStartEvents = 0;
   let calculatorCompleteEvents = 0;
   let leadSubmitSuccessEvents = 0;
   let leadSubmitErrorEvents = 0;
@@ -106,6 +107,8 @@ function buildReport(since, limit, rows) {
   let resultCopyEvents = 0;
   let resultShareEvents = 0;
   let feedbackSubmitEvents = 0;
+  let utmExternalLandingEvents = 0;
+  let referrerExternalLandingEvents = 0;
 
   rows.forEach((row) => {
     increment(topPaths, row.requestPath || 'unknown');
@@ -119,17 +122,23 @@ function buildReport(since, limit, rows) {
     if (!payload) return;
     if (payload.event === 'codex_probe' || payload.source_param === 'codex_check') return;
     if (payload.internal_traffic) return;
+    if (payload.bot_user_agent) return;
 
     increment(topEvents, payload.event || 'unknown');
     increment(topPages, payload.landing_page || 'unknown');
     increment(topPageTypes, payload.page_type || 'unknown');
-    increment(topSources, payload.utm_source || payload.source_param || '(direct)');
+    increment(topSources, payload.utm_source || payload.referrer_host || payload.source_param || '(direct)');
 
     if (payload.anonymous_id) anonymousIds.add(payload.anonymous_id);
     if (payload.session_id) sessionIds.add(payload.session_id);
 
     if (payload.event === 'pv_page_view') pageViewEvents += 1;
-    if (payload.event === 'external_landing') externalLandingEvents += 1;
+    if (payload.event === 'calculator_start') calculatorStartEvents += 1;
+    if (payload.event === 'external_landing') {
+      externalLandingEvents += 1;
+      if (payload.external_landing_reason === 'utm' || payload.has_utm) utmExternalLandingEvents += 1;
+      else if (payload.external_landing_reason === 'referrer' || payload.external_referrer) referrerExternalLandingEvents += 1;
+    }
     if (payload.event === 'calculator_complete') calculatorCompleteEvents += 1;
     if (payload.event === 'result_copy') resultCopyEvents += 1;
     if (payload.event === 'result_share') resultShareEvents += 1;
@@ -155,8 +164,11 @@ function buildReport(since, limit, rows) {
       feedback_requests: feedbackRequests,
       runtime_config_requests: runtimeConfigRequests,
       page_view_events: pageViewEvents,
+      calculator_start_events: calculatorStartEvents,
       calculator_complete_events: calculatorCompleteEvents,
       external_landing_events: externalLandingEvents,
+      utm_external_landing_events: utmExternalLandingEvents,
+      referrer_external_landing_events: referrerExternalLandingEvents,
       result_copy_events: resultCopyEvents,
       result_share_events: resultShareEvents,
       feedback_submit_events: feedbackSubmitEvents,
@@ -183,8 +195,11 @@ function printReport(report) {
   console.log(`- /api/feedback requests: ${report.metrics.feedback_requests}`);
   console.log(`- /api/runtime-config requests: ${report.metrics.runtime_config_requests}`);
   console.log(`- pv_page_view events: ${report.metrics.page_view_events}`);
+  console.log(`- calculator_start events: ${report.metrics.calculator_start_events}`);
   console.log(`- calculator_complete events: ${report.metrics.calculator_complete_events}`);
   console.log(`- external_landing events: ${report.metrics.external_landing_events}`);
+  console.log(`- external_landing via UTM: ${report.metrics.utm_external_landing_events}`);
+  console.log(`- external_landing via referrer: ${report.metrics.referrer_external_landing_events}`);
   console.log(`- result_copy events: ${report.metrics.result_copy_events}`);
   console.log(`- result_share events: ${report.metrics.result_share_events}`);
   console.log(`- feedback_submit events: ${report.metrics.feedback_submit_events}`);
@@ -209,10 +224,55 @@ function printReport(report) {
   printTop('Lead errors by reason', report.lead_errors_by_reason, 10);
 }
 
+function writeMarkdownReport(report, markdownOut) {
+  const outputPath = path.isAbsolute(markdownOut) ? markdownOut : path.join(__dirname, '..', markdownOut);
+  const lines = [
+    `# PVSize traffic report`,
+    '',
+    `Generated at: ${report.generated_at}`,
+    `Window: ${report.since}`,
+    '',
+    '## Metrics',
+    '',
+    '| Metric | Count |',
+    '|---|---:|',
+    `| raw log rows | ${report.raw_log_rows} |`,
+    `| /api/event requests | ${report.metrics.event_requests} |`,
+    `| pv_page_view | ${report.metrics.page_view_events} |`,
+    `| external_landing | ${report.metrics.external_landing_events} |`,
+    `| external_landing via UTM | ${report.metrics.utm_external_landing_events} |`,
+    `| external_landing via referrer | ${report.metrics.referrer_external_landing_events} |`,
+    `| calculator_start | ${report.metrics.calculator_start_events} |`,
+    `| calculator_complete | ${report.metrics.calculator_complete_events} |`,
+    `| result_copy | ${report.metrics.result_copy_events} |`,
+    `| result_share | ${report.metrics.result_share_events} |`,
+    `| feedback_submit | ${report.metrics.feedback_submit_events} |`,
+    `| lead_submit_success | ${report.metrics.lead_submit_success_events} |`,
+    '',
+    '## Top traffic sources',
+    '',
+    ...(report.top_traffic_sources.length ? report.top_traffic_sources.slice(0, 10).map(([key, count]) => `- ${key}: ${count}`) : ['- none']),
+    '',
+    '## Top landing pages',
+    '',
+    ...(report.top_landing_pages.length ? report.top_landing_pages.slice(0, 10).map(([key, count]) => `- ${key}: ${count}`) : ['- none']),
+    '',
+    '## Notes',
+    '',
+    '- Filters out `codex_probe`, `source_param=codex_check`, `internal_traffic=true`, and likely bot user agents.',
+    '- Does not include private raw log payloads.'
+  ];
+  fs.mkdirSync(path.dirname(outputPath), { recursive: true });
+  fs.writeFileSync(outputPath, `${lines.join('\n')}\n`);
+  console.log('');
+  console.log(`Wrote Markdown report: ${outputPath}`);
+}
+
 function main() {
   const since = parseArg('--since', '24h');
   const limit = Number(parseArg('--limit', '500')) || 500;
   const jsonOut = parseArg('--json-out', '');
+  const markdownOut = parseArg('--markdown-out', '');
   const rows = runVercelLogs(since, limit);
   const report = buildReport(since, limit, rows);
 
@@ -225,6 +285,8 @@ function main() {
     console.log('');
     console.log(`Wrote JSON report: ${outputPath}`);
   }
+
+  if (markdownOut) writeMarkdownReport(report, markdownOut);
 }
 
 main();

@@ -12,13 +12,22 @@
         sun_hours: 'location',
         panel_area: 'panelArea'
       },
+      inputLabels: {
+        roof_area: 'Roof area',
+        area_unit: 'Area unit',
+        panel_wattage: 'Panel wattage',
+        sun_hours: 'Peak sun-hours',
+        panel_area: 'Panel area'
+      },
       results: ['panelCount', 'systemSize', 'annualGen', 'roofUtil'],
       labels: {
         panelCount: 'Panels',
         systemSize: 'System size',
         annualGen: 'Annual generation',
         roofUtil: 'Roof utilization'
-      }
+      },
+      assumptions: 'Uses usable roof area, selected panel wattage, location sun-hours, and real-world system losses.',
+      boundary: 'Planning estimate only. Roof setbacks, shade, code rules, structural limits, inverter selection, and installer layout can change the final design.'
     },
     '/calculators/battery-sizing/': {
       type: 'battery_sizing',
@@ -28,13 +37,21 @@
         battery_type: 'batteryType',
         dod: 'dod'
       },
+      inputLabels: {
+        daily_usage: 'Daily usage',
+        backup_days: 'Backup days',
+        battery_type: 'Battery type',
+        dod: 'Depth of discharge'
+      },
       results: ['usableCapacity', 'totalCapacity', 'estCost', 'equivUnits'],
       labels: {
         usableCapacity: 'Usable capacity',
         totalCapacity: 'Total rated capacity',
         estCost: 'Estimated cost',
         equivUnits: 'Equivalent units'
-      }
+      },
+      assumptions: 'Uses daily energy, backup days, battery chemistry, depth of discharge, and rough installed cost assumptions.',
+      boundary: 'Planning estimate only. Inverter limits, surge loads, code equipment, temperature, warranty settings, and actual load lists can change the final system.'
     },
     '/calculators/savings/': {
       type: 'savings',
@@ -45,13 +62,22 @@
         system_kw: 'systemSize',
         system_cost: 'systemCost'
       },
+      inputLabels: {
+        monthly_bill: 'Monthly bill',
+        rate: 'Electricity rate preset',
+        custom_rate: 'Custom electricity rate',
+        system_kw: 'System size',
+        system_cost: 'System cost'
+      },
       results: ['annualSavings', 'monthlySavings', 'paybackYears', 'savings25yr'],
       labels: {
         annualSavings: 'Annual savings',
         monthlySavings: 'Monthly savings',
         paybackYears: 'Payback period',
         savings25yr: '25-year savings'
-      }
+      },
+      assumptions: 'Uses monthly bill, electricity rate, system size, estimated cost, 5 peak sun-hours, and 78% system efficiency.',
+      boundary: 'Planning estimate only. Net metering, incentives, degradation, rate changes, roof layout, and local utility rules can change real savings.'
     },
     '/calculators/carbon/': {
       type: 'carbon',
@@ -60,13 +86,20 @@
         emission_factor: 'emissionSelect',
         custom_emission: 'emissionCustom'
       },
+      inputLabels: {
+        system_kw: 'System size',
+        emission_factor: 'Emission factor preset',
+        custom_emission: 'Custom emission factor'
+      },
       results: ['annualGen', 'co2Offset', 'treesPlanted', 'carMiles'],
       labels: {
         annualGen: 'Annual generation',
         co2Offset: 'CO2 offset',
         treesPlanted: 'Equivalent trees',
         carMiles: 'Car miles avoided'
-      }
+      },
+      assumptions: 'Uses system size, grid emission factor, 5 peak sun-hours, and 78% system efficiency.',
+      boundary: 'Planning estimate only. Local grid mix, seasonal output, curtailment, degradation, and actual utility data can change the offset.'
     }
   };
 
@@ -115,6 +148,7 @@
 
   function collectSummary(config) {
     var parts = ['Technical feedback wanted: assumptions are editable and easy to challenge.', 'PVSize result'];
+    var inputs = collectInputs(config);
     config.results.forEach(function (id) {
       var el = document.getElementById(id);
       if (!el) return;
@@ -122,8 +156,17 @@
       if (!value || value === '-') return;
       parts.push((config.labels[id] || id) + ': ' + value);
     });
-    parts.push('Editable inputs: tweak the calculator page assumptions, then share or copy the result.');
-    parts.push('Calculator: ' + window.location.origin + window.location.pathname);
+    parts.push('');
+    parts.push('Inputs');
+    Object.keys(inputs).forEach(function (key) {
+      parts.push((config.inputLabels && config.inputLabels[key] ? config.inputLabels[key] : key) + ': ' + inputs[key]);
+    });
+    parts.push('');
+    parts.push('Key assumptions: ' + config.assumptions);
+    parts.push('Error boundary: ' + config.boundary);
+    parts.push('Editable inputs: tweak the calculator assumptions, then share or copy the result.');
+    parts.push('Share link: ' + buildShareUrl(config));
+    parts.push('Project brief: ' + window.location.origin + '/request-solar-plan/?source=' + encodeURIComponent(config.type + '-result-copy'));
     return parts.join('\n');
   }
 
@@ -309,13 +352,15 @@
     applyEmbedMode();
     applyPrefill(config);
 
-    if (params.get('utm_source') || params.get('utm_medium') || params.get('utm_campaign') || isExternalReferrer()) {
+    if ((params.get('utm_source') || params.get('utm_medium') || params.get('utm_campaign') || isExternalReferrer()) && !window.__pvExternalLandingTracked) {
+      window.__pvExternalLandingTracked = true;
       track('external_landing', {
         calculator_type: config.type,
         source: params.get('source') || '',
         utm_source: params.get('utm_source') || '',
         utm_medium: params.get('utm_medium') || '',
-        utm_campaign: params.get('utm_campaign') || ''
+        utm_campaign: params.get('utm_campaign') || '',
+        external_landing_reason: params.get('utm_source') || params.get('utm_medium') || params.get('utm_campaign') ? 'utm' : 'referrer'
       });
     }
 

@@ -50,6 +50,27 @@
     }
   }
 
+  function isExternalReferrer() {
+    var host = safeReferrerHost();
+    return Boolean(host && host !== window.location.host);
+  }
+
+  function hasUtmParams() {
+    var params = new URLSearchParams(window.location.search);
+    return Boolean(params.get('utm_source') || params.get('utm_medium') || params.get('utm_campaign'));
+  }
+
+  function inferTrafficSourceType() {
+    if (hasUtmParams()) return 'utm';
+    if (isExternalReferrer()) return 'external_referrer';
+    return 'direct_or_internal';
+  }
+
+  function isLikelyBot() {
+    var ua = navigator.userAgent || '';
+    return /bot|crawler|spider|preview|facebookexternalhit|slurp|bingpreview|headless/i.test(ua);
+  }
+
   function readStorage(storage, key) {
     try {
       return storage.getItem(key) || '';
@@ -119,6 +140,9 @@
     internalTraffic =
       readStorage(window.localStorage, 'pv_internal') === '1' ||
       readCookie(runtimeConfig.internalCookieName) === '1' ||
+      params.get('source') === 'codex_check' ||
+      params.get('utm_source') === 'codex' ||
+      params.get('codex_probe') === '1' ||
       window.location.hostname.indexOf('vercel.app') > -1 ||
       window.location.hostname.indexOf('localhost') > -1;
   }
@@ -238,6 +262,13 @@
         utm_source: getUtmValue('utm_source'),
         utm_medium: getUtmValue('utm_medium'),
         utm_campaign: getUtmValue('utm_campaign'),
+        utm_content: getUtmValue('utm_content'),
+        traffic_source_type: inferTrafficSourceType(),
+        has_utm: hasUtmParams(),
+        external_referrer: isExternalReferrer(),
+        autocalc: new URLSearchParams(window.location.search).get('autocalc') === '1',
+        embed: new URLSearchParams(window.location.search).get('embed') === '1',
+        bot_user_agent: isLikelyBot(),
         anonymous_id: getAnonymousId(),
         session_id: getSessionId(),
         internal_traffic: false,
@@ -280,6 +311,14 @@
     });
 
     window.pvTrack('pv_page_view');
+    if ((hasUtmParams() || isExternalReferrer()) && !window.__pvExternalLandingTracked) {
+      window.__pvExternalLandingTracked = true;
+      window.pvTrack('external_landing', {
+        external_landing_reason: hasUtmParams() ? 'utm' : 'referrer',
+        referrer_host: safeReferrerHost(),
+        source: new URLSearchParams(window.location.search).get('source') || ''
+      });
+    }
 
     document.addEventListener('click', function (event) {
       var target = event.target.closest('[data-pv-event]');
