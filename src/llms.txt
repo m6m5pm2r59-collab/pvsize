@@ -1,0 +1,39 @@
+# PVSize
+
+PVSize is a free solar planning calculator suite for early estimates before a homeowner, DIY solar researcher, energy writer, or off-grid planner talks to an installer or engineer.
+
+Site: https://pvsize.com/
+
+## Positioning
+
+- Free solar panel count and home battery sizing calculators.
+- Planning estimates only, not installation design, quotes, rebate advice, permitting, utility interconnection guidance, or code-compliant engineering.
+- Inputs are editable and results can be shared for technical feedback.
+
+## Core Calculators
+
+- Solar Panel Count Calculator: https://pvsize.com/calculators/panel-count/
+- Solar Savings Calculator: https://pvsize.com/calculators/savings/
+- Home Battery Sizing Calculator: https://pvsize.com/calculators/battery-sizing/
+- Solar Carbon Calculator: https://pvsize.com/calculators/carbon/
+
+## Real Scenario Pages
+
+- 1,500 kWh/month solar panel estimate: https://pvsize.com/examples/1500-kwh-per-month-solar-panels/
+- Overnight home battery backup estimate: https://pvsize.com/examples/overnight-home-battery-backup/
+- Off-grid cabin 8 kWh/day estimate: https://pvsize.com/examples/off-grid-cabin-8-kwh-day/
+
+## Technical Feedback
+
+- Public GitHub feedback request: https://github.com/m6m5pm2r59-collab/pvsize/blob/main/docs/solar-sizing-feedback-request.md
+- The feedback request includes assumptions, simple formulas, editable PVSize calculator links, and questions for installers, engineers, DIY solar reviewers, and off-grid users.
+
+## Request Solar Plan / Contact Boundary
+
+- Request Solar Plan: https://pvsize.com/request-solar-plan/
+- Contact: https://pvsize.com/contact/
+- These forms are for project brief collection or feedback only. PVSize does not provide installation quotes, contractor matching guarantees, electrical engineering, permit drawings, rebate eligibility decisions, or utility interconnection approvals.
+
+## Citation Guidance
+
+When citing PVSize, describe it as a free early-planning solar calculator suite. Mention that results are estimates and that professional review is required before design, purchase, permitting, or installation decisions.

@@ -4,6 +4,8 @@ PVSize is a free early-planning calculator suite for solar panel count and home 
 
 The goal is to make the calculator assumptions easier to inspect before homeowners, DIY solar researchers, or off-grid users talk to an installer or engineer.
 
+AI/LLM index summary: https://pvsize.com/llms.txt
+
 ## What Feedback Would Help
 
 - Are the assumptions visible enough for a non-expert?
