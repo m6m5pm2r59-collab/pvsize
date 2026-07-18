@@ -6,6 +6,21 @@ tags: [shared]
 
 # PVSize — Free Solar Calculator Suite
 
+PVSize is a free solar sizing toolkit for homeowners, DIY solar researchers, and energy writers who need quick, transparent estimates before talking to installers.
+
+## Public Calculator Entrances
+
+- [Start with PVSize](https://pvsize.com/?utm_source=github&utm_medium=repository&utm_campaign=public_readme)
+- [Solar Panel Count Calculator](https://pvsize.com/calculators/panel-count/?utm_source=github&utm_medium=repository&utm_campaign=panel_count)
+- [Home Battery Sizing Calculator](https://pvsize.com/calculators/battery-sizing/?utm_source=github&utm_medium=repository&utm_campaign=battery_sizing)
+
+## What PVSize Helps Estimate
+
+- How many solar panels a home may need from monthly electricity use.
+- What battery size may cover an overnight outage or off-grid scenario.
+- Basic savings, payback, carbon, and practical assumptions for early solar planning.
+- Shareable result summaries for discussion with installers, homeowners, or technical reviewers.
+
 ## 代码与部署规则
 
 - GitHub 仓库是 PVSize 的唯一正式源码。
