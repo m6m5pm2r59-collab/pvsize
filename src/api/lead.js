@@ -43,6 +43,14 @@ function parsePositiveInteger(value) {
   return Math.max(0, Math.floor(number));
 }
 
+function getFormSubmitEndpoint(formType, hasEstimateSummary) {
+  if (formType === 'calculator_report' && hasEstimateSummary) {
+    return FORMSUBMIT_ENDPOINT.replace('/ajax/', '/');
+  }
+
+  return FORMSUBMIT_ENDPOINT;
+}
+
 function getRequestSize(body) {
   try {
     return JSON.stringify(body || {}).length;
@@ -216,9 +224,11 @@ export default async function handler(req, res) {
   }
 
   var payload = buildPayload(formType, body, source);
+  var hasEstimateSummary = formType === 'calculator_report' && !!cleanString(body.estimate_summary, 4000);
+  var formSubmitEndpoint = getFormSubmitEndpoint(formType, hasEstimateSummary);
 
   try {
-    var upstream = await fetch(FORMSUBMIT_ENDPOINT, {
+    var upstream = await fetch(formSubmitEndpoint, {
       method: 'POST',
       headers: {
         Accept: 'application/json',
