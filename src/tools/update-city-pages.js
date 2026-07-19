@@ -4,8 +4,18 @@ const path = require('path');
 const cityDir = path.join(__dirname, '..', 'city');
 const policyPath = path.join(__dirname, '..', 'data', 'city-index-policy.json');
 const CITY_SUFFIX = '-solar-calculator.html';
-const analyticsScript = '<script src="/pv-analytics.js" defer></script>';
-const shareCardScript = '<script src="/pvsize-share-card.js" defer></script>';
+// Managed script dependencies (fixed order, must be complete)
+const managedScripts = [
+  '<script src="/pv-analytics.js" defer></script>',
+  '<script src="/country-context.js" defer></script>',
+  '<script src="/city-country-map.js" defer></script>',
+  '<script src="/pvsize-share-card.js" defer></script>',
+];
+const managedScriptBlock = managedScripts.map(s => `    ${s}`).join('\n');
+// Regex matching any of the 4 managed scripts (handles attribute order variants)
+const managedScriptPattern = /^\s*<script\s+(?:src="\/(?:pv-analytics|country-context|city-country-map|pvsize-share-card)\.js"\s+defer|defer\s+src="\/(?:pv-analytics|country-context|city-country-map|pvsize-share-card)\.js")>\s*<\/script>\s*$/gm;
+const analyticsScript = managedScripts[0];
+const shareCardScript = managedScripts[3];
 const indexPolicy = JSON.parse(fs.readFileSync(policyPath, 'utf8'));
 const pilotIndexSlugs = new Set(indexPolicy.pilot_index_slugs || []);
 const alwaysNoindexSlugs = new Set(indexPolicy.always_noindex_slugs || []);
@@ -151,12 +161,16 @@ function updateFile(file) {
     changed = true;
   }
 
-  if (!html.includes(analyticsScript)) {
-    if (html.includes(shareCardScript)) {
-      html = html.replace(shareCardScript, `${analyticsScript}\n    ${shareCardScript}`);
-    } else if (html.includes('</body>')) {
-      html = html.replace('</body>', `    ${analyticsScript}\n</body>`);
-    }
+  // Normalize managed scripts: strip all existing, re-insert complete block before </body>
+  const beforeScripts = html;
+  html = html.replace(managedScriptPattern, '');
+  // Clean up trailing blank lines left by removal
+  html = html.replace(/\n{3,}/g, '\n\n');
+  // Insert managed script block before </body>
+  if (html.includes('</body>')) {
+    html = html.replace('</body>', `${managedScriptBlock}\n</body>`);
+  }
+  if (html !== beforeScripts) {
     changed = true;
   }
 
