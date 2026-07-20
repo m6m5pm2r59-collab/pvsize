@@ -203,7 +203,7 @@
     var subject = encodeURIComponent('PVSize project summary request');
     var body = encodeURIComponent(
       'Location: ' + (data.location || '') + '\\n' +
-      'Monthly bill: $' + (data.bill || '') + '\\n' +
+      'Monthly bill: ' + (data.bill || '') + '\\n' +
       'Home/roof: ' + (data.homeSize || '') + '\\n' +
       'Battery interest: ' + (data.batteryInterest || '') + '\\n' +
       'Timing: ' + (data.timing || '') + '\\n' +
@@ -261,33 +261,16 @@
       });
     }
 
-    fetch('/api/lead', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify(payload)
-    })
-    .then(function(r) {
-      if (!r.ok) { throw new Error('Form delivery failed'); }
-      msg.style.display = 'block';
-      msg.style.color = '#166534';
-      msg.textContent = 'Thanks — your project-summary request has been sent. PVSize may follow up using the contact details you provided.';
-      if (typeof window.pvTrack === 'function') {
-        window.pvTrack('lead_submit_success', { form_type: 'solar_plan', source: payload.source });
-      }
-      e.target.reset();
-    })
-    .catch(function(err) {
-      msg.style.display = 'block';
-      msg.style.color = '#b45309';
-      msg.innerHTML = 'We could not verify form delivery just now. <a href="' + buildMailto(payload) + '">Open an email draft to send the same request</a>.';
-      if (typeof window.pvTrack === 'function') {
-        window.pvTrack('lead_submit_error', { form_type: 'solar_plan', source: payload.source, reason: err && err.message ? err.message : 'solar_plan_submit_failed' });
-      }
-    })
-    .finally(function() {
-      btn.disabled = false;
-      btn.textContent = 'Request free project summary';
-    });
+    msg.style.display = 'block';
+    msg.style.color = '#166534';
+    msg.textContent = 'Thanks — your project-summary request is ready.';
+    if (typeof window.pvTrack === 'function') {
+      window.pvTrack('lead_submit_success', { form_type: 'solar_plan', source: payload.source });
+    }
+    btn.disabled = false;
+    btn.textContent = 'Request free project summary';
+    e.target.reset();
+    window.location.href = buildMailto(payload);
   });
 </script>
 </body>
