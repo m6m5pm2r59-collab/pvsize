@@ -9,7 +9,7 @@
     "id": 2,
     "keywords": ["electricity bill", "calculate", "monthly", "cost", "bill estimate"],
     "question": "How do I calculate my electricity bill savings with solar?",
-    "answer": "Use our Solar Savings Calculator. Enter your average monthly bill, your location (for sun hours and local rates), and system size. The calculator will estimate annual savings and your payback period. On average, US homeowners save $1,500+/year."
+    "answer": "Use our Solar Savings Calculator. Enter your average monthly bill, your location (for sun hours and local rates), and system size. The calculator will estimate annual savings and your payback period. Actual savings depend on your electricity rate, local solar resource, and available incentives."
   },
   {
     "id": 3,
@@ -61,24 +61,12 @@
   },
   {
     "id": 11,
-    "keywords": ["ITC", "investment tax credit", "federal", "tax credit 30"],
-    "question": "What is the Federal Solar Investment Tax Credit (ITC)?",
-    "answer": "The ITC allows you to claim 30% of your solar installation cost as a federal tax credit. For example, a $25,000 system yields a $7,500 credit on your tax return. It applies to both residential and commercial systems. The 30% rate is locked in through 2032 under the Inflation Reduction Act."
-  },
-  {
-    "id": 12,
     "keywords": ["state incentives", "rebates", "DSIRE", "local", "subsidy"],
     "question": "What state-level solar incentives are available?",
     "answer": "Every state has different incentives — rebates, tax credits, SRECs (Solar Renewable Energy Certificates), and performance-based incentives. We recommend searching the DSIRE database (dsireusa.org) for your state. Popular programs include California's SGIP battery rebate and New York's NY-Sun incentive."
   },
   {
     "id": 13,
-    "keywords": ["inflation reduction act", "IRA", "solar", "2022"],
-    "question": "How does the Inflation Reduction Act affect solar?",
-    "answer": "The IRA (2022) extended the 30% ITC through 2032, added a standalone 30% credit for battery storage (even without solar), and introduced bonus credits for domestic content and projects in energy communities. It's the most significant solar policy in US history."
-  },
-  {
-    "id": 14,
     "keywords": ["PERC", "cell technology", "passivated emitter"],
     "question": "What is PERC solar cell technology?",
     "answer": "PERC (Passivated Emitter and Rear Cell) adds a reflective layer on the back of the cell, capturing light that passes through and reflecting it back for a second absorption pass. This boosts efficiency to 21–23% and improves low-light performance. It's the current mainstream technology for residential panels."
@@ -225,7 +213,7 @@
     "id": 38,
     "keywords": ["hello", "hi", "hey", "greetings", "start"],
     "question": "Hello!",
-    "answer": "Hi there! 👋 I'm the PVSize assistant. I can help you choose the right solar calculator, explain solar terms (kW, kWh, Net Metering, ITC), guide you on equipment selection, or answer questions about incentives and installation. What would you like to know?"
+    "answer": "Hi there! 👋 I'm the PVSize assistant. I can help you choose the right solar calculator, explain solar terms (kW, kWh, Net Metering), guide you on equipment selection, or answer questions about incentives and installation. What would you like to know?"
   },
   {
     "id": 39,
