@@ -194,7 +194,7 @@
     // 下载按钮
     var downloadBtn = document.createElement('button');
     downloadBtn.id = 'pvsize-download-btn';
-    downloadBtn.textContent = '下载结果';
+    downloadBtn.textContent = 'Download Results';
     downloadBtn.style.cssText =
       'display:inline-flex;align-items:center;justify-content:center;' +
       'width:48%;padding:12px 0;' +
@@ -207,7 +207,7 @@
     // 分享按钮
     var shareBtn = document.createElement('button');
     shareBtn.id = 'pvsize-share-btn';
-    shareBtn.textContent = '分享给朋友';
+    shareBtn.textContent = 'Share with a Friend';
     shareBtn.style.cssText =
       'display:inline-flex;align-items:center;justify-content:center;' +
       'width:48%;padding:12px 0;' +
@@ -255,7 +255,7 @@
     };
     script.onerror = function () {
       html2canvasLoading = false;
-      alert('加载渲染组件失败，请检查网络连接后刷新页面重试。');
+      alert('Failed to load share-card component. Please refresh the page and try again.');
     };
     document.head.appendChild(script);
   }
@@ -304,7 +304,7 @@
   function handleDownload(data) {
     var btn = document.getElementById('pvsize-download-btn');
     var originalText = btn.textContent;
-    btn.textContent = '生成中...';
+    btn.textContent = 'Generating...';
     btn.disabled = true;
 
     ensureHtml2canvas(function () {
@@ -314,7 +314,7 @@
         btn.disabled = false;
 
         if (err) {
-          alert('生成图片失败，请重试。');
+          alert('Failed to generate image. Please try again.');
           return;
         }
 
@@ -338,7 +338,7 @@
   function handleShare(data) {
     var btn = document.getElementById('pvsize-share-btn');
     var originalText = btn.textContent;
-    btn.textContent = '生成中...';
+    btn.textContent = 'Generating...';
     btn.disabled = true;
 
     ensureHtml2canvas(function () {
@@ -347,7 +347,7 @@
         if (err) {
           btn.textContent = originalText;
           btn.disabled = false;
-          // 即使渲染失败也尝试降级分享链接
+          // fallback to copy link
           fallbackCopyLink(btn, originalText);
           return;
         }
@@ -381,16 +381,16 @@
     var url = window.location.href;
     if (navigator.clipboard && navigator.clipboard.writeText) {
       navigator.clipboard.writeText(url).then(function () {
-        showToast('链接已复制，去粘贴给朋友吧');
+        showToast('Link copied! Share it with a friend.');
         btn.textContent = originalText;
         btn.disabled = false;
       }).catch(function () {
-        showToast('链接已复制，去粘贴给朋友吧');
+        showToast('Link copied! Share it with a friend.');
         btn.textContent = originalText;
         btn.disabled = false;
       });
     } else {
-      // 旧浏览器 fallback
+      // legacy browser fallback
       var textarea = document.createElement('textarea');
       textarea.value = url;
       textarea.style.position = 'fixed';
@@ -399,9 +399,9 @@
       textarea.select();
       try {
         document.execCommand('copy');
-        showToast('链接已复制，去粘贴给朋友吧');
+        showToast('Link copied! Share it with a friend.');
       } catch (e) {
-        showToast('复制失败，请手动分享链接：' + url);
+        showToast('Copy failed. Share this link manually: ' + url);
       }
       document.body.removeChild(textarea);
       btn.textContent = originalText;
@@ -478,7 +478,7 @@
 
     // 验证关键数据
     if (!data.cityName || data.cityName === 'Unknown City') {
-      console.warn('[PVSize] 无法提取城市名，跳过按钮注入。');
+      console.warn('[PVSize] Cannot extract city name, skip button injection.');
       return;
     }
 
