@@ -203,25 +203,14 @@
     if (typeof window.pvLeadMeta === 'function') {
       Object.assign(payload, window.pvLeadMeta(this));
     }
-    fetch('/api/lead',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(payload)})
-    .then(function(r){
-      return r.json().then(function(d){
-        if (!r.ok) throw new Error(d && d.error ? d.error : 'Lead delivery failed');
-        return d;
-      });
-    })
-    .then(function(){
-      document.getElementById('lead-form').innerHTML='<div style="padding:16px;color:#166534;font-weight:600">&check; Estimate sent. Check your inbox.</div>';
-      if (typeof window.pvTrack === 'function') {
-        window.pvTrack('lead_submit_success', { form_type: 'calculator_report', calculator_type: 'panel_count', source: source });
-      }
-    })
-    .catch(function(err){
-      document.getElementById('lead-form').innerHTML='<div style="padding:16px;color:#dc2626;font-weight:600">Something went wrong. Please try again.</div>';
-      if (typeof window.pvTrack === 'function') {
-        window.pvTrack('lead_submit_error', { form_type: 'calculator_report', calculator_type: 'panel_count', source: source, reason: err && err.message ? err.message : 'lead_submit_failed' });
-      }
-    });
+    var summary = window.PVCalculatorSummary || 'Panel Count Calculator Estimate';
+    var subject = encodeURIComponent('PVSize Panel Count Estimate');
+    var body = encodeURIComponent(summary + '\n\nSource: ' + window.location.href + '\n\nRequest a full project summary: https://pvsize.com/request-solar-plan/?source=panel-count-result');
+    document.getElementById('lead-form').innerHTML='<div style="padding:16px;color:#166534;font-weight:600">&check; Opening your email client…</div>';
+    if (typeof window.pvTrack === 'function') {
+      window.pvTrack('lead_submit_success', { form_type: 'calculator_report', calculator_type: 'panel_count', source: source });
+    }
+    window.location.href = 'mailto:?subject=' + subject + '&body=' + body;
   });
   </script>
 
