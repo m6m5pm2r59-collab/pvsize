@@ -2,6 +2,9 @@
   if (window.PVCalculationState) return;
 
   var STORAGE_KEY = 'pvsize_calculation_state_v1';
+
+  // Only US/AU/UK carry verified financial defaults (electricity rate, install cost, etc.).
+  // Other countries MUST NOT silently fall back to US values — they require user input.
   var countryDefaults = {
     us: {
       country: 'us',
@@ -34,6 +37,11 @@
       installCostRange: '£1.80-£2.60/W'
     }
   };
+
+  // Neutral planning default for sun-hours when no trusted city data exists.
+  // Flagged as a generic value, NOT a measured figure for the country.
+  var NEUTRAL_SUN_HOURS = 4.5;
+
   var baseDefaults = {
     monthlyKwh: 1000,
     panelWattage: 400,
@@ -107,6 +115,44 @@
     reserve: true
   };
 
+  // ---- Country resolution: city source -> country context -> calculation state ----
+  // Priority:
+  //   1. URL `country` param (explicit)
+  //   2. URL `source=city-{slug}` -> parseSourceToCountry() via city-country-map.js
+  //   3. localStorage stored country
+  //   4. default 'us' (only when all above are missing)
+  function resolveCountry(params, stored) {
+    // 1. explicit country param
+    var explicit = params.get('country') || params.get('region');
+    if (explicit && countryContextExists(explicit)) return explicit;
+
+    // 2. source=city-{slug}
+    var source = params.get('source');
+    if (source && window.PVCityCountry && window.PVCityCountry.parseSourceToCountry) {
+      var fromSource = window.PVCityCountry.parseSourceToCountry(source);
+      if (fromSource && countryContextExists(fromSource)) return fromSource;
+    }
+
+    // 3. stored country
+    if (stored && stored.country && countryContextExists(stored.country)) return stored.country;
+
+    // 4. default
+    return 'us';
+  }
+
+  // A country is valid if it has a context entry (country-context.js is the single source of truth).
+  function countryContextExists(code) {
+    return !!(window.PVCountryContext && window.PVCountryContext.get && window.PVCountryContext.get(code));
+  }
+
+  // Pull locale/currency/areaUnit from country-context.js (no second data table here).
+  function contextFor(code) {
+    if (window.PVCountryContext && window.PVCountryContext.get) {
+      return window.PVCountryContext.get(code) || null;
+    }
+    return null;
+  }
+
   function readStored() {
     try {
       var stored = JSON.parse(window.localStorage.getItem(STORAGE_KEY) || '{}');
@@ -143,17 +189,16 @@
 
   function sanitize(state) {
     var clean = Object.assign({}, state);
-    clean.country = countryDefaults[clean.country] ? clean.country : 'us';
+    clean.country = countryContextExists(clean.country) ? clean.country : 'us';
     Object.keys(numericKeys).forEach(function (key) {
       var value = Number(clean[key]);
       if (Number.isFinite(value) && value >= 0) clean[key] = value;
     });
     clean.monthlyKwh = Math.max(1, Number(clean.monthlyKwh) || baseDefaults.monthlyKwh);
-    clean.electricityRate = Math.max(0.01, Number(clean.electricityRate) || countryDefaults[clean.country].electricityRate);
-    clean.sunHours = Math.min(8, Math.max(1, Number(clean.sunHours) || countryDefaults[clean.country].sunHours));
+    clean.sunHours = Math.min(8, Math.max(1, Number(clean.sunHours) || NEUTRAL_SUN_HOURS));
     clean.systemLoss = Number.isFinite(Number(clean.systemLoss))
       ? Math.min(50, Math.max(0, Number(clean.systemLoss)))
-      : countryDefaults[clean.country].systemLoss;
+      : 20;
     clean.panelWattage = Math.min(1000, Math.max(100, Number(clean.panelWattage) || baseDefaults.panelWattage));
     clean.roofArea = Math.max(1, Number(clean.roofArea) || baseDefaults.roofArea);
     clean.backupHours = Math.min(168, Math.max(1, Number(clean.backupHours) || baseDefaults.backupHours));
@@ -166,15 +211,67 @@
 
   var stored = readStored();
   var query = readQuery();
-  var selectedCountry = countryDefaults[query.country] ? query.country : (countryDefaults[stored.country] ? stored.country : 'us');
-  if (query.country && query.country !== stored.country) {
+  var selectedCountry = resolveCountry(new URLSearchParams(window.location.search), stored);
+
+  // When an explicit country/region is supplied and differs from stored, drop stale financial fields
+  // so a non-US/AU/UK country does not inherit US financial defaults from storage.
+  if ((query.country || query.region) && (query.country || query.region) !== stored.country) {
     delete stored.electricityRate;
     delete stored.sunHours;
     delete stored.systemLoss;
     delete stored.installCostPerWatt;
     delete stored.installCostRange;
   }
-  var state = sanitize(Object.assign({}, baseDefaults, countryDefaults[selectedCountry], stored, query, { country: selectedCountry }));
+
+  var hasFinancialDefaults = !!countryDefaults[selectedCountry];
+  var ctx = contextFor(selectedCountry) || {};
+
+  // Build the base state. Financial fields are only pre-filled for US/AU/UK.
+  // For other countries, explicit user input (query/storage) is kept; otherwise left as null
+  // and flagged via `requiresInput` so the UI can prompt for local data.
+  var financialSeed = hasFinancialDefaults ? countryDefaults[selectedCountry] : {};
+
+  var state = sanitize(Object.assign(
+    {},
+    baseDefaults,
+    {
+      country: selectedCountry,
+      areaUnit: ctx.areaUnit || 'sqm',
+      currency: ctx.currency || null,
+      currencySymbol: ctx.currency || '',
+      locale: ctx.locale || null,
+      countryName: ctx.countryName || selectedCountry,
+      hasFinancialDefaults: hasFinancialDefaults
+    },
+    financialSeed,
+    stored,
+    query
+  ));
+
+  // For non-US/AU/UK countries without explicit user input, null out financial fields
+  // (do NOT silently substitute US values like 0.17 or 3.0).
+  if (!hasFinancialDefaults) {
+    var userProvidedFinancial =
+      (query.electricityRate != null) || (stored.electricityRate != null) ||
+      (query.installCostPerWatt != null) || (stored.installCostPerWatt != null) ||
+      (query.installCostRange != null) || (stored.installCostRange != null);
+    if (!userProvidedFinancial) {
+      state.electricityRate = null;
+      state.installCostPerWatt = null;
+      state.installCostRange = null;
+      state.requiresInput = true;
+    } else {
+      state.requiresInput = false;
+    }
+    // sunHours: keep user input if present, else neutral generic default (flagged).
+    if (state.sunHours == null || (query.sunHours == null && stored.sunHours == null)) {
+      state.sunHours = NEUTRAL_SUN_HOURS;
+      state.sunHoursIsGeneric = true;
+    }
+  } else {
+    state.requiresInput = false;
+    state.sunHoursIsGeneric = false;
+  }
 
   function persist() {
     try {
@@ -218,8 +315,32 @@
   }
 
   function setCountry(country) {
-    if (!countryDefaults[country]) return getState();
-    state = sanitize(Object.assign({}, state, countryDefaults[country], { country: country }));
+    if (!countryContextExists(country)) return getState();
+    var nowHasFinancial = !!countryDefaults[country];
+    var nextCtx = contextFor(country) || {};
+    var seed = nowHasFinancial ? countryDefaults[country] : {};
+    state = sanitize(Object.assign(
+      {},
+      state,
+      {
+        country: country,
+        areaUnit: nextCtx.areaUnit || 'sqm',
+        currency: nextCtx.currency || null,
+        currencySymbol: nextCtx.currency || '',
+        locale: nextCtx.locale || null,
+        countryName: nextCtx.countryName || country,
+        hasFinancialDefaults: nowHasFinancial
+      },
+      seed
+    ));
+    if (!nowHasFinancial) {
+      state.electricityRate = null;
+      state.installCostPerWatt = null;
+      state.installCostRange = null;
+      state.requiresInput = true;
+    } else {
+      state.requiresInput = false;
+    }
     persist();
     syncFields(['country', 'electricityRate', 'sunHours', 'systemLoss']);
     window.dispatchEvent(new CustomEvent('pv:calculation-state', { detail: getState() }));

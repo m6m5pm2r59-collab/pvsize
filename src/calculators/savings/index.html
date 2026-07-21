@@ -18,6 +18,8 @@
     })(window, document, "clarity", "script", "xczyltw8tn");
 </script>
 <script src="/pv-analytics.js" defer></script>
+<script src="/country-context.js" defer></script>
+<script src="/city-country-map.js" defer></script>
 <script src="/calculation-state.js" defer></script>
 <script src="/calculator-engagement.js" defer></script>
 <script src="/solar-project-flow.js" defer></script>
@@ -294,11 +296,16 @@
     const monthlySavings = annualSavings / 12;
     const savings25yr = annualSavings * 25;
 
-    // System cost
-    const state = window.PVCalculationState ? window.PVCalculationState.get() : { installCostPerWatt: 3, currencySymbol: '$' };
-    const currency = state.currencySymbol || '$';
-    let cost = systemCost ? parseFloat(systemCost) : systemSizeKw * 1000 * state.installCostPerWatt;
-    if (isNaN(cost) || cost <= 0) cost = systemSizeKw * 1000 * state.installCostPerWatt;
+    // System cost — use dynamic currency symbol; never silently fall back to US '$' or $3.0/W.
+    const state = window.PVCalculationState ? window.PVCalculationState.get() : {};
+    const currency = (state.currencySymbol && state.currencySymbol !== '') ? state.currencySymbol : (state.currency || '');
+    let cost = systemCost ? parseFloat(systemCost) : (state.installCostPerWatt != null ? systemSizeKw * 1000 * state.installCostPerWatt : NaN);
+    // If no install cost basis is available (non-US/AU/UK without user input), leave cost as NaN
+    // so payback shows N/A instead of silently using a US default.
+    if (isNaN(cost) || cost <= 0) {
+      if (state.installCostPerWatt != null) cost = systemSizeKw * 1000 * state.installCostPerWatt;
+      else cost = NaN;
+    }
 
     const payback = annualSavings > 0 ? cost / annualSavings : 0;
     const billAfter = Math.max(0, monthlyBill - monthlySavings);

@@ -49,10 +49,16 @@
   }
 
   function fallbackState() {
+    // Derive country context dynamically; never hardcode a US label/symbol.
+    var code = 'us';
+    var ctx = (window.PVCountryContext && window.PVCountryContext.get) ? window.PVCountryContext.get(code) : null;
+    var label = (ctx && ctx.countryName) ? ctx.countryName : 'United States';
+    var currency = (ctx && ctx.currency) ? ctx.currency : 'USD';
+    var areaUnit = (ctx && ctx.areaUnit) ? ctx.areaUnit : 'sqft';
     return {
-      countryLabel: 'United States', currencySymbol: '$', electricityRate: 0.17,
-      sunHours: 4.5, systemLoss: 20, panelWattage: 400, monthlyKwh: 1000,
-      roofArea: 600, areaUnit: 'sqft', installCostRange: '$2.50-$3.50/W'
+      country: code, countryLabel: label, countryName: label, currency: currency, currencySymbol: currency,
+      electricityRate: 0.17, sunHours: 4.5, systemLoss: 20, panelWattage: 400, monthlyKwh: 1000,
+      roofArea: 600, areaUnit: areaUnit, installCostRange: '$2.50-$3.50/W', hasFinancialDefaults: true
     };
   }
 
@@ -73,8 +79,17 @@
   }
 
   function commonAssumptions(current) {
-    return current.countryLabel + ': ' + Number(current.electricityRate).toFixed(2) + '/kWh, ' +
-      Number(current.sunHours).toFixed(1) + ' peak sun-hours/day, ' +
+    var countryName = current.countryName || current.countryLabel || (current.country || 'us');
+    if (current.hasFinancialDefaults) {
+      return 'Based on ' + countryName + ' defaults: ' + Number(current.electricityRate).toFixed(2) + '/kWh, ' +
+        Number(current.sunHours).toFixed(1) + ' peak sun-hours/day, ' +
+        Number(current.systemLoss).toFixed(0) + '% system losses, ' +
+        Number(current.panelWattage).toFixed(0) + ' W panels. Inputs remain editable.';
+    }
+    // No local financial defaults: do not substitute US values. Prompt for input.
+    var sunNote = current.sunHoursIsGeneric ? ' (generic planning default, not a measured value)' : '';
+    return 'Location identified as ' + countryName + '. Enter your local electricity rate and installation cost for a financial estimate.' +
+      ' Planning inputs: ' + Number(current.sunHours).toFixed(1) + ' peak sun-hours/day' + sunNote + ', ' +
       Number(current.systemLoss).toFixed(0) + '% system losses, ' +
       Number(current.panelWattage).toFixed(0) + ' W panels. Inputs remain editable.';
   }
