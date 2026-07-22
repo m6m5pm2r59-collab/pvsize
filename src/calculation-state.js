@@ -283,6 +283,32 @@
     return field && /^(INPUT|SELECT|TEXTAREA)$/.test(field.tagName);
   }
 
+  function populateCountryDropdown() {
+    var field = document.getElementById('country');
+    if (!isEditableField(field)) return;
+
+    var ctx = window.PVCountryContext;
+    if (!ctx || !ctx.COUNTRY_CONTEXT) return;
+
+    // Build sorted country list from country-context.js (single source of truth)
+    var codes = Object.keys(ctx.COUNTRY_CONTEXT).sort(function (a, b) {
+      var na = (ctx.COUNTRY_CONTEXT[a].countryName || a).toLowerCase();
+      var nb = (ctx.COUNTRY_CONTEXT[b].countryName || b).toLowerCase();
+      return na < nb ? -1 : na > nb ? 1 : 0;
+    });
+
+    field.innerHTML = '';
+    for (var i = 0; i < codes.length; i += 1) {
+      var opt = document.createElement('option');
+      opt.value = codes[i];
+      opt.textContent = ctx.COUNTRY_CONTEXT[codes[i]].countryName || codes[i];
+      field.appendChild(opt);
+    }
+
+    // Set to currently resolved country
+    field.value = state.country;
+  }
+
   function setField(key, value) {
     var field = document.getElementById(fieldIds[key]);
     if (!isEditableField(field) || value == null) return;
@@ -386,6 +412,7 @@
   };
 
   document.addEventListener('DOMContentLoaded', function () {
+    populateCountryDropdown();
     syncFields();
     var countryField = document.getElementById('country');
     if (isEditableField(countryField)) {
