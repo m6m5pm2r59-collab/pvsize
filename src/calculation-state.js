@@ -305,8 +305,27 @@
       field.appendChild(opt);
     }
 
-    // Set to currently resolved country
-    field.value = state.country;
+    // Re-resolve country from URL at DOMContentLoaded time (all scripts guaranteed loaded).
+    // This decouples the dropdown from the IIFE's pre-computed state, which may have
+    // resolved 'us' if city-country-map.js hadn't executed yet at IIFE time.
+    var params = new URLSearchParams(window.location.search);
+    var source = params.get('source');
+    var resolvedCountry = state.country; // fallback to IIFE-computed value
+
+    if (source && window.PVCityCountry && window.PVCityCountry.parseSourceToCountry) {
+      var fromSource = window.PVCityCountry.parseSourceToCountry(source);
+      if (fromSource && countryContextExists(fromSource)) {
+        resolvedCountry = fromSource;
+        // If IIFE defaulted to 'us' but DOMContentLoaded re-resolves correctly,
+        // update the full state (currency, financial defaults, etc.)
+        if (fromSource !== state.country) {
+          setCountry(fromSource);
+          return; // setCountry already calls syncFields and persists
+        }
+      }
+    }
+
+    field.value = resolvedCountry;
   }
 
   function setField(key, value) {
