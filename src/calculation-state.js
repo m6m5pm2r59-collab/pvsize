@@ -213,9 +213,10 @@
   var query = readQuery();
   var selectedCountry = resolveCountry(new URLSearchParams(window.location.search), stored);
 
-  // When an explicit country/region is supplied and differs from stored, drop stale financial fields
-  // so a non-US/AU/UK country does not inherit US financial defaults from storage.
-  if ((query.country || query.region) && (query.country || query.region) !== stored.country) {
+  // Drop stale financial fields whenever country changes from stored, regardless of how
+  // the new country was resolved (explicit param, source=city-xxx, or otherwise).
+  // This prevents non-US/AU/UK countries from inheriting financial defaults from a previous city.
+  if (selectedCountry !== stored.country) {
     delete stored.electricityRate;
     delete stored.sunHours;
     delete stored.systemLoss;
