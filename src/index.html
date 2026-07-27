@@ -100,25 +100,57 @@
 </nav>
 
 <!-- ===== HERO ===== -->
-<section class="hero">
-  <h1>Find the solar system size your home needs</h1>
-  <p>Start with electricity use, compare the target with your roof, then carry the same assumptions into savings and battery backup.</p>
-  <form id="homeSolarStart" class="hero-start-form">
-    <div>
-      <label for="homeMonthlyKwh">Monthly electricity use (kWh)</label>
-      <input id="homeMonthlyKwh" name="monthly_kwh" type="number" min="1" step="1" value="1000" inputmode="decimal" required>
+<section class="hero-grid">
+  <div class="hero-panel">
+    <div class="hero-kicker">Homepage start</div>
+    <h1>Start with the solar calculation that matches your question</h1>
+    <p>Monthly electricity use can take you straight to Panel Count. The same assumptions then carry into Savings and Battery Sizing, so you do not restart from zero later.</p>
+    <form id="homeSolarStart" class="hero-start-form">
+      <div>
+        <label for="homeMonthlyKwh">Monthly electricity use (kWh)</label>
+        <input id="homeMonthlyKwh" name="monthly_kwh" type="number" min="1" step="1" value="1000" inputmode="decimal" required>
+      </div>
+      <div>
+        <label for="homeCountry">Country defaults</label>
+        <select id="homeCountry" name="country">
+          <option value="us">United States</option>
+          <option value="au">Australia</option>
+          <option value="uk">United Kingdom</option>
+        </select>
+      </div>
+      <button type="submit" class="cta-btn">Open Panel Count</button>
+    </form>
+    <div class="hero-actions" style="margin-top: 18px;">
+      <a href="/calculators/" class="button-secondary" style="display:inline-flex;align-items:center;padding:14px 22px;">Browse all calculators</a>
+      <a href="/learn/" class="button-secondary" style="display:inline-flex;align-items:center;padding:14px 22px;">Read a guide</a>
     </div>
-    <div>
-      <label for="homeCountry">Country defaults</label>
-      <select id="homeCountry" name="country">
-        <option value="us">United States</option>
-        <option value="au">Australia</option>
-        <option value="uk">United Kingdom</option>
-      </select>
+    <ul class="hero-proof" aria-label="Homepage quick facts">
+      <li>No signup</li>
+      <li>Inputs stay editable</li>
+      <li>Country defaults are prefilled</li>
+    </ul>
+    <p class="hero-note">Planning estimate only. Use it to compare options before you make a purchase decision.</p>
+  </div>
+
+  <aside class="hero-card">
+    <div class="section-kicker">Recommended path</div>
+    <h2>What to open first</h2>
+    <p>Use Panel Count if you know monthly usage, Savings if you want payback, and Battery Sizing if backup power is the main question.</p>
+    <div style="display:grid;gap:12px;margin-top:18px;">
+      <a href="/calculators/panel-count/" class="feature-card" style="display:block;">
+        <h3>Panel Count</h3>
+        <p>Compare the number of panels you need with the roof space you have.</p>
+      </a>
+      <a href="/calculators/savings/" class="feature-card" style="display:block;">
+        <h3>Savings</h3>
+        <p>Estimate payback period and bill impact using the same state defaults.</p>
+      </a>
+      <a href="/calculators/battery-sizing/" class="feature-card" style="display:block;">
+        <h3>Battery Sizing</h3>
+        <p>Size backup storage for overnight use, outage coverage, or essential loads.</p>
+      </a>
     </div>
-    <button type="submit" class="cta-btn">Start with monthly electricity usage</button>
-  </form>
-  <p class="hero-note">No signup. Inputs stay editable. Planning estimate only.</p>
+  </aside>
 </section>
 
 <!-- ===== CALCULATOR HUB ===== -->
