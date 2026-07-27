@@ -37,6 +37,7 @@
 <link rel="canonical" href="https://pvsize.com/calculators/panel-count/">
 </head>
 <body class="bg-gray-50 text-gray-800">
+  <a href="#pv-calculator-shell" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded focus:bg-[#1a2a3a] focus:px-4 focus:py-3 focus:font-semibold focus:text-white">Skip to calculator form</a>
   <!-- Navbar -->
   <nav id="pv-main-nav" class="bg-[#1a2a3a] text-white sticky top-0 z-50 shadow-md">
     <div class="max-w-7xl mx-auto px-4 flex items-center justify-between h-16">
@@ -80,26 +81,28 @@
 
         <!-- Roof Area -->
         <div>
-          <label class="block text-sm font-semibold mb-1 text-gray-700">Gross roof area available for solar</label>
+          <label class="block text-sm font-semibold mb-1 text-gray-700" for="roofArea">Gross roof area available for solar</label>
           <div class="flex gap-2">
-            <input type="number" id="roofArea" class="border rounded-lg px-4 py-3 w-full" placeholder="e.g. 1500" min="1" />
-            <select id="areaUnit" class="border rounded-lg px-3 py-3 min-w-select bg-white">
+            <input type="number" id="roofArea" inputmode="decimal" aria-describedby="roof-area-help" class="border rounded-lg px-4 py-3 w-full" placeholder="e.g. 1500" min="1" />
+            <select id="areaUnit" aria-label="Roof area unit" class="border rounded-lg px-3 py-3 min-w-select bg-white">
               <option value="sqft">sq ft</option>
               <option value="sqm">m²</option>
             </select>
           </div>
+          <p id="roof-area-help" class="sr-only">Enter the gross roof area available for solar. Choose square feet or square metres from the adjacent unit selector.</p>
         </div>
 
         <!-- Panel Wattage -->
         <div>
-          <label class="block text-sm font-semibold mb-1 text-gray-700">Panel wattage</label>
-          <select id="panelWattage" class="border rounded-lg px-4 py-3 w-full min-w-select bg-white" onchange="updatePanelArea()">
+          <label class="block text-sm font-semibold mb-1 text-gray-700" for="panelWattage">Panel wattage</label>
+          <select id="panelWattage" aria-describedby="panel-wattage-help" class="border rounded-lg px-4 py-3 w-full min-w-select bg-white" onchange="updatePanelArea()">
             <option value="350" data-area="18.0" data-name="350W residential panel">350W residential panel</option>
             <option value="400" data-area="18.7" data-name="400W residential panel" selected>400W residential panel</option>
             <option value="450" data-area="21.0" data-name="450W residential panel">450W residential panel</option>
             <option value="500" data-area="21.3" data-name="500W high-output panel">500W high-output panel</option>
             <option value="550" data-area="21.5" data-name="550W high-output panel">550W high-output panel</option>
           </select>
+          <p id="panel-wattage-help" class="sr-only">Choose the panel wattage used for the estimate. The panel area default updates with this selection.</p>
         </div>
 
         <details class="rounded-xl border border-gray-200 bg-gray-50 p-4">
@@ -118,21 +121,22 @@
               <input type="number" id="electricityRate" class="border rounded-lg px-4 py-3 w-full" min="0.01" step="0.01" />
             </div>
             <div>
-            <label class="block text-sm font-semibold mb-1 text-gray-700">Panel Area (sq ft, auto-set by model)</label>
-            <input type="number" id="panelArea" class="border rounded-lg px-4 py-3 w-full" placeholder="Auto from panel wattage" step="0.1" />
+            <label class="block text-sm font-semibold mb-1 text-gray-700" for="panelArea">Panel Area (sq ft, auto-set by model)</label>
+            <input type="number" id="panelArea" aria-describedby="panel-area-help" class="border rounded-lg px-4 py-3 w-full" placeholder="Auto from panel wattage" step="0.1" />
+            <p id="panel-area-help" class="sr-only">Panel area is set from the selected panel wattage and can be overridden when you know the usable panel dimensions.</p>
             </div>
           </div>
         </details>
 
-        <button id="calcBtn" class="w-full py-4 rounded-xl font-bold text-lg text-[#1a2a3a] hover:opacity-90 transition" style="background:#F5A623">
+        <button id="calcBtn" aria-controls="results" class="w-full py-4 rounded-xl font-bold text-lg text-[#1a2a3a] hover:opacity-90 transition" style="background:#F5A623">
           Calculate
         </button>
       </div>
 
       <!-- Results -->
-      <div id="results" class="mt-8 hidden">
+      <div id="results" class="mt-8 hidden" role="region" aria-live="polite" aria-labelledby="results-heading">
         <div class="bg-gray-50 rounded-xl p-6">
-          <h3 class="text-lg font-bold mb-1" style="color:#1a2a3a">Solar sizing result</h3>
+          <h3 id="results-heading" class="text-lg font-bold mb-1" style="color:#1a2a3a">Solar sizing result</h3>
           <p id="panelComparison" class="text-sm text-gray-600 mb-4"></p>
           <div class="grid grid-cols-2 gap-4 text-center">
             <div class="bg-white rounded-lg p-4 shadow-sm">
