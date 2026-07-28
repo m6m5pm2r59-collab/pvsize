@@ -18,7 +18,7 @@ Opportunities
 
 ## Current State
 
-City Pages UI/UX technical stage is passed and no longer blocks the main UI redesign flow. City Pages growth validation remains observing, and full rollout remains pending metrics or explicit approval. Opportunities `/partners/` first-screen is production verified; services section hierarchy is implemented locally and ready for commit / deployment.
+City Pages UI/UX technical stage is passed and no longer blocks the main UI redesign flow. City Pages growth validation remains observing, and full rollout remains pending metrics or explicit approval. Opportunities `/partners/` first-screen and services section are deployed and production verified.
 
 ## Opportunities Baseline
 
@@ -47,6 +47,7 @@ City Pages UI/UX technical stage is passed and no longer blocks the main UI rede
 - `/partners/` first-screen UI improvement implemented: added direct inquiry / disclosure actions and three partner opportunity paths.
 - `/partners/` production verification passed: status 200, new CTA/content present, canonical/robots/Clarity/analytics/form wiring preserved.
 - `/partners/` services section hierarchy improved locally: renamed the section to Partner Opportunities and clarified intent placements, sponsored education, opt-in leads, and future commerce tests.
+- `/partners/` services section production verification passed: status 200, new labels present, canonical/robots/Clarity/analytics/form wiring preserved.
 - City Pages decision checkpoint recorded; no production code changes were made in this run.
 - City Pages pilot observation checklist recorded.
 - City path strip helper is now wired into `update-city-pages.js` behind `--path-strip-pilot` and `--dry-run`.
@@ -60,7 +61,7 @@ City Pages UI/UX technical stage is passed and no longer blocks the main UI rede
 
 ## Last Commit
 
-Opportunities first-screen implementation: `0aafaf8 Improve partners first screen`
+Opportunities services implementation: `7785151 Clarify partners opportunity services`
 
 ## Last Deployment
 
@@ -73,6 +74,7 @@ Opportunities first-screen implementation: `0aafaf8 Improve partners first scree
 
 Evidence:
 
+- `/Users/xiaotudou/Documents/Codex/2026-07-16/pvsize-daily-ops/reports/PVSize_Opportunities_Partners_Services_20260728.md`
 - `/Users/xiaotudou/Documents/Codex/2026-07-16/pvsize-daily-ops/reports/PVSize_Opportunities_Partners_FirstScreen_20260728.md`
 - `/Users/xiaotudou/Documents/Codex/2026-07-16/pvsize-daily-ops/reports/PVSize_CityTemplate_PathStrip_5CityRecheck_20260728.md`
 - `/Users/xiaotudou/Documents/Codex/2026-07-16/pvsize-daily-ops/reports/PVSize_CityTemplate_PathStrip_5CityPilot_Production_20260728.md`
@@ -87,14 +89,14 @@ Decision checkpoint evidence:
 - Metric access is unavailable in unattended runs, so growth validation and broad city rollout remain blocked.
 - City path strip helper is wired into the city page update flow, but only in explicit pilot mode.
 - Do not expand to all city pages until behavior metrics pass a later threshold or the user explicitly approves rollout.
-- Opportunities `/partners/` services section update is local-only until committed, deployed, and production verified.
+- Opportunities `/partners/` hero and services sections are production verified; contact form visual hierarchy is not yet improved.
 - Full-site QA and archive are pending.
 
 ## Next Single Task
 
-Commit, deploy, and production verify the `/partners/` services section update:
+Continue Opportunities with the next smallest `/partners/` task:
 
-Verify production `/partners/` shows Partner Opportunities labels and preserves existing form fields, `partner_inquiry` payload, `noindex,follow`, canonical URL, Clarity, `pv-analytics.js`, and `/api/lead`.
+Improve the `/partners/` contact/form section visual hierarchy while preserving every existing form field, `partner_inquiry` payload, `noindex,follow`, canonical URL, Clarity, `pv-analytics.js`, and `/api/lead`.
 
 ## User Decision Needed
 
