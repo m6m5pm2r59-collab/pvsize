@@ -1,0 +1,42 @@
+{
+  "schema_version": "0.1.0",
+  "status": "schema_only",
+  "countries": [
+    "united-states",
+    "japan",
+    "european-union"
+  ],
+  "technologies": [
+    "solar",
+    "battery-storage",
+    "microgrid",
+    "inverter",
+    "pv-module",
+    "mounting-system",
+    "ev-charging"
+  ],
+  "opportunity_types": [
+    "tender",
+    "incentive",
+    "procurement-signal"
+  ],
+  "statuses": [
+    "open",
+    "closing-soon",
+    "closed",
+    "cancelled",
+    "superseded",
+    "unknown"
+  ],
+  "review_statuses": [
+    "discovered",
+    "parsed",
+    "needs_review",
+    "approved",
+    "published",
+    "rejected",
+    "expired",
+    "cancelled",
+    "superseded"
+  ]
+}

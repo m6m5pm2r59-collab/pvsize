@@ -1,14 +1,14 @@
 # PVSize Opportunities Status
 
-Updated: 2026-07-28 20:38 CST
+Updated: 2026-07-28 20:58 CST
 
 ## Current Phase
 
-Phase 0: Architecture Audit Complete
+Phase 5A: Sample Data Specification
 
 ## Current State
 
-Phase 0 architecture audit is complete. PVSize can build Solar Opportunities V1, but the current codebase is static-first and does not yet have a database, auth, admin, newsletter provider, or production scheduler.
+Phase 5A sample data specification is implemented as a schema-only, file-backed starting point. No real opportunity records, public opportunity pages, sitemap entries, AI import jobs, or newsletter capture flows have been added.
 
 ## Completed
 
@@ -19,6 +19,9 @@ Phase 0 architecture audit is complete. PVSize can build Solar Opportunities V1,
 - ADR-006 confirmed: opportunities appear after calculator value and trust surfaces.
 - `docs/opportunities-architecture-audit.md` created.
 - Architecture recommendation recorded: start with a static, file-backed, human-reviewed MVP before database/admin/AI ingestion.
+- `src/data/opportunities/` created as a schema-only data directory.
+- Opportunity, source, taxonomy, validation, URL, and calculator relation rules defined.
+- Empty `opportunities.json` and `sources.json` records arrays created with no published records.
 
 ## Current Constraints
 
@@ -29,11 +32,15 @@ Phase 0 architecture audit is complete. PVSize can build Solar Opportunities V1,
 
 ## Last Commit
 
-`bce815a Start opportunities phase planning`
+Pending this run: Define opportunities data schema
 
 ## Last Verification
 
-Phase 0 audit document created and checked with repository inspection.
+Phase 5A validation passed:
+
+- `node -e` JSON parse check for `opportunities.json`, `sources.json`, and `tags.json`
+- `git diff --check`
+- Schema marker check for opportunity records, review states, validation rules, calculator relation rules, and non-goals
 
 ## Risks And Gaps
 
@@ -42,13 +49,14 @@ Phase 0 audit document created and checked with repository inspection.
 - Email handling is FormSubmit-based, not newsletter/subscription infrastructure.
 - No production scheduler exists for import jobs.
 - Analytics is log-based through `/api/event/` and Vercel logs.
+- No executable validation script exists yet; current validation rules are documented but not automated.
 
 ## Next Single Task
 
-Create the Phase 5 sample data specification without publishing pages:
+Create a local validation script for the schema-only Opportunities data:
 
-Define `src/data/opportunities/` file schema for opportunities, sources, and tags, plus validation rules and review statuses. Do not add real opportunity records yet unless they are clearly marked sample/draft and not published.
+Add `src/tools/validate-opportunities.js` to validate `src/data/opportunities/opportunities.json`, `sources.json`, and `tags.json` against the documented required structure and controlled taxonomy. Do not publish pages or add real opportunity records.
 
 ## User Decision Needed
 
-No immediate decision needed for Phase 0 audit.
+No immediate decision needed for Phase 5A schema work.
