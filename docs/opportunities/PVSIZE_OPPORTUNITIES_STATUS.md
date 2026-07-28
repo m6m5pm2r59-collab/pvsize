@@ -39,7 +39,7 @@ Phase 5C source relationship validation is implemented. The validator now requir
 
 ## Last Commit
 
-Pending this run: Enforce opportunities source relationships
+`4225180 Enforce opportunities source relationships`
 
 ## Last Verification
 
