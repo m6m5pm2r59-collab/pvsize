@@ -1,6 +1,6 @@
 # PVSize UI/UX Status
 
-Updated: 2026-07-28 18:20 CST
+Updated: 2026-07-28 18:40 CST
 
 ## Current Phase
 
@@ -18,7 +18,7 @@ Opportunities
 
 ## Current State
 
-City Pages UI/UX technical stage is passed and no longer blocks the main UI redesign flow. City Pages growth validation remains observing, and full rollout remains pending metrics or explicit approval. Opportunities `/partners/` first-screen and services section are deployed and production verified.
+City Pages UI/UX technical stage is passed and no longer blocks the main UI redesign flow. City Pages growth validation remains observing, and full rollout remains pending metrics or explicit approval. Opportunities `/partners/` first-screen and services section are production verified; contact/form section hierarchy is implemented locally and ready for commit / deployment.
 
 ## Opportunities Baseline
 
@@ -48,6 +48,7 @@ City Pages UI/UX technical stage is passed and no longer blocks the main UI rede
 - `/partners/` production verification passed: status 200, new CTA/content present, canonical/robots/Clarity/analytics/form wiring preserved.
 - `/partners/` services section hierarchy improved locally: renamed the section to Partner Opportunities and clarified intent placements, sponsored education, opt-in leads, and future commerce tests.
 - `/partners/` services section production verification passed: status 200, new labels present, canonical/robots/Clarity/analytics/form wiring preserved.
+- `/partners/` contact/form section hierarchy improved locally: added manual review, disclosure, and no-default-sharing notes plus a form shell without changing fields or submit behavior.
 - City Pages decision checkpoint recorded; no production code changes were made in this run.
 - City Pages pilot observation checklist recorded.
 - City path strip helper is now wired into `update-city-pages.js` behind `--path-strip-pilot` and `--dry-run`.
@@ -89,14 +90,14 @@ Decision checkpoint evidence:
 - Metric access is unavailable in unattended runs, so growth validation and broad city rollout remain blocked.
 - City path strip helper is wired into the city page update flow, but only in explicit pilot mode.
 - Do not expand to all city pages until behavior metrics pass a later threshold or the user explicitly approves rollout.
-- Opportunities `/partners/` hero and services sections are production verified; contact form visual hierarchy is not yet improved.
+- Opportunities `/partners/` contact/form section update is local-only until committed, deployed, and production verified.
 - Full-site QA and archive are pending.
 
 ## Next Single Task
 
-Continue Opportunities with the next smallest `/partners/` task:
+Commit, deploy, and production verify the `/partners/` contact/form section update:
 
-Improve the `/partners/` contact/form section visual hierarchy while preserving every existing form field, `partner_inquiry` payload, `noindex,follow`, canonical URL, Clarity, `pv-analytics.js`, and `/api/lead`.
+Verify production `/partners/` shows the new contact/form trust notes and preserves every existing form field, `partner_inquiry` payload, `noindex,follow`, canonical URL, Clarity, `pv-analytics.js`, and `/api/lead`.
 
 ## User Decision Needed
 
