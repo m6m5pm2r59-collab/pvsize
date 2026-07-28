@@ -34,7 +34,7 @@ Phase 5B first Source Registry draft is implemented. The Opportunities data laye
 
 ## Last Commit
 
-Pending this run: Add opportunities source registry draft
+`7d43e89 Add opportunities source registry draft`
 
 ## Last Verification
 
