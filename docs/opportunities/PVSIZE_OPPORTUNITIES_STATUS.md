@@ -36,7 +36,7 @@ Phase 5B source candidate approval is implemented for one source. SAM.gov Contra
 
 ## Last Commit
 
-Pending this run: Approve SAM.gov opportunities source
+`90dd2d7 Approve SAM.gov opportunities source`
 
 ## Last Verification
 
