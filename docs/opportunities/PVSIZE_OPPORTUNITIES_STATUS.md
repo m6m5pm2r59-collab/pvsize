@@ -1,14 +1,14 @@
 # PVSize Opportunities Status
 
-Updated: 2026-07-28 21:18 CST
+Updated: 2026-07-28 21:38 CST
 
 ## Current Phase
 
-Phase 5A: Data Validation Guardrail
+Phase 5B: Source Registry Draft
 
 ## Current State
 
-Phase 5A data validation guardrail is implemented. The Opportunities data layer remains schema-only with no real opportunity records, public opportunity pages, sitemap entries, AI import jobs, or newsletter capture flows.
+Phase 5B first Source Registry draft is implemented. The Opportunities data layer now has official-source candidates only; it still has no real opportunity records, public opportunity pages, sitemap entries, AI import jobs, or newsletter capture flows.
 
 ## Completed
 
@@ -23,6 +23,7 @@ Phase 5A data validation guardrail is implemented. The Opportunities data layer 
 - Opportunity, source, taxonomy, validation, URL, and calculator relation rules defined.
 - Empty `opportunities.json` and `sources.json` records arrays created with no published records.
 - `src/tools/validate-opportunities.js` added to enforce schema root structure, controlled taxonomy, unique ids/slugs, source quality fields, review-state thresholds, date format, and published-record safety rules.
+- First official-source candidate registry added with 5 non-published sources across United States, European Union, and Japan.
 
 ## Current Constraints
 
@@ -33,7 +34,7 @@ Phase 5A data validation guardrail is implemented. The Opportunities data layer 
 
 ## Last Commit
 
-`a1a9989 Add opportunities data validator`
+Pending this run: Add opportunities source registry draft
 
 ## Last Verification
 
@@ -52,12 +53,13 @@ Phase 5A validation passed:
 - No production scheduler exists for import jobs.
 - Analytics is log-based through `/api/event/` and Vercel logs.
 - Validation is local-only; it is not wired into an npm script or deployment gate because the repository has no root `package.json`.
+- Source candidates are still editorial candidates. They are not approved for automated ingestion or publication.
 
 ## Next Single Task
 
-Create the first Source Registry draft without publishing pages:
+Create a review-ready source policy note:
 
-Add official-source candidate records to `src/data/opportunities/sources.json` only if they are official, public, and marked `needs_review` or another non-published review state. Do not add opportunity records, public pages, AI import jobs, or sitemap entries.
+Document which source statuses may feed draft opportunity records, which statuses are blocked, and what human checks are required before a source can move from `needs_review` to `approved`. Do not add opportunity records, public pages, AI import jobs, or sitemap entries.
 
 ## User Decision Needed
 

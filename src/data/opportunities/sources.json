@@ -1,5 +1,61 @@
 {
   "schema_version": "0.1.0",
-  "status": "schema_only",
-  "sources": []
+  "status": "draft_sources_only",
+  "sources": [
+    {
+      "id": "src_us_sam_contract_opportunities",
+      "name": "SAM.gov Contract Opportunities",
+      "url": "https://sam.gov/opportunities",
+      "country": "united-states",
+      "source_type": "government-procurement",
+      "allowed_use_notes": "Official U.S. federal contract opportunities search. Candidate source only; individual records require official notice review before publication.",
+      "reliability_score": 95,
+      "last_checked": "2026-07-28",
+      "status": "needs_review"
+    },
+    {
+      "id": "src_us_grants_search",
+      "name": "Grants.gov Search",
+      "url": "https://www.grants.gov/search-grants.html",
+      "country": "united-states",
+      "source_type": "agency-program",
+      "allowed_use_notes": "Official U.S. federal grants search. Candidate source only; funding opportunities must be screened for solar relevance and eligibility before publication.",
+      "reliability_score": 95,
+      "last_checked": "2026-07-28",
+      "status": "needs_review"
+    },
+    {
+      "id": "src_eu_funding_tenders_portal",
+      "name": "EU Funding & Tenders Portal",
+      "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/home",
+      "country": "european-union",
+      "source_type": "government-procurement",
+      "allowed_use_notes": "Official European Commission funding and tenders portal. Candidate source only; calls require eligibility, geography, and source-document review before publication.",
+      "reliability_score": 95,
+      "last_checked": "2026-07-28",
+      "status": "needs_review"
+    },
+    {
+      "id": "src_eu_ted",
+      "name": "Tenders Electronic Daily",
+      "url": "https://ted.europa.eu/en/",
+      "country": "european-union",
+      "source_type": "government-procurement",
+      "allowed_use_notes": "Official EU public procurement portal. Candidate source only; notices must be filtered for solar, storage, grid, or related procurement relevance before publication.",
+      "reliability_score": 95,
+      "last_checked": "2026-07-28",
+      "status": "needs_review"
+    },
+    {
+      "id": "src_jp_jetro_government_procurement",
+      "name": "JETRO Japanese Government Procurement",
+      "url": "https://www.jetro.go.jp/en/database/procurement/",
+      "country": "japan",
+      "source_type": "government-procurement",
+      "allowed_use_notes": "Official JETRO Japanese government procurement database. Candidate source only; notices require issuer and deadline verification before publication.",
+      "reliability_score": 90,
+      "last_checked": "2026-07-28",
+      "status": "needs_review"
+    }
+  ]
 }
