@@ -32,7 +32,7 @@ Phase 5A sample data specification is implemented as a schema-only, file-backed 
 
 ## Last Commit
 
-Pending this run: Define opportunities data schema
+`0f84b2e Define opportunities data schema`
 
 ## Last Verification
 
