@@ -1,14 +1,14 @@
 # PVSize Opportunities Status
 
-Updated: 2026-07-28 23:38 CST
+Updated: 2026-07-28 23:58 CST
 
 ## Current Phase
 
-Phase 5C: Negative Validation Fixtures
+Phase 5C: Draft Human Review Note
 
 ## Current State
 
-Phase 5C negative validation fixtures are implemented through validator self-test mode. The validator now proves it fails missing, unknown, non-approved, and country-mismatched `source_id` cases. The data layer still has no public opportunity pages, sitemap entries, AI import jobs, or newsletter capture flows.
+Phase 5C draft human review note is implemented for the first SAM.gov draft. The record remains `discovered` and non-published; the data layer still has no public opportunity pages, sitemap entries, AI import jobs, or newsletter capture flows.
 
 ## Completed
 
@@ -30,6 +30,7 @@ Phase 5C negative validation fixtures are implemented through validator self-tes
 - First SAM.gov notice added to `opportunities.json` as `review_status: discovered` with `quality_score: 60`; it is not approved, not published, and not indexed.
 - `src/tools/validate-opportunities.js` strengthened to enforce opportunity-to-source relationship checks.
 - `src/tools/validate-opportunities.js --self-test` added to exercise negative source relationship fixtures without adding fixture data files.
+- `src/data/opportunities/review-notes/opp_us_2026_0001.md` added with checks required before moving the first draft from `discovered` to `needs_review` or `approved`.
 
 ## Current Constraints
 
@@ -40,7 +41,7 @@ Phase 5C negative validation fixtures are implemented through validator self-tes
 
 ## Last Commit
 
-`ed92193 Add opportunities validator self-test`
+Pending this run: Add first draft human review note
 
 ## Last Verification
 
@@ -56,6 +57,7 @@ Phase 5A validation passed:
 - SAM.gov notice checked: direct notice URL, Notice ID, agency, published date, due date, and PV/BESS/microgrid relevance visible
 - Validator source relationship check: opportunity `source_id` must exist, must be `approved`, country must match, and source reliability must match
 - Validator self-test checks missing `source_id`, unknown `source_id`, non-approved source, and country mismatch failure cases
+- Human review note marker check for current evidence, checks before `needs_review`, checks before `approved`, and publication gate reminder
 
 ## Risks And Gaps
 
@@ -70,12 +72,13 @@ Phase 5A validation passed:
 - No source is approved for automated ingestion or publication.
 - First draft record is not publication-ready. It requires human review before approval or publication.
 - Validator is still local-only; it is not wired into a deployment gate.
+- Human review note exists, but the review itself is not complete.
 
 ## Next Single Task
 
-Prepare draft record human-review checklist for the first SAM.gov draft:
+Add validator check for draft review notes:
 
-Create a review note for `opp_us_2026_0001` listing the remaining human checks needed before it can move from `discovered` to `needs_review` or `approved`. Do not change the record review status, publish pages, add AI import jobs, or add sitemap entries.
+Update `src/tools/validate-opportunities.js` so any opportunity record must have a matching `src/data/opportunities/review-notes/{id}.md` file before it can pass validation. Do not change the record review status, publish pages, add AI import jobs, or add sitemap entries.
 
 ## User Decision Needed
 

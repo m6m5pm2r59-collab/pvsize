@@ -12,6 +12,7 @@ Current files:
 - `opportunities.schema.md`: field definitions, review states, and validation rules.
 - `source-review-policy.md`: approval gates for source use and draft record creation.
 - `draft-record-intake-checklist.md`: evidence checklist before any notice enters `opportunities.json`.
+- `review-notes/`: human review notes for individual draft opportunity records.
 
 Rules:
 
@@ -22,3 +23,4 @@ Rules:
 - Do not auto-publish AI-discovered opportunities.
 - Do not create draft opportunity records from sources below `approved`.
 - Do not create draft opportunity records when required official-source evidence is incomplete.
+- Do not promote draft records without a matching human review note.
