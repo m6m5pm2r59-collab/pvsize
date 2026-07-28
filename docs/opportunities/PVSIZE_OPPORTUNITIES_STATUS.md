@@ -1,14 +1,14 @@
 # PVSize Opportunities Status
 
-Updated: 2026-07-28 21:58 CST
+Updated: 2026-07-28 22:18 CST
 
 ## Current Phase
 
-Phase 5B: Source Review Policy
+Phase 5B: Source Candidate Approval
 
 ## Current State
 
-Phase 5B source review policy is implemented. The Opportunities data layer now has official-source candidates and approval gates, but still has no real opportunity records, public opportunity pages, sitemap entries, AI import jobs, or newsletter capture flows.
+Phase 5B source candidate approval is implemented for one source. SAM.gov Contract Opportunities is approved for draft-only opportunity discovery; the data layer still has no real opportunity records, public opportunity pages, sitemap entries, AI import jobs, or newsletter capture flows.
 
 ## Completed
 
@@ -25,6 +25,7 @@ Phase 5B source review policy is implemented. The Opportunities data layer now h
 - `src/tools/validate-opportunities.js` added to enforce schema root structure, controlled taxonomy, unique ids/slugs, source quality fields, review-state thresholds, date format, and published-record safety rules.
 - First official-source candidate registry added with 5 non-published sources across United States, European Union, and Japan.
 - `src/data/opportunities/source-review-policy.md` added to define source approval checks, blocked statuses, draft record rules, human review rules, AI use rules, and publication gates.
+- `src_us_sam_contract_opportunities` promoted from `needs_review` to `approved` for draft-only use after source policy review.
 
 ## Current Constraints
 
@@ -35,7 +36,7 @@ Phase 5B source review policy is implemented. The Opportunities data layer now h
 
 ## Last Commit
 
-`96f97f5 Add opportunities source review policy`
+Pending this run: Approve SAM.gov opportunities source
 
 ## Last Verification
 
@@ -46,6 +47,7 @@ Phase 5A validation passed:
 - Schema marker check for opportunity records, review states, validation rules, calculator relation rules, and non-goals
 - `node src/tools/validate-opportunities.js`
 - Source policy marker check for statuses, approval checks, draft record rules, AI use rules, and publication gate
+- SAM.gov source page checked: official contract opportunities procurement notice search, reachable without account for searching
 
 ## Risks And Gaps
 
@@ -56,13 +58,14 @@ Phase 5A validation passed:
 - Analytics is log-based through `/api/event/` and Vercel logs.
 - Validation is local-only; it is not wired into an npm script or deployment gate because the repository has no root `package.json`.
 - Source candidates are still editorial candidates. They are not approved for automated ingestion or publication.
-- No source has been promoted to `approved`; draft opportunity records remain blocked until a source passes review.
+- Only SAM.gov is approved for draft-only discovery. All other sources remain `needs_review`.
+- No source is approved for automated ingestion or publication.
 
 ## Next Single Task
 
-Review and approve one source candidate for draft-only use:
+Create the first SAM.gov draft opportunity record template:
 
-Choose one existing `needs_review` source candidate, verify it against `source-review-policy.md`, and only if all checks pass change that source to `approved`. Do not add opportunity records, public pages, AI import jobs, or sitemap entries.
+Add one clearly non-published `discovered` or `needs_review` draft record structure from the approved SAM.gov source only if every required field can be filled from an official notice. If no suitable official notice can be verified safely in one round, create a draft-record intake checklist instead. Do not publish pages, AI import jobs, or sitemap entries.
 
 ## User Decision Needed
 

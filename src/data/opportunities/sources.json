@@ -8,10 +8,10 @@
       "url": "https://sam.gov/opportunities",
       "country": "united-states",
       "source_type": "government-procurement",
-      "allowed_use_notes": "Official U.S. federal contract opportunities search. Candidate source only; individual records require official notice review before publication.",
+      "allowed_use_notes": "Official U.S. federal contract opportunities search. Approved for draft-only opportunity discovery; individual notices still require human review before approval or publication.",
       "reliability_score": 95,
       "last_checked": "2026-07-28",
-      "status": "needs_review"
+      "status": "approved"
     },
     {
       "id": "src_us_grants_search",
