@@ -1,10 +1,10 @@
 # PVSize UI/UX Status
 
-Updated: 2026-07-28 18:40 CST
+Updated: 2026-07-28 19:00 CST
 
 ## Current Phase
 
-Opportunities
+Full-site QA and production archive
 
 ## Current Sample
 
@@ -18,7 +18,7 @@ Opportunities
 
 ## Current State
 
-City Pages UI/UX technical stage is passed and no longer blocks the main UI redesign flow. City Pages growth validation remains observing, and full rollout remains pending metrics or explicit approval. Opportunities `/partners/` first-screen, services section, and contact/form section are deployed and production verified.
+City Pages UI/UX technical stage is passed and no longer blocks the main UI redesign flow. City Pages growth validation remains observing, and full rollout remains pending metrics or explicit approval. Opportunities `/partners/` has passed Technical Acceptance and Production Verification. Main UI redesign flow is ready for Full-site QA and production archive.
 
 ## Opportunities Baseline
 
@@ -28,6 +28,9 @@ City Pages UI/UX technical stage is passed and no longer blocks the main UI rede
 - Exclusion: `/request-solar-plan/` is the user project-summary lead path and should not be the first Opportunities redesign target.
 - First implementation scope: improved `/partners/` first-screen information hierarchy and opportunity CTA clarity while preserving canonical, robots, analytics, and `/api/lead` behavior.
 - Production verification: PASS on `https://pvsize.com/partners/`.
+- Technical Acceptance: PASS
+- Production Verification: PASS
+- Closure status: PASS for UI/UX technical scope; growth effect not claimed.
 
 ## City Pages Split Status
 
@@ -50,6 +53,7 @@ City Pages UI/UX technical stage is passed and no longer blocks the main UI rede
 - `/partners/` services section production verification passed: status 200, new labels present, canonical/robots/Clarity/analytics/form wiring preserved.
 - `/partners/` contact/form section hierarchy improved locally: added manual review, disclosure, and no-default-sharing notes plus a form shell without changing fields or submit behavior.
 - `/partners/` contact/form section production verification passed: status 200, new trust notes present, form fields and `/api/lead` wiring preserved.
+- Opportunities closure review passed: existing routes audited, `/partners/` selected and improved, production verification evidence recorded, and no growth-effect claim made.
 - City Pages decision checkpoint recorded; no production code changes were made in this run.
 - City Pages pilot observation checklist recorded.
 - City path strip helper is now wired into `update-city-pages.js` behind `--path-strip-pilot` and `--dry-run`.
@@ -63,7 +67,7 @@ City Pages UI/UX technical stage is passed and no longer blocks the main UI rede
 
 ## Last Commit
 
-Opportunities contact/form implementation: `badfad3 Improve partners contact section`
+Opportunities closure basis: `d16c24b Record partners contact verification`
 
 ## Last Deployment
 
@@ -79,6 +83,7 @@ Evidence:
 - `/Users/xiaotudou/Documents/Codex/2026-07-16/pvsize-daily-ops/reports/PVSize_Opportunities_Partners_Services_20260728.md`
 - `/Users/xiaotudou/Documents/Codex/2026-07-16/pvsize-daily-ops/reports/PVSize_Opportunities_Partners_ContactForm_20260728.md`
 - `/Users/xiaotudou/Documents/Codex/2026-07-16/pvsize-daily-ops/reports/PVSize_Opportunities_Partners_FirstScreen_20260728.md`
+- `/Users/xiaotudou/Documents/Codex/2026-07-16/pvsize-daily-ops/reports/PVSize_Opportunities_ClosureReview_20260728.md`
 - `/Users/xiaotudou/Documents/Codex/2026-07-16/pvsize-daily-ops/reports/PVSize_CityTemplate_PathStrip_5CityRecheck_20260728.md`
 - `/Users/xiaotudou/Documents/Codex/2026-07-16/pvsize-daily-ops/reports/PVSize_CityTemplate_PathStrip_5CityPilot_Production_20260728.md`
 
@@ -92,14 +97,14 @@ Decision checkpoint evidence:
 - Metric access is unavailable in unattended runs, so growth validation and broad city rollout remain blocked.
 - City path strip helper is wired into the city page update flow, but only in explicit pilot mode.
 - Do not expand to all city pages until behavior metrics pass a later threshold or the user explicitly approves rollout.
-- Opportunities `/partners/` core sections are production verified; stage closure review has not yet been recorded.
+- Opportunities growth effect is not claimed; only UI/UX technical scope is passed.
 - Full-site QA and archive are pending.
 
 ## Next Single Task
 
-Prepare Opportunities closure review:
+Start Full-site QA baseline:
 
-Review `/partners/` against Opportunities milestones, confirm whether Opportunities can be marked Technical Acceptance / Production Verification PASS, and decide whether to move to Full-site QA and production archive.
+Verify key production routes and static invariants: homepage, calculators, selected guides/learn, 5 pilot city pages, `/request-solar-plan/`, and `/partners/`; record any P0/P1 issues before marking final archive readiness.
 
 ## User Decision Needed
 
