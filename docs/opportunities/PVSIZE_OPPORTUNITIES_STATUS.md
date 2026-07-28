@@ -1,14 +1,14 @@
 # PVSize Opportunities Status
 
-Updated: 2026-07-28 20:58 CST
+Updated: 2026-07-28 21:18 CST
 
 ## Current Phase
 
-Phase 5A: Sample Data Specification
+Phase 5A: Data Validation Guardrail
 
 ## Current State
 
-Phase 5A sample data specification is implemented as a schema-only, file-backed starting point. No real opportunity records, public opportunity pages, sitemap entries, AI import jobs, or newsletter capture flows have been added.
+Phase 5A data validation guardrail is implemented. The Opportunities data layer remains schema-only with no real opportunity records, public opportunity pages, sitemap entries, AI import jobs, or newsletter capture flows.
 
 ## Completed
 
@@ -22,6 +22,7 @@ Phase 5A sample data specification is implemented as a schema-only, file-backed 
 - `src/data/opportunities/` created as a schema-only data directory.
 - Opportunity, source, taxonomy, validation, URL, and calculator relation rules defined.
 - Empty `opportunities.json` and `sources.json` records arrays created with no published records.
+- `src/tools/validate-opportunities.js` added to enforce schema root structure, controlled taxonomy, unique ids/slugs, source quality fields, review-state thresholds, date format, and published-record safety rules.
 
 ## Current Constraints
 
@@ -32,7 +33,7 @@ Phase 5A sample data specification is implemented as a schema-only, file-backed 
 
 ## Last Commit
 
-`0f84b2e Define opportunities data schema`
+Pending this run: Add opportunities data validator
 
 ## Last Verification
 
@@ -41,6 +42,7 @@ Phase 5A validation passed:
 - `node -e` JSON parse check for `opportunities.json`, `sources.json`, and `tags.json`
 - `git diff --check`
 - Schema marker check for opportunity records, review states, validation rules, calculator relation rules, and non-goals
+- `node src/tools/validate-opportunities.js`
 
 ## Risks And Gaps
 
@@ -49,13 +51,13 @@ Phase 5A validation passed:
 - Email handling is FormSubmit-based, not newsletter/subscription infrastructure.
 - No production scheduler exists for import jobs.
 - Analytics is log-based through `/api/event/` and Vercel logs.
-- No executable validation script exists yet; current validation rules are documented but not automated.
+- Validation is local-only; it is not wired into an npm script or deployment gate because the repository has no root `package.json`.
 
 ## Next Single Task
 
-Create a local validation script for the schema-only Opportunities data:
+Create the first Source Registry draft without publishing pages:
 
-Add `src/tools/validate-opportunities.js` to validate `src/data/opportunities/opportunities.json`, `sources.json`, and `tags.json` against the documented required structure and controlled taxonomy. Do not publish pages or add real opportunity records.
+Add official-source candidate records to `src/data/opportunities/sources.json` only if they are official, public, and marked `needs_review` or another non-published review state. Do not add opportunity records, public pages, AI import jobs, or sitemap entries.
 
 ## User Decision Needed
 
