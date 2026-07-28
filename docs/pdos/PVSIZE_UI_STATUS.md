@@ -1,6 +1,6 @@
 # PVSize UI/UX Status
 
-Updated: 2026-07-28 11:18 CST
+Updated: 2026-07-28 11:41 CST
 
 ## Current Phase
 
@@ -22,6 +22,7 @@ Production Verification PASS for the 5-city pilot.
 
 ## Last Completed Work
 
+- City Pages pilot observation checklist recorded.
 - City path strip helper is now wired into `update-city-pages.js` behind `--path-strip-pilot` and `--dry-run`.
 - Added `npm run update:city-path-strip:dry-run` for safe pilot-only checks.
 - City path strip now has a shared template helper and a verification script.
@@ -33,7 +34,7 @@ Production Verification PASS for the 5-city pilot.
 
 ## Last Commit
 
-Dry-run flow integration: `97ebb72 Wire city path strip dry-run flow`
+Pending this run: City Pages pilot observation checklist.
 
 ## Last Deployment
 
@@ -51,6 +52,7 @@ Evidence:
 ## Risks And Gaps
 
 - Pilot metrics have not been observed yet.
+- Metric access is unavailable in unattended runs, so broad city rollout remains blocked.
 - City path strip helper is wired into the city page update flow, but only in explicit pilot mode.
 - Do not expand to all city pages until the pilot decision is recorded.
 - Opportunities redesign has not started.
@@ -58,9 +60,9 @@ Evidence:
 
 ## Next Single Task
 
-Record a City Pages pilot observation checklist and decide whether the next run should wait for metrics or perform one production recheck of the 5 pilot pages.
+Perform one production recheck of the 5 pilot city pages and `/city-pages.css`.
 
-Do not broaden city rollout until pilot metrics or an explicit user decision is available.
+Verify HTTP 200, path strip presence, shared stylesheet availability, canonical/robots preservation, and no unexpected broadened rollout. Do not deploy unless a production regression is found and fixed.
 
 ## User Decision Needed
 
