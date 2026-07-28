@@ -1,6 +1,6 @@
 # PVSize UI/UX Status
 
-Updated: 2026-07-28 11:41 CST
+Updated: 2026-07-28 12:01 CST
 
 ## Current Phase
 
@@ -18,10 +18,11 @@ City Pages
 
 ## Current State
 
-Production Verification PASS for the 5-city pilot.
+Production Recheck PASS for the 5-city pilot. Broad rollout remains on hold pending metrics or user decision.
 
 ## Last Completed Work
 
+- 5-city production recheck completed: all pilot city pages, shared CSS, and sitemap checks passed.
 - City Pages pilot observation checklist recorded.
 - City path strip helper is now wired into `update-city-pages.js` behind `--path-strip-pilot` and `--dry-run`.
 - Added `npm run update:city-path-strip:dry-run` for safe pilot-only checks.
@@ -34,7 +35,7 @@ Production Verification PASS for the 5-city pilot.
 
 ## Last Commit
 
-Observation checklist status: `70a98a2 Record city pilot observation checklist status`
+Pending this run: 5-city production recheck status.
 
 ## Last Deployment
 
@@ -43,10 +44,11 @@ Observation checklist status: `70a98a2 Record city pilot observation checklist s
 
 ## Last Production Verification
 
-2026-07-28
+2026-07-28 12:01 CST
 
 Evidence:
 
+- `/Users/xiaotudou/Documents/Codex/2026-07-16/pvsize-daily-ops/reports/PVSize_CityTemplate_PathStrip_5CityRecheck_20260728.md`
 - `/Users/xiaotudou/Documents/Codex/2026-07-16/pvsize-daily-ops/reports/PVSize_CityTemplate_PathStrip_5CityPilot_Production_20260728.md`
 
 ## Risks And Gaps
@@ -60,9 +62,9 @@ Evidence:
 
 ## Next Single Task
 
-Perform one production recheck of the 5 pilot city pages and `/city-pages.css`.
+Hold City Pages broad rollout until metric access or explicit user approval is available.
 
-Verify HTTP 200, path strip presence, shared stylesheet availability, canonical/robots preservation, and no unexpected broadened rollout. Do not deploy unless a production regression is found and fixed.
+If the next unattended run has no metrics, prepare a metric collection checklist or move to a user-decision checkpoint. Do not start Opportunities yet unless the user explicitly accepts closing City Pages without metrics.
 
 ## User Decision Needed
 
