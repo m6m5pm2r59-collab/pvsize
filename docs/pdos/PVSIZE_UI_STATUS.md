@@ -31,7 +31,7 @@ Production Verification PASS for the 5-city pilot.
 
 ## Last Commit
 
-`5f1698f Add city path strip helper verification`
+Helper implementation: `d2a468b Add city path strip helper verification`
 
 ## Last Deployment
 
