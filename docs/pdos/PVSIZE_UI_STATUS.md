@@ -1,6 +1,6 @@
 # PVSize UI/UX Status
 
-Updated: 2026-07-28 12:01 CST
+Updated: 2026-07-28 12:23 CST
 
 ## Current Phase
 
@@ -18,11 +18,12 @@ City Pages
 
 ## Current State
 
-Production Recheck PASS for the 5-city pilot. Broad rollout remains on hold pending metrics or user decision.
+Production Recheck PASS for the 5-city pilot. Broad rollout is now at a user-decision checkpoint because unattended runs do not have pilot behavior metrics.
 
 ## Last Completed Work
 
 - 5-city production recheck completed: all pilot city pages, shared CSS, and sitemap checks passed.
+- City Pages decision checkpoint recorded; no production code changes were made in this run.
 - City Pages pilot observation checklist recorded.
 - City path strip helper is now wired into `update-city-pages.js` behind `--path-strip-pilot` and `--dry-run`.
 - Added `npm run update:city-path-strip:dry-run` for safe pilot-only checks.
@@ -35,7 +36,7 @@ Production Recheck PASS for the 5-city pilot. Broad rollout remains on hold pend
 
 ## Last Commit
 
-Production recheck status: `e43d661 Record city pilot production recheck`
+Latest production-related status: `401c76e Record city recheck commit`
 
 ## Last Deployment
 
@@ -51,10 +52,14 @@ Evidence:
 - `/Users/xiaotudou/Documents/Codex/2026-07-16/pvsize-daily-ops/reports/PVSize_CityTemplate_PathStrip_5CityRecheck_20260728.md`
 - `/Users/xiaotudou/Documents/Codex/2026-07-16/pvsize-daily-ops/reports/PVSize_CityTemplate_PathStrip_5CityPilot_Production_20260728.md`
 
+Decision checkpoint evidence:
+
+- `/Users/xiaotudou/Documents/Codex/2026-07-16/pvsize-daily-ops/reports/PVSize_CityTemplate_DecisionCheckpoint_20260728.md`
+
 ## Risks And Gaps
 
-- Pilot metrics have not been observed yet.
-- Metric access is unavailable in unattended runs, so broad city rollout remains blocked.
+- Pilot behavior metrics have not been observed yet.
+- Metric access is unavailable in unattended runs, so broad city rollout and City Pages closure remain blocked.
 - City path strip helper is wired into the city page update flow, but only in explicit pilot mode.
 - Do not expand to all city pages until the pilot decision is recorded.
 - Opportunities redesign has not started.
@@ -62,10 +67,16 @@ Evidence:
 
 ## Next Single Task
 
-Hold City Pages broad rollout until metric access or explicit user approval is available.
+Wait for user decision before continuing:
 
-If the next unattended run has no metrics, prepare a metric collection checklist or move to a user-decision checkpoint. Do not start Opportunities yet unless the user explicitly accepts closing City Pages without metrics.
+Option A: provide metric access or a completed observation result, then decide whether the 5-city pilot can expand.
+
+Option B: explicitly approve closing City Pages without behavior metrics and move to Opportunities redesign.
+
+Option C: keep City Pages open and pause broad rollout until metrics are available.
+
+Do not start Opportunities in unattended mode until Option B is explicitly approved.
 
 ## User Decision Needed
 
-No immediate user decision required unless metric access, Search Console access, Clarity access, or broad city rollout is needed.
+Yes. City Pages cannot be closed, expanded, or used as clearance to start Opportunities until the user chooses Option A, B, or C above.
