@@ -1,14 +1,14 @@
 # PVSize Opportunities Status
 
-Updated: 2026-07-28 20:18 CST
+Updated: 2026-07-28 20:38 CST
 
 ## Current Phase
 
-Phase 0: Architecture Audit
+Phase 0: Architecture Audit Complete
 
 ## Current State
 
-Phase 5-7 continuous development has started. UI/UX production delivery is archived. The first required step is Phase 0 architecture audit with no production code changes.
+Phase 0 architecture audit is complete. PVSize can build Solar Opportunities V1, but the current codebase is static-first and does not yet have a database, auth, admin, newsletter provider, or production scheduler.
 
 ## Completed
 
@@ -17,48 +17,37 @@ Phase 5-7 continuous development has started. UI/UX production delivery is archi
 - Phase 5-7 status file created.
 - Historical Opportunities execution plan located in Obsidian.
 - ADR-006 confirmed: opportunities appear after calculator value and trust surfaces.
+- `docs/opportunities-architecture-audit.md` created.
+- Architecture recommendation recorded: start with a static, file-backed, human-reviewed MVP before database/admin/AI ingestion.
 
 ## Current Constraints
 
-- Do not start Phase 5 data system or public page development until Phase 0 audit is complete.
-- Do not modify production pages in Phase 0.
+- Do not start public indexed opportunity pages until sample data, validation rules, and source policy are in place.
 - Do not invent opportunity data.
 - Do not build paid/login features in MVP.
+- Do not add AI ingestion or auto-publish before human review workflow exists.
 
 ## Last Commit
 
-Pending first Phase 5-7 control-doc commit.
+`bce815a Start opportunities phase planning`
 
 ## Last Verification
 
-Pending.
+Phase 0 audit document created and checked with repository inspection.
 
 ## Risks And Gaps
 
-- Current PVSize codebase likely lacks a persistent database and admin workflow, but this must be confirmed by audit.
-- Email subscription implementation needs audit before choosing a service or storage model.
-- Official source ingestion rules must be reviewed before automation.
+- No persistent database or ORM exists.
+- No auth/admin system exists.
+- Email handling is FormSubmit-based, not newsletter/subscription infrastructure.
+- No production scheduler exists for import jobs.
+- Analytics is log-based through `/api/event/` and Vercel logs.
 
 ## Next Single Task
 
-Create `docs/opportunities-architecture-audit.md` by auditing the current PVSize codebase without modifying production code.
+Create the Phase 5 sample data specification without publishing pages:
 
-Required sections:
-
-- Technical stack and routing.
-- Database and ORM.
-- Authentication.
-- Email service.
-- Admin/backoffice.
-- SEO and structured data.
-- Analytics and event tracking.
-- Scheduled tasks.
-- Reusable components.
-- Needed data models.
-- Route plan.
-- Risks.
-- Phased implementation order.
-- Expected files to modify.
+Define `src/data/opportunities/` file schema for opportunities, sources, and tags, plus validation rules and review statuses. Do not add real opportunity records yet unless they are clearly marked sample/draft and not published.
 
 ## User Decision Needed
 
