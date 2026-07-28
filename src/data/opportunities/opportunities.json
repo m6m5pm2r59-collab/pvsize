@@ -1,5 +1,51 @@
 {
   "schema_version": "0.1.0",
-  "status": "schema_only",
-  "records": []
+  "status": "draft_records_only",
+  "records": [
+    {
+      "id": "opp_us_2026_0001",
+      "slug": "178th-wing-base-microgrid-construction",
+      "title": "178th Wing Base Microgrid Construction",
+      "status": "open",
+      "country": "united-states",
+      "region": "Ohio",
+      "opportunity_type": "tender",
+      "technology": [
+        "solar",
+        "battery-storage",
+        "microgrid"
+      ],
+      "buyer_or_issuer": "DEPT OF DEFENSE / DEPT OF THE ARMY / NATIONAL GUARD BUREAU",
+      "published_date": "2026-07-21",
+      "deadline": "2026-08-03",
+      "source_language": "en",
+      "last_verified": "2026-07-28",
+      "official_source_url": "https://sam.gov/opp/c935ca4506e444b58b1a1a00d32d2b4a/view",
+      "overview": "SAM.gov solicitation for 178th Wing base microgrid construction. The notice describes a base bid for natural gas generators, microgrid controls, and general work, with options for a PV solar array and battery energy storage system.",
+      "review_status": "discovered",
+      "quality_score": 60,
+      "source_id": "src_us_sam_contract_opportunities",
+      "source_reliability": 95,
+      "tags": [
+        "federal-procurement",
+        "construction",
+        "microgrid",
+        "solar-option",
+        "battery-option"
+      ],
+      "related_calculators": [
+        "solar-panel-size",
+        "solar-battery-size"
+      ],
+      "relevance_notes": "Relevant to solar EPC, microgrid, and storage contractors because the official notice includes PV Solar Array and Battery Energy Storage System options.",
+      "change_log": [
+        {
+          "date": "2026-07-28",
+          "status": "discovered",
+          "note": "Initial non-published draft intake from approved SAM.gov source."
+        }
+      ],
+      "official_documents": []
+    }
+  ]
 }
