@@ -35,7 +35,7 @@ Phase 5B source review policy is implemented. The Opportunities data layer now h
 
 ## Last Commit
 
-Pending this run: Add opportunities source review policy
+`96f97f5 Add opportunities source review policy`
 
 ## Last Verification
 
