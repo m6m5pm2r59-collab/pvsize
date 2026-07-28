@@ -1,6 +1,6 @@
 # PVSize UI/UX Status
 
-Updated: 2026-07-28 10:58 CST
+Updated: 2026-07-28 11:18 CST
 
 ## Current Phase
 
@@ -22,6 +22,8 @@ Production Verification PASS for the 5-city pilot.
 
 ## Last Completed Work
 
+- City path strip helper is now wired into `update-city-pages.js` behind `--path-strip-pilot` and `--dry-run`.
+- Added `npm run update:city-path-strip:dry-run` for safe pilot-only checks.
 - City path strip now has a shared template helper and a verification script.
 - PDOS Calculator Recommendation Flow added.
 - Stage 8 City Template moved to Pilot active.
@@ -31,7 +33,7 @@ Production Verification PASS for the 5-city pilot.
 
 ## Last Commit
 
-Helper implementation: `d2a468b Add city path strip helper verification`
+Pending this run: dry-run-safe city path strip update flow integration.
 
 ## Last Deployment
 
@@ -49,16 +51,16 @@ Evidence:
 ## Risks And Gaps
 
 - Pilot metrics have not been observed yet.
-- City path strip is now template-checkable, but the city page update flow has not yet consumed the helper to write pages.
+- City path strip helper is wired into the city page update flow, but only in explicit pilot mode.
 - Do not expand to all city pages until the pilot decision is recorded.
 - Opportunities redesign has not started.
 - Full-site QA and archive are pending.
 
 ## Next Single Task
 
-Wire the City Calculator Path Strip helper into the city page update flow in a dry-run-safe way, without expanding beyond the existing 5 pilot pages.
+Record a City Pages pilot observation checklist and decide whether the next run should wait for metrics or perform one production recheck of the 5 pilot pages.
 
-If metric data remains unavailable, do not broaden rollout. Keep the next task limited to helper integration, dry-run verification, or observation recording.
+Do not broaden city rollout until pilot metrics or an explicit user decision is available.
 
 ## User Decision Needed
 

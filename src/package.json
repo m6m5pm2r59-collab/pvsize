@@ -10,6 +10,7 @@
     "generate:sitemap": "node tools/generate-sitemap.js",
     "report:traffic": "node tools/report-traffic.js",
     "report:traffic:local": "node tools/report-traffic.js --json-out ../reports/traffic-report.json",
+    "update:city-path-strip:dry-run": "node tools/update-city-pages.js --path-strip-pilot --dry-run",
     "verify:city-path-strip": "node tools/verify-city-path-strip.js",
     "verify:city-migrations": "node tools/verify-city-migrations.js"
   }

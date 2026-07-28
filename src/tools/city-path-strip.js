@@ -38,6 +38,37 @@ function cityFilePath(root, slug) {
   return path.join(root, 'city', `${slug}${CITY_SUFFIX}`);
 }
 
+function insertCityPathStrip(html, slug) {
+  let nextHtml = html;
+  let changed = false;
+  const tag = stylesheetTag();
+
+  if (!nextHtml.includes(tag)) {
+    nextHtml = nextHtml.replace('</head>', `${tag}\n</head>`);
+    changed = true;
+  }
+
+  const strip = renderCityPathStrip(slug);
+  if (nextHtml.includes(strip)) {
+    return { html: nextHtml, changed };
+  }
+
+  const leadPattern = /(<p class="lead">[\s\S]*?<\/p>\n\n)(?:<div class="hint">[\s\S]*?<div class="path-grid">[\s\S]*?<\/div>\n\n)?/;
+  if (leadPattern.test(nextHtml)) {
+    nextHtml = nextHtml.replace(leadPattern, `$1${strip}\n\n`);
+    return { html: nextHtml, changed: true };
+  }
+
+  const introPattern = /(<p>Use this page as a planning estimate[\s\S]*?<\/p>\n\n)/;
+  if (introPattern.test(nextHtml)) {
+    nextHtml = nextHtml.replace('<p>Use this page as a planning estimate', '<p class="lead">Use this page as a planning estimate');
+    nextHtml = nextHtml.replace(introPattern, `$1${strip}\n\n`);
+    return { html: nextHtml, changed: true };
+  }
+
+  return { html: nextHtml, changed, error: 'could not find city intro paragraph' };
+}
+
 function verifyCityPathStrip(root, slug) {
   const filePath = cityFilePath(root, slug);
   const html = fs.readFileSync(filePath, 'utf8');
@@ -56,6 +87,7 @@ function verifyCityPathStrip(root, slug) {
 }
 
 module.exports = {
+  insertCityPathStrip,
   pilotSlugs,
   renderCityPathStrip,
   sourceFromSlug,

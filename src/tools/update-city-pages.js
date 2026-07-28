@@ -1,9 +1,17 @@
 const fs = require('fs');
 const path = require('path');
+const {
+  insertCityPathStrip,
+  pilotSlugs,
+} = require('./city-path-strip');
 
 const cityDir = path.join(__dirname, '..', 'city');
 const policyPath = path.join(__dirname, '..', 'data', 'city-index-policy.json');
 const CITY_SUFFIX = '-solar-calculator.html';
+const args = new Set(process.argv.slice(2));
+const dryRun = args.has('--dry-run');
+const updatePilotPathStrip = args.has('--path-strip-pilot');
+const pathStripPilotSlugs = new Set(pilotSlugs);
 // Managed script dependencies (fixed order, must be complete)
 const managedScripts = [
   '<script src="/pv-analytics.js" defer></script>',
@@ -148,33 +156,44 @@ function updateFile(file) {
   let html = fs.readFileSync(fullPath, 'utf8');
   let changed = false;
 
-  const shouldIndex = pilotIndexSlugs.has(slug) && !alwaysNoindexSlugs.has(slug) && !flagged;
-  const desiredRobots = shouldIndex
-    ? '<meta name="robots" content="index,follow">'
-    : '<meta name="robots" content="noindex,follow">';
+  if (!updatePilotPathStrip) {
+    const shouldIndex = pilotIndexSlugs.has(slug) && !alwaysNoindexSlugs.has(slug) && !flagged;
+    const desiredRobots = shouldIndex
+      ? '<meta name="robots" content="index,follow">'
+      : '<meta name="robots" content="noindex,follow">';
 
-  if (html.includes('<meta name="robots" content="noindex,follow">')) {
-    html = html.replace('<meta name="robots" content="noindex,follow">', desiredRobots);
-    changed = true;
-  } else if (html.includes('<meta name="robots" content="index,follow">')) {
-    html = html.replace('<meta name="robots" content="index,follow">', desiredRobots);
-    changed = true;
+    if (html.includes('<meta name="robots" content="noindex,follow">')) {
+      html = html.replace('<meta name="robots" content="noindex,follow">', desiredRobots);
+      changed = true;
+    } else if (html.includes('<meta name="robots" content="index,follow">')) {
+      html = html.replace('<meta name="robots" content="index,follow">', desiredRobots);
+      changed = true;
+    }
+
+    // Normalize managed scripts: strip all existing, re-insert complete block before </body>
+    const beforeScripts = html;
+    html = html.replace(managedScriptPattern, '');
+    // Clean up trailing blank lines left by removal
+    html = html.replace(/\n{3,}/g, '\n\n');
+    // Insert managed script block before </body>
+    if (html.includes('</body>')) {
+      html = html.replace('</body>', `${managedScriptBlock}\n</body>`);
+    }
+    if (html !== beforeScripts) {
+      changed = true;
+    }
   }
 
-  // Normalize managed scripts: strip all existing, re-insert complete block before </body>
-  const beforeScripts = html;
-  html = html.replace(managedScriptPattern, '');
-  // Clean up trailing blank lines left by removal
-  html = html.replace(/\n{3,}/g, '\n\n');
-  // Insert managed script block before </body>
-  if (html.includes('</body>')) {
-    html = html.replace('</body>', `${managedScriptBlock}\n</body>`);
-  }
-  if (html !== beforeScripts) {
-    changed = true;
+  if (updatePilotPathStrip && pathStripPilotSlugs.has(slug)) {
+    const pathStripResult = insertCityPathStrip(html, slug);
+    html = pathStripResult.html;
+    if (pathStripResult.changed) changed = true;
+    if (pathStripResult.error) {
+      return { flagged, changed, error: pathStripResult.error };
+    }
   }
 
-  if (changed) {
+  if (changed && !dryRun) {
     fs.writeFileSync(fullPath, html);
   }
 
@@ -182,19 +201,28 @@ function updateFile(file) {
 }
 
 function main() {
-  const files = fs
+  let files = fs
     .readdirSync(cityDir)
     .filter((file) => file.endsWith(CITY_SUFFIX))
     .sort();
 
+  if (updatePilotPathStrip) {
+    files = files.filter((file) => pathStripPilotSlugs.has(slugFromFile(file)));
+  }
+
   let changedCount = 0;
   let flaggedCount = 0;
   let indexedCount = 0;
+  let errorCount = 0;
 
   files.forEach((file) => {
     const result = updateFile(file);
     if (result.changed) changedCount += 1;
     if (result.flagged) flaggedCount += 1;
+    if (result.error) {
+      errorCount += 1;
+      console.log(`${file}: ${result.error}`);
+    }
     if (pilotIndexSlugs.has(slugFromFile(file)) && !result.flagged && !alwaysNoindexSlugs.has(slugFromFile(file))) {
       indexedCount += 1;
     }
@@ -204,6 +232,10 @@ function main() {
   console.log(`Indexed pages: ${indexedCount}`);
   console.log(`Noindex pages kept for review: ${flaggedCount}`);
   console.log(`Files changed: ${changedCount}`);
+  console.log(`Dry run: ${dryRun ? 'yes' : 'no'}`);
+  console.log(`Path strip pilot mode: ${updatePilotPathStrip ? 'yes' : 'no'}`);
+  console.log(`Errors: ${errorCount}`);
+  if (errorCount) process.exitCode = 1;
 }
 
 main();
