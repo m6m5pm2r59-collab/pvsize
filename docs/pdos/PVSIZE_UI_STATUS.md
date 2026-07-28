@@ -1,6 +1,6 @@
 # PVSize UI/UX Status
 
-Updated: 2026-07-28 19:00 CST
+Updated: 2026-07-28 19:20 CST
 
 ## Current Phase
 
@@ -18,7 +18,7 @@ Full-site QA and production archive
 
 ## Current State
 
-City Pages UI/UX technical stage is passed and no longer blocks the main UI redesign flow. City Pages growth validation remains observing, and full rollout remains pending metrics or explicit approval. Opportunities `/partners/` has passed Technical Acceptance and Production Verification. Main UI redesign flow is ready for Full-site QA and production archive.
+City Pages UI/UX technical stage is passed and no longer blocks the main UI redesign flow. City Pages growth validation remains observing, and full rollout remains pending metrics or explicit approval. Opportunities `/partners/` has passed Technical Acceptance and Production Verification. Full-site QA baseline passed after one P1 analytics fix on `/calculators/` and `/learn/`.
 
 ## Opportunities Baseline
 
@@ -54,6 +54,8 @@ City Pages UI/UX technical stage is passed and no longer blocks the main UI rede
 - `/partners/` contact/form section hierarchy improved locally: added manual review, disclosure, and no-default-sharing notes plus a form shell without changing fields or submit behavior.
 - `/partners/` contact/form section production verification passed: status 200, new trust notes present, form fields and `/api/lead` wiring preserved.
 - Opportunities closure review passed: existing routes audited, `/partners/` selected and improved, production verification evidence recorded, and no growth-effect claim made.
+- Full-site QA baseline completed: key production routes returned 200 and static invariants passed.
+- P1 analytics gap fixed on `/calculators/` and `/learn/` by adding `pv-analytics.js`; production recheck passed.
 - City Pages decision checkpoint recorded; no production code changes were made in this run.
 - City Pages pilot observation checklist recorded.
 - City path strip helper is now wired into `update-city-pages.js` behind `--path-strip-pilot` and `--dry-run`.
@@ -67,7 +69,7 @@ City Pages UI/UX technical stage is passed and no longer blocks the main UI rede
 
 ## Last Commit
 
-Opportunities closure basis: `d16c24b Record partners contact verification`
+Full-site QA P1 fix: `f5aace7 Add analytics to hub pages`
 
 ## Last Deployment
 
@@ -84,6 +86,7 @@ Evidence:
 - `/Users/xiaotudou/Documents/Codex/2026-07-16/pvsize-daily-ops/reports/PVSize_Opportunities_Partners_ContactForm_20260728.md`
 - `/Users/xiaotudou/Documents/Codex/2026-07-16/pvsize-daily-ops/reports/PVSize_Opportunities_Partners_FirstScreen_20260728.md`
 - `/Users/xiaotudou/Documents/Codex/2026-07-16/pvsize-daily-ops/reports/PVSize_Opportunities_ClosureReview_20260728.md`
+- `/Users/xiaotudou/Documents/Codex/2026-07-16/pvsize-daily-ops/reports/PVSize_FullSite_QA_Baseline_20260728.md`
 - `/Users/xiaotudou/Documents/Codex/2026-07-16/pvsize-daily-ops/reports/PVSize_CityTemplate_PathStrip_5CityRecheck_20260728.md`
 - `/Users/xiaotudou/Documents/Codex/2026-07-16/pvsize-daily-ops/reports/PVSize_CityTemplate_PathStrip_5CityPilot_Production_20260728.md`
 
@@ -98,13 +101,13 @@ Decision checkpoint evidence:
 - City path strip helper is wired into the city page update flow, but only in explicit pilot mode.
 - Do not expand to all city pages until behavior metrics pass a later threshold or the user explicitly approves rollout.
 - Opportunities growth effect is not claimed; only UI/UX technical scope is passed.
-- Full-site QA and archive are pending.
+- Full-site QA baseline PASS; final production archive is pending.
 
 ## Next Single Task
 
-Start Full-site QA baseline:
+Prepare final production archive:
 
-Verify key production routes and static invariants: homepage, calculators, selected guides/learn, 5 pilot city pages, `/request-solar-plan/`, and `/partners/`; record any P0/P1 issues before marking final archive readiness.
+Create final archive report summarizing Calculator, Homepage, Guide, City Pages, Opportunities, Full-site QA evidence, known exclusions, and remaining non-blocking growth observation tasks.
 
 ## User Decision Needed
 
