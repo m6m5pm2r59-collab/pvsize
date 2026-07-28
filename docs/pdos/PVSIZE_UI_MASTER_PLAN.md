@@ -24,8 +24,8 @@ Do not start the next major phase until the current phase has implementation evi
 | Calculator | Closed | Calculator Hub and Panel Count production verification passed. |
 | Homepage | Live | First-screen path-first redesign deployed. |
 | Guide | Partial live | Learn directory and selected guides use path-first calculator routing. |
-| City Pages | Pilot active | 5-city City Calculator Path Strip pilot deployed to production. |
-| Opportunities | Pending | Do not start until City Pages pilot decision is recorded. |
+| City Pages | Technical stage passed / growth observing | 5-city City Calculator Path Strip pilot deployed and production verified; behavior metrics remain observing and full rollout is not approved. |
+| Opportunities | Ready to start | City Pages technical stage no longer blocks the main UI redesign flow. |
 | Full-site QA | Pending | Starts after Opportunities production verification. |
 
 ## City Pages Milestones
@@ -37,7 +37,9 @@ Do not start the next major phase until the current phase has implementation evi
 5. Componentize before wider rollout.
 6. Expand only to approved `pilot_index_slugs`, not every city page.
 7. Run desktop/narrow viewport and production checks.
-8. Record outcome and mark City Pages Closed only after production verification.
+8. Record outcome and mark the City Pages technical stage passed after production verification.
+9. Keep growth validation observing until Clarity, GSC, Analytics, or approved manual metrics support a wider rollout decision.
+10. Do not approve full rollout without metrics or explicit user approval.
 
 ## Opportunities Milestones
 
