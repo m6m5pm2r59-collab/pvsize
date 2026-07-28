@@ -1,10 +1,10 @@
 # PVSize UI/UX Status
 
-Updated: 2026-07-28 19:20 CST
+Updated: 2026-07-28 19:40 CST
 
 ## Current Phase
 
-Full-site QA and production archive
+Archived
 
 ## Current Sample
 
@@ -18,7 +18,7 @@ Full-site QA and production archive
 
 ## Current State
 
-City Pages UI/UX technical stage is passed and no longer blocks the main UI redesign flow. City Pages growth validation remains observing, and full rollout remains pending metrics or explicit approval. Opportunities `/partners/` has passed Technical Acceptance and Production Verification. Full-site QA baseline passed after one P1 analytics fix on `/calculators/` and `/learn/`.
+PVSize UI/UX redesign production delivery is archived as PASS for technical UI/UX scope. City Pages growth validation remains observing, and broad city rollout remains pending metrics or explicit approval.
 
 ## Opportunities Baseline
 
@@ -56,6 +56,7 @@ City Pages UI/UX technical stage is passed and no longer blocks the main UI rede
 - Opportunities closure review passed: existing routes audited, `/partners/` selected and improved, production verification evidence recorded, and no growth-effect claim made.
 - Full-site QA baseline completed: key production routes returned 200 and static invariants passed.
 - P1 analytics gap fixed on `/calculators/` and `/learn/` by adding `pv-analytics.js`; production recheck passed.
+- Final production archive recorded.
 - City Pages decision checkpoint recorded; no production code changes were made in this run.
 - City Pages pilot observation checklist recorded.
 - City path strip helper is now wired into `update-city-pages.js` behind `--path-strip-pilot` and `--dry-run`.
@@ -69,7 +70,7 @@ City Pages UI/UX technical stage is passed and no longer blocks the main UI rede
 
 ## Last Commit
 
-Full-site QA P1 fix: `f5aace7 Add analytics to hub pages`
+Full-site QA status: `36cfc87 Record full-site QA baseline`
 
 ## Last Deployment
 
@@ -87,6 +88,7 @@ Evidence:
 - `/Users/xiaotudou/Documents/Codex/2026-07-16/pvsize-daily-ops/reports/PVSize_Opportunities_Partners_FirstScreen_20260728.md`
 - `/Users/xiaotudou/Documents/Codex/2026-07-16/pvsize-daily-ops/reports/PVSize_Opportunities_ClosureReview_20260728.md`
 - `/Users/xiaotudou/Documents/Codex/2026-07-16/pvsize-daily-ops/reports/PVSize_FullSite_QA_Baseline_20260728.md`
+- `/Users/xiaotudou/Documents/Codex/2026-07-16/pvsize-daily-ops/reports/PVSize_UIUX_Final_Production_Archive_20260728.md`
 - `/Users/xiaotudou/Documents/Codex/2026-07-16/pvsize-daily-ops/reports/PVSize_CityTemplate_PathStrip_5CityRecheck_20260728.md`
 - `/Users/xiaotudou/Documents/Codex/2026-07-16/pvsize-daily-ops/reports/PVSize_CityTemplate_PathStrip_5CityPilot_Production_20260728.md`
 
@@ -101,13 +103,14 @@ Decision checkpoint evidence:
 - City path strip helper is wired into the city page update flow, but only in explicit pilot mode.
 - Do not expand to all city pages until behavior metrics pass a later threshold or the user explicitly approves rollout.
 - Opportunities growth effect is not claimed; only UI/UX technical scope is passed.
-- Full-site QA baseline PASS; final production archive is pending.
+- Final production archive PASS for technical UI/UX scope.
+- Growth validation remains separate and non-blocking.
 
 ## Next Single Task
 
-Prepare final production archive:
+No further UI/UX production task is required in this automation.
 
-Create final archive report summarizing Calculator, Homepage, Guide, City Pages, Opportunities, Full-site QA evidence, known exclusions, and remaining non-blocking growth observation tasks.
+Next non-blocking task is growth observation: monitor City Pages pilot behavior and `/partners/` inquiry behavior when metrics are available.
 
 ## User Decision Needed
 
