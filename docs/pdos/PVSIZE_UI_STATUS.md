@@ -1,6 +1,6 @@
 # PVSize UI/UX Status
 
-Updated: 2026-07-28 13:24 CST
+Updated: 2026-07-28 17:40 CST
 
 ## Current Phase
 
@@ -18,7 +18,15 @@ Opportunities
 
 ## Current State
 
-City Pages UI/UX technical stage is passed and no longer blocks the main UI redesign flow. City Pages growth validation remains observing, and full rollout remains pending metrics or explicit approval. Opportunities is cleared to enter Planning / Implementation.
+City Pages UI/UX technical stage is passed and no longer blocks the main UI redesign flow. City Pages growth validation remains observing, and full rollout remains pending metrics or explicit approval. Opportunities baseline audit is complete; `/partners/` is selected as the first production-safe Opportunity surface.
+
+## Opportunities Baseline
+
+- Existing opportunity-like routes found: `/partners/`, `/request-solar-plan/`.
+- First implementation target: `/partners/`.
+- Reason: `/partners/` is already the B2B partner / brand opportunity page, has `noindex,follow`, uses the existing `partner_inquiry` lead flow, and can be improved without changing the public SEO calculator funnel.
+- Exclusion: `/request-solar-plan/` is the user project-summary lead path and should not be the first Opportunities redesign target.
+- Initial implementation scope: improve `/partners/` information hierarchy and opportunity CTA clarity while preserving canonical, robots, analytics, and `/api/lead` behavior.
 
 ## City Pages Split Status
 
@@ -34,6 +42,7 @@ City Pages UI/UX technical stage is passed and no longer blocks the main UI rede
 
 - 5-city production recheck completed: all pilot city pages, shared CSS, and sitemap checks passed.
 - User approved Option B with split-state handling: close the City Pages technical implementation stage, keep growth validation observing, and move main UI flow to Opportunities.
+- Opportunities baseline route audit completed; `/partners/` selected as the first production-safe implementation surface.
 - City Pages decision checkpoint recorded; no production code changes were made in this run.
 - City Pages pilot observation checklist recorded.
 - City path strip helper is now wired into `update-city-pages.js` behind `--path-strip-pilot` and `--dry-run`.
@@ -73,14 +82,14 @@ Decision checkpoint evidence:
 - Metric access is unavailable in unattended runs, so growth validation and broad city rollout remain blocked.
 - City path strip helper is wired into the city page update flow, but only in explicit pilot mode.
 - Do not expand to all city pages until behavior metrics pass a later threshold or the user explicitly approves rollout.
-- Opportunities redesign is cleared to start but has not yet been implemented.
+- Opportunities redesign target is selected, but UI implementation has not yet started.
 - Full-site QA and archive are pending.
 
 ## Next Single Task
 
-Start Opportunities Planning / Implementation with the smallest verifiable baseline task:
+Implement the first minimal `/partners/` UI improvement:
 
-Read existing Opportunities pages and routes, identify the first production-safe Opportunity surface, and record the implementation target before making UI changes.
+Improve the first-screen information hierarchy and partner opportunity CTA clarity while preserving `noindex,follow`, canonical URL, Clarity, `pv-analytics.js`, `partner_inquiry` form behavior, and `/api/lead` payload.
 
 ## User Decision Needed
 
