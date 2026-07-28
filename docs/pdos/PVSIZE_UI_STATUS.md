@@ -1,6 +1,6 @@
 # PVSize UI/UX Status
 
-Updated: 2026-07-28
+Updated: 2026-07-28 10:58 CST
 
 ## Current Phase
 
@@ -22,6 +22,7 @@ Production Verification PASS for the 5-city pilot.
 
 ## Last Completed Work
 
+- City path strip now has a shared template helper and a verification script.
 - PDOS Calculator Recommendation Flow added.
 - Stage 8 City Template moved to Pilot active.
 - Shared `/city-pages.css` created.
@@ -30,7 +31,7 @@ Production Verification PASS for the 5-city pilot.
 
 ## Last Commit
 
-`778d8a6 Pilot city calculator path strip`
+`5f1698f Add city path strip helper verification`
 
 ## Last Deployment
 
@@ -48,19 +49,16 @@ Evidence:
 ## Risks And Gaps
 
 - Pilot metrics have not been observed yet.
-- City path strip is shared by CSS but not yet generated from a city template/helper.
+- City path strip is now template-checkable, but the city page update flow has not yet consumed the helper to write pages.
 - Do not expand to all city pages until the pilot decision is recorded.
 - Opportunities redesign has not started.
 - Full-site QA and archive are pending.
 
 ## Next Single Task
 
-Review the 5-city pilot state and decide whether the next implementation step should be:
+Wire the City Calculator Path Strip helper into the city page update flow in a dry-run-safe way, without expanding beyond the existing 5 pilot pages.
 
-1. componentize/template the City Calculator Path Strip for approved city rollout, or
-2. hold for a metric observation window and only record the observation plan.
-
-If there is no metric data available, record that constraint and prepare the smallest safe componentization step without expanding beyond the pilot pages.
+If metric data remains unavailable, do not broaden rollout. Keep the next task limited to helper integration, dry-run verification, or observation recording.
 
 ## User Decision Needed
 
