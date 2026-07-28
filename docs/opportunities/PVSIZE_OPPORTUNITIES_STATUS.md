@@ -1,14 +1,14 @@
 # PVSize Opportunities Status
 
-Updated: 2026-07-28 22:18 CST
+Updated: 2026-07-28 22:38 CST
 
 ## Current Phase
 
-Phase 5B: Source Candidate Approval
+Phase 5C: Draft Record Intake Checklist
 
 ## Current State
 
-Phase 5B source candidate approval is implemented for one source. SAM.gov Contract Opportunities is approved for draft-only opportunity discovery; the data layer still has no real opportunity records, public opportunity pages, sitemap entries, AI import jobs, or newsletter capture flows.
+Phase 5C draft record intake checklist is implemented. SAM.gov remains approved for draft-only opportunity discovery, but no notice has been added because each record must pass official-source evidence checks first. The data layer still has no real opportunity records, public opportunity pages, sitemap entries, AI import jobs, or newsletter capture flows.
 
 ## Completed
 
@@ -26,6 +26,7 @@ Phase 5B source candidate approval is implemented for one source. SAM.gov Contra
 - First official-source candidate registry added with 5 non-published sources across United States, European Union, and Japan.
 - `src/data/opportunities/source-review-policy.md` added to define source approval checks, blocked statuses, draft record rules, human review rules, AI use rules, and publication gates.
 - `src_us_sam_contract_opportunities` promoted from `needs_review` to `approved` for draft-only use after source policy review.
+- `src/data/opportunities/draft-record-intake-checklist.md` added to define evidence requirements before any approved-source notice enters `opportunities.json`.
 
 ## Current Constraints
 
@@ -36,7 +37,7 @@ Phase 5B source candidate approval is implemented for one source. SAM.gov Contra
 
 ## Last Commit
 
-`90dd2d7 Approve SAM.gov opportunities source`
+Pending this run: Add opportunities draft intake checklist
 
 ## Last Verification
 
@@ -48,6 +49,7 @@ Phase 5A validation passed:
 - `node src/tools/validate-opportunities.js`
 - Source policy marker check for statuses, approval checks, draft record rules, AI use rules, and publication gate
 - SAM.gov source page checked: official contract opportunities procurement notice search, reachable without account for searching
+- Draft intake checklist marker check for required evidence, draft defaults, SAM.gov checks, rejection conditions, and publication reminder
 
 ## Risks And Gaps
 
@@ -60,12 +62,13 @@ Phase 5A validation passed:
 - Source candidates are still editorial candidates. They are not approved for automated ingestion or publication.
 - Only SAM.gov is approved for draft-only discovery. All other sources remain `needs_review`.
 - No source is approved for automated ingestion or publication.
+- No verified SAM.gov notice has been added yet; first record creation remains blocked until a direct notice can be checked.
 
 ## Next Single Task
 
-Create the first SAM.gov draft opportunity record template:
+Find and intake one SAM.gov solar-relevant notice:
 
-Add one clearly non-published `discovered` or `needs_review` draft record structure from the approved SAM.gov source only if every required field can be filled from an official notice. If no suitable official notice can be verified safely in one round, create a draft-record intake checklist instead. Do not publish pages, AI import jobs, or sitemap entries.
+Use the approved SAM.gov source and the draft intake checklist. Add one non-published draft record only if a direct official notice URL and every required field can be verified. Otherwise, leave `opportunities.json` empty and record the blocking evidence gap. Do not publish pages, AI import jobs, or sitemap entries.
 
 ## User Decision Needed
 

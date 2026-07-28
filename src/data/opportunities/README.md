@@ -11,6 +11,7 @@ Current files:
 - `tags.json`: controlled taxonomy.
 - `opportunities.schema.md`: field definitions, review states, and validation rules.
 - `source-review-policy.md`: approval gates for source use and draft record creation.
+- `draft-record-intake-checklist.md`: evidence checklist before any notice enters `opportunities.json`.
 
 Rules:
 
@@ -20,3 +21,4 @@ Rules:
 - Do not copy paid database content.
 - Do not auto-publish AI-discovered opportunities.
 - Do not create draft opportunity records from sources below `approved`.
+- Do not create draft opportunity records when required official-source evidence is incomplete.
