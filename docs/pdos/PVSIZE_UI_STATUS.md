@@ -1,6 +1,6 @@
 # PVSize UI/UX Status
 
-Updated: 2026-07-28 18:00 CST
+Updated: 2026-07-28 18:20 CST
 
 ## Current Phase
 
@@ -18,7 +18,7 @@ Opportunities
 
 ## Current State
 
-City Pages UI/UX technical stage is passed and no longer blocks the main UI redesign flow. City Pages growth validation remains observing, and full rollout remains pending metrics or explicit approval. Opportunities `/partners/` first-screen UI improvement is deployed and production verified.
+City Pages UI/UX technical stage is passed and no longer blocks the main UI redesign flow. City Pages growth validation remains observing, and full rollout remains pending metrics or explicit approval. Opportunities `/partners/` first-screen is production verified; services section hierarchy is implemented locally and ready for commit / deployment.
 
 ## Opportunities Baseline
 
@@ -46,6 +46,7 @@ City Pages UI/UX technical stage is passed and no longer blocks the main UI rede
 - Opportunities baseline route audit completed; `/partners/` selected as the first production-safe implementation surface.
 - `/partners/` first-screen UI improvement implemented: added direct inquiry / disclosure actions and three partner opportunity paths.
 - `/partners/` production verification passed: status 200, new CTA/content present, canonical/robots/Clarity/analytics/form wiring preserved.
+- `/partners/` services section hierarchy improved locally: renamed the section to Partner Opportunities and clarified intent placements, sponsored education, opt-in leads, and future commerce tests.
 - City Pages decision checkpoint recorded; no production code changes were made in this run.
 - City Pages pilot observation checklist recorded.
 - City path strip helper is now wired into `update-city-pages.js` behind `--path-strip-pilot` and `--dry-run`.
@@ -86,14 +87,14 @@ Decision checkpoint evidence:
 - Metric access is unavailable in unattended runs, so growth validation and broad city rollout remain blocked.
 - City path strip helper is wired into the city page update flow, but only in explicit pilot mode.
 - Do not expand to all city pages until behavior metrics pass a later threshold or the user explicitly approves rollout.
-- Opportunities `/partners/` first-screen is production verified; deeper services/contact section redesign has not started.
+- Opportunities `/partners/` services section update is local-only until committed, deployed, and production verified.
 - Full-site QA and archive are pending.
 
 ## Next Single Task
 
-Continue Opportunities with the next smallest `/partners/` task:
+Commit, deploy, and production verify the `/partners/` services section update:
 
-Improve the `/partners/` services section hierarchy and labels while preserving existing form fields, `partner_inquiry` payload, `noindex,follow`, canonical URL, Clarity, `pv-analytics.js`, and `/api/lead`.
+Verify production `/partners/` shows Partner Opportunities labels and preserves existing form fields, `partner_inquiry` payload, `noindex,follow`, canonical URL, Clarity, `pv-analytics.js`, and `/api/lead`.
 
 ## User Decision Needed
 
