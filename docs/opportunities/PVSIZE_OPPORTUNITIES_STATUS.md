@@ -1,14 +1,14 @@
 # PVSize Opportunities Status
 
-Updated: 2026-07-28 21:38 CST
+Updated: 2026-07-28 21:58 CST
 
 ## Current Phase
 
-Phase 5B: Source Registry Draft
+Phase 5B: Source Review Policy
 
 ## Current State
 
-Phase 5B first Source Registry draft is implemented. The Opportunities data layer now has official-source candidates only; it still has no real opportunity records, public opportunity pages, sitemap entries, AI import jobs, or newsletter capture flows.
+Phase 5B source review policy is implemented. The Opportunities data layer now has official-source candidates and approval gates, but still has no real opportunity records, public opportunity pages, sitemap entries, AI import jobs, or newsletter capture flows.
 
 ## Completed
 
@@ -24,6 +24,7 @@ Phase 5B first Source Registry draft is implemented. The Opportunities data laye
 - Empty `opportunities.json` and `sources.json` records arrays created with no published records.
 - `src/tools/validate-opportunities.js` added to enforce schema root structure, controlled taxonomy, unique ids/slugs, source quality fields, review-state thresholds, date format, and published-record safety rules.
 - First official-source candidate registry added with 5 non-published sources across United States, European Union, and Japan.
+- `src/data/opportunities/source-review-policy.md` added to define source approval checks, blocked statuses, draft record rules, human review rules, AI use rules, and publication gates.
 
 ## Current Constraints
 
@@ -34,7 +35,7 @@ Phase 5B first Source Registry draft is implemented. The Opportunities data laye
 
 ## Last Commit
 
-`7d43e89 Add opportunities source registry draft`
+Pending this run: Add opportunities source review policy
 
 ## Last Verification
 
@@ -44,6 +45,7 @@ Phase 5A validation passed:
 - `git diff --check`
 - Schema marker check for opportunity records, review states, validation rules, calculator relation rules, and non-goals
 - `node src/tools/validate-opportunities.js`
+- Source policy marker check for statuses, approval checks, draft record rules, AI use rules, and publication gate
 
 ## Risks And Gaps
 
@@ -54,12 +56,13 @@ Phase 5A validation passed:
 - Analytics is log-based through `/api/event/` and Vercel logs.
 - Validation is local-only; it is not wired into an npm script or deployment gate because the repository has no root `package.json`.
 - Source candidates are still editorial candidates. They are not approved for automated ingestion or publication.
+- No source has been promoted to `approved`; draft opportunity records remain blocked until a source passes review.
 
 ## Next Single Task
 
-Create a review-ready source policy note:
+Review and approve one source candidate for draft-only use:
 
-Document which source statuses may feed draft opportunity records, which statuses are blocked, and what human checks are required before a source can move from `needs_review` to `approved`. Do not add opportunity records, public pages, AI import jobs, or sitemap entries.
+Choose one existing `needs_review` source candidate, verify it against `source-review-policy.md`, and only if all checks pass change that source to `approved`. Do not add opportunity records, public pages, AI import jobs, or sitemap entries.
 
 ## User Decision Needed
 

@@ -10,6 +10,7 @@ Current files:
 - `sources.json`: approved source registry.
 - `tags.json`: controlled taxonomy.
 - `opportunities.schema.md`: field definitions, review states, and validation rules.
+- `source-review-policy.md`: approval gates for source use and draft record creation.
 
 Rules:
 
@@ -18,3 +19,4 @@ Rules:
 - Do not add generated pages to the sitemap until records pass validation and editorial review.
 - Do not copy paid database content.
 - Do not auto-publish AI-discovered opportunities.
+- Do not create draft opportunity records from sources below `approved`.
