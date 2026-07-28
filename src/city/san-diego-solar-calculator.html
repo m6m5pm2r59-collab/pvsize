@@ -10,12 +10,92 @@
 <meta name="description" content="Free solar calculator for San Diego, California homes. Compare panel count, savings, battery sizing, and a detailed solar plan using your own bill, roof space, and site conditions.">
 <link rel="canonical" href="https://pvsize.com/city/san-diego-solar-calculator/">
 <meta name="robots" content="index,follow">
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #16202c;
+    background: #f5f7fb;
+    line-height: 1.55;
+  }
+  article {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 32px 20px 56px;
+    background: #fff;
+    min-height: 100vh;
+  }
+  h1, h2, p, ul {
+    margin-top: 0;
+  }
+  h1 {
+    font-size: 2rem;
+    line-height: 1.15;
+    margin-bottom: 12px;
+  }
+  h2 {
+    margin: 28px 0 12px;
+    font-size: 1.15rem;
+  }
+  .lead {
+    font-size: 1.02rem;
+    color: #314255;
+  }
+  .path-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin: 20px 0 16px;
+  }
+  .path-card {
+    border: 1px solid #d7deea;
+    border-radius: 12px;
+    padding: 14px 16px;
+    background: #f9fbfe;
+  }
+  .path-card strong {
+    display: block;
+    margin-bottom: 6px;
+  }
+  .path-card a {
+    color: #0b5cab;
+    font-weight: 700;
+    text-decoration: none;
+  }
+  .path-card a:hover {
+    text-decoration: underline;
+  }
+  .hint {
+    margin: 16px 0 4px;
+    padding: 14px 16px;
+    border-left: 4px solid #0b5cab;
+    background: #eff5fc;
+    border-radius: 10px;
+    color: #314255;
+  }
+  ul {
+    padding-left: 20px;
+  }
+  li + li {
+    margin-top: 6px;
+  }
+</style>
 </head>
 <body>
 <article>
 <h1>Solar Calculator for San Diego, California</h1>
 
-<p>Use this page as a planning estimate for San Diego, California homes. Compare panel count, savings, battery sizing, and a detailed solar plan using your own bill, roof space, and site conditions before requesting a quote.</p>
+<p class="lead">Use this page as a planning estimate for San Diego, California homes. Compare panel count, savings, battery sizing, and a detailed solar plan using your own bill, roof space, and site conditions before requesting a quote.</p>
+
+<div class="hint">
+  <strong>Best next move:</strong> start with panel count, then compare savings, then check battery sizing only if backup matters.
+</div>
+
+<div class="path-grid">
+  <div class="path-card"><strong>Panel count first</strong><a href="/calculators/panel-count/?source=city-san-diego">Open the panel-count calculator</a></div>
+  <div class="path-card"><strong>Savings next</strong><a href="/calculators/savings/?source=city-san-diego">Compare the bill impact</a></div>
+  <div class="path-card"><strong>Battery later</strong><a href="/calculators/battery-sizing/?source=city-san-diego">Check backup sizing after fit</a></div>
+</div>
 
 <h2>What changes the result?</h2>
 <ul>
