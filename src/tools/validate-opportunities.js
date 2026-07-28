@@ -18,6 +18,10 @@ function readJson(fileName) {
   return JSON.parse(fs.readFileSync(filePath, 'utf8'));
 }
 
+function clone(value) {
+  return JSON.parse(JSON.stringify(value));
+}
+
 function isIsoDate(value) {
   return value === '' || /^\d{4}-\d{2}-\d{2}$/.test(value);
 }
@@ -172,7 +176,9 @@ function validateOpportunities(opportunities, sourcesById, taxonomy, errors) {
     if (record.official_source_url && !isUrl(record.official_source_url)) {
       errors.push(`${label} official_source_url must be http(s) URL`);
     }
-    if (record.source_id) {
+    if (!record.source_id) {
+      errors.push(`${label} missing required source_id`);
+    } else {
       const source = sourcesById.get(record.source_id);
       if (!source) {
         errors.push(`${label} source_id does not reference an existing source: ${record.source_id}`);
@@ -205,12 +211,8 @@ function validateOpportunities(opportunities, sourcesById, taxonomy, errors) {
   });
 }
 
-function main() {
+function validateData(opportunities, sources, tags) {
   const errors = [];
-  const opportunities = readJson('opportunities.json');
-  const sources = readJson('sources.json');
-  const tags = readJson('tags.json');
-
   validateRoots(opportunities, sources, tags, errors);
 
   const taxonomy = {
@@ -224,6 +226,63 @@ function main() {
   const sourcesById = Array.isArray(sources.sources) ? validateSources(sources, taxonomy, errors) : new Map();
   if (Array.isArray(opportunities.records)) validateOpportunities(opportunities, sourcesById, taxonomy, errors);
 
+  return errors;
+}
+
+function runSelfTest(opportunities, sources, tags) {
+  const baseRecord = opportunities.records[0];
+  if (!baseRecord) {
+    throw new Error('Self-test requires at least one valid opportunity record');
+  }
+
+  const cases = [
+    {
+      name: 'missing source_id',
+      mutate(testOpportunities) {
+        delete testOpportunities.records[0].source_id;
+      },
+      expected: 'missing required source_id',
+    },
+    {
+      name: 'unknown source_id',
+      mutate(testOpportunities) {
+        testOpportunities.records[0].source_id = 'src_missing_source';
+      },
+      expected: 'source_id does not reference an existing source',
+    },
+    {
+      name: 'non-approved source_id',
+      mutate(testOpportunities) {
+        testOpportunities.records[0].source_id = 'src_us_grants_search';
+      },
+      expected: 'source_id must reference an approved source',
+    },
+    {
+      name: 'country mismatch',
+      mutate(testOpportunities) {
+        testOpportunities.records[0].country = 'japan';
+      },
+      expected: 'country must match source country',
+    },
+  ];
+
+  cases.forEach((testCase) => {
+    const testOpportunities = clone(opportunities);
+    testCase.mutate(testOpportunities);
+    const errors = validateData(testOpportunities, sources, tags);
+    if (!errors.some((error) => error.includes(testCase.expected))) {
+      throw new Error(`${testCase.name} did not fail with expected error: ${testCase.expected}`);
+    }
+    console.log(`Self-test PASS: ${testCase.name}`);
+  });
+}
+
+function main() {
+  const opportunities = readJson('opportunities.json');
+  const sources = readJson('sources.json');
+  const tags = readJson('tags.json');
+  const errors = validateData(opportunities, sources, tags);
+
   if (errors.length) {
     console.error(`Opportunities validation failed: ${errors.length} issue(s)`);
     errors.forEach((error) => console.error(`- ${error}`));
@@ -232,6 +291,10 @@ function main() {
   }
 
   console.log(`Opportunities validation PASS: ${opportunities.records.length} records, ${sources.sources.length} sources`);
+
+  if (process.argv.includes('--self-test')) {
+    runSelfTest(opportunities, sources, tags);
+  }
 }
 
 main();

@@ -1,14 +1,14 @@
 # PVSize Opportunities Status
 
-Updated: 2026-07-28 23:18 CST
+Updated: 2026-07-28 23:38 CST
 
 ## Current Phase
 
-Phase 5C: Source Relationship Validation
+Phase 5C: Negative Validation Fixtures
 
 ## Current State
 
-Phase 5C source relationship validation is implemented. The validator now requires opportunity records with `source_id` to reference an existing `approved` source. The data layer still has no public opportunity pages, sitemap entries, AI import jobs, or newsletter capture flows.
+Phase 5C negative validation fixtures are implemented through validator self-test mode. The validator now proves it fails missing, unknown, non-approved, and country-mismatched `source_id` cases. The data layer still has no public opportunity pages, sitemap entries, AI import jobs, or newsletter capture flows.
 
 ## Completed
 
@@ -29,6 +29,7 @@ Phase 5C source relationship validation is implemented. The validator now requir
 - `src/data/opportunities/draft-record-intake-checklist.md` added to define evidence requirements before any approved-source notice enters `opportunities.json`.
 - First SAM.gov notice added to `opportunities.json` as `review_status: discovered` with `quality_score: 60`; it is not approved, not published, and not indexed.
 - `src/tools/validate-opportunities.js` strengthened to enforce opportunity-to-source relationship checks.
+- `src/tools/validate-opportunities.js --self-test` added to exercise negative source relationship fixtures without adding fixture data files.
 
 ## Current Constraints
 
@@ -39,7 +40,7 @@ Phase 5C source relationship validation is implemented. The validator now requir
 
 ## Last Commit
 
-`4225180 Enforce opportunities source relationships`
+Pending this run: Add opportunities validator self-test
 
 ## Last Verification
 
@@ -54,6 +55,7 @@ Phase 5A validation passed:
 - Draft intake checklist marker check for required evidence, draft defaults, SAM.gov checks, rejection conditions, and publication reminder
 - SAM.gov notice checked: direct notice URL, Notice ID, agency, published date, due date, and PV/BESS/microgrid relevance visible
 - Validator source relationship check: opportunity `source_id` must exist, must be `approved`, country must match, and source reliability must match
+- Validator self-test checks missing `source_id`, unknown `source_id`, non-approved source, and country mismatch failure cases
 
 ## Risks And Gaps
 
@@ -71,9 +73,9 @@ Phase 5A validation passed:
 
 ## Next Single Task
 
-Add negative validation fixtures for Opportunities data:
+Prepare draft record human-review checklist for the first SAM.gov draft:
 
-Create a minimal test fixture or validation mode that proves the validator fails when `source_id` is missing, unknown, or references a non-approved source. Do not publish pages, AI import jobs, or sitemap entries.
+Create a review note for `opp_us_2026_0001` listing the remaining human checks needed before it can move from `discovered` to `needs_review` or `approved`. Do not change the record review status, publish pages, add AI import jobs, or add sitemap entries.
 
 ## User Decision Needed
 
