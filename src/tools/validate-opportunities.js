@@ -52,6 +52,7 @@ function validateRoots(opportunities, sources, tags, errors) {
 
 function validateSources(sources, taxonomy, errors) {
   const seenIds = new Set();
+  const byId = new Map();
   const required = [
     'id',
     'name',
@@ -71,6 +72,7 @@ function validateSources(sources, taxonomy, errors) {
     if (source.id) {
       if (seenIds.has(source.id)) errors.push(`${label} duplicate id: ${source.id}`);
       seenIds.add(source.id);
+      byId.set(source.id, source);
     }
     if (source.url && !isUrl(source.url)) errors.push(`${label} url must be http(s) URL`);
     if (source.country && !taxonomy.countries.has(source.country)) {
@@ -92,9 +94,11 @@ function validateSources(sources, taxonomy, errors) {
       errors.push(`${label} reliability_score must be integer 0-100`);
     }
   });
+
+  return byId;
 }
 
-function validateOpportunities(opportunities, taxonomy, errors) {
+function validateOpportunities(opportunities, sourcesById, taxonomy, errors) {
   const seenIds = new Set();
   const seenSlugs = new Set();
   const required = [
@@ -168,6 +172,26 @@ function validateOpportunities(opportunities, taxonomy, errors) {
     if (record.official_source_url && !isUrl(record.official_source_url)) {
       errors.push(`${label} official_source_url must be http(s) URL`);
     }
+    if (record.source_id) {
+      const source = sourcesById.get(record.source_id);
+      if (!source) {
+        errors.push(`${label} source_id does not reference an existing source: ${record.source_id}`);
+      } else {
+        if (source.status !== 'approved') {
+          errors.push(`${label} source_id must reference an approved source: ${record.source_id}`);
+        }
+        if (record.country && source.country && record.country !== source.country) {
+          errors.push(`${label} country must match source country: ${record.country} != ${source.country}`);
+        }
+        if (
+          typeof record.source_reliability !== 'undefined' &&
+          typeof source.reliability_score !== 'undefined' &&
+          record.source_reliability !== source.reliability_score
+        ) {
+          errors.push(`${label} source_reliability must match source reliability_score for ${record.source_id}`);
+        }
+      }
+    }
     if (record.review_status === 'published') {
       if (!record.official_source_url) errors.push(`${label} published records require official_source_url`);
       if (
@@ -197,8 +221,8 @@ function main() {
     reviewStatuses: asSet(tags.review_statuses, 'review_statuses', errors),
   };
 
-  if (Array.isArray(sources.sources)) validateSources(sources, taxonomy, errors);
-  if (Array.isArray(opportunities.records)) validateOpportunities(opportunities, taxonomy, errors);
+  const sourcesById = Array.isArray(sources.sources) ? validateSources(sources, taxonomy, errors) : new Map();
+  if (Array.isArray(opportunities.records)) validateOpportunities(opportunities, sourcesById, taxonomy, errors);
 
   if (errors.length) {
     console.error(`Opportunities validation failed: ${errors.length} issue(s)`);

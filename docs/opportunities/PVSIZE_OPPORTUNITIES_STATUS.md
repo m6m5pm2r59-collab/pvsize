@@ -1,14 +1,14 @@
 # PVSize Opportunities Status
 
-Updated: 2026-07-28 22:58 CST
+Updated: 2026-07-28 23:18 CST
 
 ## Current Phase
 
-Phase 5C: First Draft Opportunity Intake
+Phase 5C: Source Relationship Validation
 
 ## Current State
 
-Phase 5C first draft opportunity intake is implemented. One SAM.gov notice has been added as a non-published `discovered` draft record. The data layer still has no public opportunity pages, sitemap entries, AI import jobs, or newsletter capture flows.
+Phase 5C source relationship validation is implemented. The validator now requires opportunity records with `source_id` to reference an existing `approved` source. The data layer still has no public opportunity pages, sitemap entries, AI import jobs, or newsletter capture flows.
 
 ## Completed
 
@@ -28,6 +28,7 @@ Phase 5C first draft opportunity intake is implemented. One SAM.gov notice has b
 - `src_us_sam_contract_opportunities` promoted from `needs_review` to `approved` for draft-only use after source policy review.
 - `src/data/opportunities/draft-record-intake-checklist.md` added to define evidence requirements before any approved-source notice enters `opportunities.json`.
 - First SAM.gov notice added to `opportunities.json` as `review_status: discovered` with `quality_score: 60`; it is not approved, not published, and not indexed.
+- `src/tools/validate-opportunities.js` strengthened to enforce opportunity-to-source relationship checks.
 
 ## Current Constraints
 
@@ -38,7 +39,7 @@ Phase 5C first draft opportunity intake is implemented. One SAM.gov notice has b
 
 ## Last Commit
 
-`4a718e0 Add first SAM.gov draft opportunity`
+Pending this run: Enforce opportunities source relationships
 
 ## Last Verification
 
@@ -52,6 +53,7 @@ Phase 5A validation passed:
 - SAM.gov source page checked: official contract opportunities procurement notice search, reachable without account for searching
 - Draft intake checklist marker check for required evidence, draft defaults, SAM.gov checks, rejection conditions, and publication reminder
 - SAM.gov notice checked: direct notice URL, Notice ID, agency, published date, due date, and PV/BESS/microgrid relevance visible
+- Validator source relationship check: opportunity `source_id` must exist, must be `approved`, country must match, and source reliability must match
 
 ## Risks And Gaps
 
@@ -65,13 +67,13 @@ Phase 5A validation passed:
 - Only SAM.gov is approved for draft-only discovery. All other sources remain `needs_review`.
 - No source is approved for automated ingestion or publication.
 - First draft record is not publication-ready. It requires human review before approval or publication.
-- Validator does not yet enforce that opportunity `source_id` points to an approved source.
+- Validator is still local-only; it is not wired into a deployment gate.
 
 ## Next Single Task
 
-Strengthen validator source relationship checks:
+Add negative validation fixtures for Opportunities data:
 
-Update `src/tools/validate-opportunities.js` so any opportunity record with `source_id` must reference an existing source, and draft records may only use sources with `status: approved`. Do not publish pages, AI import jobs, or sitemap entries.
+Create a minimal test fixture or validation mode that proves the validator fails when `source_id` is missing, unknown, or references a non-approved source. Do not publish pages, AI import jobs, or sitemap entries.
 
 ## User Decision Needed
 
