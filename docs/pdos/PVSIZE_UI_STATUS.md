@@ -33,7 +33,7 @@ Production Verification PASS for the 5-city pilot.
 
 ## Last Commit
 
-Pending this run: dry-run-safe city path strip update flow integration.
+Dry-run flow integration: `97ebb72 Wire city path strip dry-run flow`
 
 ## Last Deployment
 
