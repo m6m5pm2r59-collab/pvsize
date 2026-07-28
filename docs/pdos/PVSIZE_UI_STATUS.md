@@ -35,7 +35,7 @@ Production Recheck PASS for the 5-city pilot. Broad rollout remains on hold pend
 
 ## Last Commit
 
-Pending this run: 5-city production recheck status.
+Production recheck status: `e43d661 Record city pilot production recheck`
 
 ## Last Deployment
 
