@@ -34,7 +34,7 @@ Production Verification PASS for the 5-city pilot.
 
 ## Last Commit
 
-Pending this run: City Pages pilot observation checklist.
+Observation checklist status: `70a98a2 Record city pilot observation checklist status`
 
 ## Last Deployment
 
