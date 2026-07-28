@@ -18,7 +18,7 @@ Opportunities
 
 ## Current State
 
-City Pages UI/UX technical stage is passed and no longer blocks the main UI redesign flow. City Pages growth validation remains observing, and full rollout remains pending metrics or explicit approval. Opportunities `/partners/` first-screen and services section are production verified; contact/form section hierarchy is implemented locally and ready for commit / deployment.
+City Pages UI/UX technical stage is passed and no longer blocks the main UI redesign flow. City Pages growth validation remains observing, and full rollout remains pending metrics or explicit approval. Opportunities `/partners/` first-screen, services section, and contact/form section are deployed and production verified.
 
 ## Opportunities Baseline
 
@@ -49,6 +49,7 @@ City Pages UI/UX technical stage is passed and no longer blocks the main UI rede
 - `/partners/` services section hierarchy improved locally: renamed the section to Partner Opportunities and clarified intent placements, sponsored education, opt-in leads, and future commerce tests.
 - `/partners/` services section production verification passed: status 200, new labels present, canonical/robots/Clarity/analytics/form wiring preserved.
 - `/partners/` contact/form section hierarchy improved locally: added manual review, disclosure, and no-default-sharing notes plus a form shell without changing fields or submit behavior.
+- `/partners/` contact/form section production verification passed: status 200, new trust notes present, form fields and `/api/lead` wiring preserved.
 - City Pages decision checkpoint recorded; no production code changes were made in this run.
 - City Pages pilot observation checklist recorded.
 - City path strip helper is now wired into `update-city-pages.js` behind `--path-strip-pilot` and `--dry-run`.
@@ -62,7 +63,7 @@ City Pages UI/UX technical stage is passed and no longer blocks the main UI rede
 
 ## Last Commit
 
-Opportunities services implementation: `7785151 Clarify partners opportunity services`
+Opportunities contact/form implementation: `badfad3 Improve partners contact section`
 
 ## Last Deployment
 
@@ -76,6 +77,7 @@ Opportunities services implementation: `7785151 Clarify partners opportunity ser
 Evidence:
 
 - `/Users/xiaotudou/Documents/Codex/2026-07-16/pvsize-daily-ops/reports/PVSize_Opportunities_Partners_Services_20260728.md`
+- `/Users/xiaotudou/Documents/Codex/2026-07-16/pvsize-daily-ops/reports/PVSize_Opportunities_Partners_ContactForm_20260728.md`
 - `/Users/xiaotudou/Documents/Codex/2026-07-16/pvsize-daily-ops/reports/PVSize_Opportunities_Partners_FirstScreen_20260728.md`
 - `/Users/xiaotudou/Documents/Codex/2026-07-16/pvsize-daily-ops/reports/PVSize_CityTemplate_PathStrip_5CityRecheck_20260728.md`
 - `/Users/xiaotudou/Documents/Codex/2026-07-16/pvsize-daily-ops/reports/PVSize_CityTemplate_PathStrip_5CityPilot_Production_20260728.md`
@@ -90,14 +92,14 @@ Decision checkpoint evidence:
 - Metric access is unavailable in unattended runs, so growth validation and broad city rollout remain blocked.
 - City path strip helper is wired into the city page update flow, but only in explicit pilot mode.
 - Do not expand to all city pages until behavior metrics pass a later threshold or the user explicitly approves rollout.
-- Opportunities `/partners/` contact/form section update is local-only until committed, deployed, and production verified.
+- Opportunities `/partners/` core sections are production verified; stage closure review has not yet been recorded.
 - Full-site QA and archive are pending.
 
 ## Next Single Task
 
-Commit, deploy, and production verify the `/partners/` contact/form section update:
+Prepare Opportunities closure review:
 
-Verify production `/partners/` shows the new contact/form trust notes and preserves every existing form field, `partner_inquiry` payload, `noindex,follow`, canonical URL, Clarity, `pv-analytics.js`, and `/api/lead`.
+Review `/partners/` against Opportunities milestones, confirm whether Opportunities can be marked Technical Acceptance / Production Verification PASS, and decide whether to move to Full-site QA and production archive.
 
 ## User Decision Needed
 
