@@ -1,6 +1,6 @@
 # PVSize Opportunities Status
 
-Updated: 2026-07-30 07:00 CST
+Updated: 2026-07-30 07:20 CST
 
 ## Current Phase
 
@@ -82,6 +82,7 @@ The mainline has moved to Phase 5C Publication Pipeline. The first non-indexed `
 - `src/tools/verify-opportunities-index-policy.js` now includes a published-record gate for future sitemap/RSS/schema/indexable exposure: any included opportunity record must have `review_status: published`.
 - `src/tools/verify-opportunities-index-policy.js --self-test` added to prove non-published Opportunities fail when injected into sitemap, schema, and RSS fixtures.
 - Aggregate Phase 5C QA now runs the index-policy verifier with `--self-test`, so the published-record release gate is exercised on every local aggregate QA run.
+- `docs/opportunities/PVSIZE_OPPORTUNITIES_INDEXED_RELEASE_READINESS_SEQUENCE.md` added to freeze the order for record status, SEO metadata, structured data, sitemap/RSS, newsletter, production QA, and archive before any indexed Opportunities release.
 
 ## Current Constraints
 
@@ -92,7 +93,7 @@ The mainline has moved to Phase 5C Publication Pipeline. The first non-indexed `
 
 ## Last Commit
 
-`9c61dfb Run opportunities index-policy self-test in aggregate QA`
+Pending this run.
 
 ## Last Verification
 
@@ -147,6 +148,7 @@ Phase 5A validation passed:
 - Published-record index-policy gate added and passed: sitemap/RSS/schema/indexable checks now assert included opportunity records are `review_status: published`; current noindex MVP still passes because no Opportunities URLs are included in sitemap/RSS/schema.
 - Published-record index-policy negative self-test added and passed: fixture injection proves a non-published Opportunity in sitemap/schema/RSS fails without changing current records.
 - Aggregate QA published-record self-test added and passed: `node src/tools/verify-opportunities-all.js` now runs `verify-opportunities-index-policy.js --self-test`, covering sitemap/schema/RSS negative fixtures during the local aggregate gate.
+- Indexed-release readiness sequence marker check passed: document includes record status, SEO metadata, structured data, sitemap/RSS, newsletter, production QA, archive, stop conditions, and next implementation order.
 
 ## Risks And Gaps
 
@@ -168,7 +170,7 @@ Phase 5A validation passed:
 
 Continue Phase 5C Publication Pipeline:
 
-Document the indexed-release readiness sequence for the next capabilities: record status, SEO metadata, structured data, sitemap/RSS, newsletter, and production QA. Do not implement any new indexed surface in the same task.
+Add machine-checkable readiness markers for indexed release so future SEO metadata, structured data, sitemap/RSS, and newsletter work can be gated before implementation. Do not add sitemap/RSS/schema/newsletter output in the same task.
 
 ## User Decision Needed
 
