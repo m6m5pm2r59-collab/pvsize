@@ -1,6 +1,6 @@
 # PVSize Opportunities Status
 
-Updated: 2026-07-30 06:00 CST
+Updated: 2026-07-30 06:20 CST
 
 ## Current Phase
 
@@ -79,6 +79,7 @@ The mainline has moved to Phase 5C Publication Pipeline. The first non-indexed `
 - `docs/opportunities/PVSIZE_OPPORTUNITIES_RUNBOOK.md` now documents default local aggregate QA and optional production noindex QA modes.
 - `docs/opportunities/PVSIZE_OPPORTUNITIES_PHASE5C_NOINDEX_MVP_ARCHIVE_DECISION.md` added to archive the production-verified noindex MVP baseline without approving sitemap/RSS/newsletter/schema/indexed SEO release or full Phase 5C closure.
 - `docs/opportunities/PVSIZE_OPPORTUNITIES_PUBLISHED_RECORD_STATE_TRANSITION.md` added as the first indexed-release preparation gate, defining requirements before any Opportunity record can move toward `review_status: published` or indexable release.
+- `src/tools/verify-opportunities-index-policy.js` now includes a published-record gate for future sitemap/RSS/schema/indexable exposure: any included opportunity record must have `review_status: published`.
 
 ## Current Constraints
 
@@ -89,7 +90,7 @@ The mainline has moved to Phase 5C Publication Pipeline. The first non-indexed `
 
 ## Last Commit
 
-`6cb60c8 Add opportunities published state transition gate`
+Pending this run.
 
 ## Last Verification
 
@@ -141,6 +142,7 @@ Phase 5A validation passed:
 - Opportunities QA mode documentation marker check passed for default local aggregate QA, optional production noindex QA, no-network default behavior, production checks, and explicit non-approvals.
 - Phase 5C noindex MVP archive decision marker check passed for verified scope, local QA, optional production QA, noindex-only non-approvals, requirements before indexed release, and not-full-Phase-5C-closure outcome.
 - Published record-state transition marker check passed for current noindex baseline, required published state, required indexable channel state, forbidden transitions, validator gap, and next implementation step.
+- Published-record index-policy gate added and passed: sitemap/RSS/schema/indexable checks now assert included opportunity records are `review_status: published`; current noindex MVP still passes because no Opportunities URLs are included in sitemap/RSS/schema.
 
 ## Risks And Gaps
 
@@ -162,7 +164,7 @@ Phase 5A validation passed:
 
 Continue Phase 5C Publication Pipeline:
 
-Continue Phase 5C Publication Pipeline: add a validator or verifier rule that blocks sitemap/RSS/schema/indexable release unless included Opportunity records have `review_status: published`. Do not change current records to published in the same task.
+Continue Phase 5C Publication Pipeline: add a negative self-test or fixture for the published-record index-policy gate, proving that a non-published opportunity in sitemap/RSS/schema fails. Do not change current records to published in the same task.
 
 ## User Decision Needed
 

@@ -28,8 +28,12 @@ records.forEach((record) => {
   assert(record.review_status !== 'published', `record must not be published before production QA: ${record.id}`);
 });
 
-opportunityUrls.forEach((url) => {
+opportunityUrls.forEach((url, index) => {
   assert(!sitemap.includes(url), `opportunity URL must not be in sitemap before production QA: ${url}`);
+  if (sitemap.includes(url) && index > 0) {
+    const record = records[index - 1];
+    assert(record.review_status === 'published', `sitemap opportunity must be published: ${record.id}`);
+  }
 });
 
 [
@@ -43,6 +47,19 @@ opportunityUrls.forEach((url) => {
   assert(!html.includes('<link rel="alternate" type="application/rss+xml"'), `${relativePath} must not expose RSS before feed QA`);
 });
 
+records.forEach((record) => {
+  const detailPath = path.join(rootDir, 'opportunities', record.slug, 'index.html');
+  const html = fs.readFileSync(detailPath, 'utf8');
+  const detailUrl = `https://pvsize.com/opportunities/${record.slug}/`;
+
+  if (html.includes('<script type="application/ld+json">')) {
+    assert(record.review_status === 'published', `schema opportunity must be published: ${record.id}`);
+  }
+  if (html.includes('<link rel="alternate" type="application/rss+xml"') || sitemap.includes(detailUrl)) {
+    assert(record.review_status === 'published', `indexable opportunity must be published: ${record.id}`);
+  }
+});
+
 const rssCandidates = [
   path.join(rootDir, 'opportunities.xml'),
   path.join(rootDir, 'opportunities.rss'),
@@ -52,6 +69,15 @@ const rssCandidates = [
 
 rssCandidates.forEach((filePath) => {
   assert(!fs.existsSync(filePath), `RSS file must not exist before feed QA: ${path.relative(rootDir, filePath)}`);
+  if (fs.existsSync(filePath)) {
+    const feed = fs.readFileSync(filePath, 'utf8');
+    records.forEach((record) => {
+      const detailUrl = `https://pvsize.com/opportunities/${record.slug}/`;
+      if (feed.includes(detailUrl) || feed.includes(`/opportunities/${record.slug}/`)) {
+        assert(record.review_status === 'published', `RSS opportunity must be published: ${record.id}`);
+      }
+    });
+  }
 });
 
 if (errors.length) {
