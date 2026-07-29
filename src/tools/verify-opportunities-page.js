@@ -7,6 +7,7 @@ const opportunitiesData = JSON.parse(
   fs.readFileSync(path.join(__dirname, '..', 'data', 'opportunities', 'opportunities.json'), 'utf8')
 );
 const records = opportunitiesData.records || [];
+const generatorPath = path.join(__dirname, 'generate-opportunity-detail-pages.js');
 const detailSlugs = [
   'usgs-communications-site-infrastructure-idiq',
   '178th-wing-base-microgrid-construction',
@@ -32,6 +33,10 @@ const errors = [];
 requiredMarkers.forEach((marker) => {
   if (!html.includes(marker)) errors.push(`missing marker: ${marker}`);
 });
+
+if (!fs.existsSync(generatorPath)) {
+  errors.push('missing reusable detail page generator');
+}
 
 records.forEach((record) => {
   if (!html.includes(record.title)) errors.push(`listing missing opportunity title: ${record.id}`);

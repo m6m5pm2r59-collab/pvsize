@@ -1,6 +1,6 @@
 # PVSize Opportunities Status
 
-Updated: 2026-07-30 00:39 CST
+Updated: 2026-07-30 00:59 CST
 
 ## Current Phase
 
@@ -57,6 +57,8 @@ The mainline has moved to Phase 5C Publication Pipeline. The first non-indexed `
 - First non-indexed opportunity detail page added for `opp_us_2026_0004` at `/opportunities/usgs-communications-site-infrastructure-idiq/`; listing now links to the detail brief.
 - `src/tools/verify-opportunities-page.js` now reads `opportunities.json` to verify listing titles, official source URLs, and card count from data instead of hardcoded opportunity arrays.
 - Second non-indexed opportunity detail page added for `opp_us_2026_0001` at `/opportunities/178th-wing-base-microgrid-construction/`; listing now links to the detail brief and the page verification covers two detail pages.
+- `src/tools/generate-opportunity-detail-pages.js` added as the reusable Phase 5C detail-page generator for the current two noindex detail briefs.
+- Existing two noindex detail pages regenerated from `opportunities.json`; page verification now checks that the generator exists.
 
 ## Current Constraints
 
@@ -67,7 +69,7 @@ The mainline has moved to Phase 5C Publication Pipeline. The first non-indexed `
 
 ## Last Commit
 
-`b74e7a5 Add second opportunities detail baseline`
+Pending this run.
 
 ## Last Verification
 
@@ -103,6 +105,7 @@ Phase 5A validation passed:
 - Automated detail-page verification added for noindex, canonical, analytics marker, back link, official source link, and calculator links.
 - Data-driven listing verification added: opportunity titles, official source URLs, and card count are checked against `opportunities.json`.
 - Second detail page verification added: `/opportunities/178th-wing-base-microgrid-construction/` is checked for noindex, canonical, analytics marker, listing link, official source link, and calculator links.
+- Reusable detail-page generator verification added: generator ran successfully and `verify-opportunities-page.js` confirms the generator is present while checking the two generated detail pages.
 
 ## Risks And Gaps
 
@@ -124,7 +127,7 @@ Phase 5A validation passed:
 
 Continue Phase 5C Publication Pipeline:
 
-Continue Phase 5C channel expansion: introduce a reusable rendering helper/template for opportunity detail pages so new detail briefs do not duplicate full inline HTML/CSS, then rerun validator plus opportunities page verification. Do not add sitemap/RSS/newsletter or mark Phase 5C Closed until production verification evidence exists.
+Continue Phase 5C channel expansion: use the reusable detail-page generator to add one more noindex detail brief from an existing source-backed record, then rerun validator plus opportunities page verification. Do not add sitemap/RSS/newsletter or mark Phase 5C Closed until production verification evidence exists.
 
 ## User Decision Needed
 
