@@ -1,6 +1,6 @@
 # PVSize Opportunities Status
 
-Updated: 2026-07-29 19:38 CST
+Updated: 2026-07-29 20:18 CST
 
 ## Current Phase
 
@@ -8,7 +8,7 @@ Phase 5B: Content Production & Human Review
 
 ## Current State
 
-Phase 5B content production and human review guardrail is implemented. The first SAM.gov draft has a structured review note, and the validator now requires every opportunity record to have a matching review note with reviewer, date, decision, source, and verification markers. Two official U.S. sources are now approved for draft-only discovery. The record remains `discovered` and non-published; the data layer still has no public opportunity pages, sitemap entries, AI import jobs, or newsletter capture flows.
+Phase 5B content production and human review guardrail is implemented. Two non-published draft records now exist with matching structured review notes. Two official U.S. sources are approved for draft-only discovery. All records remain `discovered` and non-published; the data layer still has no public opportunity pages, sitemap entries, AI import jobs, or newsletter capture flows.
 
 ## Completed
 
@@ -35,6 +35,8 @@ Phase 5B content production and human review guardrail is implemented. The first
 - `src/tools/validate-opportunities.js` now requires every opportunity record to have a matching review note with required markers.
 - `docs/opportunities/PVSIZE_PHASE5B_TO_PHASE5C_PUBLICATION_RELEASE_GATE.md` added as the mandatory gate before frontend, sitemap, RSS, newsletter, SEO, or publication work.
 - `src_us_grants_search` promoted from `needs_review` to `approved` for draft-only funding and incentive discovery after official source review.
+- First Grants.gov/Simpler.Grants.gov solar funding draft added as `review_status: discovered` and `status: closed`; it is not approved, not published, and not indexed.
+- `src/data/opportunities/review-notes/opp_us_2026_0002.md` added for the Grants.gov draft.
 
 ## Current Constraints
 
@@ -45,7 +47,7 @@ Phase 5B content production and human review guardrail is implemented. The first
 
 ## Last Commit
 
-Pending this run: Approve Grants.gov opportunities source
+Pending this run: Add first Grants.gov draft opportunity
 
 ## Last Verification
 
@@ -66,6 +68,7 @@ Phase 5A validation passed:
 - Release gate marker check for source readiness, content readiness, human review, publication readiness, growth readiness, production gate, and Phase 5C entry conditions
 - Grants.gov Search Grants page checked as an official public source for draft-only funding and incentive discovery
 - Validator self-test non-approved source fixture updated to use a still-unapproved EU source after Grants.gov approval
+- Grants.gov/Simpler.Grants.gov SolWEB2 listing checked: direct official URL, title, DOE Golden Field Office agency, solar/ecosystem/agrivoltaics scope, funding opportunity number, archived status, and official documents visible
 
 ## Risks And Gaps
 
@@ -78,7 +81,7 @@ Phase 5A validation passed:
 - Source candidates are still editorial candidates. They are not approved for automated ingestion or publication.
 - SAM.gov and Grants.gov are approved for draft-only discovery. EU and Japan sources remain `needs_review`.
 - No source is approved for automated ingestion or publication.
-- First draft record is not publication-ready. It requires human review before approval or publication.
+- Draft records are not publication-ready. They require human review before approval or publication.
 - Validator is still local-only; it is not wired into a deployment gate.
 - Human review note exists and is structurally validated, but the review itself is not complete.
 - Phase 5C has not started. The release gate explicitly blocks frontend/publication work until entry conditions pass.
@@ -87,9 +90,9 @@ Phase 5A validation passed:
 
 Continue Phase 5B content production:
 
-Find and intake one Grants.gov solar-relevant funding or incentive opportunity:
+Continue Phase 5B content production:
 
-Use the approved Grants.gov source and the draft intake checklist. Add one non-published draft record only if a direct official opportunity URL and every required field can be verified. Otherwise, leave `opportunities.json` unchanged and record the blocking evidence gap. Do not start Phase 5C frontend, sitemap, RSS, newsletter, AI import jobs, or publication-state changes.
+Find and intake another official-source solar-relevant opportunity as a non-published draft only if every required field can be verified. Prefer active opportunities, but allow closed/archive references only when clearly marked `closed`. Do not start Phase 5C frontend, sitemap, RSS, newsletter, AI import jobs, or publication-state changes.
 
 ## User Decision Needed
 

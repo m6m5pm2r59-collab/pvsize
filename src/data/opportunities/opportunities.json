@@ -46,6 +46,50 @@
         }
       ],
       "official_documents": []
+    },
+    {
+      "id": "opp_us_2026_0002",
+      "slug": "solar-with-wildlife-and-ecosystem-benefits-2-solweb2",
+      "title": "Solar with Wildlife and Ecosystem Benefits 2 (SolWEB2)",
+      "status": "closed",
+      "country": "united-states",
+      "region": "national",
+      "opportunity_type": "incentive",
+      "technology": [
+        "solar"
+      ],
+      "buyer_or_issuer": "Department of Energy / Golden Field Office",
+      "published_date": "2024-12-23",
+      "deadline": "",
+      "source_language": "en",
+      "last_verified": "2026-07-29",
+      "official_source_url": "https://simpler.grants.gov/opportunity/8f684555-0665-425d-a840-28ade8965278",
+      "overview": "Grants.gov listing for Solar with Wildlife and Ecosystem Benefits 2 (SolWEB2), a DOE funding opportunity focused on improving large-scale solar development outcomes for ecosystems, wildlife, communities, and agrivoltaics adoption.",
+      "review_status": "discovered",
+      "quality_score": 60,
+      "source_id": "src_us_grants_search",
+      "source_reliability": 95,
+      "tags": [
+        "federal-grant",
+        "large-scale-solar",
+        "agrivoltaics",
+        "wildlife",
+        "ecosystem-benefits"
+      ],
+      "related_calculators": [
+        "solar-panel-size"
+      ],
+      "relevance_notes": "Relevant as a closed Grants.gov solar funding example for testing the draft intake and review-note workflow. It must not be presented as an active opportunity.",
+      "change_log": [
+        {
+          "date": "2026-07-29",
+          "status": "discovered",
+          "note": "Initial non-published draft intake from approved Grants.gov source. Listed as closed because the official listing is archived."
+        }
+      ],
+      "official_documents": [
+        "https://files.simpler.grants.gov/opportunity_docs/2024-12-23/DE-FOA-0003492_Solar_with_Wildlife_and_Ecosystem_Benefits_2_SolWEB2.pdf"
+      ]
     }
   ]
 }
