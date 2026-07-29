@@ -1,6 +1,6 @@
 # PVSize Opportunities Status
 
-Updated: 2026-07-30 05:20 CST
+Updated: 2026-07-30 05:40 CST
 
 ## Current Phase
 
@@ -77,6 +77,7 @@ The mainline has moved to Phase 5C Publication Pipeline. The first non-indexed `
 - `src/tools/verify-opportunities-production-noindex.js` added as a repeatable production noindex verifier for `pvsize.com` listing/detail URLs, sitemap exclusion, RSS/feed absence, no premature JSON-LD, and homepage entry link.
 - `src/tools/verify-opportunities-all.js` now supports an optional production noindex gate when `PVSIZE_VERIFY_PRODUCTION=1` is set, while default aggregate QA remains local-only.
 - `docs/opportunities/PVSIZE_OPPORTUNITIES_RUNBOOK.md` now documents default local aggregate QA and optional production noindex QA modes.
+- `docs/opportunities/PVSIZE_OPPORTUNITIES_PHASE5C_NOINDEX_MVP_ARCHIVE_DECISION.md` added to archive the production-verified noindex MVP baseline without approving sitemap/RSS/newsletter/schema/indexed SEO release or full Phase 5C closure.
 
 ## Current Constraints
 
@@ -87,7 +88,7 @@ The mainline has moved to Phase 5C Publication Pipeline. The first non-indexed `
 
 ## Last Commit
 
-`d47b28f Document opportunities QA modes`
+Pending this run.
 
 ## Last Verification
 
@@ -137,6 +138,7 @@ Phase 5A validation passed:
 - Repeatable production noindex verifier added and passed: `node src/tools/verify-opportunities-production-noindex.js` checks listing/detail HTTP 200, `noindex,follow`, no JSON-LD, no RSS alternate link, sitemap exclusion, feed candidate 404s, and homepage entry link.
 - Optional production aggregate gate added and passed: `PVSIZE_VERIFY_PRODUCTION=1 node src/tools/verify-opportunities-all.js` runs the normal local aggregate QA and then the production noindex verifier.
 - Opportunities QA mode documentation marker check passed for default local aggregate QA, optional production noindex QA, no-network default behavior, production checks, and explicit non-approvals.
+- Phase 5C noindex MVP archive decision marker check passed for verified scope, local QA, optional production QA, noindex-only non-approvals, requirements before indexed release, and not-full-Phase-5C-closure outcome.
 
 ## Risks And Gaps
 
@@ -158,7 +160,7 @@ Phase 5A validation passed:
 
 Continue Phase 5C Publication Pipeline:
 
-Continue Phase 5C Publication Pipeline: prepare the noindex MVP Phase 5C archive decision note that summarizes what is production verified, what remains noindex-only, and what is required before sitemap/RSS/newsletter/schema/indexed SEO release. Do not mark Phase 5C Closed unless the archive note explicitly passes its remaining gates.
+Continue Phase 5C Publication Pipeline: choose the next smallest indexed-release preparation task from search/filter, newsletter capture, structured data, sitemap/RSS, or published record-state transition. Do not implement more than one capability in the same task.
 
 ## User Decision Needed
 
