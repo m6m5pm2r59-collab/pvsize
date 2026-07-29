@@ -63,7 +63,7 @@ The mainline has moved to Phase 5C Publication Pipeline. The first non-indexed `
 
 ## Last Commit
 
-Pending this run: Add opportunities page verification script
+`327eed5 Add opportunities page verification script`
 
 ## Last Verification
 
