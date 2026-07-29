@@ -1,6 +1,6 @@
 # PVSize Opportunities Runbook
 
-Updated: 2026-07-29
+Updated: 2026-07-30
 
 ## Per-Run Startup
 
@@ -45,6 +45,22 @@ For implementation phases:
 - Analytics marker checks.
 - Responsive/browser checks when UI changes.
 - Production verification when deployed.
+
+## Opportunities QA Modes
+
+Use the default local aggregate QA for normal development and pre-commit checks:
+
+- `node src/tools/verify-opportunities-all.js`
+
+This mode is local-only. It runs the data validator, detail generator, page verifier, index-policy verifier, analytics/CTA verifier, and local HTTP verifier. It does not require production network access.
+
+Use the optional production noindex QA only for production or post-deploy verification:
+
+- `PVSIZE_VERIFY_PRODUCTION=1 node src/tools/verify-opportunities-all.js`
+
+This mode runs the default local aggregate QA first, then checks `https://pvsize.com` for Opportunities listing/detail HTTP 200, `noindex,follow`, no premature JSON-LD, sitemap exclusion, RSS/feed absence, and homepage entry link.
+
+Do not use the optional production QA to approve sitemap, RSS, newsletter capture, structured data, indexed SEO launch, published opportunity record status, or Phase 5C closure. Those remain separately gated.
 
 ## Reporting
 

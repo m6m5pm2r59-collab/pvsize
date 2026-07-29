@@ -1,6 +1,6 @@
 # PVSize Opportunities Status
 
-Updated: 2026-07-30 05:00 CST
+Updated: 2026-07-30 05:20 CST
 
 ## Current Phase
 
@@ -76,6 +76,7 @@ The mainline has moved to Phase 5C Publication Pipeline. The first non-indexed `
 - Noindex Opportunities MVP production verification completed for `/opportunities/` plus five detail URLs on `https://pvsize.com`; all checked URLs returned HTTP 200 while retaining noindex policy and staying out of sitemap/RSS/schema.
 - `src/tools/verify-opportunities-production-noindex.js` added as a repeatable production noindex verifier for `pvsize.com` listing/detail URLs, sitemap exclusion, RSS/feed absence, no premature JSON-LD, and homepage entry link.
 - `src/tools/verify-opportunities-all.js` now supports an optional production noindex gate when `PVSIZE_VERIFY_PRODUCTION=1` is set, while default aggregate QA remains local-only.
+- `docs/opportunities/PVSIZE_OPPORTUNITIES_RUNBOOK.md` now documents default local aggregate QA and optional production noindex QA modes.
 
 ## Current Constraints
 
@@ -86,7 +87,7 @@ The mainline has moved to Phase 5C Publication Pipeline. The first non-indexed `
 
 ## Last Commit
 
-`cc1c5b0 Add optional opportunities production QA gate`
+Pending this run.
 
 ## Last Verification
 
@@ -135,6 +136,7 @@ Phase 5A validation passed:
 - Noindex MVP production verification passed: `https://pvsize.com/opportunities/` and all five detail pages returned HTTP 200; production HTML retains `noindex,follow`; production sitemap contains no Opportunities URLs; Opportunities RSS/feed URLs checked returned 404; production Opportunities pages contain no JSON-LD structured data; production homepage links to `/opportunities/`.
 - Repeatable production noindex verifier added and passed: `node src/tools/verify-opportunities-production-noindex.js` checks listing/detail HTTP 200, `noindex,follow`, no JSON-LD, no RSS alternate link, sitemap exclusion, feed candidate 404s, and homepage entry link.
 - Optional production aggregate gate added and passed: `PVSIZE_VERIFY_PRODUCTION=1 node src/tools/verify-opportunities-all.js` runs the normal local aggregate QA and then the production noindex verifier.
+- Opportunities QA mode documentation marker check passed for default local aggregate QA, optional production noindex QA, no-network default behavior, production checks, and explicit non-approvals.
 
 ## Risks And Gaps
 
@@ -156,7 +158,7 @@ Phase 5A validation passed:
 
 Continue Phase 5C Publication Pipeline:
 
-Continue Phase 5C Publication Pipeline: document the two QA modes for Opportunities operators: default local aggregate QA and optional production noindex QA. Do not add sitemap/RSS/newsletter or mark Phase 5C Closed in the same task.
+Continue Phase 5C Publication Pipeline: prepare the noindex MVP Phase 5C archive decision note that summarizes what is production verified, what remains noindex-only, and what is required before sitemap/RSS/newsletter/schema/indexed SEO release. Do not mark Phase 5C Closed unless the archive note explicitly passes its remaining gates.
 
 ## User Decision Needed
 
