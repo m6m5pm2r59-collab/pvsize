@@ -9,6 +9,10 @@ const steps = [
   ['HTTP verification', ['src/tools/verify-opportunities-http.js'], {}],
 ];
 
+if (process.env.PVSIZE_VERIFY_PRODUCTION === '1') {
+  steps.push(['Production noindex verification', ['src/tools/verify-opportunities-production-noindex.js'], {}]);
+}
+
 steps.forEach(([label, args, options]) => {
   console.log(`\n== ${label} ==`);
   const result = spawnSync('node', args, {
