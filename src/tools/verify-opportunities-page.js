@@ -11,6 +11,7 @@ const generatorPath = path.join(__dirname, 'generate-opportunity-detail-pages.js
 const detailSlugs = [
   'usgs-communications-site-infrastructure-idiq',
   '178th-wing-base-microgrid-construction',
+  'jbmdl-power-generation-microgrid-construction',
 ];
 
 const requiredMarkers = [
@@ -21,6 +22,7 @@ const requiredMarkers = [
   'href="/calculators/battery-sizing/"',
   'href="/opportunities/usgs-communications-site-infrastructure-idiq/"',
   'href="/opportunities/178th-wing-base-microgrid-construction/"',
+  'href="/opportunities/jbmdl-power-generation-microgrid-construction/"',
 ];
 
 const internalEntryFiles = [

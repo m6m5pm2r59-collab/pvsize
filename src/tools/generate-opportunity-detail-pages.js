@@ -9,6 +9,7 @@ const records = JSON.parse(fs.readFileSync(dataPath, 'utf8')).records || [];
 const detailSlugs = [
   'usgs-communications-site-infrastructure-idiq',
   '178th-wing-base-microgrid-construction',
+  'jbmdl-power-generation-microgrid-construction',
 ];
 
 const sourceLabels = {
@@ -37,6 +38,11 @@ const detailNotes = {
     'Relevant to solar EPC, microgrid, and storage contractors because PV and battery options are visible in the official notice.',
     'The opportunity is tied to a U.S. federal procurement source with a stable SAM.gov notice URL.',
     'The response deadline was recorded as August 3, 2026 at intake time.',
+  ],
+  'jbmdl-power-generation-microgrid-construction': [
+    'Relevant as a closed microgrid construction signal for contractors tracking federal PV and storage procurement patterns.',
+    'The official notice references photovoltaic systems, battery energy storage, switchboards, and natural gas generators.',
+    'The response date had passed at intake time, so this page must stay clearly marked as closed.',
   ],
 };
 

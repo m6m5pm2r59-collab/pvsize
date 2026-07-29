@@ -1,6 +1,6 @@
 # PVSize Opportunities Status
 
-Updated: 2026-07-30 00:59 CST
+Updated: 2026-07-30 01:19 CST
 
 ## Current Phase
 
@@ -59,6 +59,7 @@ The mainline has moved to Phase 5C Publication Pipeline. The first non-indexed `
 - Second non-indexed opportunity detail page added for `opp_us_2026_0001` at `/opportunities/178th-wing-base-microgrid-construction/`; listing now links to the detail brief and the page verification covers two detail pages.
 - `src/tools/generate-opportunity-detail-pages.js` added as the reusable Phase 5C detail-page generator for the current two noindex detail briefs.
 - Existing two noindex detail pages regenerated from `opportunities.json`; page verification now checks that the generator exists.
+- Third non-indexed opportunity detail page added for `opp_us_2026_0003` at `/opportunities/jbmdl-power-generation-microgrid-construction/`; listing now links to the detail brief and the generator plus verification script cover three detail pages.
 
 ## Current Constraints
 
@@ -69,7 +70,7 @@ The mainline has moved to Phase 5C Publication Pipeline. The first non-indexed `
 
 ## Last Commit
 
-`d7bfe55 Add opportunities detail page generator`
+Pending this run.
 
 ## Last Verification
 
@@ -106,6 +107,7 @@ Phase 5A validation passed:
 - Data-driven listing verification added: opportunity titles, official source URLs, and card count are checked against `opportunities.json`.
 - Second detail page verification added: `/opportunities/178th-wing-base-microgrid-construction/` is checked for noindex, canonical, analytics marker, listing link, official source link, and calculator links.
 - Reusable detail-page generator verification added: generator ran successfully and `verify-opportunities-page.js` confirms the generator is present while checking the two generated detail pages.
+- Third detail page verification added: `/opportunities/jbmdl-power-generation-microgrid-construction/` is generated from `opportunities.json` and checked for noindex, canonical, analytics marker, official source link, back link, and calculator links.
 
 ## Risks And Gaps
 
