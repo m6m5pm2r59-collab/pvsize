@@ -135,6 +135,50 @@
         }
       ],
       "official_documents": []
+    },
+    {
+      "id": "opp_us_2026_0004",
+      "slug": "usgs-communications-site-infrastructure-idiq",
+      "title": "USGS Communications Site Infrastructure IDIQ",
+      "status": "open",
+      "country": "united-states",
+      "region": "national",
+      "opportunity_type": "tender",
+      "technology": [
+        "solar",
+        "battery-storage"
+      ],
+      "buyer_or_issuer": "INTERIOR, DEPARTMENT OF / U.S. Geological Survey",
+      "published_date": "2026-07-23",
+      "deadline": "2026-08-06",
+      "source_language": "en",
+      "last_verified": "2026-07-29",
+      "official_source_url": "https://sam.gov/opp/3e27febdf4b54d8594cec4e8fcc49ea3/view",
+      "overview": "SAM.gov presolicitation notice for a USGS communications site infrastructure IDIQ. The scope includes maintenance, repair, and upgrades for radio communications sites, including generator and solar power systems, power distribution systems, and backup battery arrays.",
+      "review_status": "discovered",
+      "quality_score": 60,
+      "source_id": "src_us_sam_contract_opportunities",
+      "source_reliability": 95,
+      "tags": [
+        "federal-procurement",
+        "presolicitation",
+        "communications-infrastructure",
+        "solar-power-systems",
+        "backup-battery"
+      ],
+      "related_calculators": [
+        "solar-panel-size",
+        "solar-battery-size"
+      ],
+      "relevance_notes": "Relevant to contractors working on remote communications site power, solar power systems, backup battery arrays, and power distribution upgrades.",
+      "change_log": [
+        {
+          "date": "2026-07-29",
+          "status": "discovered",
+          "note": "Initial non-published draft intake from approved SAM.gov source."
+        }
+      ],
+      "official_documents": []
     }
   ]
 }
