@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex,follow">
+  <title>Solar Opportunities | PVSize</title>
+  <meta name="description" content="A verified, early-stage PVSize solar opportunities listing for tenders, grants, microgrids, and solar market signals.">
+  <link rel="canonical" href="https://pvsize.com/opportunities/">
+  <link rel="stylesheet" href="/style.css">
+  <script src="/pv-analytics.js" defer></script>
+  <style>
+    .opportunities-hero {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 72px 20px 36px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr);
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .opportunities-kicker,
+    .opportunity-meta,
+    .opportunity-source {
+      color: #64748b;
+      font-size: 0.84rem;
+      font-weight: 700;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    .opportunities-hero h1 {
+      margin: 10px 0 14px;
+      color: #0f172a;
+      font-size: clamp(2.1rem, 4vw, 4rem);
+      line-height: 1;
+      letter-spacing: 0;
+    }
+
+    .opportunities-hero p {
+      color: #475569;
+      font-size: 1.08rem;
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    .opportunities-summary {
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 22px;
+      background: #f8fafc;
+      display: grid;
+      gap: 14px;
+    }
+
+    .opportunities-summary strong {
+      display: block;
+      color: #0f172a;
+      font-size: 1.8rem;
+      line-height: 1;
+    }
+
+    .opportunities-toolbar,
+    .opportunities-list {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .opportunities-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 18px;
+    }
+
+    .opportunities-toolbar p {
+      margin: 0;
+      color: #64748b;
+      font-size: 0.94rem;
+    }
+
+    .opportunity-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .opportunity-pill {
+      border: 1px solid #cbd5e1;
+      border-radius: 999px;
+      padding: 7px 11px;
+      color: #334155;
+      background: #fff;
+      font-size: 0.84rem;
+      font-weight: 700;
+    }
+
+    .opportunities-list {
+      display: grid;
+      gap: 14px;
+      padding-bottom: 72px;
+    }
+
+    .opportunity-card {
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      background: #fff;
+      padding: 20px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 18px;
+      align-items: start;
+      box-shadow: 0 12px 32px rgba(15, 23, 42, 0.06);
+    }
+
+    .opportunity-card h2 {
+      margin: 6px 0 8px;
+      color: #0f172a;
+      font-size: 1.25rem;
+      line-height: 1.25;
+      letter-spacing: 0;
+    }
+
+    .opportunity-card p {
+      margin: 0;
+      color: #475569;
+      line-height: 1.6;
+    }
+
+    .opportunity-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: 12px;
+    }
+
+    .opportunity-tags span {
+      border-radius: 999px;
+      background: #ecfdf5;
+      color: #047857;
+      padding: 5px 9px;
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+
+    .opportunity-actions {
+      display: grid;
+      gap: 10px;
+      min-width: 168px;
+    }
+
+    .opportunity-actions a {
+      text-align: center;
+      border-radius: 8px;
+      padding: 11px 14px;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .opportunity-primary {
+      background: #0f766e;
+      color: #fff;
+    }
+
+    .opportunity-secondary {
+      border: 1px solid #cbd5e1;
+      color: #0f172a;
+      background: #fff;
+    }
+
+    .opportunity-source {
+      margin-top: 12px;
+      text-transform: none;
+    }
+
+    @media (max-width: 760px) {
+      .opportunities-hero,
+      .opportunity-card {
+        grid-template-columns: 1fr;
+      }
+
+      .opportunities-hero {
+        padding-top: 44px;
+      }
+
+      .opportunity-actions {
+        min-width: 0;
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="/" class="nav-logo">PVSize</a>
+      <ul class="nav-links">
+        <li><a href="/calculators/">Calculators</a></li>
+        <li><a href="/learn/">Learn</a></li>
+        <li><a href="/partners/">Partners</a></li>
+        <li><a href="/opportunities/">Opportunities</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <section class="opportunities-hero">
+      <div>
+        <div class="opportunities-kicker">Solar market intelligence</div>
+        <h1>Verified solar opportunities, before they become noise</h1>
+        <p>PVSize is building a public solar opportunity channel for tenders, grants, microgrids, and procurement signals. This first surface is intentionally non-indexed while the publication pipeline is verified.</p>
+      </div>
+      <aside class="opportunities-summary" aria-label="Opportunity channel status">
+        <div>
+          <strong>5</strong>
+          <span>source-backed records</span>
+        </div>
+        <div>
+          <strong>2</strong>
+          <span>approved official sources</span>
+        </div>
+        <div>
+          <strong>0</strong>
+          <span>published records until QA closes</span>
+        </div>
+      </aside>
+    </section>
+
+    <section class="opportunities-toolbar" aria-label="Opportunity filters">
+      <p>Baseline listing: United States records from SAM.gov and Grants.gov.</p>
+      <div class="opportunity-pills">
+        <span class="opportunity-pill">United States</span>
+        <span class="opportunity-pill">Solar</span>
+        <span class="opportunity-pill">Storage</span>
+        <span class="opportunity-pill">Microgrid</span>
+      </div>
+    </section>
+
+    <section class="opportunities-list" aria-label="Solar opportunity listing">
+      <article class="opportunity-card">
+        <div>
+          <div class="opportunity-meta">Open · Tender · United States · Deadline Aug 6, 2026</div>
+          <h2>USGS Communications Site Infrastructure IDIQ</h2>
+          <p>SAM.gov presolicitation for communications site infrastructure work that includes generator and solar power systems, power distribution systems, and backup battery arrays.</p>
+          <div class="opportunity-tags">
+            <span>solar</span><span>battery-storage</span><span>federal-procurement</span>
+          </div>
+          <div class="opportunity-source">Source: SAM.gov · Last verified Jul 29, 2026</div>
+        </div>
+        <div class="opportunity-actions">
+          <a class="opportunity-primary" href="https://sam.gov/opp/3e27febdf4b54d8594cec4e8fcc49ea3/view" rel="nofollow noopener" target="_blank">Official source</a>
+          <a class="opportunity-secondary" href="/calculators/battery-sizing/">Battery calculator</a>
+        </div>
+      </article>
+
+      <article class="opportunity-card">
+        <div>
+          <div class="opportunity-meta">Open · Tender · Ohio · Deadline Aug 3, 2026</div>
+          <h2>178th Wing Base Microgrid Construction</h2>
+          <p>SAM.gov solicitation for microgrid construction with options for a PV solar array and battery energy storage system.</p>
+          <div class="opportunity-tags">
+            <span>solar</span><span>battery-storage</span><span>microgrid</span>
+          </div>
+          <div class="opportunity-source">Source: SAM.gov · Last verified Jul 28, 2026</div>
+        </div>
+        <div class="opportunity-actions">
+          <a class="opportunity-primary" href="https://sam.gov/opp/c935ca4506e444b58b1a1a00d32d2b4a/view" rel="nofollow noopener" target="_blank">Official source</a>
+          <a class="opportunity-secondary" href="/calculators/panel-count/">Panel calculator</a>
+        </div>
+      </article>
+
+      <article class="opportunity-card">
+        <div>
+          <div class="opportunity-meta">Closed · Incentive · United States</div>
+          <h2>Solar with Wildlife and Ecosystem Benefits 2 (SolWEB2)</h2>
+          <p>Archived DOE funding opportunity focused on large-scale solar development outcomes for ecosystems, wildlife, communities, and agrivoltaics adoption.</p>
+          <div class="opportunity-tags">
+            <span>solar</span><span>federal-grant</span><span>agrivoltaics</span>
+          </div>
+          <div class="opportunity-source">Source: Grants.gov · Last verified Jul 29, 2026</div>
+        </div>
+        <div class="opportunity-actions">
+          <a class="opportunity-primary" href="https://simpler.grants.gov/opportunity/8f684555-0665-425d-a840-28ade8965278" rel="nofollow noopener" target="_blank">Official source</a>
+          <a class="opportunity-secondary" href="/calculators/panel-count/">Panel calculator</a>
+        </div>
+      </article>
+
+      <article class="opportunity-card">
+        <div>
+          <div class="opportunity-meta">Closed · Tender · New Jersey · Deadline Jul 15, 2026</div>
+          <h2>Power Generation with Microgrid at Joint Base McGuire-Dix-Lakehurst</h2>
+          <p>SAM.gov sources-sought notice referencing photovoltaic systems, battery energy storage, switchboards, and natural gas generators.</p>
+          <div class="opportunity-tags">
+            <span>solar</span><span>battery-storage</span><span>microgrid</span>
+          </div>
+          <div class="opportunity-source">Source: SAM.gov · Last verified Jul 29, 2026</div>
+        </div>
+        <div class="opportunity-actions">
+          <a class="opportunity-primary" href="https://sam.gov/opp/ffc3c8e97e2447be9ff7f43d21968af7/view" rel="nofollow noopener" target="_blank">Official source</a>
+          <a class="opportunity-secondary" href="/calculators/battery-sizing/">Battery calculator</a>
+        </div>
+      </article>
+
+      <article class="opportunity-card">
+        <div>
+          <div class="opportunity-meta">Closed · Tender · California · Deadline Jul 13, 2026</div>
+          <h2>U.S. Army 63rd Readiness Division MILCON ERCIP Microgrid</h2>
+          <p>SAM.gov solicitation for a Mountain View microgrid with full islanding capability, photovoltaic solar, battery energy storage, and diesel backup generation.</p>
+          <div class="opportunity-tags">
+            <span>solar</span><span>battery-storage</span><span>microgrid</span>
+          </div>
+          <div class="opportunity-source">Source: SAM.gov · Last verified Jul 29, 2026</div>
+        </div>
+        <div class="opportunity-actions">
+          <a class="opportunity-primary" href="https://sam.gov/workspace/contract/opp/15fc1555290e4c70bcbfadfff5faec65/view" rel="nofollow noopener" target="_blank">Official source</a>
+          <a class="opportunity-secondary" href="/calculators/battery-sizing/">Battery calculator</a>
+        </div>
+      </article>
+    </section>
+  </main>
+</body>
+</html>

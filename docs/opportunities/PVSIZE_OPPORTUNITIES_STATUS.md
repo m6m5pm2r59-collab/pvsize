@@ -1,6 +1,6 @@
 # PVSize Opportunities Status
 
-Updated: 2026-07-29 22:38 CST
+Updated: 2026-07-29 23:38 CST
 
 ## Current Phase
 
@@ -10,7 +10,7 @@ Phase 5C: Publication Pipeline
 
 User decision on 2026-07-29 cancelled all human authorization and human review requirements. Channel expansion is now the first priority. Phase 5B content production baseline is sufficient to proceed: five non-published draft records exist with matching evidence notes, and two official U.S. sources are approved for draft-only discovery.
 
-The mainline has moved to Phase 5C Publication Pipeline. No public pages have been created yet. Existing records remain non-published until the publication implementation, validator checks, SEO checks, and production QA pass.
+The mainline has moved to Phase 5C Publication Pipeline. The first non-indexed `/opportunities/` listing surface has been added locally using the five verified draft records. Existing records remain below published status in the data file until the publication implementation, validator checks, SEO checks, and production QA pass.
 
 ## Completed
 
@@ -51,6 +51,7 @@ The mainline has moved to Phase 5C Publication Pipeline. No public pages have be
 - User decision recorded: human authorization and human review are no longer blocking requirements; Phase 5C channel expansion is now first priority.
 - Publication release gate updated to use source verification, validator checks, and production QA instead of human-review blocking.
 - Opportunities master plan, runbook, and schema updated to remove human-review blocking language.
+- First non-indexed `/opportunities/` listing surface added at `src/opportunities/index.html` using five source-backed opportunity records.
 
 ## Current Constraints
 
@@ -61,7 +62,7 @@ The mainline has moved to Phase 5C Publication Pipeline. No public pages have be
 
 ## Last Commit
 
-`3ed646f Prioritize opportunities publication pipeline`
+Pending this run: Add non-indexed opportunities listing baseline
 
 ## Last Verification
 
@@ -90,6 +91,8 @@ Phase 5A validation passed:
 - `opp_us_2026_0004` human-review rehearsal checked: direct official URL, source registry, country/source match, notice title, notice ID, published date, response deadline, issuer, solar relevance, storage relevance, and no known cancellation/supersession at rehearsal time
 - Human review authorization log marker check for required authorization entry, allowed decisions, allowed state change, explicit publication decision, current authorizations, and stop conditions
 - Decision override marker check: release gate now states human authorization/review cancellation, Phase 5C entry, source verification, validator checks, production QA, and no unverified publishing.
+- `/opportunities/` baseline marker check: robots noindex, canonical, analytics script, five opportunity cards, official source links, and calculator links.
+- Local static-server check: `http://127.0.0.1:4177/opportunities/` returned HTTP 200 and served the noindex listing content.
 
 ## Risks And Gaps
 
@@ -105,13 +108,13 @@ Phase 5A validation passed:
 - Draft records are not automatically publication-ready. They require publication implementation, validator checks, SEO checks, and QA before production release.
 - Validator is still local-only; it is not wired into a deployment gate.
 - Historical human-review templates/logs remain in the repository as prior governance artifacts, but they are no longer blockers after the 2026-07-29 user decision.
-- Phase 5C has started at planning/implementation entry. Public pages are not yet implemented or deployed.
+- Phase 5C has started. The first local `/opportunities/` page exists and passed HTTP/noindex marker checks, but is not yet production verified or indexed. Browser console verification remains pending because Playwright is not installed in the local project.
 
 ## Next Single Task
 
 Continue Phase 5C Publication Pipeline:
 
-Create the smallest public channel implementation baseline: audit existing routing and add the first non-indexed `/opportunities/` listing surface using existing verified draft data, with no sitemap/RSS/newsletter expansion until the local page, validator, SEO noindex policy, and console checks pass.
+Continue Phase 5C verification: perform browser/console and responsive checks for `/opportunities/` when a browser tool or Playwright dependency is available; otherwise add a small automated HTML link/noindex verification script for the listing page. Do not add sitemap/RSS/newsletter or mark Phase 5C Closed until verification evidence exists.
 
 ## User Decision Needed
 
