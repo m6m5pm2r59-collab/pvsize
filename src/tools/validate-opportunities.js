@@ -288,7 +288,7 @@ function runSelfTest(opportunities, sources, tags) {
     {
       name: 'non-approved source_id',
       mutate(testOpportunities) {
-        testOpportunities.records[0].source_id = 'src_us_grants_search';
+        testOpportunities.records[0].source_id = 'src_eu_ted';
       },
       expected: 'source_id must reference an approved source',
     },

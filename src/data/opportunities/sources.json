@@ -19,10 +19,10 @@
       "url": "https://www.grants.gov/search-grants.html",
       "country": "united-states",
       "source_type": "agency-program",
-      "allowed_use_notes": "Official U.S. federal grants search. Candidate source only; funding opportunities must be screened for solar relevance and eligibility before publication.",
+      "allowed_use_notes": "Official U.S. federal grants search. Approved for draft-only funding and incentive discovery; individual opportunities still require solar relevance, eligibility, and official notice review before approval or publication.",
       "reliability_score": 95,
       "last_checked": "2026-07-28",
-      "status": "needs_review"
+      "status": "approved"
     },
     {
       "id": "src_eu_funding_tenders_portal",

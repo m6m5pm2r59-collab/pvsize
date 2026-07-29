@@ -1,6 +1,6 @@
 # PVSize Opportunities Status
 
-Updated: 2026-07-29 00:38 CST
+Updated: 2026-07-29 19:38 CST
 
 ## Current Phase
 
@@ -8,7 +8,7 @@ Phase 5B: Content Production & Human Review
 
 ## Current State
 
-Phase 5B content production and human review guardrail is implemented. The first SAM.gov draft has a structured review note, and the validator now requires every opportunity record to have a matching review note with reviewer, date, decision, source, and verification markers. The Phase 5B -> Phase 5C Publication Release Gate is now documented. The record remains `discovered` and non-published; the data layer still has no public opportunity pages, sitemap entries, AI import jobs, or newsletter capture flows.
+Phase 5B content production and human review guardrail is implemented. The first SAM.gov draft has a structured review note, and the validator now requires every opportunity record to have a matching review note with reviewer, date, decision, source, and verification markers. Two official U.S. sources are now approved for draft-only discovery. The record remains `discovered` and non-published; the data layer still has no public opportunity pages, sitemap entries, AI import jobs, or newsletter capture flows.
 
 ## Completed
 
@@ -34,6 +34,7 @@ Phase 5B content production and human review guardrail is implemented. The first
 - Review note fields added: reviewer, review date, decision, source, and verification.
 - `src/tools/validate-opportunities.js` now requires every opportunity record to have a matching review note with required markers.
 - `docs/opportunities/PVSIZE_PHASE5B_TO_PHASE5C_PUBLICATION_RELEASE_GATE.md` added as the mandatory gate before frontend, sitemap, RSS, newsletter, SEO, or publication work.
+- `src_us_grants_search` promoted from `needs_review` to `approved` for draft-only funding and incentive discovery after official source review.
 
 ## Current Constraints
 
@@ -44,7 +45,7 @@ Phase 5B content production and human review guardrail is implemented. The first
 
 ## Last Commit
 
-`966bc9e Add opportunities publication release gate`
+Pending this run: Approve Grants.gov opportunities source
 
 ## Last Verification
 
@@ -63,6 +64,8 @@ Phase 5A validation passed:
 - Human review note marker check for current evidence, checks before `needs_review`, checks before `approved`, and publication gate reminder
 - Validator self-test checks missing review note failure case
 - Release gate marker check for source readiness, content readiness, human review, publication readiness, growth readiness, production gate, and Phase 5C entry conditions
+- Grants.gov Search Grants page checked as an official public source for draft-only funding and incentive discovery
+- Validator self-test non-approved source fixture updated to use a still-unapproved EU source after Grants.gov approval
 
 ## Risks And Gaps
 
@@ -73,7 +76,7 @@ Phase 5A validation passed:
 - Analytics is log-based through `/api/event/` and Vercel logs.
 - Validation is local-only; it is not wired into an npm script or deployment gate because the repository has no root `package.json`.
 - Source candidates are still editorial candidates. They are not approved for automated ingestion or publication.
-- Only SAM.gov is approved for draft-only discovery. All other sources remain `needs_review`.
+- SAM.gov and Grants.gov are approved for draft-only discovery. EU and Japan sources remain `needs_review`.
 - No source is approved for automated ingestion or publication.
 - First draft record is not publication-ready. It requires human review before approval or publication.
 - Validator is still local-only; it is not wired into a deployment gate.
@@ -84,7 +87,9 @@ Phase 5A validation passed:
 
 Continue Phase 5B content production:
 
-Add or verify additional approved official sources and draft candidates until at least 5 high-quality Opportunities can complete Draft -> Human Review -> Approved rehearsal. Do not start Phase 5C frontend, sitemap, RSS, newsletter, AI import jobs, or publication-state changes.
+Find and intake one Grants.gov solar-relevant funding or incentive opportunity:
+
+Use the approved Grants.gov source and the draft intake checklist. Add one non-published draft record only if a direct official opportunity URL and every required field can be verified. Otherwise, leave `opportunities.json` unchanged and record the blocking evidence gap. Do not start Phase 5C frontend, sitemap, RSS, newsletter, AI import jobs, or publication-state changes.
 
 ## User Decision Needed
 
