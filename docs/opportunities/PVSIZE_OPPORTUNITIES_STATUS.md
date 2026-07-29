@@ -91,7 +91,7 @@ The mainline has moved to Phase 5C Publication Pipeline. The first non-indexed `
 
 ## Last Commit
 
-Pending this run.
+`cfbe985 Add opportunities index policy self test`
 
 ## Last Verification
 
