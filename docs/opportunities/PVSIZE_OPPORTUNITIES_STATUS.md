@@ -1,6 +1,6 @@
 # PVSize Opportunities Status
 
-Updated: 2026-07-30 03:19 CST
+Updated: 2026-07-30 03:39 CST
 
 ## Current Phase
 
@@ -70,6 +70,8 @@ The mainline has moved to Phase 5C Publication Pipeline. The first non-indexed `
 - `src/tools/verify-opportunities-page.js` now checks that the analytics/CTA marker verifier exists.
 - `src/tools/verify-opportunities-index-policy.js` added to keep the current Phase 5C noindex gate explicit: opportunities URLs must remain out of sitemap, RSS, and JSON-LD schema until production verification approves indexing.
 - `src/tools/verify-opportunities-page.js` now checks that the index-policy verifier exists.
+- `src/tools/verify-opportunities-all.js` added as the aggregate local Phase 5C QA gate. It runs validator, detail generation, page verification, index-policy verification, analytics/CTA verification, and HTTP verification in order.
+- `src/tools/verify-opportunities-page.js` now checks that the aggregate QA verifier exists.
 
 ## Current Constraints
 
@@ -80,7 +82,7 @@ The mainline has moved to Phase 5C Publication Pipeline. The first non-indexed `
 
 ## Last Commit
 
-`1756510 Add opportunities index policy QA`
+Pending this run.
 
 ## Last Verification
 
@@ -124,6 +126,7 @@ Phase 5A validation passed:
 - Repeatable local HTTP QA script added and passed: `node src/tools/verify-opportunities-http.js` starts a local static server, checks listing plus five detail pages, confirms HTTP 200, `noindex,follow`, and no premature JSON-LD structured data.
 - Analytics/CTA marker verification added and passed: `node src/tools/verify-opportunities-analytics-cta.js` checks analytics script, listing-to-detail links, official source CTAs, back links, and data-driven calculator CTAs for listing plus all five detail pages.
 - Index-policy verification added and passed: `node src/tools/verify-opportunities-index-policy.js` confirms six opportunities URLs remain noindex and out of sitemap/RSS/schema while records remain below published status.
+- Aggregate Phase 5C QA added and passed: `node src/tools/verify-opportunities-all.js` runs validator, detail generation, page verification, index-policy verification, analytics/CTA verification, and HTTP verification in order.
 
 ## Risks And Gaps
 
@@ -145,7 +148,7 @@ Phase 5A validation passed:
 
 Continue Phase 5C Publication Pipeline:
 
-Continue Phase 5C Publication Pipeline: add a single aggregate QA script that runs validator, page verification, index-policy verification, analytics/CTA verification, and HTTP QA in order. Do not add sitemap/RSS/newsletter or mark Phase 5C Closed until production verification evidence exists.
+Continue Phase 5C Publication Pipeline: run the aggregate QA gate once more after commit and prepare a production/pre-deploy verification checklist for the noindex Opportunities MVP. Do not add sitemap/RSS/newsletter or mark Phase 5C Closed until production verification evidence exists.
 
 ## User Decision Needed
 
