@@ -1,6 +1,6 @@
 # PVSize Opportunities Status
 
-Updated: 2026-07-29 23:58 CST
+Updated: 2026-07-29 23:18 CST
 
 ## Current Phase
 
@@ -53,6 +53,7 @@ The mainline has moved to Phase 5C Publication Pipeline. The first non-indexed `
 - Opportunities master plan, runbook, and schema updated to remove human-review blocking language.
 - First non-indexed `/opportunities/` listing surface added at `src/opportunities/index.html` using five source-backed opportunity records.
 - `src/tools/verify-opportunities-page.js` added to make `/opportunities/` noindex, card count, official source link, calculator link, and no-schema checks repeatable without Playwright.
+- Internal entry links to `/opportunities/` added on homepage navigation and partners navigation/footer; verification script now checks these links.
 
 ## Current Constraints
 
@@ -63,7 +64,7 @@ The mainline has moved to Phase 5C Publication Pipeline. The first non-indexed `
 
 ## Last Commit
 
-`327eed5 Add opportunities page verification script`
+Pending this run: Add internal opportunities entry links
 
 ## Last Verification
 
@@ -95,6 +96,7 @@ Phase 5A validation passed:
 - `/opportunities/` baseline marker check: robots noindex, canonical, analytics script, five opportunity cards, official source links, and calculator links.
 - Local static-server check: `http://127.0.0.1:4177/opportunities/` returned HTTP 200 and served the noindex listing content.
 - Automated `/opportunities/` HTML verification added and passed: noindex listing, 5 cards, official links, calculator links, and no premature structured data.
+- Internal entry link verification added for homepage and partners page.
 
 ## Risks And Gaps
 
@@ -116,7 +118,7 @@ Phase 5A validation passed:
 
 Continue Phase 5C Publication Pipeline:
 
-Continue Phase 5C verification: perform browser/console and responsive checks for `/opportunities/` when a browser tool or Playwright dependency is available. If not available, make the next smallest channel improvement by adding an internal nav entry to `/opportunities/` and rerun validator plus page verification. Do not add sitemap/RSS/newsletter or mark Phase 5C Closed until verification evidence exists.
+Continue Phase 5C channel expansion: add the smallest reusable data-driven rendering step or first opportunity detail-page baseline, then rerun validator plus opportunities page verification. Do not add sitemap/RSS/newsletter or mark Phase 5C Closed until production verification evidence exists.
 
 ## User Decision Needed
 

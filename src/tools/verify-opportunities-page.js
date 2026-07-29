@@ -17,6 +17,11 @@ const requiredMarkers = [
   'href="/calculators/battery-sizing/"',
 ];
 
+const internalEntryFiles = [
+  path.join(__dirname, '..', 'index.html'),
+  path.join(__dirname, '..', 'partners', 'index.html'),
+];
+
 const officialSourceUrls = [
   'https://sam.gov/opp/3e27febdf4b54d8594cec4e8fcc49ea3/view',
   'https://sam.gov/opp/c935ca4506e444b58b1a1a00d32d2b4a/view',
@@ -34,6 +39,13 @@ requiredMarkers.forEach((marker) => {
 officialSourceUrls.forEach((url) => {
   const linkMarker = `href="${url}" rel="nofollow noopener" target="_blank"`;
   if (!html.includes(linkMarker)) errors.push(`official source link missing nofollow/noopener: ${url}`);
+});
+
+internalEntryFiles.forEach((filePath) => {
+  const content = fs.readFileSync(filePath, 'utf8');
+  if (!content.includes('href="/opportunities/"')) {
+    errors.push(`missing internal opportunities link: ${path.relative(path.join(__dirname, '..'), filePath)}`);
+  }
 });
 
 const cardCount = (html.match(/<article class="opportunity-card">/g) || []).length;
