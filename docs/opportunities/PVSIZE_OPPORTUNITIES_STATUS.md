@@ -1,6 +1,6 @@
 # PVSize Opportunities Status
 
-Updated: 2026-07-30 03:39 CST
+Updated: 2026-07-30 04:02 CST
 
 ## Current Phase
 
@@ -72,6 +72,7 @@ The mainline has moved to Phase 5C Publication Pipeline. The first non-indexed `
 - `src/tools/verify-opportunities-page.js` now checks that the index-policy verifier exists.
 - `src/tools/verify-opportunities-all.js` added as the aggregate local Phase 5C QA gate. It runs validator, detail generation, page verification, index-policy verification, analytics/CTA verification, and HTTP verification in order.
 - `src/tools/verify-opportunities-page.js` now checks that the aggregate QA verifier exists.
+- `docs/opportunities/PVSIZE_OPPORTUNITIES_NOINDEX_MVP_PRE_DEPLOY_CHECKLIST.md` added to define the noindex MVP pre-deploy and production verification gates before any indexed Opportunities release.
 
 ## Current Constraints
 
@@ -82,7 +83,7 @@ The mainline has moved to Phase 5C Publication Pipeline. The first non-indexed `
 
 ## Last Commit
 
-`71ff50a Add aggregate opportunities QA gate`
+Pending this run.
 
 ## Last Verification
 
@@ -127,6 +128,7 @@ Phase 5A validation passed:
 - Analytics/CTA marker verification added and passed: `node src/tools/verify-opportunities-analytics-cta.js` checks analytics script, listing-to-detail links, official source CTAs, back links, and data-driven calculator CTAs for listing plus all five detail pages.
 - Index-policy verification added and passed: `node src/tools/verify-opportunities-index-policy.js` confirms six opportunities URLs remain noindex and out of sitemap/RSS/schema while records remain below published status.
 - Aggregate Phase 5C QA added and passed: `node src/tools/verify-opportunities-all.js` runs validator, detail generation, page verification, index-policy verification, analytics/CTA verification, and HTTP verification in order.
+- Noindex MVP pre-deploy checklist marker check passed: local aggregate QA, noindex policy, route/content, production verification, archive, and explicit non-approvals are documented.
 
 ## Risks And Gaps
 
@@ -148,7 +150,7 @@ Phase 5A validation passed:
 
 Continue Phase 5C Publication Pipeline:
 
-Continue Phase 5C Publication Pipeline: run the aggregate QA gate once more after commit and prepare a production/pre-deploy verification checklist for the noindex Opportunities MVP. Do not add sitemap/RSS/newsletter or mark Phase 5C Closed until production verification evidence exists.
+Continue Phase 5C Publication Pipeline: perform noindex MVP production/pre-deploy verification against the checklist, starting with aggregate QA and then production URL/index-policy evidence if a deploy target is available. Do not add sitemap/RSS/newsletter or mark Phase 5C Closed until production verification evidence exists.
 
 ## User Decision Needed
 
