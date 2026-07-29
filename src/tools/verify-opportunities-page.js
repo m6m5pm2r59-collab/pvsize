@@ -8,6 +8,7 @@ const opportunitiesData = JSON.parse(
 );
 const records = opportunitiesData.records || [];
 const generatorPath = path.join(__dirname, 'generate-opportunity-detail-pages.js');
+const httpVerifierPath = path.join(__dirname, 'verify-opportunities-http.js');
 const detailSlugs = [
   'usgs-communications-site-infrastructure-idiq',
   '178th-wing-base-microgrid-construction',
@@ -42,6 +43,10 @@ requiredMarkers.forEach((marker) => {
 
 if (!fs.existsSync(generatorPath)) {
   errors.push('missing reusable detail page generator');
+}
+
+if (!fs.existsSync(httpVerifierPath)) {
+  errors.push('missing repeatable HTTP QA verifier');
 }
 
 records.forEach((record) => {
