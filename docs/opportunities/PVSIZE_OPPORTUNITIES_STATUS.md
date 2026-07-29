@@ -1,6 +1,6 @@
 # PVSize Opportunities Status
 
-Updated: 2026-07-30 01:19 CST
+Updated: 2026-07-30 01:39 CST
 
 ## Current Phase
 
@@ -60,6 +60,7 @@ The mainline has moved to Phase 5C Publication Pipeline. The first non-indexed `
 - `src/tools/generate-opportunity-detail-pages.js` added as the reusable Phase 5C detail-page generator for the current two noindex detail briefs.
 - Existing two noindex detail pages regenerated from `opportunities.json`; page verification now checks that the generator exists.
 - Third non-indexed opportunity detail page added for `opp_us_2026_0003` at `/opportunities/jbmdl-power-generation-microgrid-construction/`; listing now links to the detail brief and the generator plus verification script cover three detail pages.
+- Fourth non-indexed opportunity detail page added for `opp_us_2026_0005` at `/opportunities/63rd-readiness-division-milcon-ercip-microgrid/`; listing now links to the detail brief and the generator plus verification script cover four detail pages.
 
 ## Current Constraints
 
@@ -70,7 +71,7 @@ The mainline has moved to Phase 5C Publication Pipeline. The first non-indexed `
 
 ## Last Commit
 
-`11714fe Add third opportunities detail baseline`
+Pending this run.
 
 ## Last Verification
 
@@ -108,6 +109,7 @@ Phase 5A validation passed:
 - Second detail page verification added: `/opportunities/178th-wing-base-microgrid-construction/` is checked for noindex, canonical, analytics marker, listing link, official source link, and calculator links.
 - Reusable detail-page generator verification added: generator ran successfully and `verify-opportunities-page.js` confirms the generator is present while checking the two generated detail pages.
 - Third detail page verification added: `/opportunities/jbmdl-power-generation-microgrid-construction/` is generated from `opportunities.json` and checked for noindex, canonical, analytics marker, official source link, back link, and calculator links.
+- Fourth detail page verification added: `/opportunities/63rd-readiness-division-milcon-ercip-microgrid/` is generated from `opportunities.json` and checked for noindex, canonical, analytics marker, official source link, back link, and calculator links.
 
 ## Risks And Gaps
 
@@ -129,7 +131,7 @@ Phase 5A validation passed:
 
 Continue Phase 5C Publication Pipeline:
 
-Continue Phase 5C channel expansion: use the reusable detail-page generator to add one more noindex detail brief from an existing source-backed record, then rerun validator plus opportunities page verification. Do not add sitemap/RSS/newsletter or mark Phase 5C Closed until production verification evidence exists.
+Continue Phase 5C channel expansion: use the reusable detail-page generator to add the remaining Grants.gov SolWEB2 noindex detail brief from existing source-backed data, then rerun validator plus opportunities page verification. Do not add sitemap/RSS/newsletter or mark Phase 5C Closed until production verification evidence exists.
 
 ## User Decision Needed
 

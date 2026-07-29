@@ -10,6 +10,7 @@ const detailSlugs = [
   'usgs-communications-site-infrastructure-idiq',
   '178th-wing-base-microgrid-construction',
   'jbmdl-power-generation-microgrid-construction',
+  '63rd-readiness-division-milcon-ercip-microgrid',
 ];
 
 const sourceLabels = {
@@ -42,6 +43,11 @@ const detailNotes = {
   'jbmdl-power-generation-microgrid-construction': [
     'Relevant as a closed microgrid construction signal for contractors tracking federal PV and storage procurement patterns.',
     'The official notice references photovoltaic systems, battery energy storage, switchboards, and natural gas generators.',
+    'The response date had passed at intake time, so this page must stay clearly marked as closed.',
+  ],
+  '63rd-readiness-division-milcon-ercip-microgrid': [
+    'Relevant as a closed U.S. Army microgrid solicitation for contractors tracking PV solar and storage procurement patterns.',
+    'The official notice describes a microgrid with full islanding capability, photovoltaic solar, battery energy storage, and backup generation.',
     'The response date had passed at intake time, so this page must stay clearly marked as closed.',
   ],
 };

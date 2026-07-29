@@ -12,6 +12,7 @@ const detailSlugs = [
   'usgs-communications-site-infrastructure-idiq',
   '178th-wing-base-microgrid-construction',
   'jbmdl-power-generation-microgrid-construction',
+  '63rd-readiness-division-milcon-ercip-microgrid',
 ];
 
 const requiredMarkers = [
@@ -23,6 +24,7 @@ const requiredMarkers = [
   'href="/opportunities/usgs-communications-site-infrastructure-idiq/"',
   'href="/opportunities/178th-wing-base-microgrid-construction/"',
   'href="/opportunities/jbmdl-power-generation-microgrid-construction/"',
+  'href="/opportunities/63rd-readiness-division-milcon-ercip-microgrid/"',
 ];
 
 const internalEntryFiles = [
