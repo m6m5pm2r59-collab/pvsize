@@ -1,6 +1,6 @@
 # PVSize Opportunities Status
 
-Updated: 2026-07-29 21:58 CST
+Updated: 2026-07-29 22:18 CST
 
 ## Current Phase
 
@@ -13,6 +13,8 @@ Phase 5B content production and human review guardrail is implemented. Five non-
 The approval rehearsal has started at the governance layer only: a human-review evidence template now defines the minimum checks before any record can move from `discovered` to `needs_review`. No record has been advanced, approved, published, indexed, or exposed publicly.
 
 The first human-review rehearsal evidence packet was added for `opp_us_2026_0004`. Official evidence is sufficient to prepare the record for human review, but the record remains `discovered` because no identified human reviewer has chosen `send to needs_review`.
+
+Human review authorization now has a dedicated log template. The log defines the only acceptable way to record a human decision for `discovered -> needs_review`, and currently contains no authorizations.
 
 ## Completed
 
@@ -49,6 +51,7 @@ The first human-review rehearsal evidence packet was added for `opp_us_2026_0004
 - `src/data/opportunities/review-notes/opp_us_2026_0005.md` added for the new SAM.gov draft.
 - `src/data/opportunities/human-review-evidence-template.md` added to define the Phase 5B evidence requirements before moving any draft from `discovered` to `needs_review`.
 - First human-review rehearsal evidence packet added to `src/data/opportunities/review-notes/opp_us_2026_0004.md`; the record remains `discovered` because AI cannot provide the required human reviewer decision.
+- `src/data/opportunities/human-review-authorization-log.md` added to define how a named human reviewer decision must be recorded before any draft can move from `discovered` to `needs_review`.
 
 ## Current Constraints
 
@@ -59,7 +62,7 @@ The first human-review rehearsal evidence packet was added for `opp_us_2026_0004
 
 ## Last Commit
 
-`0b26a84 Add first opportunity review rehearsal evidence`
+Pending this run: Add human review authorization log
 
 ## Last Verification
 
@@ -86,6 +89,7 @@ Phase 5A validation passed:
 - SAM.gov U.S. Army 63rd Readiness Division MILCON ERCIP Microgrid notice checked: direct official URL, notice ID, agency, response date, Mountain View California location, 750kW PV solar, 750kWh BESS, and closed status due passed deadline
 - Human review evidence template marker check for record snapshot, source evidence, human review fields, allowed state change, stop conditions, and publication reminder
 - `opp_us_2026_0004` human-review rehearsal checked: direct official URL, source registry, country/source match, notice title, notice ID, published date, response deadline, issuer, solar relevance, storage relevance, and no known cancellation/supersession at rehearsal time
+- Human review authorization log marker check for required authorization entry, allowed decisions, allowed state change, explicit publication decision, current authorizations, and stop conditions
 
 ## Risks And Gaps
 
@@ -107,7 +111,7 @@ Phase 5A validation passed:
 
 Continue Phase 5B content production:
 
-Continue Phase 5B human-review rehearsal: either obtain an identified human reviewer decision for `opp_us_2026_0004` before moving it to `needs_review`, or repeat the evidence-packet rehearsal for another existing draft. Do not move any record to `approved`; keep Phase 5C frontend, sitemap, RSS, newsletter, AI import jobs, and publication-state changes blocked.
+Continue Phase 5B human-review rehearsal: if the user provides a named reviewer decision, record it in `human-review-authorization-log.md` before moving `opp_us_2026_0004` to `needs_review`; otherwise repeat evidence-packet rehearsal for another existing draft. Do not move any record to `approved`; keep Phase 5C frontend, sitemap, RSS, newsletter, AI import jobs, and publication-state changes blocked.
 
 ## User Decision Needed
 
