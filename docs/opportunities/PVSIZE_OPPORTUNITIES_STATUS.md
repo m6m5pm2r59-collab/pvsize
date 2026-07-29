@@ -64,7 +64,7 @@ The mainline has moved to Phase 5C Publication Pipeline. The first non-indexed `
 
 ## Last Commit
 
-Pending this run: Add internal opportunities entry links
+`eaed18e Add internal opportunities entry links`
 
 ## Last Verification
 
