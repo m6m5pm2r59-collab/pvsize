@@ -1,14 +1,14 @@
 # PVSize Opportunities Status
 
-Updated: 2026-07-28 23:58 CST
+Updated: 2026-07-29 00:18 CST
 
 ## Current Phase
 
-Phase 5C: Draft Human Review Note
+Phase 5B: Content Production & Human Review
 
 ## Current State
 
-Phase 5C draft human review note is implemented for the first SAM.gov draft. The record remains `discovered` and non-published; the data layer still has no public opportunity pages, sitemap entries, AI import jobs, or newsletter capture flows.
+Phase 5B content production and human review guardrail is implemented. The first SAM.gov draft has a structured review note, and the validator now requires every opportunity record to have a matching review note with reviewer, date, decision, source, and verification markers. The record remains `discovered` and non-published; the data layer still has no public opportunity pages, sitemap entries, AI import jobs, or newsletter capture flows.
 
 ## Completed
 
@@ -31,6 +31,8 @@ Phase 5C draft human review note is implemented for the first SAM.gov draft. The
 - `src/tools/validate-opportunities.js` strengthened to enforce opportunity-to-source relationship checks.
 - `src/tools/validate-opportunities.js --self-test` added to exercise negative source relationship fixtures without adding fixture data files.
 - `src/data/opportunities/review-notes/opp_us_2026_0001.md` added with checks required before moving the first draft from `discovered` to `needs_review` or `approved`.
+- Review note fields added: reviewer, review date, decision, source, and verification.
+- `src/tools/validate-opportunities.js` now requires every opportunity record to have a matching review note with required markers.
 
 ## Current Constraints
 
@@ -41,7 +43,7 @@ Phase 5C draft human review note is implemented for the first SAM.gov draft. The
 
 ## Last Commit
 
-Pending this run: Add first draft human review note
+Pending this run: Enforce opportunity review notes
 
 ## Last Verification
 
@@ -58,6 +60,7 @@ Phase 5A validation passed:
 - Validator source relationship check: opportunity `source_id` must exist, must be `approved`, country must match, and source reliability must match
 - Validator self-test checks missing `source_id`, unknown `source_id`, non-approved source, and country mismatch failure cases
 - Human review note marker check for current evidence, checks before `needs_review`, checks before `approved`, and publication gate reminder
+- Validator self-test checks missing review note failure case
 
 ## Risks And Gaps
 
@@ -72,13 +75,13 @@ Phase 5A validation passed:
 - No source is approved for automated ingestion or publication.
 - First draft record is not publication-ready. It requires human review before approval or publication.
 - Validator is still local-only; it is not wired into a deployment gate.
-- Human review note exists, but the review itself is not complete.
+- Human review note exists and is structurally validated, but the review itself is not complete.
 
 ## Next Single Task
 
-Add validator check for draft review notes:
+Create the Phase 5B to Phase 5C transition checklist:
 
-Update `src/tools/validate-opportunities.js` so any opportunity record must have a matching `src/data/opportunities/review-notes/{id}.md` file before it can pass validation. Do not change the record review status, publish pages, add AI import jobs, or add sitemap entries.
+Document the exact conditions required before moving from Content Production & Human Review into Publication Pipeline. Do not start frontend pages, sitemap, RSS, newsletter, AI import jobs, or publication-state changes yet.
 
 ## User Decision Needed
 

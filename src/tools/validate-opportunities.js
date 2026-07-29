@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 const dataRoot = path.join(__dirname, '..', 'data', 'opportunities');
+const reviewNotesRoot = path.join(dataRoot, 'review-notes');
 const today = new Date().toISOString().slice(0, 10);
 
 const sourceTypes = new Set([
@@ -132,6 +133,7 @@ function validateOpportunities(opportunities, sourcesById, taxonomy, errors) {
     if (record.id) {
       if (seenIds.has(record.id)) errors.push(`${label} duplicate id: ${record.id}`);
       seenIds.add(record.id);
+      validateReviewNote(record, label, errors);
     }
     if (record.country && record.slug) {
       const key = `${record.country}/${record.slug}`;
@@ -211,6 +213,39 @@ function validateOpportunities(opportunities, sourcesById, taxonomy, errors) {
   });
 }
 
+function validateReviewNote(record, label, errors) {
+  const filePath = path.join(reviewNotesRoot, `${record.id}.md`);
+  if (!fs.existsSync(filePath)) {
+    errors.push(`${label} missing review note: review-notes/${record.id}.md`);
+    return;
+  }
+
+  const content = fs.readFileSync(filePath, 'utf8');
+  const requiredMarkers = [
+    `- ID: \`${record.id}\``,
+    'Reviewer:',
+    'Review date:',
+    'Decision:',
+    'Source:',
+    'Verification:',
+    '## Current Evidence',
+    '## Checks Required Before `needs_review`',
+    '## Checks Required Before `approved`',
+    '## Publication Gate Reminder',
+  ];
+
+  requiredMarkers.forEach((marker) => {
+    if (!content.includes(marker)) {
+      errors.push(`${label} review note missing marker: ${marker}`);
+    }
+  });
+
+  const sourceLine = `Source: ${record.source_id}`;
+  if (record.source_id && !content.includes(sourceLine)) {
+    errors.push(`${label} review note source does not match record source_id`);
+  }
+}
+
 function validateData(opportunities, sources, tags) {
   const errors = [];
   validateRoots(opportunities, sources, tags, errors);
@@ -263,6 +298,13 @@ function runSelfTest(opportunities, sources, tags) {
         testOpportunities.records[0].country = 'japan';
       },
       expected: 'country must match source country',
+    },
+    {
+      name: 'missing review note',
+      mutate(testOpportunities) {
+        testOpportunities.records[0].id = 'opp_missing_review_note';
+      },
+      expected: 'missing review note',
     },
   ];
 
