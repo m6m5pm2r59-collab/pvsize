@@ -67,7 +67,7 @@ The mainline has moved to Phase 5C Publication Pipeline. The first non-indexed `
 
 ## Last Commit
 
-`4abbafa Add second opportunities detail baseline`
+`b74e7a5 Add second opportunities detail baseline`
 
 ## Last Verification
 
