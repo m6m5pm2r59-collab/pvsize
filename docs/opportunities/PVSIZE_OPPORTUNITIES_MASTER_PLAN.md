@@ -1,6 +1,6 @@
 # PVSize Opportunities Master Plan
 
-Updated: 2026-07-28
+Updated: 2026-07-29
 
 ## Goal
 
@@ -48,7 +48,7 @@ Do not build in V1:
 - Anonymous user procurement posting.
 - Marketplace transactions.
 - Scraped paid-database copies.
-- Fully automated publishing without human review.
+- Unverifiable opportunity records.
 
 ## Phase 0 Definition Of Done
 
@@ -71,7 +71,7 @@ Phase 0 is complete only when `docs/opportunities-architecture-audit.md` documen
 
 ## Phase 5 Definition Of Done
 
-Phase 5 is complete only when the MVP supports a small verified opportunity set, source metadata, manual review flow, public list/detail pages, subscription capture, and production verification.
+Phase 5 is complete only when the MVP supports a small verified opportunity set, source metadata, automated governance checks, public list/detail pages, subscription capture, and production verification.
 
 ## Phase 6 Definition Of Done
 

@@ -8,17 +8,17 @@ Status: schema-only
 
 Define the file-backed data shape for Solar Opportunities V1 before any public page generation, import pipeline, AI parsing, or newsletter capture is built.
 
-This schema supports a human-reviewed static MVP. It is not a database migration and does not publish opportunity pages by itself.
+This schema supports a verified static MVP. It is not a database migration and does not publish opportunity pages by itself.
 
 ## Files
 
-- `opportunities.json`: reviewed opportunity records.
+- `opportunities.json`: verified opportunity records.
 - `sources.json`: approved source registry.
 - `tags.json`: controlled country, technology, type, status, and review-state taxonomy.
 
 ## Opportunity Record
 
-Required fields for any real reviewed record:
+Required fields for any real verified record:
 
 - `id`: stable internal id, such as `opp_us_2026_0001`.
 - `slug`: lowercase URL slug.
@@ -34,7 +34,7 @@ Required fields for any real reviewed record:
 - `source_language`: ISO language code or short language label.
 - `last_verified`: ISO date.
 - `official_source_url`: official public source URL.
-- `overview`: short human-reviewed summary.
+- `overview`: short evidence-backed summary.
 - `review_status`: one of the controlled review statuses.
 - `quality_score`: integer 0-100.
 
@@ -79,7 +79,7 @@ Allowed `source_type` values:
 
 Lifecycle:
 
-`discovered -> parsed -> needs_review -> approved -> published`
+`discovered -> parsed -> verified -> published`
 
 Terminal or alternate states:
 
@@ -91,9 +91,9 @@ Terminal or alternate states:
 Rules:
 
 - `published` requires `approved` quality.
-- `approved` requires official source URL, last verified date, and human review.
+- `verified` requires official source URL, last verified date, and validator PASS.
 - `expired`, `cancelled`, and `superseded` records may remain accessible later, but must not be promoted as open opportunities.
-- AI may move a record to `parsed` or `needs_review`; AI may not move a record to `approved` or `published`.
+- AI may move a record through the verification workflow when source evidence, validator checks, and publication gates pass.
 
 ## Validation Rules
 

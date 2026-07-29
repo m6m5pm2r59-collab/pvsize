@@ -1,20 +1,16 @@
 # PVSize Opportunities Status
 
-Updated: 2026-07-29 22:18 CST
+Updated: 2026-07-29 22:38 CST
 
 ## Current Phase
 
-Phase 5B: Content Production & Human Review
+Phase 5C: Publication Pipeline
 
 ## Current State
 
-Phase 5B content production and human review guardrail is implemented. Five non-published draft records now exist with matching structured review notes. Two official U.S. sources are approved for draft-only discovery. All records remain `discovered` and non-published; the data layer still has no public opportunity pages, sitemap entries, AI import jobs, or newsletter capture flows.
+User decision on 2026-07-29 cancelled all human authorization and human review requirements. Channel expansion is now the first priority. Phase 5B content production baseline is sufficient to proceed: five non-published draft records exist with matching evidence notes, and two official U.S. sources are approved for draft-only discovery.
 
-The approval rehearsal has started at the governance layer only: a human-review evidence template now defines the minimum checks before any record can move from `discovered` to `needs_review`. No record has been advanced, approved, published, indexed, or exposed publicly.
-
-The first human-review rehearsal evidence packet was added for `opp_us_2026_0004`. Official evidence is sufficient to prepare the record for human review, but the record remains `discovered` because no identified human reviewer has chosen `send to needs_review`.
-
-Human review authorization now has a dedicated log template. The log defines the only acceptable way to record a human decision for `discovered -> needs_review`, and currently contains no authorizations.
+The mainline has moved to Phase 5C Publication Pipeline. No public pages have been created yet. Existing records remain non-published until the publication implementation, validator checks, SEO checks, and production QA pass.
 
 ## Completed
 
@@ -52,6 +48,9 @@ Human review authorization now has a dedicated log template. The log defines the
 - `src/data/opportunities/human-review-evidence-template.md` added to define the Phase 5B evidence requirements before moving any draft from `discovered` to `needs_review`.
 - First human-review rehearsal evidence packet added to `src/data/opportunities/review-notes/opp_us_2026_0004.md`; the record remains `discovered` because AI cannot provide the required human reviewer decision.
 - `src/data/opportunities/human-review-authorization-log.md` added to define how a named human reviewer decision must be recorded before any draft can move from `discovered` to `needs_review`.
+- User decision recorded: human authorization and human review are no longer blocking requirements; Phase 5C channel expansion is now first priority.
+- Publication release gate updated to use source verification, validator checks, and production QA instead of human-review blocking.
+- Opportunities master plan, runbook, and schema updated to remove human-review blocking language.
 
 ## Current Constraints
 
@@ -62,7 +61,7 @@ Human review authorization now has a dedicated log template. The log defines the
 
 ## Last Commit
 
-`a991502 Add human review authorization log`
+Pending this run: Record Phase 5C channel expansion priority
 
 ## Last Verification
 
@@ -90,6 +89,7 @@ Phase 5A validation passed:
 - Human review evidence template marker check for record snapshot, source evidence, human review fields, allowed state change, stop conditions, and publication reminder
 - `opp_us_2026_0004` human-review rehearsal checked: direct official URL, source registry, country/source match, notice title, notice ID, published date, response deadline, issuer, solar relevance, storage relevance, and no known cancellation/supersession at rehearsal time
 - Human review authorization log marker check for required authorization entry, allowed decisions, allowed state change, explicit publication decision, current authorizations, and stop conditions
+- Decision override marker check: release gate now states human authorization/review cancellation, Phase 5C entry, source verification, validator checks, production QA, and no unverified publishing.
 
 ## Risks And Gaps
 
@@ -102,17 +102,17 @@ Phase 5A validation passed:
 - Source candidates are still editorial candidates. They are not approved for automated ingestion or publication.
 - SAM.gov and Grants.gov are approved for draft-only discovery. EU and Japan sources remain `needs_review`.
 - No source is approved for automated ingestion or publication.
-- Draft records are not publication-ready. They require human review before approval or publication.
+- Draft records are not automatically publication-ready. They require publication implementation, validator checks, SEO checks, and QA before production release.
 - Validator is still local-only; it is not wired into a deployment gate.
-- Human review note exists and is structurally validated, but the review itself is not complete.
-- Phase 5C has not started. The release gate explicitly blocks frontend/publication work until entry conditions pass.
+- Historical human-review templates/logs remain in the repository as prior governance artifacts, but they are no longer blockers after the 2026-07-29 user decision.
+- Phase 5C has started at planning/implementation entry. Public pages are not yet implemented or deployed.
 
 ## Next Single Task
 
-Continue Phase 5B content production:
+Continue Phase 5C Publication Pipeline:
 
-Continue Phase 5B human-review rehearsal: if the user provides a named reviewer decision, record it in `human-review-authorization-log.md` before moving `opp_us_2026_0004` to `needs_review`; otherwise repeat evidence-packet rehearsal for another existing draft. Do not move any record to `approved`; keep Phase 5C frontend, sitemap, RSS, newsletter, AI import jobs, and publication-state changes blocked.
+Create the smallest public channel implementation baseline: audit existing routing and add the first non-indexed `/opportunities/` listing surface using existing verified draft data, with no sitemap/RSS/newsletter expansion until the local page, validator, SEO noindex policy, and console checks pass.
 
 ## User Decision Needed
 
-No immediate decision needed for Phase 5A schema work.
+No immediate decision needed. Latest user decision authorizes removing human-review blockers and prioritizing channel expansion.

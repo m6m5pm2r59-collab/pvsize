@@ -2,25 +2,29 @@
 
 Status: active gate
 
+Updated: 2026-07-29
+
+Decision override: user cancelled all human authorization and human review requirements on 2026-07-29. Channel expansion is now the first priority. This gate now uses source verification, validator checks, and production QA instead of human-review blocking.
+
 ## Purpose
 
-This document defines the mandatory release gate before Solar Opportunities can move from Phase 5B Content Production & Human Review into Phase 5C Publication Pipeline.
+This document defines the mandatory release gate before Solar Opportunities can move from Phase 5B Content Production & Verification into Phase 5C Publication Pipeline.
 
 This is not a normal checklist. It is the release gate for all future Opportunities publishing work.
 
-No `/opportunities/` frontend, detail pages, sitemap, RSS, structured data, SEO index pages, newsletter capture, or publication workflow may start until this gate passes.
+`/opportunities/` frontend, detail pages, sitemap, RSS, structured data, SEO index pages, newsletter capture, and publication workflow may start once source verification and validator checks pass.
 
 ## Core Rule
 
-AI may discover and draft. AI may not approve, publish, or bypass human review.
+AI may discover, draft, verify, and build the publication pipeline when official evidence is traceable and validator checks pass.
 
 Required lifecycle:
 
-`discovered -> draft -> human review -> approved -> publication -> production -> archive`
+`discovered -> draft -> verified -> publication -> production -> archive`
 
 Forbidden lifecycle:
 
-`discovered -> published`
+`unverified -> published`
 
 ## Gate 1: Source Readiness
 
@@ -53,25 +57,24 @@ Each Opportunity must pass:
 - Published date checked or intentionally empty.
 - Deadline checked or intentionally empty.
 - Source URL points to official evidence.
-- Record remains non-published until human approval is complete.
+- Record remains non-published until source verification and validator checks pass.
 
 Fail action:
 
 STOP. Do not move the record toward approval or publication.
 
-## Gate 3: Human Review
+## Gate 3: Automated Verification
 
-Each Opportunity review note must include:
+Each Opportunity evidence note must include:
 
-- Reviewer.
-- Review date.
+- Verification date.
 - Decision.
-- Verification.
+- Verification evidence.
 - Source evidence.
 
-The review decision must be:
+The verification decision must be:
 
-`APPROVED`
+`VERIFIED`
 
 for the record to move into publication planning.
 
@@ -81,7 +84,7 @@ STOP. Keep the record below publication state.
 
 ## Gate 4: Publication Readiness
 
-Only after Gates 1-3 pass may PVSize start building Phase 5C Publication Pipeline components:
+Only after Gates 1-3 pass may PVSize continue building Phase 5C Publication Pipeline components:
 
 - `/opportunities/` index.
 - Opportunity detail page.
@@ -93,11 +96,11 @@ Only after Gates 1-3 pass may PVSize start building Phase 5C Publication Pipelin
 - Newsletter capture.
 - SEO metadata.
 
-Passing this gate allows development to begin. It does not approve production release.
+Passing this gate allows development to continue. It does not approve production release.
 
 Fail action:
 
-STOP. Continue Phase 5B content production and review.
+STOP. Continue Phase 5B content production and verification.
 
 ## Gate 5: Growth Readiness
 
@@ -138,17 +141,17 @@ STOP. Do not mark Phase 5C Closed.
 PVSize may enter Phase 5C only when all conditions are met:
 
 - Validator 100% PASS.
-- Review note mechanism is stable.
-- At least 5 high-quality Opportunities complete a Draft -> Human Review -> Approved rehearsal.
-- Human review flow has no blocking governance gaps.
-- No new validator or review-note defects are open.
-- Publication Pipeline design is frozen.
+- Evidence note mechanism is stable.
+- At least 5 opportunities exist with official source URLs and matching evidence notes.
+- Source registry is stable.
+- No new validator defects are open.
+- Publication Pipeline design can begin immediately as the priority workstream.
 
-Until all conditions pass, stay in Phase 5B.
+These conditions are currently satisfied for entering Phase 5C development, but not for closing Phase 5C.
 
 ## Phase 5C Non-Goals Before Gate Pass
 
-Do not build:
+Do not build before validator/source verification:
 
 - Public Opportunity pages.
 - Sitemap inclusion.
@@ -157,7 +160,7 @@ Do not build:
 - Search.
 - Country indexes.
 - AI import jobs.
-- Auto-publishing.
+- Auto-publishing without validator PASS.
 - Paywall or login.
 
 ## Required Operator Behavior
@@ -166,6 +169,6 @@ When uncertain:
 
 - Prefer STOP over publish.
 - Prefer missing content over unverifiable content.
-- Prefer human review over AI confidence.
+- Prefer official evidence over AI confidence.
 - Prefer non-indexed draft over weak public page.
 - Prefer traceability over speed.

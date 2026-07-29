@@ -1,6 +1,6 @@
 # PVSize Opportunities Runbook
 
-Updated: 2026-07-28
+Updated: 2026-07-29
 
 ## Per-Run Startup
 
@@ -23,7 +23,7 @@ Use `Next Single Task` in the status file as the only execution entry.
 - Preserve PDOS design language.
 - Do not modify production code during Phase 0.
 - Do not invent opportunity data.
-- Do not publish unreviewed opportunities.
+- Do not publish unverifiable opportunities.
 - Do not submit real forms.
 - Do not create paid, login, or account features in MVP unless explicitly approved.
 - Do not put opportunities before calculator completion in calculator flows.
