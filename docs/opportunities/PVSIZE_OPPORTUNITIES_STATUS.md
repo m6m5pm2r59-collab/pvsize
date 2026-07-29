@@ -1,6 +1,6 @@
 # PVSize Opportunities Status
 
-Updated: 2026-07-29 20:58 CST
+Updated: 2026-07-29 21:18 CST
 
 ## Current Phase
 
@@ -8,7 +8,7 @@ Phase 5B: Content Production & Human Review
 
 ## Current State
 
-Phase 5B content production and human review guardrail is implemented. Four non-published draft records now exist with matching structured review notes. Two official U.S. sources are approved for draft-only discovery. All records remain `discovered` and non-published; the data layer still has no public opportunity pages, sitemap entries, AI import jobs, or newsletter capture flows.
+Phase 5B content production and human review guardrail is implemented. Five non-published draft records now exist with matching structured review notes. Two official U.S. sources are approved for draft-only discovery. All records remain `discovered` and non-published; the data layer still has no public opportunity pages, sitemap entries, AI import jobs, or newsletter capture flows.
 
 ## Completed
 
@@ -41,6 +41,8 @@ Phase 5B content production and human review guardrail is implemented. Four non-
 - `src/data/opportunities/review-notes/opp_us_2026_0003.md` added for the new SAM.gov draft.
 - Active SAM.gov USGS communications infrastructure draft added as `review_status: discovered` and `status: open`; it is not approved, not published, and not indexed.
 - `src/data/opportunities/review-notes/opp_us_2026_0004.md` added for the new SAM.gov draft.
+- Closed SAM.gov U.S. Army 63rd Readiness Division microgrid draft added as `review_status: discovered` and `status: closed`; it is not approved, not published, and not indexed.
+- `src/data/opportunities/review-notes/opp_us_2026_0005.md` added for the new SAM.gov draft.
 
 ## Current Constraints
 
@@ -51,7 +53,7 @@ Phase 5B content production and human review guardrail is implemented. Four non-
 
 ## Last Commit
 
-`b6bbe48 Add fourth SAM.gov draft opportunity`
+Pending this run: Add fifth SAM.gov draft opportunity
 
 ## Last Verification
 
@@ -75,6 +77,7 @@ Phase 5A validation passed:
 - Grants.gov/Simpler.Grants.gov SolWEB2 listing checked: direct official URL, title, DOE Golden Field Office agency, solar/ecosystem/agrivoltaics scope, funding opportunity number, archived status, and official documents visible
 - SAM.gov JBMDL microgrid notice checked: direct official URL, notice ID, agency, response date, PV/BESS/microgrid relevance, and closed status due passed deadline
 - SAM.gov USGS communications infrastructure notice checked: direct official URL, notice ID, agency, response date, solar power systems, backup battery arrays, and open status at intake time
+- SAM.gov U.S. Army 63rd Readiness Division MILCON ERCIP Microgrid notice checked: direct official URL, notice ID, agency, response date, Mountain View California location, 750kW PV solar, 750kWh BESS, and closed status due passed deadline
 
 ## Risks And Gaps
 
@@ -96,7 +99,7 @@ Phase 5A validation passed:
 
 Continue Phase 5B content production:
 
-Find and intake another official-source solar-relevant opportunity as a non-published draft only if every required field can be verified. Prefer active opportunities, but allow closed/archive references only when clearly marked `closed`. Do not start Phase 5C frontend, sitemap, RSS, newsletter, AI import jobs, or publication-state changes.
+Begin the Phase 5B approval rehearsal preparation without changing any record to `approved`: create the human-review evidence checklist/template needed to move one existing draft from `discovered` to `needs_review`, and keep Phase 5C frontend, sitemap, RSS, newsletter, AI import jobs, and publication-state changes blocked.
 
 ## User Decision Needed
 

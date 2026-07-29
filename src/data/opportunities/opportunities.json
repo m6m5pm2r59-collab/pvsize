@@ -179,6 +179,51 @@
         }
       ],
       "official_documents": []
+    },
+    {
+      "id": "opp_us_2026_0005",
+      "slug": "63rd-readiness-division-milcon-ercip-microgrid",
+      "title": "U.S. Army 63rd Readiness Division MILCON ERCIP Microgrid",
+      "status": "closed",
+      "country": "united-states",
+      "region": "California",
+      "opportunity_type": "tender",
+      "technology": [
+        "solar",
+        "battery-storage",
+        "microgrid"
+      ],
+      "buyer_or_issuer": "DEPT OF DEFENSE / DEPT OF THE ARMY / U.S. Army Corps of Engineers",
+      "published_date": "2026-06-17",
+      "deadline": "2026-07-13",
+      "source_language": "en",
+      "last_verified": "2026-07-29",
+      "official_source_url": "https://sam.gov/workspace/contract/opp/15fc1555290e4c70bcbfadfff5faec65/view",
+      "overview": "SAM.gov solicitation for the U.S. Army 63rd Readiness Division MILCON ERCIP Microgrid in Mountain View, California. The notice describes a microgrid with full islanding capability, including a ground-mounted photovoltaic solar system, battery energy storage system, and diesel backup generation.",
+      "review_status": "discovered",
+      "quality_score": 60,
+      "source_id": "src_us_sam_contract_opportunities",
+      "source_reliability": 95,
+      "tags": [
+        "federal-procurement",
+        "solicitation",
+        "microgrid",
+        "solar",
+        "battery-storage"
+      ],
+      "related_calculators": [
+        "solar-panel-size",
+        "solar-battery-size"
+      ],
+      "relevance_notes": "Relevant as a closed SAM.gov draft example for microgrid, PV solar, and battery storage contractors. It must not be presented as an active opportunity because the response date has passed.",
+      "change_log": [
+        {
+          "date": "2026-07-29",
+          "status": "discovered",
+          "note": "Initial non-published draft intake from approved SAM.gov source. Listed as closed because the response date has passed."
+        }
+      ],
+      "official_documents": []
     }
   ]
 }
