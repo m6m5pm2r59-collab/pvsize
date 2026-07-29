@@ -4,6 +4,7 @@ const steps = [
   ['Data validator', ['src/tools/validate-opportunities.js', '--self-test'], {}],
   ['Detail generator', ['src/tools/generate-opportunity-detail-pages.js'], {}],
   ['Page verification', ['src/tools/verify-opportunities-page.js'], {}],
+  ['Indexed readiness verification', ['src/tools/verify-opportunities-indexed-readiness.js'], {}],
   ['Index policy verification', ['src/tools/verify-opportunities-index-policy.js', '--self-test'], {}],
   ['Analytics CTA verification', ['src/tools/verify-opportunities-analytics-cta.js'], {}],
   ['HTTP verification', ['src/tools/verify-opportunities-http.js'], {}],

@@ -11,6 +11,7 @@ const generatorPath = path.join(__dirname, 'generate-opportunity-detail-pages.js
 const httpVerifierPath = path.join(__dirname, 'verify-opportunities-http.js');
 const analyticsCtaVerifierPath = path.join(__dirname, 'verify-opportunities-analytics-cta.js');
 const indexPolicyVerifierPath = path.join(__dirname, 'verify-opportunities-index-policy.js');
+const indexedReadinessVerifierPath = path.join(__dirname, 'verify-opportunities-indexed-readiness.js');
 const aggregateVerifierPath = path.join(__dirname, 'verify-opportunities-all.js');
 const productionNoindexVerifierPath = path.join(__dirname, 'verify-opportunities-production-noindex.js');
 const detailSlugs = [
@@ -59,6 +60,9 @@ if (!fs.existsSync(analyticsCtaVerifierPath)) {
 
 if (!fs.existsSync(indexPolicyVerifierPath)) {
   errors.push('missing index-policy verifier');
+}
+if (!fs.existsSync(indexedReadinessVerifierPath)) {
+  errors.push('missing indexed-readiness verifier');
 }
 
 if (!fs.existsSync(aggregateVerifierPath)) {

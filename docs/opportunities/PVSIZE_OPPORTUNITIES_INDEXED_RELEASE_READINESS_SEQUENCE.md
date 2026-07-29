@@ -35,6 +35,8 @@ Forbidden sequence:
 
 ## Step 1: Record Status Readiness
 
+READINESS_MARKER: RECORD_STATUS
+
 Before any Opportunity can become indexable, confirm:
 
 - `review_status` is `published`.
@@ -52,6 +54,8 @@ If any item fails, keep the record out of sitemap, RSS, schema, newsletter, and 
 
 ## Step 2: SEO Metadata Readiness
 
+READINESS_MARKER: SEO_METADATA
+
 After record status readiness passes, define SEO metadata before adding structured data or feeds:
 
 - Page title.
@@ -68,6 +72,8 @@ If metadata cannot be generated without overstating source evidence, keep the pa
 
 ## Step 3: Structured Data Readiness
 
+READINESS_MARKER: STRUCTURED_DATA
+
 Only after SEO metadata readiness passes, add structured data planning:
 
 - Select allowed schema type for the record.
@@ -81,6 +87,8 @@ Stop condition:
 If structured data would require unsupported claims, skip schema and keep the page out of indexed release.
 
 ## Step 4: Sitemap And RSS Readiness
+
+READINESS_MARKER: SITEMAP_RSS
 
 Only after structured data readiness passes, add sitemap and RSS planning:
 
@@ -96,6 +104,8 @@ Stop condition:
 If sitemap/RSS cannot prove published-only inclusion, do not ship sitemap/RSS changes.
 
 ## Step 5: Newsletter Readiness
+
+READINESS_MARKER: NEWSLETTER
 
 Only after sitemap and RSS readiness passes, define newsletter capture and distribution:
 
@@ -113,6 +123,8 @@ If consent, storage, or event tracking is unclear, do not launch newsletter capt
 
 ## Step 6: Production QA Readiness
 
+READINESS_MARKER: PRODUCTION_QA
+
 Before any indexed release is deployed, run:
 
 - Local aggregate Opportunities QA.
@@ -129,6 +141,8 @@ Stop condition:
 If production check fails, rollback or keep noindex policy and do not mark indexed release complete.
 
 ## Step 7: Archive
+
+READINESS_MARKER: ARCHIVE
 
 After production QA passes, archive:
 
@@ -154,3 +168,5 @@ The next implementation tasks must stay in this order:
 6. Run production QA and archive.
 
 Do not combine these into one task.
+
+READINESS_MARKER: ONE_TASK_AT_A_TIME
