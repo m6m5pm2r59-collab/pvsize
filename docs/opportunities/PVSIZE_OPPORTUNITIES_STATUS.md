@@ -62,7 +62,7 @@ The mainline has moved to Phase 5C Publication Pipeline. The first non-indexed `
 
 ## Last Commit
 
-Pending this run: Add non-indexed opportunities listing baseline
+`09572ff Add non-indexed opportunities listing baseline`
 
 ## Last Verification
 
