@@ -1,6 +1,6 @@
 # PVSize Opportunities Status
 
-Updated: 2026-07-29 23:18 CST
+Updated: 2026-07-29 23:38 CST
 
 ## Current Phase
 
@@ -54,6 +54,7 @@ The mainline has moved to Phase 5C Publication Pipeline. The first non-indexed `
 - First non-indexed `/opportunities/` listing surface added at `src/opportunities/index.html` using five source-backed opportunity records.
 - `src/tools/verify-opportunities-page.js` added to make `/opportunities/` noindex, card count, official source link, calculator link, and no-schema checks repeatable without Playwright.
 - Internal entry links to `/opportunities/` added on homepage navigation and partners navigation/footer; verification script now checks these links.
+- First non-indexed opportunity detail page added for `opp_us_2026_0004` at `/opportunities/usgs-communications-site-infrastructure-idiq/`; listing now links to the detail brief.
 
 ## Current Constraints
 
@@ -64,7 +65,7 @@ The mainline has moved to Phase 5C Publication Pipeline. The first non-indexed `
 
 ## Last Commit
 
-`eaed18e Add internal opportunities entry links`
+Pending this run: Add first opportunities detail baseline
 
 ## Last Verification
 
@@ -97,6 +98,7 @@ Phase 5A validation passed:
 - Local static-server check: `http://127.0.0.1:4177/opportunities/` returned HTTP 200 and served the noindex listing content.
 - Automated `/opportunities/` HTML verification added and passed: noindex listing, 5 cards, official links, calculator links, and no premature structured data.
 - Internal entry link verification added for homepage and partners page.
+- Automated detail-page verification added for noindex, canonical, analytics marker, back link, official source link, and calculator links.
 
 ## Risks And Gaps
 
@@ -112,13 +114,13 @@ Phase 5A validation passed:
 - Draft records are not automatically publication-ready. They require publication implementation, validator checks, SEO checks, and QA before production release.
 - Validator is still local-only; it is not wired into a deployment gate.
 - Historical human-review templates/logs remain in the repository as prior governance artifacts, but they are no longer blockers after the 2026-07-29 user decision.
-- Phase 5C has started. The first local `/opportunities/` page exists and passed HTTP/noindex marker checks plus automated HTML verification, but is not yet production verified or indexed. Browser console verification remains pending because Playwright is not installed in the local project.
+- Phase 5C has started. The local `/opportunities/` listing and first detail baseline exist and passed automated HTML verification, but are not yet production verified or indexed. Browser console verification remains pending because Playwright is not installed in the local project.
 
 ## Next Single Task
 
 Continue Phase 5C Publication Pipeline:
 
-Continue Phase 5C channel expansion: add the smallest reusable data-driven rendering step or first opportunity detail-page baseline, then rerun validator plus opportunities page verification. Do not add sitemap/RSS/newsletter or mark Phase 5C Closed until production verification evidence exists.
+Continue Phase 5C channel expansion: add the smallest reusable data-driven rendering step for opportunities pages, then rerun validator plus opportunities page verification. Do not add sitemap/RSS/newsletter or mark Phase 5C Closed until production verification evidence exists.
 
 ## User Decision Needed
 
