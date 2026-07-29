@@ -1,6 +1,6 @@
 # PVSize Opportunities Status
 
-Updated: 2026-07-30 02:59 CST
+Updated: 2026-07-30 03:19 CST
 
 ## Current Phase
 
@@ -68,6 +68,8 @@ The mainline has moved to Phase 5C Publication Pipeline. The first non-indexed `
 - `src/tools/verify-opportunities-page.js` now checks that the repeatable HTTP QA verifier exists.
 - `src/tools/verify-opportunities-analytics-cta.js` added as a lightweight analytics/CTA marker verifier for `/opportunities/` plus all five detail pages.
 - `src/tools/verify-opportunities-page.js` now checks that the analytics/CTA marker verifier exists.
+- `src/tools/verify-opportunities-index-policy.js` added to keep the current Phase 5C noindex gate explicit: opportunities URLs must remain out of sitemap, RSS, and JSON-LD schema until production verification approves indexing.
+- `src/tools/verify-opportunities-page.js` now checks that the index-policy verifier exists.
 
 ## Current Constraints
 
@@ -78,7 +80,7 @@ The mainline has moved to Phase 5C Publication Pipeline. The first non-indexed `
 
 ## Last Commit
 
-`e8e2c08 Add opportunities analytics CTA QA`
+Pending this run.
 
 ## Last Verification
 
@@ -121,6 +123,7 @@ Phase 5A validation passed:
 - Local static-server HTTP QA added: `python3 -m http.server 4188 --directory src` served `/opportunities/` and all five detail pages; each returned HTTP 200, contained `noindex,follow`, and did not contain premature JSON-LD structured data.
 - Repeatable local HTTP QA script added and passed: `node src/tools/verify-opportunities-http.js` starts a local static server, checks listing plus five detail pages, confirms HTTP 200, `noindex,follow`, and no premature JSON-LD structured data.
 - Analytics/CTA marker verification added and passed: `node src/tools/verify-opportunities-analytics-cta.js` checks analytics script, listing-to-detail links, official source CTAs, back links, and data-driven calculator CTAs for listing plus all five detail pages.
+- Index-policy verification added and passed: `node src/tools/verify-opportunities-index-policy.js` confirms six opportunities URLs remain noindex and out of sitemap/RSS/schema while records remain below published status.
 
 ## Risks And Gaps
 
@@ -142,7 +145,7 @@ Phase 5A validation passed:
 
 Continue Phase 5C Publication Pipeline:
 
-Continue Phase 5C Publication Pipeline: add a noindex/index-policy verification script that checks `/opportunities/` plus all five detail pages are excluded from sitemap/RSS/schema/indexing until production verification is approved. Do not add sitemap/RSS/newsletter or mark Phase 5C Closed until production verification evidence exists.
+Continue Phase 5C Publication Pipeline: add a single aggregate QA script that runs validator, page verification, index-policy verification, analytics/CTA verification, and HTTP QA in order. Do not add sitemap/RSS/newsletter or mark Phase 5C Closed until production verification evidence exists.
 
 ## User Decision Needed
 

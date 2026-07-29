@@ -10,6 +10,7 @@ const records = opportunitiesData.records || [];
 const generatorPath = path.join(__dirname, 'generate-opportunity-detail-pages.js');
 const httpVerifierPath = path.join(__dirname, 'verify-opportunities-http.js');
 const analyticsCtaVerifierPath = path.join(__dirname, 'verify-opportunities-analytics-cta.js');
+const indexPolicyVerifierPath = path.join(__dirname, 'verify-opportunities-index-policy.js');
 const detailSlugs = [
   'usgs-communications-site-infrastructure-idiq',
   '178th-wing-base-microgrid-construction',
@@ -52,6 +53,10 @@ if (!fs.existsSync(httpVerifierPath)) {
 
 if (!fs.existsSync(analyticsCtaVerifierPath)) {
   errors.push('missing analytics/CTA marker verifier');
+}
+
+if (!fs.existsSync(indexPolicyVerifierPath)) {
+  errors.push('missing index-policy verifier');
 }
 
 records.forEach((record) => {
