@@ -1,6 +1,6 @@
 # PVSize Opportunities Status
 
-Updated: 2026-07-30 05:40 CST
+Updated: 2026-07-30 06:00 CST
 
 ## Current Phase
 
@@ -78,6 +78,7 @@ The mainline has moved to Phase 5C Publication Pipeline. The first non-indexed `
 - `src/tools/verify-opportunities-all.js` now supports an optional production noindex gate when `PVSIZE_VERIFY_PRODUCTION=1` is set, while default aggregate QA remains local-only.
 - `docs/opportunities/PVSIZE_OPPORTUNITIES_RUNBOOK.md` now documents default local aggregate QA and optional production noindex QA modes.
 - `docs/opportunities/PVSIZE_OPPORTUNITIES_PHASE5C_NOINDEX_MVP_ARCHIVE_DECISION.md` added to archive the production-verified noindex MVP baseline without approving sitemap/RSS/newsletter/schema/indexed SEO release or full Phase 5C closure.
+- `docs/opportunities/PVSIZE_OPPORTUNITIES_PUBLISHED_RECORD_STATE_TRANSITION.md` added as the first indexed-release preparation gate, defining requirements before any Opportunity record can move toward `review_status: published` or indexable release.
 
 ## Current Constraints
 
@@ -88,7 +89,7 @@ The mainline has moved to Phase 5C Publication Pipeline. The first non-indexed `
 
 ## Last Commit
 
-`62bad0c Add opportunities noindex MVP archive decision`
+Pending this run.
 
 ## Last Verification
 
@@ -139,6 +140,7 @@ Phase 5A validation passed:
 - Optional production aggregate gate added and passed: `PVSIZE_VERIFY_PRODUCTION=1 node src/tools/verify-opportunities-all.js` runs the normal local aggregate QA and then the production noindex verifier.
 - Opportunities QA mode documentation marker check passed for default local aggregate QA, optional production noindex QA, no-network default behavior, production checks, and explicit non-approvals.
 - Phase 5C noindex MVP archive decision marker check passed for verified scope, local QA, optional production QA, noindex-only non-approvals, requirements before indexed release, and not-full-Phase-5C-closure outcome.
+- Published record-state transition marker check passed for current noindex baseline, required published state, required indexable channel state, forbidden transitions, validator gap, and next implementation step.
 
 ## Risks And Gaps
 
@@ -160,7 +162,7 @@ Phase 5A validation passed:
 
 Continue Phase 5C Publication Pipeline:
 
-Continue Phase 5C Publication Pipeline: choose the next smallest indexed-release preparation task from search/filter, newsletter capture, structured data, sitemap/RSS, or published record-state transition. Do not implement more than one capability in the same task.
+Continue Phase 5C Publication Pipeline: add a validator or verifier rule that blocks sitemap/RSS/schema/indexable release unless included Opportunity records have `review_status: published`. Do not change current records to published in the same task.
 
 ## User Decision Needed
 
