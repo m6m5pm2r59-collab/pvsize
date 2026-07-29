@@ -1,6 +1,6 @@
 # PVSize Opportunities Status
 
-Updated: 2026-07-30 01:59 CST
+Updated: 2026-07-30 02:20 CST
 
 ## Current Phase
 
@@ -63,6 +63,7 @@ The mainline has moved to Phase 5C Publication Pipeline. The first non-indexed `
 - Fourth non-indexed opportunity detail page added for `opp_us_2026_0005` at `/opportunities/63rd-readiness-division-milcon-ercip-microgrid/`; listing now links to the detail brief and the generator plus verification script cover four detail pages.
 - Fifth non-indexed opportunity detail page added for `opp_us_2026_0002` at `/opportunities/solar-with-wildlife-and-ecosystem-benefits-2-solweb2/`; all five source-backed records now have generated noindex detail briefs.
 - `src/tools/verify-opportunities-page.js` now verifies each detail page's calculator links from `related_calculators` instead of requiring every detail page to include both panel and battery calculators.
+- Local static-server HTTP QA completed for `/opportunities/` plus all five generated detail pages; all returned HTTP 200 with `noindex,follow` present and no premature JSON-LD structured data.
 
 ## Current Constraints
 
@@ -73,7 +74,7 @@ The mainline has moved to Phase 5C Publication Pipeline. The first non-indexed `
 
 ## Last Commit
 
-`9d8ed27 Add fifth opportunities detail baseline`
+Pending this run.
 
 ## Last Verification
 
@@ -113,6 +114,7 @@ Phase 5A validation passed:
 - Third detail page verification added: `/opportunities/jbmdl-power-generation-microgrid-construction/` is generated from `opportunities.json` and checked for noindex, canonical, analytics marker, official source link, back link, and calculator links.
 - Fourth detail page verification added: `/opportunities/63rd-readiness-division-milcon-ercip-microgrid/` is generated from `opportunities.json` and checked for noindex, canonical, analytics marker, official source link, back link, and calculator links.
 - Fifth detail page verification added: `/opportunities/solar-with-wildlife-and-ecosystem-benefits-2-solweb2/` is generated from `opportunities.json` and checked for noindex, canonical, analytics marker, official source link, back link, and data-driven calculator links.
+- Local static-server HTTP QA added: `python3 -m http.server 4188 --directory src` served `/opportunities/` and all five detail pages; each returned HTTP 200, contained `noindex,follow`, and did not contain premature JSON-LD structured data.
 
 ## Risks And Gaps
 
@@ -134,7 +136,7 @@ Phase 5A validation passed:
 
 Continue Phase 5C Publication Pipeline:
 
-Continue Phase 5C Publication Pipeline: perform a local static-server HTTP check for `/opportunities/` plus all five generated detail pages, then record evidence. Do not add sitemap/RSS/newsletter or mark Phase 5C Closed until production verification evidence exists.
+Continue Phase 5C Publication Pipeline: add a repeatable local HTTP QA script for `/opportunities/` plus all five generated detail pages, then rerun validator, page verification, and the HTTP QA script. Do not add sitemap/RSS/newsletter or mark Phase 5C Closed until production verification evidence exists.
 
 ## User Decision Needed
 
