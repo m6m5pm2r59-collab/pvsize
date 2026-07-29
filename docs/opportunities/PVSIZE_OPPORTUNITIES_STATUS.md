@@ -1,6 +1,6 @@
 # PVSize Opportunities Status
 
-Updated: 2026-07-29 23:38 CST
+Updated: 2026-07-29 23:58 CST
 
 ## Current Phase
 
@@ -55,6 +55,7 @@ The mainline has moved to Phase 5C Publication Pipeline. The first non-indexed `
 - `src/tools/verify-opportunities-page.js` added to make `/opportunities/` noindex, card count, official source link, calculator link, and no-schema checks repeatable without Playwright.
 - Internal entry links to `/opportunities/` added on homepage navigation and partners navigation/footer; verification script now checks these links.
 - First non-indexed opportunity detail page added for `opp_us_2026_0004` at `/opportunities/usgs-communications-site-infrastructure-idiq/`; listing now links to the detail brief.
+- `src/tools/verify-opportunities-page.js` now reads `opportunities.json` to verify listing titles, official source URLs, and card count from data instead of hardcoded opportunity arrays.
 
 ## Current Constraints
 
@@ -65,7 +66,7 @@ The mainline has moved to Phase 5C Publication Pipeline. The first non-indexed `
 
 ## Last Commit
 
-`6906c4a Add first opportunities detail baseline`
+Pending this run: Data-drive opportunities page verification
 
 ## Last Verification
 
@@ -99,6 +100,7 @@ Phase 5A validation passed:
 - Automated `/opportunities/` HTML verification added and passed: noindex listing, 5 cards, official links, calculator links, and no premature structured data.
 - Internal entry link verification added for homepage and partners page.
 - Automated detail-page verification added for noindex, canonical, analytics marker, back link, official source link, and calculator links.
+- Data-driven listing verification added: opportunity titles, official source URLs, and card count are checked against `opportunities.json`.
 
 ## Risks And Gaps
 
@@ -120,7 +122,7 @@ Phase 5A validation passed:
 
 Continue Phase 5C Publication Pipeline:
 
-Continue Phase 5C channel expansion: add the smallest reusable data-driven rendering step for opportunities pages, then rerun validator plus opportunities page verification. Do not add sitemap/RSS/newsletter or mark Phase 5C Closed until production verification evidence exists.
+Continue Phase 5C channel expansion: introduce a reusable rendering helper or generate one more detail page from the existing data, then rerun validator plus data-driven opportunities page verification. Do not add sitemap/RSS/newsletter or mark Phase 5C Closed until production verification evidence exists.
 
 ## User Decision Needed
 
