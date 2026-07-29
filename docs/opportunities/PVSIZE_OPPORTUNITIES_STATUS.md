@@ -92,7 +92,7 @@ The mainline has moved to Phase 5C Publication Pipeline. The first non-indexed `
 
 ## Last Commit
 
-Pending this run.
+`9c61dfb Run opportunities index-policy self-test in aggregate QA`
 
 ## Last Verification
 
