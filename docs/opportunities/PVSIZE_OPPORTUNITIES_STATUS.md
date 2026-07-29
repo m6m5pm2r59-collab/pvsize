@@ -1,6 +1,6 @@
 # PVSize Opportunities Status
 
-Updated: 2026-07-30 04:02 CST
+Updated: 2026-07-30 04:21 CST
 
 ## Current Phase
 
@@ -10,7 +10,7 @@ Phase 5C: Publication Pipeline
 
 User decision on 2026-07-29 cancelled all human authorization and human review requirements. Channel expansion is now the first priority. Phase 5B content production baseline is sufficient to proceed: five non-published draft records exist with matching evidence notes, and two official U.S. sources are approved for draft-only discovery.
 
-The mainline has moved to Phase 5C Publication Pipeline. The first non-indexed `/opportunities/` listing surface has been added locally using the five verified draft records. Existing records remain below published status in the data file until the publication implementation, validator checks, SEO checks, and production QA pass.
+The mainline has moved to Phase 5C Publication Pipeline. The first non-indexed `/opportunities/` listing surface has been added using the five verified draft records. Existing records remain below published status in the data file. Noindex MVP production verification has passed, but sitemap/RSS/newsletter/schema/indexed SEO release remains separately gated.
 
 ## Completed
 
@@ -73,6 +73,7 @@ The mainline has moved to Phase 5C Publication Pipeline. The first non-indexed `
 - `src/tools/verify-opportunities-all.js` added as the aggregate local Phase 5C QA gate. It runs validator, detail generation, page verification, index-policy verification, analytics/CTA verification, and HTTP verification in order.
 - `src/tools/verify-opportunities-page.js` now checks that the aggregate QA verifier exists.
 - `docs/opportunities/PVSIZE_OPPORTUNITIES_NOINDEX_MVP_PRE_DEPLOY_CHECKLIST.md` added to define the noindex MVP pre-deploy and production verification gates before any indexed Opportunities release.
+- Noindex Opportunities MVP production verification completed for `/opportunities/` plus five detail URLs on `https://pvsize.com`; all checked URLs returned HTTP 200 while retaining noindex policy and staying out of sitemap/RSS/schema.
 
 ## Current Constraints
 
@@ -83,7 +84,7 @@ The mainline has moved to Phase 5C Publication Pipeline. The first non-indexed `
 
 ## Last Commit
 
-`e756def Add opportunities noindex MVP predeploy checklist`
+Pending this run.
 
 ## Last Verification
 
@@ -129,6 +130,7 @@ Phase 5A validation passed:
 - Index-policy verification added and passed: `node src/tools/verify-opportunities-index-policy.js` confirms six opportunities URLs remain noindex and out of sitemap/RSS/schema while records remain below published status.
 - Aggregate Phase 5C QA added and passed: `node src/tools/verify-opportunities-all.js` runs validator, detail generation, page verification, index-policy verification, analytics/CTA verification, and HTTP verification in order.
 - Noindex MVP pre-deploy checklist marker check passed: local aggregate QA, noindex policy, route/content, production verification, archive, and explicit non-approvals are documented.
+- Noindex MVP production verification passed: `https://pvsize.com/opportunities/` and all five detail pages returned HTTP 200; production HTML retains `noindex,follow`; production sitemap contains no Opportunities URLs; Opportunities RSS/feed URLs checked returned 404; production Opportunities pages contain no JSON-LD structured data; production homepage links to `/opportunities/`.
 
 ## Risks And Gaps
 
@@ -144,13 +146,13 @@ Phase 5A validation passed:
 - Draft records are not automatically publication-ready. They require publication implementation, validator checks, SEO checks, and QA before production release.
 - Validator is still local-only; it is not wired into a deployment gate.
 - Historical human-review templates/logs remain in the repository as prior governance artifacts, but they are no longer blockers after the 2026-07-29 user decision.
-- Phase 5C has started. The local `/opportunities/` listing and first detail baseline exist and passed automated HTML verification, but are not yet production verified or indexed. Browser console verification remains pending because Playwright is not installed in the local project.
+- Phase 5C noindex MVP is production verified. It is not indexed and not Phase 5C Closed. Browser console verification remains pending because Playwright is not installed in the local project.
 
 ## Next Single Task
 
 Continue Phase 5C Publication Pipeline:
 
-Continue Phase 5C Publication Pipeline: perform noindex MVP production/pre-deploy verification against the checklist, starting with aggregate QA and then production URL/index-policy evidence if a deploy target is available. Do not add sitemap/RSS/newsletter or mark Phase 5C Closed until production verification evidence exists.
+Continue Phase 5C Publication Pipeline: add a repeatable production noindex verification script for Opportunities that checks `pvsize.com` listing/detail URLs, noindex policy, sitemap exclusion, RSS/feed absence, and no premature JSON-LD. Do not add sitemap/RSS/newsletter or mark Phase 5C Closed in the same task.
 
 ## User Decision Needed
 
