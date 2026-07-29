@@ -1,6 +1,6 @@
 # PVSize Opportunities Status
 
-Updated: 2026-07-29 00:18 CST
+Updated: 2026-07-29 00:38 CST
 
 ## Current Phase
 
@@ -8,7 +8,7 @@ Phase 5B: Content Production & Human Review
 
 ## Current State
 
-Phase 5B content production and human review guardrail is implemented. The first SAM.gov draft has a structured review note, and the validator now requires every opportunity record to have a matching review note with reviewer, date, decision, source, and verification markers. The record remains `discovered` and non-published; the data layer still has no public opportunity pages, sitemap entries, AI import jobs, or newsletter capture flows.
+Phase 5B content production and human review guardrail is implemented. The first SAM.gov draft has a structured review note, and the validator now requires every opportunity record to have a matching review note with reviewer, date, decision, source, and verification markers. The Phase 5B -> Phase 5C Publication Release Gate is now documented. The record remains `discovered` and non-published; the data layer still has no public opportunity pages, sitemap entries, AI import jobs, or newsletter capture flows.
 
 ## Completed
 
@@ -33,6 +33,7 @@ Phase 5B content production and human review guardrail is implemented. The first
 - `src/data/opportunities/review-notes/opp_us_2026_0001.md` added with checks required before moving the first draft from `discovered` to `needs_review` or `approved`.
 - Review note fields added: reviewer, review date, decision, source, and verification.
 - `src/tools/validate-opportunities.js` now requires every opportunity record to have a matching review note with required markers.
+- `docs/opportunities/PVSIZE_PHASE5B_TO_PHASE5C_PUBLICATION_RELEASE_GATE.md` added as the mandatory gate before frontend, sitemap, RSS, newsletter, SEO, or publication work.
 
 ## Current Constraints
 
@@ -43,7 +44,7 @@ Phase 5B content production and human review guardrail is implemented. The first
 
 ## Last Commit
 
-`c0a3010 Enforce opportunities review notes`
+Pending this run: Add Phase 5B to Phase 5C publication release gate
 
 ## Last Verification
 
@@ -61,6 +62,7 @@ Phase 5A validation passed:
 - Validator self-test checks missing `source_id`, unknown `source_id`, non-approved source, and country mismatch failure cases
 - Human review note marker check for current evidence, checks before `needs_review`, checks before `approved`, and publication gate reminder
 - Validator self-test checks missing review note failure case
+- Release gate marker check for source readiness, content readiness, human review, publication readiness, growth readiness, production gate, and Phase 5C entry conditions
 
 ## Risks And Gaps
 
@@ -76,12 +78,13 @@ Phase 5A validation passed:
 - First draft record is not publication-ready. It requires human review before approval or publication.
 - Validator is still local-only; it is not wired into a deployment gate.
 - Human review note exists and is structurally validated, but the review itself is not complete.
+- Phase 5C has not started. The release gate explicitly blocks frontend/publication work until entry conditions pass.
 
 ## Next Single Task
 
-Create the Phase 5B to Phase 5C transition checklist:
+Continue Phase 5B content production:
 
-Document the exact conditions required before moving from Content Production & Human Review into Publication Pipeline. Do not start frontend pages, sitemap, RSS, newsletter, AI import jobs, or publication-state changes yet.
+Add or verify additional approved official sources and draft candidates until at least 5 high-quality Opportunities can complete Draft -> Human Review -> Approved rehearsal. Do not start Phase 5C frontend, sitemap, RSS, newsletter, AI import jobs, or publication-state changes.
 
 ## User Decision Needed
 
