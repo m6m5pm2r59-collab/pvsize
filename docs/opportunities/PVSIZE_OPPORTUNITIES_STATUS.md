@@ -56,7 +56,7 @@ The approval rehearsal has started at the governance layer only: a human-review 
 
 ## Last Commit
 
-Pending this run: Add human review evidence template
+`8878335 Add opportunity human review evidence template`
 
 ## Last Verification
 
