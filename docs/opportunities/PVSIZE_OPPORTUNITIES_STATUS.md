@@ -80,7 +80,7 @@ The mainline has moved to Phase 5C Publication Pipeline. The first non-indexed `
 
 ## Last Commit
 
-Pending this run.
+`1756510 Add opportunities index policy QA`
 
 ## Last Verification
 
