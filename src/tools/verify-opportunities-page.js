@@ -12,6 +12,7 @@ const httpVerifierPath = path.join(__dirname, 'verify-opportunities-http.js');
 const analyticsCtaVerifierPath = path.join(__dirname, 'verify-opportunities-analytics-cta.js');
 const indexPolicyVerifierPath = path.join(__dirname, 'verify-opportunities-index-policy.js');
 const aggregateVerifierPath = path.join(__dirname, 'verify-opportunities-all.js');
+const productionNoindexVerifierPath = path.join(__dirname, 'verify-opportunities-production-noindex.js');
 const detailSlugs = [
   'usgs-communications-site-infrastructure-idiq',
   '178th-wing-base-microgrid-construction',
@@ -62,6 +63,9 @@ if (!fs.existsSync(indexPolicyVerifierPath)) {
 
 if (!fs.existsSync(aggregateVerifierPath)) {
   errors.push('missing aggregate opportunities QA verifier');
+}
+if (!fs.existsSync(productionNoindexVerifierPath)) {
+  errors.push('missing production noindex opportunities verifier');
 }
 
 records.forEach((record) => {
