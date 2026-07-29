@@ -1,6 +1,6 @@
 # PVSize Opportunities Status
 
-Updated: 2026-07-30 06:20 CST
+Updated: 2026-07-30 06:40 CST
 
 ## Current Phase
 
@@ -80,6 +80,7 @@ The mainline has moved to Phase 5C Publication Pipeline. The first non-indexed `
 - `docs/opportunities/PVSIZE_OPPORTUNITIES_PHASE5C_NOINDEX_MVP_ARCHIVE_DECISION.md` added to archive the production-verified noindex MVP baseline without approving sitemap/RSS/newsletter/schema/indexed SEO release or full Phase 5C closure.
 - `docs/opportunities/PVSIZE_OPPORTUNITIES_PUBLISHED_RECORD_STATE_TRANSITION.md` added as the first indexed-release preparation gate, defining requirements before any Opportunity record can move toward `review_status: published` or indexable release.
 - `src/tools/verify-opportunities-index-policy.js` now includes a published-record gate for future sitemap/RSS/schema/indexable exposure: any included opportunity record must have `review_status: published`.
+- `src/tools/verify-opportunities-index-policy.js --self-test` added to prove non-published Opportunities fail when injected into sitemap, schema, and RSS fixtures.
 
 ## Current Constraints
 
@@ -90,7 +91,7 @@ The mainline has moved to Phase 5C Publication Pipeline. The first non-indexed `
 
 ## Last Commit
 
-`63cf3f8 Add opportunities published index policy gate`
+Pending this run.
 
 ## Last Verification
 
@@ -143,6 +144,7 @@ Phase 5A validation passed:
 - Phase 5C noindex MVP archive decision marker check passed for verified scope, local QA, optional production QA, noindex-only non-approvals, requirements before indexed release, and not-full-Phase-5C-closure outcome.
 - Published record-state transition marker check passed for current noindex baseline, required published state, required indexable channel state, forbidden transitions, validator gap, and next implementation step.
 - Published-record index-policy gate added and passed: sitemap/RSS/schema/indexable checks now assert included opportunity records are `review_status: published`; current noindex MVP still passes because no Opportunities URLs are included in sitemap/RSS/schema.
+- Published-record index-policy negative self-test added and passed: fixture injection proves a non-published Opportunity in sitemap/schema/RSS fails without changing current records.
 
 ## Risks And Gaps
 
@@ -164,7 +166,7 @@ Phase 5A validation passed:
 
 Continue Phase 5C Publication Pipeline:
 
-Continue Phase 5C Publication Pipeline: add a negative self-test or fixture for the published-record index-policy gate, proving that a non-published opportunity in sitemap/RSS/schema fails. Do not change current records to published in the same task.
+Continue Phase 5C Publication Pipeline: add the index-policy self-test into the aggregate QA workflow so the published-record release gate is exercised on every local aggregate run. Do not change current records to published in the same task.
 
 ## User Decision Needed
 
