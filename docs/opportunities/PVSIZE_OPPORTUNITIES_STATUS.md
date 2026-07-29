@@ -1,6 +1,6 @@
 # PVSize Opportunities Status
 
-Updated: 2026-07-29 20:18 CST
+Updated: 2026-07-29 20:38 CST
 
 ## Current Phase
 
@@ -8,7 +8,7 @@ Phase 5B: Content Production & Human Review
 
 ## Current State
 
-Phase 5B content production and human review guardrail is implemented. Two non-published draft records now exist with matching structured review notes. Two official U.S. sources are approved for draft-only discovery. All records remain `discovered` and non-published; the data layer still has no public opportunity pages, sitemap entries, AI import jobs, or newsletter capture flows.
+Phase 5B content production and human review guardrail is implemented. Three non-published draft records now exist with matching structured review notes. Two official U.S. sources are approved for draft-only discovery. All records remain `discovered` and non-published; the data layer still has no public opportunity pages, sitemap entries, AI import jobs, or newsletter capture flows.
 
 ## Completed
 
@@ -37,6 +37,8 @@ Phase 5B content production and human review guardrail is implemented. Two non-p
 - `src_us_grants_search` promoted from `needs_review` to `approved` for draft-only funding and incentive discovery after official source review.
 - First Grants.gov/Simpler.Grants.gov solar funding draft added as `review_status: discovered` and `status: closed`; it is not approved, not published, and not indexed.
 - `src/data/opportunities/review-notes/opp_us_2026_0002.md` added for the Grants.gov draft.
+- Additional SAM.gov microgrid/PV/BESS draft added as `review_status: discovered` and `status: closed`; it is not approved, not published, and not indexed.
+- `src/data/opportunities/review-notes/opp_us_2026_0003.md` added for the new SAM.gov draft.
 
 ## Current Constraints
 
@@ -47,7 +49,7 @@ Phase 5B content production and human review guardrail is implemented. Two non-p
 
 ## Last Commit
 
-Pending this run: Add first Grants.gov draft opportunity
+Pending this run: Add third SAM.gov draft opportunity
 
 ## Last Verification
 
@@ -69,6 +71,7 @@ Phase 5A validation passed:
 - Grants.gov Search Grants page checked as an official public source for draft-only funding and incentive discovery
 - Validator self-test non-approved source fixture updated to use a still-unapproved EU source after Grants.gov approval
 - Grants.gov/Simpler.Grants.gov SolWEB2 listing checked: direct official URL, title, DOE Golden Field Office agency, solar/ecosystem/agrivoltaics scope, funding opportunity number, archived status, and official documents visible
+- SAM.gov JBMDL microgrid notice checked: direct official URL, notice ID, agency, response date, PV/BESS/microgrid relevance, and closed status due passed deadline
 
 ## Risks And Gaps
 
@@ -87,8 +90,6 @@ Phase 5A validation passed:
 - Phase 5C has not started. The release gate explicitly blocks frontend/publication work until entry conditions pass.
 
 ## Next Single Task
-
-Continue Phase 5B content production:
 
 Continue Phase 5B content production:
 

@@ -90,6 +90,51 @@
       "official_documents": [
         "https://files.simpler.grants.gov/opportunity_docs/2024-12-23/DE-FOA-0003492_Solar_with_Wildlife_and_Ecosystem_Benefits_2_SolWEB2.pdf"
       ]
+    },
+    {
+      "id": "opp_us_2026_0003",
+      "slug": "jbmdl-power-generation-microgrid-construction",
+      "title": "Construction of the Power Generation with Microgrid at Joint Base McGuire-Dix-Lakehurst",
+      "status": "closed",
+      "country": "united-states",
+      "region": "New Jersey",
+      "opportunity_type": "tender",
+      "technology": [
+        "solar",
+        "battery-storage",
+        "microgrid"
+      ],
+      "buyer_or_issuer": "DEPT OF DEFENSE / DEPT OF THE ARMY / U.S. Army Corps of Engineers",
+      "published_date": "2026-07-07",
+      "deadline": "2026-07-15",
+      "source_language": "en",
+      "last_verified": "2026-07-29",
+      "official_source_url": "https://sam.gov/opp/ffc3c8e97e2447be9ff7f43d21968af7/view",
+      "overview": "SAM.gov sources-sought notice for power generation with microgrid construction at Joint Base McGuire-Dix-Lakehurst. The notice references similar scope including photovoltaic systems, BESS, switchboards, and natural gas generators.",
+      "review_status": "discovered",
+      "quality_score": 60,
+      "source_id": "src_us_sam_contract_opportunities",
+      "source_reliability": 95,
+      "tags": [
+        "federal-procurement",
+        "sources-sought",
+        "microgrid",
+        "solar",
+        "battery-storage"
+      ],
+      "related_calculators": [
+        "solar-panel-size",
+        "solar-battery-size"
+      ],
+      "relevance_notes": "Relevant as a closed SAM.gov draft example for microgrid, PV, and battery storage contractors. It must not be presented as an active opportunity because the response date has passed.",
+      "change_log": [
+        {
+          "date": "2026-07-29",
+          "status": "discovered",
+          "note": "Initial non-published draft intake from approved SAM.gov source. Listed as closed because the response date has passed."
+        }
+      ],
+      "official_documents": []
     }
   ]
 }
