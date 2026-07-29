@@ -13,6 +13,7 @@ const detailSlugs = [
   '178th-wing-base-microgrid-construction',
   'jbmdl-power-generation-microgrid-construction',
   '63rd-readiness-division-milcon-ercip-microgrid',
+  'solar-with-wildlife-and-ecosystem-benefits-2-solweb2',
 ];
 
 const requiredMarkers = [
@@ -25,6 +26,7 @@ const requiredMarkers = [
   'href="/opportunities/178th-wing-base-microgrid-construction/"',
   'href="/opportunities/jbmdl-power-generation-microgrid-construction/"',
   'href="/opportunities/63rd-readiness-division-milcon-ercip-microgrid/"',
+  'href="/opportunities/solar-with-wildlife-and-ecosystem-benefits-2-solweb2/"',
 ];
 
 const internalEntryFiles = [
@@ -56,15 +58,18 @@ detailSlugs.forEach((slug) => {
   const record = records.find((item) => item.slug === slug);
   const detailPath = path.join(__dirname, '..', 'opportunities', slug, 'index.html');
   const detailHtml = fs.readFileSync(detailPath, 'utf8');
+  const calculatorMarkers = {
+    'solar-panel-size': 'href="/calculators/panel-count/"',
+    'solar-battery-size': 'href="/calculators/battery-sizing/"',
+  };
   const detailMarkers = [
     '<meta name="robots" content="noindex,follow">',
     `<link rel="canonical" href="https://pvsize.com/opportunities/${slug}/">`,
     '<script src="/pv-analytics.js" defer></script>',
     record.title,
     'href="/opportunities/"',
-    'href="/calculators/panel-count/"',
-    'href="/calculators/battery-sizing/"',
     `href="${record.official_source_url}" rel="nofollow noopener" target="_blank"`,
+    ...(record.related_calculators || []).map((id) => calculatorMarkers[id]).filter(Boolean),
   ];
 
   detailMarkers.forEach((marker) => {

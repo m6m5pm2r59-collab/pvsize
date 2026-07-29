@@ -11,6 +11,7 @@ const detailSlugs = [
   '178th-wing-base-microgrid-construction',
   'jbmdl-power-generation-microgrid-construction',
   '63rd-readiness-division-milcon-ercip-microgrid',
+  'solar-with-wildlife-and-ecosystem-benefits-2-solweb2',
 ];
 
 const sourceLabels = {
@@ -49,6 +50,11 @@ const detailNotes = {
     'Relevant as a closed U.S. Army microgrid solicitation for contractors tracking PV solar and storage procurement patterns.',
     'The official notice describes a microgrid with full islanding capability, photovoltaic solar, battery energy storage, and backup generation.',
     'The response date had passed at intake time, so this page must stay clearly marked as closed.',
+  ],
+  'solar-with-wildlife-and-ecosystem-benefits-2-solweb2': [
+    'Relevant as a closed solar funding example for tracking DOE program design and agrivoltaics priorities.',
+    'The official Grants.gov listing focuses on ecosystem, wildlife, community, and agrivoltaics outcomes for large-scale solar.',
+    'The listing is archived, so this page must stay clearly marked as closed.',
   ],
 };
 
