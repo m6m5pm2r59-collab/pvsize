@@ -1,6 +1,6 @@
 # PVSize Opportunities Status
 
-Updated: 2026-07-29 21:18 CST
+Updated: 2026-07-29 21:38 CST
 
 ## Current Phase
 
@@ -9,6 +9,8 @@ Phase 5B: Content Production & Human Review
 ## Current State
 
 Phase 5B content production and human review guardrail is implemented. Five non-published draft records now exist with matching structured review notes. Two official U.S. sources are approved for draft-only discovery. All records remain `discovered` and non-published; the data layer still has no public opportunity pages, sitemap entries, AI import jobs, or newsletter capture flows.
+
+The approval rehearsal has started at the governance layer only: a human-review evidence template now defines the minimum checks before any record can move from `discovered` to `needs_review`. No record has been advanced, approved, published, indexed, or exposed publicly.
 
 ## Completed
 
@@ -43,6 +45,7 @@ Phase 5B content production and human review guardrail is implemented. Five non-
 - `src/data/opportunities/review-notes/opp_us_2026_0004.md` added for the new SAM.gov draft.
 - Closed SAM.gov U.S. Army 63rd Readiness Division microgrid draft added as `review_status: discovered` and `status: closed`; it is not approved, not published, and not indexed.
 - `src/data/opportunities/review-notes/opp_us_2026_0005.md` added for the new SAM.gov draft.
+- `src/data/opportunities/human-review-evidence-template.md` added to define the Phase 5B evidence requirements before moving any draft from `discovered` to `needs_review`.
 
 ## Current Constraints
 
@@ -53,7 +56,7 @@ Phase 5B content production and human review guardrail is implemented. Five non-
 
 ## Last Commit
 
-`05e934c Add fifth SAM.gov draft opportunity`
+Pending this run: Add human review evidence template
 
 ## Last Verification
 
@@ -78,6 +81,7 @@ Phase 5A validation passed:
 - SAM.gov JBMDL microgrid notice checked: direct official URL, notice ID, agency, response date, PV/BESS/microgrid relevance, and closed status due passed deadline
 - SAM.gov USGS communications infrastructure notice checked: direct official URL, notice ID, agency, response date, solar power systems, backup battery arrays, and open status at intake time
 - SAM.gov U.S. Army 63rd Readiness Division MILCON ERCIP Microgrid notice checked: direct official URL, notice ID, agency, response date, Mountain View California location, 750kW PV solar, 750kWh BESS, and closed status due passed deadline
+- Human review evidence template marker check for record snapshot, source evidence, human review fields, allowed state change, stop conditions, and publication reminder
 
 ## Risks And Gaps
 
@@ -99,7 +103,7 @@ Phase 5A validation passed:
 
 Continue Phase 5B content production:
 
-Begin the Phase 5B approval rehearsal preparation without changing any record to `approved`: create the human-review evidence checklist/template needed to move one existing draft from `discovered` to `needs_review`, and keep Phase 5C frontend, sitemap, RSS, newsletter, AI import jobs, and publication-state changes blocked.
+Run the first Phase 5B human-review rehearsal on one existing draft: use the human-review evidence template to decide whether one record can move from `discovered` to `needs_review`. Do not move any record to `approved`; keep Phase 5C frontend, sitemap, RSS, newsletter, AI import jobs, and publication-state changes blocked.
 
 ## User Decision Needed
 
