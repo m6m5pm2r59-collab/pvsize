@@ -1,6 +1,6 @@
 # PVSize Opportunities Status
 
-Updated: 2026-07-29 21:38 CST
+Updated: 2026-07-29 21:58 CST
 
 ## Current Phase
 
@@ -11,6 +11,8 @@ Phase 5B: Content Production & Human Review
 Phase 5B content production and human review guardrail is implemented. Five non-published draft records now exist with matching structured review notes. Two official U.S. sources are approved for draft-only discovery. All records remain `discovered` and non-published; the data layer still has no public opportunity pages, sitemap entries, AI import jobs, or newsletter capture flows.
 
 The approval rehearsal has started at the governance layer only: a human-review evidence template now defines the minimum checks before any record can move from `discovered` to `needs_review`. No record has been advanced, approved, published, indexed, or exposed publicly.
+
+The first human-review rehearsal evidence packet was added for `opp_us_2026_0004`. Official evidence is sufficient to prepare the record for human review, but the record remains `discovered` because no identified human reviewer has chosen `send to needs_review`.
 
 ## Completed
 
@@ -46,6 +48,7 @@ The approval rehearsal has started at the governance layer only: a human-review 
 - Closed SAM.gov U.S. Army 63rd Readiness Division microgrid draft added as `review_status: discovered` and `status: closed`; it is not approved, not published, and not indexed.
 - `src/data/opportunities/review-notes/opp_us_2026_0005.md` added for the new SAM.gov draft.
 - `src/data/opportunities/human-review-evidence-template.md` added to define the Phase 5B evidence requirements before moving any draft from `discovered` to `needs_review`.
+- First human-review rehearsal evidence packet added to `src/data/opportunities/review-notes/opp_us_2026_0004.md`; the record remains `discovered` because AI cannot provide the required human reviewer decision.
 
 ## Current Constraints
 
@@ -56,7 +59,7 @@ The approval rehearsal has started at the governance layer only: a human-review 
 
 ## Last Commit
 
-`8878335 Add opportunity human review evidence template`
+Pending this run: Add first human review rehearsal evidence
 
 ## Last Verification
 
@@ -82,6 +85,7 @@ Phase 5A validation passed:
 - SAM.gov USGS communications infrastructure notice checked: direct official URL, notice ID, agency, response date, solar power systems, backup battery arrays, and open status at intake time
 - SAM.gov U.S. Army 63rd Readiness Division MILCON ERCIP Microgrid notice checked: direct official URL, notice ID, agency, response date, Mountain View California location, 750kW PV solar, 750kWh BESS, and closed status due passed deadline
 - Human review evidence template marker check for record snapshot, source evidence, human review fields, allowed state change, stop conditions, and publication reminder
+- `opp_us_2026_0004` human-review rehearsal checked: direct official URL, source registry, country/source match, notice title, notice ID, published date, response deadline, issuer, solar relevance, storage relevance, and no known cancellation/supersession at rehearsal time
 
 ## Risks And Gaps
 
@@ -103,7 +107,7 @@ Phase 5A validation passed:
 
 Continue Phase 5B content production:
 
-Run the first Phase 5B human-review rehearsal on one existing draft: use the human-review evidence template to decide whether one record can move from `discovered` to `needs_review`. Do not move any record to `approved`; keep Phase 5C frontend, sitemap, RSS, newsletter, AI import jobs, and publication-state changes blocked.
+Continue Phase 5B human-review rehearsal: either obtain an identified human reviewer decision for `opp_us_2026_0004` before moving it to `needs_review`, or repeat the evidence-packet rehearsal for another existing draft. Do not move any record to `approved`; keep Phase 5C frontend, sitemap, RSS, newsletter, AI import jobs, and publication-state changes blocked.
 
 ## User Decision Needed
 
