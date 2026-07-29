@@ -62,7 +62,7 @@ Human review authorization now has a dedicated log template. The log defines the
 
 ## Last Commit
 
-Pending this run: Add human review authorization log
+`a991502 Add human review authorization log`
 
 ## Last Verification
 
