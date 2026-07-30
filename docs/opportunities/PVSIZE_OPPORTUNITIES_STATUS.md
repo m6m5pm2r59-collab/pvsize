@@ -1,6 +1,6 @@
 # PVSize Opportunities Status
 
-Updated: 2026-07-30 07:40 CST
+Updated: 2026-07-30 08:00 CST
 
 ## Current Phase
 
@@ -84,6 +84,7 @@ The mainline has moved to Phase 5C Publication Pipeline. The first non-indexed `
 - Aggregate Phase 5C QA now runs the index-policy verifier with `--self-test`, so the published-record release gate is exercised on every local aggregate QA run.
 - `docs/opportunities/PVSIZE_OPPORTUNITIES_INDEXED_RELEASE_READINESS_SEQUENCE.md` added to freeze the order for record status, SEO metadata, structured data, sitemap/RSS, newsletter, production QA, and archive before any indexed Opportunities release.
 - `src/tools/verify-opportunities-indexed-readiness.js` added and wired into aggregate QA to check indexed-release readiness markers while confirming no sitemap/RSS/schema/newsletter output was added.
+- `src/tools/verify-opportunities-seo-metadata.js` added and wired into aggregate QA to verify Opportunities listing/detail title, description, canonical, robots, and no premature JSON-LD/RSS/newsletter output while pages remain noindex-only.
 
 ## Current Constraints
 
@@ -94,7 +95,7 @@ The mainline has moved to Phase 5C Publication Pipeline. The first non-indexed `
 
 ## Last Commit
 
-`3eb4f07 Add opportunities indexed readiness verifier`
+Pending this run.
 
 ## Last Verification
 
@@ -152,6 +153,8 @@ Phase 5A validation passed:
 - Indexed-release readiness sequence marker check passed: document includes record status, SEO metadata, structured data, sitemap/RSS, newsletter, production QA, archive, stop conditions, and next implementation order.
 - Indexed-readiness verifier added and passed: `node src/tools/verify-opportunities-indexed-readiness.js` checks readiness markers, exact sequence, non-published record state, no RSS files, no listing JSON-LD, no newsletter form, and noindex listing policy.
 - Aggregate QA now includes indexed-readiness verification and passed.
+- SEO metadata verifier added and passed: `node src/tools/verify-opportunities-seo-metadata.js` checks listing plus five detail pages for exact titles, bounded descriptions, canonical URLs, noindex policy, and no premature JSON-LD/RSS/newsletter output.
+- Aggregate QA now includes SEO metadata verification and passed.
 
 ## Risks And Gaps
 
@@ -173,7 +176,7 @@ Phase 5A validation passed:
 
 Continue Phase 5C Publication Pipeline:
 
-Add SEO metadata verification for Opportunities listing and detail pages while keeping the current pages noindex-only. Do not add structured data, sitemap/RSS, newsletter output, or published record transitions in the same task.
+Add structured-data planning and verification rules for published records only. Do not add JSON-LD output, sitemap/RSS, newsletter output, or published record transitions in the same task.
 
 ## User Decision Needed
 

@@ -12,6 +12,7 @@ const httpVerifierPath = path.join(__dirname, 'verify-opportunities-http.js');
 const analyticsCtaVerifierPath = path.join(__dirname, 'verify-opportunities-analytics-cta.js');
 const indexPolicyVerifierPath = path.join(__dirname, 'verify-opportunities-index-policy.js');
 const indexedReadinessVerifierPath = path.join(__dirname, 'verify-opportunities-indexed-readiness.js');
+const seoMetadataVerifierPath = path.join(__dirname, 'verify-opportunities-seo-metadata.js');
 const aggregateVerifierPath = path.join(__dirname, 'verify-opportunities-all.js');
 const productionNoindexVerifierPath = path.join(__dirname, 'verify-opportunities-production-noindex.js');
 const detailSlugs = [
@@ -63,6 +64,9 @@ if (!fs.existsSync(indexPolicyVerifierPath)) {
 }
 if (!fs.existsSync(indexedReadinessVerifierPath)) {
   errors.push('missing indexed-readiness verifier');
+}
+if (!fs.existsSync(seoMetadataVerifierPath)) {
+  errors.push('missing SEO metadata verifier');
 }
 
 if (!fs.existsSync(aggregateVerifierPath)) {

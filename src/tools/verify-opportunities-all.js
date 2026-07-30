@@ -3,6 +3,7 @@ const { spawnSync } = require('child_process');
 const steps = [
   ['Data validator', ['src/tools/validate-opportunities.js', '--self-test'], {}],
   ['Detail generator', ['src/tools/generate-opportunity-detail-pages.js'], {}],
+  ['SEO metadata verification', ['src/tools/verify-opportunities-seo-metadata.js'], {}],
   ['Page verification', ['src/tools/verify-opportunities-page.js'], {}],
   ['Indexed readiness verification', ['src/tools/verify-opportunities-indexed-readiness.js'], {}],
   ['Index policy verification', ['src/tools/verify-opportunities-index-policy.js', '--self-test'], {}],
