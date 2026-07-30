@@ -1,6 +1,6 @@
 # PVSize Opportunities Status
 
-Updated: 2026-07-30 08:00 CST
+Updated: 2026-07-30 08:20 CST
 
 ## Current Phase
 
@@ -85,6 +85,7 @@ The mainline has moved to Phase 5C Publication Pipeline. The first non-indexed `
 - `docs/opportunities/PVSIZE_OPPORTUNITIES_INDEXED_RELEASE_READINESS_SEQUENCE.md` added to freeze the order for record status, SEO metadata, structured data, sitemap/RSS, newsletter, production QA, and archive before any indexed Opportunities release.
 - `src/tools/verify-opportunities-indexed-readiness.js` added and wired into aggregate QA to check indexed-release readiness markers while confirming no sitemap/RSS/schema/newsletter output was added.
 - `src/tools/verify-opportunities-seo-metadata.js` added and wired into aggregate QA to verify Opportunities listing/detail title, description, canonical, robots, and no premature JSON-LD/RSS/newsletter output while pages remain noindex-only.
+- `docs/opportunities/PVSIZE_OPPORTUNITIES_STRUCTURED_DATA_RULES.md` and `src/tools/verify-opportunities-structured-data-rules.js` added to define published-only structured-data planning rules and verify that current pages still contain no JSON-LD output.
 
 ## Current Constraints
 
@@ -95,7 +96,7 @@ The mainline has moved to Phase 5C Publication Pipeline. The first non-indexed `
 
 ## Last Commit
 
-`a74600f Add opportunities SEO metadata verifier`
+Pending this run.
 
 ## Last Verification
 
@@ -155,6 +156,8 @@ Phase 5A validation passed:
 - Aggregate QA now includes indexed-readiness verification and passed.
 - SEO metadata verifier added and passed: `node src/tools/verify-opportunities-seo-metadata.js` checks listing plus five detail pages for exact titles, bounded descriptions, canonical URLs, noindex policy, and no premature JSON-LD/RSS/newsletter output.
 - Aggregate QA now includes SEO metadata verification and passed.
+- Structured-data rules verifier added and passed: `node src/tools/verify-opportunities-structured-data-rules.js --self-test` checks published-only schema rules, allowed/blocked fields, no current JSON-LD output, and a non-published JSON-LD fixture failure.
+- Aggregate QA now includes structured-data rules verification and passed.
 
 ## Risks And Gaps
 
@@ -176,7 +179,7 @@ Phase 5A validation passed:
 
 Continue Phase 5C Publication Pipeline:
 
-Add structured-data planning and verification rules for published records only. Do not add JSON-LD output, sitemap/RSS, newsletter output, or published record transitions in the same task.
+Add sitemap/RSS planning and verification rules for published records only. Do not add sitemap/RSS output, JSON-LD output, newsletter output, or published record transitions in the same task.
 
 ## User Decision Needed
 
