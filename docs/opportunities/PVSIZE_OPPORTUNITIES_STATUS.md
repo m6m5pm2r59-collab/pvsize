@@ -1,6 +1,6 @@
 # PVSize Opportunities Status
 
-Updated: 2026-07-30 08:40 CST
+Updated: 2026-07-30 09:00 CST
 
 ## Current Phase
 
@@ -87,6 +87,7 @@ The mainline has moved to Phase 5C Publication Pipeline. The first non-indexed `
 - `src/tools/verify-opportunities-seo-metadata.js` added and wired into aggregate QA to verify Opportunities listing/detail title, description, canonical, robots, and no premature JSON-LD/RSS/newsletter output while pages remain noindex-only.
 - `docs/opportunities/PVSIZE_OPPORTUNITIES_STRUCTURED_DATA_RULES.md` and `src/tools/verify-opportunities-structured-data-rules.js` added to define published-only structured-data planning rules and verify that current pages still contain no JSON-LD output.
 - `docs/opportunities/PVSIZE_OPPORTUNITIES_SITEMAP_RSS_RULES.md` and `src/tools/verify-opportunities-sitemap-rss-rules.js` added to define published-only sitemap/RSS planning rules and verify that current pages still expose no feed output.
+- `docs/opportunities/PVSIZE_OPPORTUNITIES_NEWSLETTER_RULES.md` and `src/tools/verify-opportunities-newsletter-rules.js` added to define newsletter planning rules after indexed content gates and verify that current pages still expose no newsletter form or API output.
 
 ## Current Constraints
 
@@ -97,7 +98,7 @@ The mainline has moved to Phase 5C Publication Pipeline. The first non-indexed `
 
 ## Last Commit
 
-`2b1bb6e Add opportunities sitemap RSS rules gate`
+Pending this run.
 
 ## Last Verification
 
@@ -161,6 +162,8 @@ Phase 5A validation passed:
 - Aggregate QA now includes structured-data rules verification and passed.
 - Sitemap/RSS rules verifier added and passed: `node src/tools/verify-opportunities-sitemap-rss-rules.js --self-test` checks published-only feed rules, allowed/blocked feed fields, no current RSS/feed output, sitemap exclusion, and non-published sitemap/RSS fixture failures.
 - Aggregate QA now includes sitemap/RSS rules verification and passed.
+- Newsletter rules verifier added and passed: `node src/tools/verify-opportunities-newsletter-rules.js --self-test` checks indexed-content gate dependency, consent requirements, analytics event names, blocked MVP features, no current newsletter output, and newsletter form/API fixture failures.
+- Aggregate QA now includes newsletter rules verification and passed.
 
 ## Risks And Gaps
 
@@ -182,7 +185,7 @@ Phase 5A validation passed:
 
 Continue Phase 5C Publication Pipeline:
 
-Add newsletter planning and verification rules after indexed content gates. Do not add newsletter form/output, sitemap/RSS output, JSON-LD output, or published record transitions in the same task.
+Add production QA readiness planning for indexed Opportunities release. Do not deploy, add indexed output, add newsletter form/output, or change record publication states in the same task.
 
 ## User Decision Needed
 

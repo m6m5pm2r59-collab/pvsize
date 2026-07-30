@@ -15,6 +15,7 @@ const indexedReadinessVerifierPath = path.join(__dirname, 'verify-opportunities-
 const seoMetadataVerifierPath = path.join(__dirname, 'verify-opportunities-seo-metadata.js');
 const structuredDataRulesVerifierPath = path.join(__dirname, 'verify-opportunities-structured-data-rules.js');
 const sitemapRssRulesVerifierPath = path.join(__dirname, 'verify-opportunities-sitemap-rss-rules.js');
+const newsletterRulesVerifierPath = path.join(__dirname, 'verify-opportunities-newsletter-rules.js');
 const aggregateVerifierPath = path.join(__dirname, 'verify-opportunities-all.js');
 const productionNoindexVerifierPath = path.join(__dirname, 'verify-opportunities-production-noindex.js');
 const detailSlugs = [
@@ -75,6 +76,9 @@ if (!fs.existsSync(structuredDataRulesVerifierPath)) {
 }
 if (!fs.existsSync(sitemapRssRulesVerifierPath)) {
   errors.push('missing sitemap/RSS rules verifier');
+}
+if (!fs.existsSync(newsletterRulesVerifierPath)) {
+  errors.push('missing newsletter rules verifier');
 }
 
 if (!fs.existsSync(aggregateVerifierPath)) {

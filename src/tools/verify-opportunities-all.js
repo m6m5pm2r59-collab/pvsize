@@ -6,6 +6,7 @@ const steps = [
   ['SEO metadata verification', ['src/tools/verify-opportunities-seo-metadata.js'], {}],
   ['Structured data rules verification', ['src/tools/verify-opportunities-structured-data-rules.js', '--self-test'], {}],
   ['Sitemap/RSS rules verification', ['src/tools/verify-opportunities-sitemap-rss-rules.js', '--self-test'], {}],
+  ['Newsletter rules verification', ['src/tools/verify-opportunities-newsletter-rules.js', '--self-test'], {}],
   ['Page verification', ['src/tools/verify-opportunities-page.js'], {}],
   ['Indexed readiness verification', ['src/tools/verify-opportunities-indexed-readiness.js'], {}],
   ['Index policy verification', ['src/tools/verify-opportunities-index-policy.js', '--self-test'], {}],
