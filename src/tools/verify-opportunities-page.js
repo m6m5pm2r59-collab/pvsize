@@ -18,6 +18,7 @@ const sitemapRssRulesVerifierPath = path.join(__dirname, 'verify-opportunities-s
 const newsletterRulesVerifierPath = path.join(__dirname, 'verify-opportunities-newsletter-rules.js');
 const productionQaReadinessVerifierPath = path.join(__dirname, 'verify-opportunities-production-qa-readiness.js');
 const productionQaExecutionChecklistVerifierPath = path.join(__dirname, 'verify-opportunities-production-qa-execution-checklist.js');
+const indexedReleaseFallbackChecklistVerifierPath = path.join(__dirname, 'verify-opportunities-indexed-release-fallback-checklist.js');
 const aggregateVerifierPath = path.join(__dirname, 'verify-opportunities-all.js');
 const productionNoindexVerifierPath = path.join(__dirname, 'verify-opportunities-production-noindex.js');
 const detailSlugs = [
@@ -87,6 +88,9 @@ if (!fs.existsSync(productionQaReadinessVerifierPath)) {
 }
 if (!fs.existsSync(productionQaExecutionChecklistVerifierPath)) {
   errors.push('missing production QA execution checklist verifier');
+}
+if (!fs.existsSync(indexedReleaseFallbackChecklistVerifierPath)) {
+  errors.push('missing indexed release fallback checklist verifier');
 }
 
 if (!fs.existsSync(aggregateVerifierPath)) {

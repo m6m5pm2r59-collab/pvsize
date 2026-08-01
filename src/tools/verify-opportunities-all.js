@@ -9,6 +9,7 @@ const steps = [
   ['Newsletter rules verification', ['src/tools/verify-opportunities-newsletter-rules.js', '--self-test'], {}],
   ['Production QA readiness verification', ['src/tools/verify-opportunities-production-qa-readiness.js', '--self-test'], {}],
   ['Production QA execution checklist verification', ['src/tools/verify-opportunities-production-qa-execution-checklist.js', '--self-test'], {}],
+  ['Indexed release fallback checklist verification', ['src/tools/verify-opportunities-indexed-release-fallback-checklist.js', '--self-test'], {}],
   ['Page verification', ['src/tools/verify-opportunities-page.js'], {}],
   ['Indexed readiness verification', ['src/tools/verify-opportunities-indexed-readiness.js'], {}],
   ['Index policy verification', ['src/tools/verify-opportunities-index-policy.js', '--self-test'], {}],
