@@ -19,6 +19,7 @@ const steps = [
   ['Production QA decision log template verification', ['src/tools/verify-opportunities-production-qa-decision-log-template.js', '--self-test'], {}],
   ['Production QA go/no-go criteria verification', ['src/tools/verify-opportunities-production-qa-go-no-go-criteria.js', '--self-test'], {}],
   ['Production QA release notes template verification', ['src/tools/verify-opportunities-production-qa-release-notes-template.js', '--self-test'], {}],
+  ['Production QA monitoring handoff verification', ['src/tools/verify-opportunities-production-qa-monitoring-handoff-checklist.js', '--self-test'], {}],
   ['Page verification', ['src/tools/verify-opportunities-page.js'], {}],
   ['Indexed readiness verification', ['src/tools/verify-opportunities-indexed-readiness.js'], {}],
   ['Index policy verification', ['src/tools/verify-opportunities-index-policy.js', '--self-test'], {}],
