@@ -26,6 +26,7 @@ const productionQaRunManifestVerifierPath = path.join(__dirname, 'verify-opportu
 const productionQaEvidenceBundleChecklistVerifierPath = path.join(__dirname, 'verify-opportunities-production-qa-evidence-bundle-checklist.js');
 const productionQaSignoffChecklistVerifierPath = path.join(__dirname, 'verify-opportunities-production-qa-signoff-checklist.js');
 const productionQaDecisionLogTemplateVerifierPath = path.join(__dirname, 'verify-opportunities-production-qa-decision-log-template.js');
+const productionQaGoNoGoCriteriaVerifierPath = path.join(__dirname, 'verify-opportunities-production-qa-go-no-go-criteria.js');
 const aggregateVerifierPath = path.join(__dirname, 'verify-opportunities-all.js');
 const productionNoindexVerifierPath = path.join(__dirname, 'verify-opportunities-production-noindex.js');
 const detailSlugs = [
@@ -119,6 +120,9 @@ if (!fs.existsSync(productionQaSignoffChecklistVerifierPath)) {
 }
 if (!fs.existsSync(productionQaDecisionLogTemplateVerifierPath)) {
   errors.push('missing production QA decision log template verifier');
+}
+if (!fs.existsSync(productionQaGoNoGoCriteriaVerifierPath)) {
+  errors.push('missing production QA go/no-go criteria verifier');
 }
 
 if (!fs.existsSync(aggregateVerifierPath)) {

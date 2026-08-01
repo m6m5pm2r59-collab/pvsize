@@ -17,6 +17,7 @@ const steps = [
   ['Production QA evidence bundle checklist verification', ['src/tools/verify-opportunities-production-qa-evidence-bundle-checklist.js', '--self-test'], {}],
   ['Production QA signoff checklist verification', ['src/tools/verify-opportunities-production-qa-signoff-checklist.js', '--self-test'], {}],
   ['Production QA decision log template verification', ['src/tools/verify-opportunities-production-qa-decision-log-template.js', '--self-test'], {}],
+  ['Production QA go/no-go criteria verification', ['src/tools/verify-opportunities-production-qa-go-no-go-criteria.js', '--self-test'], {}],
   ['Page verification', ['src/tools/verify-opportunities-page.js'], {}],
   ['Indexed readiness verification', ['src/tools/verify-opportunities-indexed-readiness.js'], {}],
   ['Index policy verification', ['src/tools/verify-opportunities-index-policy.js', '--self-test'], {}],
