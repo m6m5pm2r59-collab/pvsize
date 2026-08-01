@@ -20,6 +20,7 @@ const productionQaReadinessVerifierPath = path.join(__dirname, 'verify-opportuni
 const productionQaExecutionChecklistVerifierPath = path.join(__dirname, 'verify-opportunities-production-qa-execution-checklist.js');
 const indexedReleaseFallbackChecklistVerifierPath = path.join(__dirname, 'verify-opportunities-indexed-release-fallback-checklist.js');
 const indexedReleaseArchiveClosureChecklistVerifierPath = path.join(__dirname, 'verify-opportunities-indexed-release-archive-closure-checklist.js');
+const productionQaArtifactIndexVerifierPath = path.join(__dirname, 'verify-opportunities-production-qa-artifact-index.js');
 const aggregateVerifierPath = path.join(__dirname, 'verify-opportunities-all.js');
 const productionNoindexVerifierPath = path.join(__dirname, 'verify-opportunities-production-noindex.js');
 const detailSlugs = [
@@ -95,6 +96,9 @@ if (!fs.existsSync(indexedReleaseFallbackChecklistVerifierPath)) {
 }
 if (!fs.existsSync(indexedReleaseArchiveClosureChecklistVerifierPath)) {
   errors.push('missing indexed release archive closure checklist verifier');
+}
+if (!fs.existsSync(productionQaArtifactIndexVerifierPath)) {
+  errors.push('missing production QA artifact index verifier');
 }
 
 if (!fs.existsSync(aggregateVerifierPath)) {
