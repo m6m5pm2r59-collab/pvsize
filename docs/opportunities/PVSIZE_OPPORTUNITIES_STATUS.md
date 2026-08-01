@@ -1,6 +1,6 @@
 # PVSize Opportunities Status
 
-Updated: 2026-08-01 16:57 CST
+Updated: 2026-08-01 17:02 CST
 
 ## Current Phase
 
@@ -91,6 +91,7 @@ The mainline has moved to Phase 5C Publication Pipeline. The first non-indexed `
 - `docs/opportunities/PVSIZE_OPPORTUNITIES_PRODUCTION_QA_READINESS_RULES.md` and `src/tools/verify-opportunities-production-qa-readiness.js` added to define production QA readiness planning for a future indexed Opportunities release and verify that the current MVP still has no deploy, indexed output, newsletter output, sitemap/RSS output, JSON-LD output, or published record transitions.
 - `docs/opportunities/PVSIZE_OPPORTUNITIES_PRODUCTION_QA_EXECUTION_CHECKLIST.md` and `src/tools/verify-opportunities-production-qa-execution-checklist.js` added to define the future production QA execution checklist for an indexed Opportunities release and verify that the current MVP still has no deploy, indexed output, newsletter output, sitemap/RSS output, JSON-LD output, indexing request, or published record transitions.
 - `docs/opportunities/PVSIZE_OPPORTUNITIES_INDEXED_RELEASE_FALLBACK_CHECKLIST.md` and `src/tools/verify-opportunities-indexed-release-fallback-checklist.js` added to define indexed release rollback/noindex fallback planning for Opportunities production QA and verify that the current MVP still has no deploy, indexed output, newsletter output, sitemap/RSS output, JSON-LD output, indexing request, or published record transitions.
+- `docs/opportunities/PVSIZE_OPPORTUNITIES_INDEXED_RELEASE_ARCHIVE_CLOSURE_CHECKLIST.md` and `src/tools/verify-opportunities-indexed-release-archive-closure-checklist.js` added to define future indexed release archive closure planning and verify that the current MVP still has no deploy, indexed output, newsletter output, sitemap/RSS output, JSON-LD output, indexing request, Phase 5C closure, or published record transitions.
 
 ## Current Constraints
 
@@ -101,7 +102,7 @@ The mainline has moved to Phase 5C Publication Pipeline. The first non-indexed `
 
 ## Last Commit
 
-`24e458e Add opportunities indexed release fallback checklist`
+Pending this run.
 
 ## Last Verification
 
@@ -173,6 +174,8 @@ Phase 5A validation passed:
 - Aggregate QA now includes production QA execution checklist verification and passed.
 - Indexed release fallback checklist verifier added and passed: `node src/tools/verify-opportunities-indexed-release-fallback-checklist.js --self-test` checks noindex-first fallback rules, fallback triggers, rollback target markers, noindex fallback actions, fallback verification commands, production recheck markers, indexing hold rules, failure report markers, current no-execution state, and unsafe indexed-output fixtures.
 - Aggregate QA now includes indexed release fallback checklist verification and passed.
+- Indexed release archive closure checklist verifier added and passed: `node src/tools/verify-opportunities-indexed-release-archive-closure-checklist.js --self-test` checks closure preconditions, evidence package markers, indexed output evidence, closure decision markers, report handoff, current no-closure state, Phase 5C remains open, and unsafe closure/indexed-output fixtures.
+- Aggregate QA now includes indexed release archive closure checklist verification and passed.
 
 ## Risks And Gaps
 
@@ -194,7 +197,7 @@ Phase 5A validation passed:
 
 Continue Phase 5C Publication Pipeline:
 
-Add indexed release archive closure checklist for Opportunities production QA. Do not deploy, add indexed output, add newsletter form/output, request indexing, mark Phase 5C Closed, or change record publication states in the same task.
+Add indexed-release production QA artifact index for Opportunities. Do not deploy, add indexed output, add newsletter form/output, request indexing, mark Phase 5C Closed, or change record publication states in the same task.
 
 ## User Decision Needed
 

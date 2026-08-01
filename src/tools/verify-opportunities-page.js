@@ -19,6 +19,7 @@ const newsletterRulesVerifierPath = path.join(__dirname, 'verify-opportunities-n
 const productionQaReadinessVerifierPath = path.join(__dirname, 'verify-opportunities-production-qa-readiness.js');
 const productionQaExecutionChecklistVerifierPath = path.join(__dirname, 'verify-opportunities-production-qa-execution-checklist.js');
 const indexedReleaseFallbackChecklistVerifierPath = path.join(__dirname, 'verify-opportunities-indexed-release-fallback-checklist.js');
+const indexedReleaseArchiveClosureChecklistVerifierPath = path.join(__dirname, 'verify-opportunities-indexed-release-archive-closure-checklist.js');
 const aggregateVerifierPath = path.join(__dirname, 'verify-opportunities-all.js');
 const productionNoindexVerifierPath = path.join(__dirname, 'verify-opportunities-production-noindex.js');
 const detailSlugs = [
@@ -91,6 +92,9 @@ if (!fs.existsSync(productionQaExecutionChecklistVerifierPath)) {
 }
 if (!fs.existsSync(indexedReleaseFallbackChecklistVerifierPath)) {
   errors.push('missing indexed release fallback checklist verifier');
+}
+if (!fs.existsSync(indexedReleaseArchiveClosureChecklistVerifierPath)) {
+  errors.push('missing indexed release archive closure checklist verifier');
 }
 
 if (!fs.existsSync(aggregateVerifierPath)) {
