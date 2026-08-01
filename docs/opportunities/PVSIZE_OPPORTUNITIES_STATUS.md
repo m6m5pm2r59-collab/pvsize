@@ -1,6 +1,6 @@
 # PVSize Opportunities Status
 
-Updated: 2026-08-01 21:12 CST
+Updated: 2026-08-01 21:53 CST
 
 ## Current Phase
 
@@ -99,6 +99,7 @@ The mainline has moved to Phase 5C Publication Pipeline. The first non-indexed `
 - `docs/opportunities/PVSIZE_OPPORTUNITIES_PRODUCTION_QA_SIGNOFF_CHECKLIST.md` and `src/tools/verify-opportunities-production-qa-signoff-checklist.js` added to define future indexed-release production QA signoff requirements and verify that the current MVP still has no deploy, indexed output, newsletter output, sitemap/RSS output, JSON-LD output, indexing request, indexed release approval, Phase 5C closure, or published record transitions.
 - `docs/opportunities/PVSIZE_OPPORTUNITIES_PRODUCTION_QA_DECISION_LOG_TEMPLATE.md` and `src/tools/verify-opportunities-production-qa-decision-log-template.js` added to define future indexed-release production QA decision log requirements and verify that the current MVP still has no deploy, indexed output, newsletter output, sitemap/RSS output, JSON-LD output, indexing request, indexed release approval, Phase 5C closure, or published record transitions.
 - `docs/opportunities/PVSIZE_OPPORTUNITIES_PRODUCTION_QA_GO_NO_GO_CRITERIA.md` and `src/tools/verify-opportunities-production-qa-go-no-go-criteria.js` added to define future indexed-release production QA go/no-go criteria and verify that the current MVP still has no deploy, indexed output, newsletter output, sitemap/RSS output, JSON-LD output, indexing request, indexed release approval, Phase 5C closure, or published record transitions.
+- `docs/opportunities/PVSIZE_OPPORTUNITIES_PRODUCTION_QA_RELEASE_NOTES_TEMPLATE.md` and `src/tools/verify-opportunities-production-qa-release-notes-template.js` added to define future indexed-release production QA release notes requirements and verify that the current MVP still has no deploy, indexed output, newsletter output, sitemap/RSS output, JSON-LD output, indexing request, indexed release approval, Phase 5C closure, or published record transitions.
 
 ## Current Constraints
 
@@ -109,7 +110,7 @@ The mainline has moved to Phase 5C Publication Pipeline. The first non-indexed `
 
 ## Last Commit
 
-`5ead512 Add opportunities production QA go no go criteria`
+Pending this run.
 
 ## Last Verification
 
@@ -197,6 +198,8 @@ Phase 5A validation passed:
 - Aggregate QA now includes production QA decision log template verification and passed.
 - Production QA go/no-go criteria verifier added and passed: `node src/tools/verify-opportunities-production-qa-go-no-go-criteria.js --self-test` checks required criteria groups, GO criteria, NO-GO criteria, HOLD criteria, current no-approval state, Phase 5C remains open, and unsafe indexed-output fixtures.
 - Aggregate QA now includes production QA go/no-go criteria verification and passed.
+- Production QA release notes template verifier added and passed: `node src/tools/verify-opportunities-production-qa-release-notes-template.js --self-test` checks required release note fields, user-facing summary, QA summary, risk summary, current no-release state, Phase 5C remains open, and unsafe indexed-output fixtures.
+- Aggregate QA now includes production QA release notes template verification and passed.
 
 ## Risks And Gaps
 
@@ -218,7 +221,7 @@ Phase 5A validation passed:
 
 Continue Phase 5C Publication Pipeline:
 
-Add indexed-release production QA release notes template for Opportunities. Do not deploy, add indexed output, add newsletter form/output, request indexing, mark Phase 5C Closed, approve indexed release, or change record publication states in the same task.
+Add indexed-release production QA monitoring handoff checklist for Opportunities. Do not deploy, add indexed output, add newsletter form/output, request indexing, mark Phase 5C Closed, approve indexed release, or change record publication states in the same task.
 
 ## User Decision Needed
 
