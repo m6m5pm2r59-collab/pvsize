@@ -17,6 +17,7 @@ const structuredDataRulesVerifierPath = path.join(__dirname, 'verify-opportuniti
 const sitemapRssRulesVerifierPath = path.join(__dirname, 'verify-opportunities-sitemap-rss-rules.js');
 const newsletterRulesVerifierPath = path.join(__dirname, 'verify-opportunities-newsletter-rules.js');
 const productionQaReadinessVerifierPath = path.join(__dirname, 'verify-opportunities-production-qa-readiness.js');
+const productionQaExecutionChecklistVerifierPath = path.join(__dirname, 'verify-opportunities-production-qa-execution-checklist.js');
 const aggregateVerifierPath = path.join(__dirname, 'verify-opportunities-all.js');
 const productionNoindexVerifierPath = path.join(__dirname, 'verify-opportunities-production-noindex.js');
 const detailSlugs = [
@@ -83,6 +84,9 @@ if (!fs.existsSync(newsletterRulesVerifierPath)) {
 }
 if (!fs.existsSync(productionQaReadinessVerifierPath)) {
   errors.push('missing production QA readiness verifier');
+}
+if (!fs.existsSync(productionQaExecutionChecklistVerifierPath)) {
+  errors.push('missing production QA execution checklist verifier');
 }
 
 if (!fs.existsSync(aggregateVerifierPath)) {
