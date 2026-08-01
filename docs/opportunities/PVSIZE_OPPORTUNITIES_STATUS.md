@@ -1,6 +1,6 @@
 # PVSize Opportunities Status
 
-Updated: 2026-07-30 09:00 CST
+Updated: 2026-08-01 16:01 CST
 
 ## Current Phase
 
@@ -88,6 +88,7 @@ The mainline has moved to Phase 5C Publication Pipeline. The first non-indexed `
 - `docs/opportunities/PVSIZE_OPPORTUNITIES_STRUCTURED_DATA_RULES.md` and `src/tools/verify-opportunities-structured-data-rules.js` added to define published-only structured-data planning rules and verify that current pages still contain no JSON-LD output.
 - `docs/opportunities/PVSIZE_OPPORTUNITIES_SITEMAP_RSS_RULES.md` and `src/tools/verify-opportunities-sitemap-rss-rules.js` added to define published-only sitemap/RSS planning rules and verify that current pages still expose no feed output.
 - `docs/opportunities/PVSIZE_OPPORTUNITIES_NEWSLETTER_RULES.md` and `src/tools/verify-opportunities-newsletter-rules.js` added to define newsletter planning rules after indexed content gates and verify that current pages still expose no newsletter form or API output.
+- `docs/opportunities/PVSIZE_OPPORTUNITIES_PRODUCTION_QA_READINESS_RULES.md` and `src/tools/verify-opportunities-production-qa-readiness.js` added to define production QA readiness planning for a future indexed Opportunities release and verify that the current MVP still has no deploy, indexed output, newsletter output, sitemap/RSS output, JSON-LD output, or published record transitions.
 
 ## Current Constraints
 
@@ -98,7 +99,7 @@ The mainline has moved to Phase 5C Publication Pipeline. The first non-indexed `
 
 ## Last Commit
 
-`d2b1d2c Add opportunities newsletter rules gate`
+Pending this run.
 
 ## Last Verification
 
@@ -164,6 +165,8 @@ Phase 5A validation passed:
 - Aggregate QA now includes sitemap/RSS rules verification and passed.
 - Newsletter rules verifier added and passed: `node src/tools/verify-opportunities-newsletter-rules.js --self-test` checks indexed-content gate dependency, consent requirements, analytics event names, blocked MVP features, no current newsletter output, and newsletter form/API fixture failures.
 - Aggregate QA now includes newsletter rules verification and passed.
+- Production QA readiness rules verifier added and passed: `node src/tools/verify-opportunities-production-qa-readiness.js --self-test` checks local aggregate-first rules, pre-deploy checks, deployment boundaries, production HTTP checks, indexed output checks, rollback/noindex fallback rules, archive requirements, current no-deploy state, and unsafe indexed-output fixtures.
+- Aggregate QA now includes production QA readiness verification and passed.
 
 ## Risks And Gaps
 
@@ -185,7 +188,7 @@ Phase 5A validation passed:
 
 Continue Phase 5C Publication Pipeline:
 
-Add production QA readiness planning for indexed Opportunities release. Do not deploy, add indexed output, add newsletter form/output, or change record publication states in the same task.
+Add production QA execution checklist for the future indexed Opportunities release. Do not deploy, add indexed output, add newsletter form/output, or change record publication states in the same task.
 
 ## User Decision Needed
 
