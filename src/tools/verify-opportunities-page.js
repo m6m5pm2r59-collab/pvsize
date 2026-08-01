@@ -23,6 +23,7 @@ const indexedReleaseArchiveClosureChecklistVerifierPath = path.join(__dirname, '
 const productionQaArtifactIndexVerifierPath = path.join(__dirname, 'verify-opportunities-production-qa-artifact-index.js');
 const productionQaHandoffChecklistVerifierPath = path.join(__dirname, 'verify-opportunities-production-qa-handoff-checklist.js');
 const productionQaRunManifestVerifierPath = path.join(__dirname, 'verify-opportunities-production-qa-run-manifest.js');
+const productionQaEvidenceBundleChecklistVerifierPath = path.join(__dirname, 'verify-opportunities-production-qa-evidence-bundle-checklist.js');
 const aggregateVerifierPath = path.join(__dirname, 'verify-opportunities-all.js');
 const productionNoindexVerifierPath = path.join(__dirname, 'verify-opportunities-production-noindex.js');
 const detailSlugs = [
@@ -107,6 +108,9 @@ if (!fs.existsSync(productionQaHandoffChecklistVerifierPath)) {
 }
 if (!fs.existsSync(productionQaRunManifestVerifierPath)) {
   errors.push('missing production QA run manifest verifier');
+}
+if (!fs.existsSync(productionQaEvidenceBundleChecklistVerifierPath)) {
+  errors.push('missing production QA evidence bundle checklist verifier');
 }
 
 if (!fs.existsSync(aggregateVerifierPath)) {

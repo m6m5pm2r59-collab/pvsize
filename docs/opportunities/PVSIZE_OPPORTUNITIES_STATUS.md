@@ -1,6 +1,6 @@
 # PVSize Opportunities Status
 
-Updated: 2026-08-01 20:13 CST
+Updated: 2026-08-01 20:20 CST
 
 ## Current Phase
 
@@ -95,6 +95,7 @@ The mainline has moved to Phase 5C Publication Pipeline. The first non-indexed `
 - `docs/opportunities/PVSIZE_OPPORTUNITIES_PRODUCTION_QA_ARTIFACT_INDEX.md` and `src/tools/verify-opportunities-production-qa-artifact-index.js` added to index current indexed-release production QA planning documents, verifiers, and report trail while verifying that the current MVP still has no deploy, indexed output, newsletter output, sitemap/RSS output, JSON-LD output, indexing request, Phase 5C closure, or published record transitions.
 - `docs/opportunities/PVSIZE_OPPORTUNITIES_PRODUCTION_QA_HANDOFF_CHECKLIST.md` and `src/tools/verify-opportunities-production-qa-handoff-checklist.js` added to define future indexed-release production QA handoff requirements and verify that the current MVP still has no deploy, indexed output, newsletter output, sitemap/RSS output, JSON-LD output, indexing request, Phase 5C closure, or published record transitions.
 - `docs/opportunities/PVSIZE_OPPORTUNITIES_PRODUCTION_QA_RUN_MANIFEST.md` and `src/tools/verify-opportunities-production-qa-run-manifest.js` added to define future indexed-release production QA run metadata and verify that the current MVP still has no deploy, indexed output, newsletter output, sitemap/RSS output, JSON-LD output, indexing request, Phase 5C closure, or published record transitions.
+- `docs/opportunities/PVSIZE_OPPORTUNITIES_PRODUCTION_QA_EVIDENCE_BUNDLE_CHECKLIST.md` and `src/tools/verify-opportunities-production-qa-evidence-bundle-checklist.js` added to define future indexed-release production QA evidence bundle requirements and verify that the current MVP still has no deploy, indexed output, newsletter output, sitemap/RSS output, JSON-LD output, indexing request, Phase 5C closure, or published record transitions.
 
 ## Current Constraints
 
@@ -105,7 +106,7 @@ The mainline has moved to Phase 5C Publication Pipeline. The first non-indexed `
 
 ## Last Commit
 
-`18dbfe2 Add opportunities production QA run manifest`
+Pending this run.
 
 ## Last Verification
 
@@ -185,6 +186,8 @@ Phase 5A validation passed:
 - Aggregate QA now includes production QA handoff checklist verification and passed.
 - Production QA run manifest verifier added and passed: `node src/tools/verify-opportunities-production-qa-run-manifest.js --self-test` checks required run manifest fields, verification plan commands, output artifacts, stop conditions, current no-execution state, Phase 5C remains open, and unsafe indexed-output fixtures.
 - Aggregate QA now includes production QA run manifest verification and passed.
+- Production QA evidence bundle checklist verifier added and passed: `node src/tools/verify-opportunities-production-qa-evidence-bundle-checklist.js --self-test` checks required evidence sections, local QA evidence, production QA evidence, indexed output evidence, fallback evidence, current no-execution state, Phase 5C remains open, and unsafe indexed-output fixtures.
+- Aggregate QA now includes production QA evidence bundle checklist verification and passed.
 
 ## Risks And Gaps
 
@@ -206,7 +209,7 @@ Phase 5A validation passed:
 
 Continue Phase 5C Publication Pipeline:
 
-Add indexed-release production QA evidence bundle checklist for Opportunities. Do not deploy, add indexed output, add newsletter form/output, request indexing, mark Phase 5C Closed, or change record publication states in the same task.
+Add indexed-release production QA signoff checklist for Opportunities. Do not deploy, add indexed output, add newsletter form/output, request indexing, mark Phase 5C Closed, or change record publication states in the same task.
 
 ## User Decision Needed
 

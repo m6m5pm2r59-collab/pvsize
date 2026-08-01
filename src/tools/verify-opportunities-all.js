@@ -14,6 +14,7 @@ const steps = [
   ['Production QA artifact index verification', ['src/tools/verify-opportunities-production-qa-artifact-index.js', '--self-test'], {}],
   ['Production QA handoff checklist verification', ['src/tools/verify-opportunities-production-qa-handoff-checklist.js', '--self-test'], {}],
   ['Production QA run manifest verification', ['src/tools/verify-opportunities-production-qa-run-manifest.js', '--self-test'], {}],
+  ['Production QA evidence bundle checklist verification', ['src/tools/verify-opportunities-production-qa-evidence-bundle-checklist.js', '--self-test'], {}],
   ['Page verification', ['src/tools/verify-opportunities-page.js'], {}],
   ['Indexed readiness verification', ['src/tools/verify-opportunities-indexed-readiness.js'], {}],
   ['Index policy verification', ['src/tools/verify-opportunities-index-policy.js', '--self-test'], {}],
