@@ -207,6 +207,9 @@ Phase 5A validation passed:
 - Aggregate QA now includes production QA monitoring handoff verification and passed.
 - Production QA post-release watch checklist verifier added and passed: `node src/tools/verify-opportunities-production-qa-post-release-watch-checklist.js --self-test` checks required watch fields, watch checks, cadence, escalation triggers, closure evidence, current no-watch state, Phase 5C remains open, and unsafe indexed-output fixtures.
 - Aggregate QA now includes production QA post-release watch verification and passed.
+- Production QA search indexing request hold checklist added: `docs/opportunities/PVSIZE_OPPORTUNITIES_PRODUCTION_QA_SEARCH_INDEXING_REQUEST_HOLD_CHECKLIST.md` defines required-before-request hold, required fields, blocked conditions, release conditions, evidence requirements, and current no-request state.
+- Production QA search indexing hold verifier added and passed: `node src/tools/verify-opportunities-production-qa-search-indexing-request-hold-checklist.js --self-test` checks 6 hold markers, required fields, blocked conditions, release conditions, evidence requirements, current no-request state, Phase 5C remains open, and unsafe indexed-output fixtures.
+- Aggregate QA now includes production QA search indexing hold verification and passed.
 
 ## Risks And Gaps
 
@@ -228,7 +231,7 @@ Phase 5A validation passed:
 
 Continue Phase 5C Publication Pipeline:
 
-Add indexed-release production QA search indexing request hold checklist for Opportunities. Do not deploy, add indexed output, add newsletter form/output, request indexing, mark Phase 5C Closed, approve indexed release, or change record publication states in the same task.
+Add indexed-release production QA incremental rollout and adoption strategy checklist for Opportunities. Do not deploy, add indexed output, add sitemap/RSS output, add JSON-LD output, add newsletter form/output, request indexing, approve indexed release, mark Phase 5C Closed, or change record publication states in the same task.
 
 ## User Decision Needed
 

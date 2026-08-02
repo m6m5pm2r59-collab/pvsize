@@ -21,6 +21,7 @@ const steps = [
   ['Production QA release notes template verification', ['src/tools/verify-opportunities-production-qa-release-notes-template.js', '--self-test'], {}],
   ['Production QA monitoring handoff verification', ['src/tools/verify-opportunities-production-qa-monitoring-handoff-checklist.js', '--self-test'], {}],
   ['Production QA post-release watch verification', ['src/tools/verify-opportunities-production-qa-post-release-watch-checklist.js', '--self-test'], {}],
+  ['Production QA search indexing hold verification', ['src/tools/verify-opportunities-production-qa-search-indexing-request-hold-checklist.js', '--self-test'], {}],
   ['Page verification', ['src/tools/verify-opportunities-page.js'], {}],
   ['Indexed readiness verification', ['src/tools/verify-opportunities-indexed-readiness.js'], {}],
   ['Index policy verification', ['src/tools/verify-opportunities-index-policy.js', '--self-test'], {}],
