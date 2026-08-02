@@ -134,7 +134,7 @@ On 2026-08-02, the accepted next-stage direction changed from decision-pending t
 
 ## Last Commit
 
-`d899e20 Record opportunities Phase 5C long-run stage acceptance review`
+`b81c722 Phase 5C: activate pre-implementation long-run board`
 
 ## Last Verification
 
@@ -205,6 +205,7 @@ PI-01 Add aggregate QA unified entrypoint for the Phase 5C pre-implementation st
 - **Date**: 2026-08-02
 - **Reviewer**: Codex
 - **User direction**: `Option B pre-implementation`
+- **Stage activation commit**: `b81c722 Phase 5C: activate pre-implementation long-run board`
 - **Scope**: infrastructure-only — unified QA entrypoint, verifier orchestration, CI skeleton, local/CI command contract, deploy dry-run controls, evidence and handoff rules
 - **Activation artifact**: `docs/opportunities/PVSIZE_OPPORTUNITIES_PHASE5C_PRE_IMPLEMENTATION_LONG_RUN_BOARD.md`
 - **Activation verifier**: `src/tools/verify-opportunities-phase5c-pre-implementation-long-run-board.js`
