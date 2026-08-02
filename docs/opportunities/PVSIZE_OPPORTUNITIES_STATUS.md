@@ -1,6 +1,6 @@
 # PVSize Opportunities Status
 
-Updated: 2026-08-02 13:30 CST
+Updated: 2026-08-02 14:00 CST
 
 ## Current Phase
 
@@ -120,7 +120,7 @@ The mainline has moved to Phase 5C Publication Pipeline. The first non-indexed `
 
 ## Last Commit
 
-`cfe34ff Add opportunities Marvis executor packet` (awaiting T02-T07 batch commit)
+`18a9939 Phase 5C T02-T07: complete indexed-release planning gates` (remote main)
 
 ## Last Verification
 
@@ -144,7 +144,29 @@ Phase 5C T02-T07 self-tests all PASS: published record preflight matrix (9/9), i
 
 ## Next Single Task
 
-Phase 5C T01-T07 planning gates complete. Stop here for Codex indexed-release acceptance review. See `PVSIZE_OPPORTUNITIES_PHASE5C_MARVIS_HANDOFF.md` for full handoff details. No deploy, no indexed output, no published record transitions, no Phase 5C Closed — until Codex approves next stage.
+Phase 5C indexed-release planning gates acceptance review completed by Codex. All T01-T07 PASS. No deploy, no indexed output, no published record transitions, no Phase 5C Closed. See acceptance review record below for full details.
+
+## Codex Indexed-Release Planning Gates Acceptance Review
+
+- **Date**: 2026-08-02
+- **Reviewer**: Codex (automated acceptance review)
+- **Decision**: ACCEPT — Phase 5C T01-T07 all PASS
+- **Remote main commit**: `18a9939 Phase 5C T02-T07: complete indexed-release planning gates`
+- **Aggregate QA**: 30 steps PASS (local aggregate QA: `node src/tools/verify-opportunities-all.js`)
+- **Published records**: `published_records=0` — no record has transitioned to published status; all five draft records remain at `review_status: discovered`
+- **Deploy status**: Not deployed — current MVP is noindex-only, production-verified at `https://pvsize.com/opportunities/` with noindex policy intact
+- **Indexed output**: None — no sitemap entries, RSS feed, or JSON-LD structured data for Opportunities URLs
+- **Newsletter**: None — no newsletter form, API, or output for Opportunities content
+- **Indexed release**: Not approved — all indexed-release gates remain planned but not activated
+- **Phase 5C closure**: Not closed — Phase 5C remains open; indexed release, published record transitions, and Phase 5C closure await separate future approval
+- **T01 gate**: Published record preflight matrix — PASS (9/9 self-tests)
+- **T02 gate**: Published record preflight matrix document + verifier — PASS
+- **T03 gate**: Indexed output activation preflight matrix — PASS (8/8 self-tests)
+- **T04 gate**: Newsletter activation hold checklist — PASS (7/7 self-tests)
+- **T05 gate**: Artifact index refresh — PASS (7 markers / 12 docs / 14 scripts / 4 reports)
+- **T06 gate**: Phase 5C indexed-release planning summary — PASS (5/5)
+- **T07 gate**: Marvis handoff to Codex — PASS (9/9)
+- **AIGC 标记改动**: 5 files under `docs/opportunities/` had local unstaged AIGC frontmatter blocks + footer lines; committed and pushed to remote main in this acceptance review session
 
 ## User Decision Needed
 

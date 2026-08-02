@@ -1,3 +1,14 @@
+---
+AIGC:
+    Label: "1"
+    ContentProducer: 001191440300708461136T1XGW3
+    ProduceID: c4e42f760229254c82de8cc2300dc5c9_dc5bbbb28e3311f196d8525400f8a581
+    ReservedCode1: Ati6+zgGQ+fKe7eO6docNNU6+EDDq0LzZabey+M/ichj8UvjoUBNxeVYncx+rfxJsEBLFvCIVM3hKPHW+6SGHG4Yj+0pZMlsVgOwadwNNvtb8MYBdKNOK7mET35nyL21oFT4MGXXENPJRUXwgtLj/Tx3rq+LUcv3tkLEbpvIOTXCFf6Eeq36t1leYeY=
+    ContentPropagator: 001191440300708461136T1XGW3
+    PropagateID: c4e42f760229254c82de8cc2300dc5c9_dc5bbbb28e3311f196d8525400f8a581
+    ReservedCode2: Ati6+zgGQ+fKe7eO6docNNU6+EDDq0LzZabey+M/ichj8UvjoUBNxeVYncx+rfxJsEBLFvCIVM3hKPHW+6SGHG4Yj+0pZMlsVgOwadwNNvtb8MYBdKNOK7mET35nyL21oFT4MGXXENPJRUXwgtLj/Tx3rq+LUcv3tkLEbpvIOTXCFf6Eeq36t1leYeY=
+---
+
 # PVSize Opportunities Phase 5C — Newsletter Activation Hold Checklist
 
 Status: noindex-only planning gate
@@ -72,3 +83,4 @@ node src/tools/verify-opportunities-newsletter-activation-hold-checklist.js --se
 node src/tools/verify-opportunities-all.js
 git diff --check
 ```
+*（内容由AI生成，仅供参考）*

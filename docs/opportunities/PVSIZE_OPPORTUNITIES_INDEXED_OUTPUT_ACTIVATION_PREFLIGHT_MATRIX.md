@@ -1,3 +1,14 @@
+---
+AIGC:
+    Label: "1"
+    ContentProducer: 001191440300708461136T1XGW3
+    ProduceID: c4e42f760229254c82de8cc2300dc5c9_db653a0b8e3311f196d8525400f8a581
+    ReservedCode1: ++L2O29wETYqVArEF9ffW43Ozi8KVJ/RC99l1YeETzKuzLzJKFBJwERH8l0vJ592uH4+1ARa6bUtFL6iHqlWLv73yBewz8MLSy5j44f+BatcDNlEHajwla6+06GB16SKlgy9QAU+KpzDIZzlcLceRkvsLeBWLG4tNzDb727BjESVXUxOx+eEjqtNNs4=
+    ContentPropagator: 001191440300708461136T1XGW3
+    PropagateID: c4e42f760229254c82de8cc2300dc5c9_db653a0b8e3311f196d8525400f8a581
+    ReservedCode2: ++L2O29wETYqVArEF9ffW43Ozi8KVJ/RC99l1YeETzKuzLzJKFBJwERH8l0vJ592uH4+1ARa6bUtFL6iHqlWLv73yBewz8MLSy5j44f+BatcDNlEHajwla6+06GB16SKlgy9QAU+KpzDIZzlcLceRkvsLeBWLG4tNzDb727BjESVXUxOx+eEjqtNNs4=
+---
+
 # PVSize Opportunities Phase 5C — Indexed Output Activation Preflight Matrix
 
 Status: noindex-only planning gate
@@ -84,3 +95,4 @@ node src/tools/verify-opportunities-indexed-output-activation-preflight-matrix.j
 node src/tools/verify-opportunities-all.js
 git diff --check
 ```
+*（内容由AI生成，仅供参考）*
