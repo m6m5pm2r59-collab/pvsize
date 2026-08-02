@@ -1,6 +1,6 @@
 # PVSize Opportunities Status
 
-Updated: 2026-08-02 19:45 CST
+Updated: 2026-08-02 20:20 CST
 
 ## Current Phase
 
@@ -120,6 +120,7 @@ The mainline has moved to Phase 5C Publication Pipeline. The first non-indexed `
 - Phase 5C L08 completed: `docs/opportunities/PVSIZE_OPPORTUNITIES_PHASE5C_INDEXED_IMPLEMENTATION_DEPENDENCY_MAP.md` and `src/tools/verify-opportunities-phase5c-indexed-implementation-dependency-map.js` added with 7 IS steps (IS-01 through IS-07), 10 hard dependencies (D1-D10), 26 IR references, planning-to-implementation mapping, and verification script routing; verifier PASS (8/8 self-test, 86/86 real); aggregate QA PASS.
 - Phase 5C L09 completed: `docs/opportunities/PVSIZE_OPPORTUNITIES_PHASE5C_IMPLEMENTATION_STAGE_PACKET_SKELETON.md` and `src/tools/verify-opportunities-phase5c-implementation-stage-packet-skeleton.js` added with 7 IS task slots, 8 entry gates (G1-G5, SG1-SG3), packet metadata slots, per-task pattern, verification script map, planning-only guardrails, and cross-references to L01-L08 and L10; verifier PASS (8/8 self-test, 66/66 real); aggregate QA PASS.
 - Phase 5C L10 completed: `docs/opportunities/PVSIZE_OPPORTUNITIES_PHASE5C_PLANNING_ONLY_LONG_RUN_HANDOFF.md` and `src/tools/verify-opportunities-phase5c-planning-only-long-run-handoff.js` added as final planning-only long-run stage handoff for Codex acceptance review, summarizing L01-L10 planning artifacts, verifier scripts, commit chain, state boundary, and Codex decision options; verifier PASS (8/8 self-test, 118/118 real); aggregate QA 35 steps PASS; automatic execution stops here. No deploy, no indexed output, no newsletter output, no search indexing request, no indexed release approval, no Phase 5C closure, no published record transitions.
+- Codex long-run stage acceptance review completed: L01-L10 planning-only long-run board stage ACCEPTED after fresh verification on remote main `3fc4259`; handoff verifier PASS (8/8 self-test, 118/118 real), aggregate QA PASS (35 steps), `git diff --check` PASS, `published_records=0`, no deploy, no indexed output, no newsletter output, no indexing submission, no indexed release approval, and Phase 5C remains open.
 
 ## Current Constraints
 
@@ -134,7 +135,7 @@ The mainline has moved to Phase 5C Publication Pipeline. The first non-indexed `
 
 ## Last Verification
 
-Phase 5C L10 planning-only long-run handoff verifier PASS (8/8 self-test, 118/118 real), aggregate QA PASS (35 steps), `git diff --check` PASS, no records published, no Opportunities sitemap/RSS/JSON-LD/newsletter output added, indexed release not approved, Phase 5C not closed. Automatic execution stops. Awaiting Codex stage acceptance review.
+Codex long-run stage acceptance review PASS on remote main `3fc4259`: L10 handoff verifier PASS (8/8 self-test, 118/118 real), aggregate QA PASS (35 steps), `git diff --check` PASS, working tree clean, `published_records=0`, no Opportunities sitemap/RSS/JSON-LD/newsletter output added, no indexing submission, indexed release not approved, and Phase 5C remains open.
 
 ## Risks And Gaps
 
@@ -154,7 +155,7 @@ Phase 5C L10 planning-only long-run handoff verifier PASS (8/8 self-test, 118/11
 
 ## Next Single Task
 
-Stop. The Phase 5C planning-only long-run board stage (L01-L10) is complete. Awaiting Codex stage acceptance review. Do not proceed to any L11+ task or implementation-stage work until Codex records an acceptance decision in this status file under a new "Codex Long-Run Stage Acceptance Review" section.
+Decision needed on the next stage after Codex accepted the Phase 5C planning-only long-run board stage. Choose exactly one path before more execution: Option A continue planning-only, Option B move to pre-implementation, or Option C move to implementation-ready work. Do not start any option until that direction is explicitly selected.
 
 ## Codex Indexed-Release Planning Gates Acceptance Review
 
@@ -177,6 +178,24 @@ Stop. The Phase 5C planning-only long-run board stage (L01-L10) is complete. Awa
 - **T06 gate**: Phase 5C indexed-release planning summary — PASS (5/5)
 - **T07 gate**: Marvis handoff to Codex — PASS (9/9)
 - **AIGC 标记改动**: 5 files under `docs/opportunities/` had local unstaged AIGC frontmatter blocks + footer lines; committed and pushed to remote main in this acceptance review session
+
+## Codex Long-Run Stage Acceptance Review
+
+- **Date**: 2026-08-02
+- **Reviewer**: Codex (automated stage acceptance review)
+- **Decision**: ACCEPT — Phase 5C planning-only long-run board stage L01-L10 is complete
+- **Remote main commit reviewed**: `3fc4259 Phase 5C L10 fix: correct search indexing negation check + clean handoff doc duplicates`
+- **Git state**: `main` synced with `origin/main`; working tree clean
+- **L10 verifier**: PASS (`8/8` self-test, `118/118` real checks)
+- **Aggregate QA**: PASS (`35` steps)
+- **Published records**: `published_records=0`
+- **Deploy status**: None during this stage
+- **Indexed output**: None — no Opportunities sitemap/RSS/JSON-LD output
+- **Newsletter output**: None
+- **Indexing submission**: None
+- **Indexed release**: Not approved
+- **Phase 5C**: Remains open
+- **Next decision**: choose one path only — Option A continue planning-only, Option B move to pre-implementation, or Option C move to implementation-ready work
 
 ## User Decision Needed
 
