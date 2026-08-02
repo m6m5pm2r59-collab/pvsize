@@ -127,7 +127,7 @@ The mainline has moved to Phase 5C Publication Pipeline. The first non-indexed `
 
 ## Last Commit
 
-`(pending)`
+`15068df Phase 5C L05: add blocked-run exception playbook`
 
 ## Last Verification
 
