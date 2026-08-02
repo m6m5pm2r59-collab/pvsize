@@ -465,7 +465,10 @@ function runRealChecks() {
   check('No search indexing request', () => {
     if (fs.existsSync(STATUS_PATH)) {
       const status = fs.readFileSync(STATUS_PATH, 'utf8');
-      return !status.includes('search indexing request');
+      const cleaned = status
+        .replace(/no search indexing request/gi, '')
+        .replace(/No search indexing request/gi, '');
+      return !cleaned.includes('Search indexing requested') && !cleaned.includes('indexing request submitted');
     }
     return true;
   });

@@ -2,12 +2,14 @@
 AIGC:
     Label: "1"
     ContentProducer: 001191440300708461136T1XGW3
-    ProduceID: c4e42f760229254c82de8cc2300dc5c9_STAGE_HANDOFF_L10
-    ReservedCode1: FbkNHFKQnBVNo6vSelHAmIaKlGvNU0INM6jGTKcUJQGSkVDQXLsHzDhd+Dvn0aofkZVNe+OfgSDzU6QYbtwrDGqDIglBn9iXildfJ+gT/njK9ji3rlMTLCW5arftpUnvoMVFgSVE/vpk/f/8ijnr8hHXxI1ReyuhUe/iQlM/pPjsqnh5salKM+FdwQo=
+    ProduceID: c4e42f760229254c82de8cc2300dc5c9_caf41b838e7111f1b82d525400287e28
+    ReservedCode1: Bn7odqPpgDlYFLXF4PHRysfos/vP+1UOmx9VDaCGQgSbX/77ojCO6PHWqt4EFJ/SWFvjPHdQb0o2U2q+g0SywuUnrX0Wkb3b3Cs3PHZLDowhxinx+8qBkf6YEfwiLhzjZd2qe6AoICxj1HrCg6rGktU642WPOVMIH7erJeN54YHiVB16Pc86vaINgV0=
     ContentPropagator: 001191440300708461136T1XGW3
-    PropagateID: c4e42f760229254c82de8cc2300dc5c9_STAGE_HANDOFF_L10
-    ReservedCode2: FbkNHFKQnBVNo6vSelHAmIaKlGvNU0INM6jGTKcUJQGSkVDQXLsHzDhd+Dvn0aofkZVNe+OfgSDzU6QYbtwrDGqDIglBn9iXildfJ+gT/njK9ji3rlMTLCW5arftpUnvoMVFgSVE/vpk/f/8ijnr8hHXxI1ReyuhUe/iQlM/pPjsqnh5salKM+FdwQo=
+    PropagateID: c4e42f760229254c82de8cc2300dc5c9_caf41b838e7111f1b82d525400287e28
+    ReservedCode2: Bn7odqPpgDlYFLXF4PHRysfos/vP+1UOmx9VDaCGQgSbX/77ojCO6PHWqt4EFJ/SWFvjPHdQb0o2U2q+g0SywuUnrX0Wkb3b3Cs3PHZLDowhxinx+8qBkf6YEfwiLhzjZd2qe6AoICxj1HrCg6rGktU642WPOVMIH7erJeN54YHiVB16Pc86vaINgV0=
 ---
+
+
 
 # PVSize Opportunities Phase 5C — Planning-Only Long-Run Stage Handoff for Codex Review
 
