@@ -1,6 +1,6 @@
 # PVSize Opportunities Status
 
-Updated: 2026-08-02 17:40 CST
+Updated: 2026-08-02 18:00 CST
 
 ## Current Phase
 
@@ -117,6 +117,7 @@ The mainline has moved to Phase 5C Publication Pipeline. The first non-indexed `
 - Phase 5C L04 completed: `docs/opportunities/PVSIZE_OPPORTUNITIES_PHASE5C_STOP_RESTART_PROTOCOL.md` and `src/tools/verify-opportunities-phase5c-stop-restart-protocol.js` added; aggregate QA now includes stop/restart protocol verification (51/51 PASS).
 - Phase 5C L05 completed: `docs/opportunities/PVSIZE_OPPORTUNITIES_PHASE5C_BLOCKED_RUN_EXCEPTION_PLAYBOOK.md` and `src/tools/verify-opportunities-phase5c-blocked-run-exception-playbook.js` added; aggregate QA now includes blocked-run exception playbook verification (55/55 PASS).
 - Phase 5C L06 completed: `docs/opportunities/PVSIZE_OPPORTUNITIES_PHASE5C_STATUS_ROLLUP_TEMPLATE.md` and `src/tools/verify-opportunities-phase5c-status-rollup-template.js` added; aggregate QA now includes status rollup template verification (51/51 PASS).
+- Phase 5C L07 completed: `docs/opportunities/PVSIZE_OPPORTUNITIES_PHASE5C_PLANNING_ONLY_BOUNDARY_CONTRACT.md` and `src/tools/verify-opportunities-phase5c-planning-only-boundary-contract.js` added; freezes planning-only contract with 8 allowed actions (P1-P8), 10 forbidden actions (F1-F10), 3 planning zones, boundary violation protocol, and 7-point evidence chain (68/68 PASS).
 - Phase 5C L02收口完成: AIGC frontmatter + 页脚改动 committed and pushed to origin main; git status clean.
 
 ## Current Constraints
@@ -128,11 +129,11 @@ The mainline has moved to Phase 5C Publication Pipeline. The first non-indexed `
 
 ## Last Commit
 
-`4548534 Phase 5C L06: add status rollup template`
+`(pending)`
 
 ## Last Verification
 
-Phase 5C L06 status rollup template verifier PASS (`51/51`), aggregate QA PASS (`32` steps), `git diff --check` PASS, no records published, no Opportunities sitemap/RSS/JSON-LD/newsletter output added, indexed release not approved, Phase 5C not closed.
+Phase 5C L07 boundary contract verifier PASS (`68/68`), aggregate QA PASS (`32` steps), `git diff --check` PASS, no records published, no Opportunities sitemap/RSS/JSON-LD/newsletter output added, indexed release not approved, Phase 5C not closed.
 
 ## Risks And Gaps
 
@@ -152,7 +153,7 @@ Phase 5C L06 status rollup template verifier PASS (`51/51`), aggregate QA PASS (
 
 ## Next Single Task
 
-Phase 5C planning-only long-run stage is now the active execution path. Continue `docs/opportunities/PVSIZE_OPPORTUNITIES_PHASE5C_PLANNING_ONLY_LONG_RUN_BOARD.md` from `L07 Add planning-only boundary contract`. Do not deploy, add indexed output, add newsletter form/output, request indexing, approve indexed release, close Phase 5C, or change record publication states.
+Phase 5C planning-only long-run stage is now the active execution path. Continue `docs/opportunities/PVSIZE_OPPORTUNITIES_PHASE5C_PLANNING_ONLY_LONG_RUN_BOARD.md` from `L08 Add future indexed implementation dependency map`. Do not deploy, add indexed output, add newsletter form/output, request indexing, approve indexed release, close Phase 5C, or change record publication states.
 
 ## Codex Indexed-Release Planning Gates Acceptance Review
 
