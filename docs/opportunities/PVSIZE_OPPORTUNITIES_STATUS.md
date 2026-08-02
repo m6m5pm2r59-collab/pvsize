@@ -1,6 +1,6 @@
 # PVSize Opportunities Status
 
-Updated: 2026-08-02 15:40 CST
+Updated: 2026-08-02 16:20 CST
 
 ## Current Phase
 
@@ -111,6 +111,7 @@ The mainline has moved to Phase 5C Publication Pipeline. The first non-indexed `
 - Phase 5C T06 completed: `docs/opportunities/PVSIZE_OPPORTUNITIES_PHASE5C_INDEXED_RELEASE_PLANNING_SUMMARY.md` and `src/tools/verify-opportunities-phase5c-indexed-release-planning-summary.js` added to define remaining indexed release planning summary and verify current no-deploy/indexed-output state; aggregate QA now includes Phase 5C indexed-release planning summary verification.
 - Phase 5C T07 completed: `docs/opportunities/PVSIZE_OPPORTUNITIES_PHASE5C_MARVIS_HANDOFF.md` and `src/tools/verify-opportunities-phase5c-marvis-handoff.js` added to define Marvis handoff to Codex for indexed release acceptance review; aggregate QA and page verifier now include Marvis handoff verification.
 - Phase 5C planning-only long-run board activated: `docs/opportunities/PVSIZE_OPPORTUNITIES_PHASE5C_PLANNING_ONLY_LONG_RUN_BOARD.md` and `src/tools/verify-opportunities-phase5c-planning-only-long-run-board.js` added so Marvis can continue a long-running planning-only stage from a single total board without per-task user copy/paste; aggregate QA and page verifier now include long-run board verification.
+- Phase 5C L02 completed: `docs/opportunities/PVSIZE_OPPORTUNITIES_PHASE5C_REPORT_TRAIL_RECONCILIATION.md` and `src/tools/verify-opportunities-phase5c-report-trail-reconciliation.js` added to reconcile Stage 4 through Phase 5C T01-T07 to L01 into an auditable report trail; verifier self-test 27/27 PASS; aggregate QA PASS; `git diff --check` PASS; no records published; no indexed output added.
 
 ## Current Constraints
 
@@ -121,11 +122,11 @@ The mainline has moved to Phase 5C Publication Pipeline. The first non-indexed `
 
 ## Last Commit
 
-`9ee8338 Add opportunities Phase 5C planning-only long-run board` (awaiting record commit / push)
+`(pending) Phase 5C L02: reconcile report trail` (awaiting commit / push)
 
 ## Last Verification
 
-Phase 5C planning-only long-run board verification PASS (`10/10` self-test), aggregate QA PASS (`31` steps), `git diff --check` PASS, no records published, no Opportunities sitemap/RSS/JSON-LD/newsletter output added, indexed release not approved, Phase 5C not closed.
+Phase 5C L02 report trail reconciliation verifier self-test PASS (`27/27`), aggregate QA PASS (`31` steps), `git diff --check` PASS, no records published, no Opportunities sitemap/RSS/JSON-LD/newsletter output added, indexed release not approved, Phase 5C not closed.
 
 ## Risks And Gaps
 
@@ -145,7 +146,7 @@ Phase 5C planning-only long-run board verification PASS (`10/10` self-test), agg
 
 ## Next Single Task
 
-Phase 5C planning-only long-run stage is now the active execution path. Continue `docs/opportunities/PVSIZE_OPPORTUNITIES_PHASE5C_PLANNING_ONLY_LONG_RUN_BOARD.md` from `L02 Reconcile the report trail`. Do not deploy, add indexed output, add newsletter form/output, request indexing, approve indexed release, close Phase 5C, or change record publication states.
+Phase 5C planning-only long-run stage is now the active execution path. Continue `docs/opportunities/PVSIZE_OPPORTUNITIES_PHASE5C_PLANNING_ONLY_LONG_RUN_BOARD.md` from `L03 Build the acceptance commit ledger`. Do not deploy, add indexed output, add newsletter form/output, request indexing, approve indexed release, close Phase 5C, or change record publication states.
 
 ## Codex Indexed-Release Planning Gates Acceptance Review
 
