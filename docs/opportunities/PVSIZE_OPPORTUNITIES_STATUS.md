@@ -129,7 +129,7 @@ The mainline has moved to Phase 5C Publication Pipeline. The first non-indexed `
 
 ## Last Commit
 
-`(pending)`
+`5586799 Phase 5C L07: add planning-only boundary contract`
 
 ## Last Verification
 
