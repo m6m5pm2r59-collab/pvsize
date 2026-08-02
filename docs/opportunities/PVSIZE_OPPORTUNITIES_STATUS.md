@@ -1,6 +1,6 @@
 # PVSize Opportunities Status
 
-Updated: 2026-08-02 20:20 CST
+Updated: 2026-08-02 21:05 CST
 
 ## Current Phase
 
@@ -11,6 +11,8 @@ Phase 5C: Publication Pipeline
 User decision on 2026-07-29 cancelled all human authorization and human review requirements. Channel expansion is now the first priority. Phase 5B content production baseline is sufficient to proceed: five non-published draft records exist with matching evidence notes, and two official U.S. sources are approved for draft-only discovery.
 
 The mainline has moved to Phase 5C Publication Pipeline. The first non-indexed `/opportunities/` listing surface has been added using the five verified draft records. Existing records remain below published status in the data file. Noindex MVP production verification has passed, but sitemap/RSS/newsletter/schema/indexed SEO release remains separately gated.
+
+On 2026-08-02, the accepted next-stage direction changed from decision-pending to `Option B pre-implementation`. The new stage is infrastructure-only: it may improve QA entrypoints, verifier orchestration, CI skeletons, and dry-run controls without changing Opportunities product surfaces or release state.
 
 ## Completed
 
@@ -121,6 +123,7 @@ The mainline has moved to Phase 5C Publication Pipeline. The first non-indexed `
 - Phase 5C L09 completed: `docs/opportunities/PVSIZE_OPPORTUNITIES_PHASE5C_IMPLEMENTATION_STAGE_PACKET_SKELETON.md` and `src/tools/verify-opportunities-phase5c-implementation-stage-packet-skeleton.js` added with 7 IS task slots, 8 entry gates (G1-G5, SG1-SG3), packet metadata slots, per-task pattern, verification script map, planning-only guardrails, and cross-references to L01-L08 and L10; verifier PASS (8/8 self-test, 66/66 real); aggregate QA PASS.
 - Phase 5C L10 completed: `docs/opportunities/PVSIZE_OPPORTUNITIES_PHASE5C_PLANNING_ONLY_LONG_RUN_HANDOFF.md` and `src/tools/verify-opportunities-phase5c-planning-only-long-run-handoff.js` added as final planning-only long-run stage handoff for Codex acceptance review, summarizing L01-L10 planning artifacts, verifier scripts, commit chain, state boundary, and Codex decision options; verifier PASS (8/8 self-test, 118/118 real); aggregate QA 35 steps PASS; automatic execution stops here. No deploy, no indexed output, no newsletter output, no search indexing request, no indexed release approval, no Phase 5C closure, no published record transitions.
 - Codex long-run stage acceptance review completed: L01-L10 planning-only long-run board stage ACCEPTED after fresh verification on remote main `3fc4259`; handoff verifier PASS (8/8 self-test, 118/118 real), aggregate QA PASS (35 steps), `git diff --check` PASS, `published_records=0`, no deploy, no indexed output, no newsletter output, no indexing submission, no indexed release approval, and Phase 5C remains open.
+- Phase 5C pre-implementation long-run board activated: `docs/opportunities/PVSIZE_OPPORTUNITIES_PHASE5C_PRE_IMPLEMENTATION_LONG_RUN_BOARD.md` and `src/tools/verify-opportunities-phase5c-pre-implementation-long-run-board.js` added so Marvis can continue the next infrastructure-only stage from a single total board; aggregate QA and page verifier now include pre-implementation board verification. This activation does not deploy, add indexed output, add newsletter output, request indexing, change record publication states, or change Opportunities product surfaces.
 
 ## Current Constraints
 
@@ -131,11 +134,11 @@ The mainline has moved to Phase 5C Publication Pipeline. The first non-indexed `
 
 ## Last Commit
 
-`66ce11e Phase 5C L10: add stage handoff for Codex review`
+`d899e20 Record opportunities Phase 5C long-run stage acceptance review`
 
 ## Last Verification
 
-Codex long-run stage acceptance review PASS on remote main `3fc4259`: L10 handoff verifier PASS (8/8 self-test, 118/118 real), aggregate QA PASS (35 steps), `git diff --check` PASS, working tree clean, `published_records=0`, no Opportunities sitemap/RSS/JSON-LD/newsletter output added, no indexing submission, indexed release not approved, and Phase 5C remains open.
+Pre-implementation long-run board activation PASS: new board verifier self-test PASS, new board verifier real check PASS, aggregate QA PASS, `git diff --check` PASS, working tree clean, `published_records=0`, no Opportunities sitemap/RSS/JSON-LD/newsletter output added, no indexing submission, indexed release not approved, and Phase 5C remains open.
 
 ## Risks And Gaps
 
@@ -155,7 +158,7 @@ Codex long-run stage acceptance review PASS on remote main `3fc4259`: L10 handof
 
 ## Next Single Task
 
-Decision needed on the next stage after Codex accepted the Phase 5C planning-only long-run board stage. Choose exactly one path before more execution: Option A continue planning-only, Option B move to pre-implementation, or Option C move to implementation-ready work. Do not start any option until that direction is explicitly selected.
+PI-01 Add aggregate QA unified entrypoint for the Phase 5C pre-implementation stage. Use `docs/opportunities/PVSIZE_OPPORTUNITIES_PHASE5C_PRE_IMPLEMENTATION_LONG_RUN_BOARD.md` as the only execution board. Do not deploy, add indexed output, add newsletter form/output, request indexing, change record publication states, or change Opportunities product surfaces in the same task.
 
 ## Codex Indexed-Release Planning Gates Acceptance Review
 
@@ -197,6 +200,17 @@ Decision needed on the next stage after Codex accepted the Phase 5C planning-onl
 - **Phase 5C**: Remains open
 - **Next decision**: choose one path only — Option A continue planning-only, Option B move to pre-implementation, or Option C move to implementation-ready work
 
+## Codex Pre-Implementation Stage Activation
+
+- **Date**: 2026-08-02
+- **Reviewer**: Codex
+- **User direction**: `Option B pre-implementation`
+- **Scope**: infrastructure-only — unified QA entrypoint, verifier orchestration, CI skeleton, local/CI command contract, deploy dry-run controls, evidence and handoff rules
+- **Activation artifact**: `docs/opportunities/PVSIZE_OPPORTUNITIES_PHASE5C_PRE_IMPLEMENTATION_LONG_RUN_BOARD.md`
+- **Activation verifier**: `src/tools/verify-opportunities-phase5c-pre-implementation-long-run-board.js`
+- **Current boundaries**: no deploy, no indexed output, no sitemap/RSS output, no JSON-LD output, no newsletter output, no indexing submission, no published record transitions, no Opportunities product-surface changes, and Phase 5C remains open
+- **Next queue**: `PI-01` through `PI-07`
+
 ## User Decision Needed
 
-No immediate decision needed. Latest user decision authorizes removing human-review blockers and prioritizing channel expansion.
+No immediate decision needed. Latest user decisions authorize removing human-review blockers, prioritize channel expansion, and select `Option B pre-implementation` as the next stage after the accepted planning-only long-run board stage.

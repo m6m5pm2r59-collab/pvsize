@@ -27,6 +27,7 @@ const steps = [
   ['Newsletter activation hold checklist verification', ['src/tools/verify-opportunities-newsletter-activation-hold-checklist.js', '--self-test'], {}],
   ['Phase 5C indexed-release planning summary verification', ['src/tools/verify-opportunities-phase5c-indexed-release-planning-summary.js', '--self-test'], {}],
   ['Phase 5C planning-only long-run board verification', ['src/tools/verify-opportunities-phase5c-planning-only-long-run-board.js', '--self-test'], {}],
+  ['Phase 5C pre-implementation long-run board verification', ['src/tools/verify-opportunities-phase5c-pre-implementation-long-run-board.js', '--self-test'], {}],
   ['Phase 5C status rollup template verification', ['src/tools/verify-opportunities-phase5c-status-rollup-template.js', '--self-test'], {}],
   ['Phase 5C indexed implementation dependency map verification', ['src/tools/verify-opportunities-phase5c-indexed-implementation-dependency-map.js', '--self-test'], {}],
   ['Phase 5C implementation stage packet skeleton verification', ['src/tools/verify-opportunities-phase5c-implementation-stage-packet-skeleton.js', '--self-test'], {}],
