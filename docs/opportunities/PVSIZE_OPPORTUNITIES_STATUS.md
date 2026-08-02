@@ -125,7 +125,7 @@ The mainline has moved to Phase 5C Publication Pipeline. The first non-indexed `
 
 ## Last Commit
 
-`(pending)`
+`4a14ef8 Phase 5C L04: add stop and restart protocol`
 
 ## Last Verification
 
