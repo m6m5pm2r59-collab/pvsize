@@ -1,6 +1,6 @@
 # PVSize Opportunities Status
 
-Updated: 2026-08-02 12:40 CST
+Updated: 2026-08-02 13:30 CST
 
 ## Current Phase
 
@@ -104,6 +104,13 @@ The mainline has moved to Phase 5C Publication Pipeline. The first non-indexed `
 - `docs/opportunities/PVSIZE_OPPORTUNITIES_PRODUCTION_QA_POST_RELEASE_WATCH_CHECKLIST.md` and `src/tools/verify-opportunities-production-qa-post-release-watch-checklist.js` added to define future indexed-release production QA post-release watch requirements and verify that the current MVP still has no deploy, indexed output, newsletter output, sitemap/RSS output, JSON-LD output, indexing request, indexed release approval, Phase 5C closure, or published record transitions.
 - `docs/opportunities/PVSIZE_OPPORTUNITIES_MARVIS_EXECUTOR_PACKET.md` added as the AI executor packet and repository-local total board for Marvis to continue the remaining Phase 5C indexed-release QA planning tasks without per-task user copy/paste.
 
+- Phase 5C T02 completed: `docs/opportunities/PVSIZE_OPPORTUNITIES_PUBLISHED_RECORD_PREFLIGHT_MATRIX.md` and `src/tools/verify-opportunities-published-record-preflight-matrix.js` added to define published-record preflight matrix for indexed release planning and verify current no-deploy/indexed-output state; aggregate QA now includes published record preflight matrix verification.
+- Phase 5C T03 completed: `docs/opportunities/PVSIZE_OPPORTUNITIES_INDEXED_OUTPUT_ACTIVATION_PREFLIGHT_MATRIX.md` and `src/tools/verify-opportunities-indexed-output-activation-preflight-matrix.js` added to define indexed output activation preflight matrix and verify current no-sitemap/RSS/schema/newsletter state; aggregate QA now includes indexed output activation preflight matrix verification.
+- Phase 5C T04 completed: `docs/opportunities/PVSIZE_OPPORTUNITIES_NEWSLETTER_ACTIVATION_HOLD_CHECKLIST.md` and `src/tools/verify-opportunities-newsletter-activation-hold-checklist.js` added to define newsletter activation hold checklist and verify current no-newsletter-form/API state; aggregate QA now includes newsletter activation hold checklist verification.
+- Phase 5C T05 completed: refreshed artifact index and artifact-index verifier to include T01-T07 documents, verification scripts, and aggregate QA labels; `docs/opportunities/PVSIZE_OPPORTUNITIES_PRODUCTION_QA_ARTIFACT_INDEX.md` now indexes 12 planning documents and 14 verification scripts.
+- Phase 5C T06 completed: `docs/opportunities/PVSIZE_OPPORTUNITIES_PHASE5C_INDEXED_RELEASE_PLANNING_SUMMARY.md` and `src/tools/verify-opportunities-phase5c-indexed-release-planning-summary.js` added to define remaining indexed release planning summary and verify current no-deploy/indexed-output state; aggregate QA now includes Phase 5C indexed-release planning summary verification.
+- Phase 5C T07 completed: `docs/opportunities/PVSIZE_OPPORTUNITIES_PHASE5C_MARVIS_HANDOFF.md` and `src/tools/verify-opportunities-phase5c-marvis-handoff.js` added to define Marvis handoff to Codex for indexed release acceptance review; aggregate QA and page verifier now include Marvis handoff verification.
+
 ## Current Constraints
 
 - Do not start public indexed opportunity pages until sample data, validation rules, and source policy are in place.
@@ -113,103 +120,11 @@ The mainline has moved to Phase 5C Publication Pipeline. The first non-indexed `
 
 ## Last Commit
 
-`cfe34ff Add opportunities Marvis executor packet`
+`cfe34ff Add opportunities Marvis executor packet` (awaiting T02-T07 batch commit)
 
 ## Last Verification
 
-Phase 5A validation passed:
-
-- `node -e` JSON parse check for `opportunities.json`, `sources.json`, and `tags.json`
-- `git diff --check`
-- Schema marker check for opportunity records, review states, validation rules, calculator relation rules, and non-goals
-- `node src/tools/validate-opportunities.js`
-- Source policy marker check for statuses, approval checks, draft record rules, AI use rules, and publication gate
-- SAM.gov source page checked: official contract opportunities procurement notice search, reachable without account for searching
-- Draft intake checklist marker check for required evidence, draft defaults, SAM.gov checks, rejection conditions, and publication reminder
-- SAM.gov notice checked: direct notice URL, Notice ID, agency, published date, due date, and PV/BESS/microgrid relevance visible
-- Validator source relationship check: opportunity `source_id` must exist, must be `approved`, country must match, and source reliability must match
-- Validator self-test checks missing `source_id`, unknown `source_id`, non-approved source, and country mismatch failure cases
-- Human review note marker check for current evidence, checks before `needs_review`, checks before `approved`, and publication gate reminder
-- Validator self-test checks missing review note failure case
-- Release gate marker check for source readiness, content readiness, human review, publication readiness, growth readiness, production gate, and Phase 5C entry conditions
-- Grants.gov Search Grants page checked as an official public source for draft-only funding and incentive discovery
-- Validator self-test non-approved source fixture updated to use a still-unapproved EU source after Grants.gov approval
-- Grants.gov/Simpler.Grants.gov SolWEB2 listing checked: direct official URL, title, DOE Golden Field Office agency, solar/ecosystem/agrivoltaics scope, funding opportunity number, archived status, and official documents visible
-- SAM.gov JBMDL microgrid notice checked: direct official URL, notice ID, agency, response date, PV/BESS/microgrid relevance, and closed status due passed deadline
-- SAM.gov USGS communications infrastructure notice checked: direct official URL, notice ID, agency, response date, solar power systems, backup battery arrays, and open status at intake time
-- SAM.gov U.S. Army 63rd Readiness Division MILCON ERCIP Microgrid notice checked: direct official URL, notice ID, agency, response date, Mountain View California location, 750kW PV solar, 750kWh BESS, and closed status due passed deadline
-- Human review evidence template marker check for record snapshot, source evidence, human review fields, allowed state change, stop conditions, and publication reminder
-- `opp_us_2026_0004` human-review rehearsal checked: direct official URL, source registry, country/source match, notice title, notice ID, published date, response deadline, issuer, solar relevance, storage relevance, and no known cancellation/supersession at rehearsal time
-- Human review authorization log marker check for required authorization entry, allowed decisions, allowed state change, explicit publication decision, current authorizations, and stop conditions
-- Decision override marker check: release gate now states human authorization/review cancellation, Phase 5C entry, source verification, validator checks, production QA, and no unverified publishing.
-- `/opportunities/` baseline marker check: robots noindex, canonical, analytics script, five opportunity cards, official source links, and calculator links.
-- Local static-server check: `http://127.0.0.1:4177/opportunities/` returned HTTP 200 and served the noindex listing content.
-- Automated `/opportunities/` HTML verification added and passed: noindex listing, 5 cards, official links, calculator links, and no premature structured data.
-- Internal entry link verification added for homepage and partners page.
-- Automated detail-page verification added for noindex, canonical, analytics marker, back link, official source link, and calculator links.
-- Data-driven listing verification added: opportunity titles, official source URLs, and card count are checked against `opportunities.json`.
-- Second detail page verification added: `/opportunities/178th-wing-base-microgrid-construction/` is checked for noindex, canonical, analytics marker, listing link, official source link, and calculator links.
-- Reusable detail-page generator verification added: generator ran successfully and `verify-opportunities-page.js` confirms the generator is present while checking the two generated detail pages.
-- Third detail page verification added: `/opportunities/jbmdl-power-generation-microgrid-construction/` is generated from `opportunities.json` and checked for noindex, canonical, analytics marker, official source link, back link, and calculator links.
-- Fourth detail page verification added: `/opportunities/63rd-readiness-division-milcon-ercip-microgrid/` is generated from `opportunities.json` and checked for noindex, canonical, analytics marker, official source link, back link, and calculator links.
-- Fifth detail page verification added: `/opportunities/solar-with-wildlife-and-ecosystem-benefits-2-solweb2/` is generated from `opportunities.json` and checked for noindex, canonical, analytics marker, official source link, back link, and data-driven calculator links.
-- Local static-server HTTP QA added: `python3 -m http.server 4188 --directory src` served `/opportunities/` and all five detail pages; each returned HTTP 200, contained `noindex,follow`, and did not contain premature JSON-LD structured data.
-- Repeatable local HTTP QA script added and passed: `node src/tools/verify-opportunities-http.js` starts a local static server, checks listing plus five detail pages, confirms HTTP 200, `noindex,follow`, and no premature JSON-LD structured data.
-- Analytics/CTA marker verification added and passed: `node src/tools/verify-opportunities-analytics-cta.js` checks analytics script, listing-to-detail links, official source CTAs, back links, and data-driven calculator CTAs for listing plus all five detail pages.
-- Index-policy verification added and passed: `node src/tools/verify-opportunities-index-policy.js` confirms six opportunities URLs remain noindex and out of sitemap/RSS/schema while records remain below published status.
-- Aggregate Phase 5C QA added and passed: `node src/tools/verify-opportunities-all.js` runs validator, detail generation, page verification, index-policy verification, analytics/CTA verification, and HTTP verification in order.
-- Noindex MVP pre-deploy checklist marker check passed: local aggregate QA, noindex policy, route/content, production verification, archive, and explicit non-approvals are documented.
-- Noindex MVP production verification passed: `https://pvsize.com/opportunities/` and all five detail pages returned HTTP 200; production HTML retains `noindex,follow`; production sitemap contains no Opportunities URLs; Opportunities RSS/feed URLs checked returned 404; production Opportunities pages contain no JSON-LD structured data; production homepage links to `/opportunities/`.
-- Repeatable production noindex verifier added and passed: `node src/tools/verify-opportunities-production-noindex.js` checks listing/detail HTTP 200, `noindex,follow`, no JSON-LD, no RSS alternate link, sitemap exclusion, feed candidate 404s, and homepage entry link.
-- Optional production aggregate gate added and passed: `PVSIZE_VERIFY_PRODUCTION=1 node src/tools/verify-opportunities-all.js` runs the normal local aggregate QA and then the production noindex verifier.
-- Opportunities QA mode documentation marker check passed for default local aggregate QA, optional production noindex QA, no-network default behavior, production checks, and explicit non-approvals.
-- Phase 5C noindex MVP archive decision marker check passed for verified scope, local QA, optional production QA, noindex-only non-approvals, requirements before indexed release, and not-full-Phase-5C-closure outcome.
-- Published record-state transition marker check passed for current noindex baseline, required published state, required indexable channel state, forbidden transitions, validator gap, and next implementation step.
-- Published-record index-policy gate added and passed: sitemap/RSS/schema/indexable checks now assert included opportunity records are `review_status: published`; current noindex MVP still passes because no Opportunities URLs are included in sitemap/RSS/schema.
-- Published-record index-policy negative self-test added and passed: fixture injection proves a non-published Opportunity in sitemap/schema/RSS fails without changing current records.
-- Aggregate QA published-record self-test added and passed: `node src/tools/verify-opportunities-all.js` now runs `verify-opportunities-index-policy.js --self-test`, covering sitemap/schema/RSS negative fixtures during the local aggregate gate.
-- Indexed-release readiness sequence marker check passed: document includes record status, SEO metadata, structured data, sitemap/RSS, newsletter, production QA, archive, stop conditions, and next implementation order.
-- Indexed-readiness verifier added and passed: `node src/tools/verify-opportunities-indexed-readiness.js` checks readiness markers, exact sequence, non-published record state, no RSS files, no listing JSON-LD, no newsletter form, and noindex listing policy.
-- Aggregate QA now includes indexed-readiness verification and passed.
-- SEO metadata verifier added and passed: `node src/tools/verify-opportunities-seo-metadata.js` checks listing plus five detail pages for exact titles, bounded descriptions, canonical URLs, noindex policy, and no premature JSON-LD/RSS/newsletter output.
-- Aggregate QA now includes SEO metadata verification and passed.
-- Structured-data rules verifier added and passed: `node src/tools/verify-opportunities-structured-data-rules.js --self-test` checks published-only schema rules, allowed/blocked fields, no current JSON-LD output, and a non-published JSON-LD fixture failure.
-- Aggregate QA now includes structured-data rules verification and passed.
-- Sitemap/RSS rules verifier added and passed: `node src/tools/verify-opportunities-sitemap-rss-rules.js --self-test` checks published-only feed rules, allowed/blocked feed fields, no current RSS/feed output, sitemap exclusion, and non-published sitemap/RSS fixture failures.
-- Aggregate QA now includes sitemap/RSS rules verification and passed.
-- Newsletter rules verifier added and passed: `node src/tools/verify-opportunities-newsletter-rules.js --self-test` checks indexed-content gate dependency, consent requirements, analytics event names, blocked MVP features, no current newsletter output, and newsletter form/API fixture failures.
-- Aggregate QA now includes newsletter rules verification and passed.
-- Production QA readiness rules verifier added and passed: `node src/tools/verify-opportunities-production-qa-readiness.js --self-test` checks local aggregate-first rules, pre-deploy checks, deployment boundaries, production HTTP checks, indexed output checks, rollback/noindex fallback rules, archive requirements, current no-deploy state, and unsafe indexed-output fixtures.
-- Aggregate QA now includes production QA readiness verification and passed.
-- Production QA execution checklist verifier added and passed: `node src/tools/verify-opportunities-production-qa-execution-checklist.js --self-test` checks preflight snapshot, local gate, release candidate review, post-deploy HTTP checks, post-deploy indexed output checks, search indexing hold, failure handling, archive handoff, current no-execution state, and unsafe indexed-output fixtures.
-- Aggregate QA now includes production QA execution checklist verification and passed.
-- Indexed release fallback checklist verifier added and passed: `node src/tools/verify-opportunities-indexed-release-fallback-checklist.js --self-test` checks noindex-first fallback rules, fallback triggers, rollback target markers, noindex fallback actions, fallback verification commands, production recheck markers, indexing hold rules, failure report markers, current no-execution state, and unsafe indexed-output fixtures.
-- Aggregate QA now includes indexed release fallback checklist verification and passed.
-- Indexed release archive closure checklist verifier added and passed: `node src/tools/verify-opportunities-indexed-release-archive-closure-checklist.js --self-test` checks closure preconditions, evidence package markers, indexed output evidence, closure decision markers, report handoff, current no-closure state, Phase 5C remains open, and unsafe closure/indexed-output fixtures.
-- Aggregate QA now includes indexed release archive closure checklist verification and passed.
-- Production QA artifact index verifier added and passed: `node src/tools/verify-opportunities-production-qa-artifact-index.js --self-test` checks required planning document references, verification script references, daily ops report trail references, aggregate QA artifact group coverage, current no-release state, Phase 5C remains open, and unsafe indexed-output fixtures.
-- Aggregate QA now includes production QA artifact index verification and passed.
-- Production QA handoff checklist verifier added and passed: `node src/tools/verify-opportunities-production-qa-handoff-checklist.js --self-test` checks required handoff fields, artifact references, verification commands, stop conditions, current no-execution state, Phase 5C remains open, and unsafe indexed-output fixtures.
-- Aggregate QA now includes production QA handoff checklist verification and passed.
-- Production QA run manifest verifier added and passed: `node src/tools/verify-opportunities-production-qa-run-manifest.js --self-test` checks required run manifest fields, verification plan commands, output artifacts, stop conditions, current no-execution state, Phase 5C remains open, and unsafe indexed-output fixtures.
-- Aggregate QA now includes production QA run manifest verification and passed.
-- Production QA evidence bundle checklist verifier added and passed: `node src/tools/verify-opportunities-production-qa-evidence-bundle-checklist.js --self-test` checks required evidence sections, local QA evidence, production QA evidence, indexed output evidence, fallback evidence, current no-execution state, Phase 5C remains open, and unsafe indexed-output fixtures.
-- Aggregate QA now includes production QA evidence bundle checklist verification and passed.
-- Production QA signoff checklist verifier added and passed: `node src/tools/verify-opportunities-production-qa-signoff-checklist.js --self-test` checks required signoff fields, local QA signoff, production QA signoff, indexed output signoff, fallback signoff, closure hold, current no-signoff state, Phase 5C remains open, and unsafe indexed-output fixtures.
-- Aggregate QA now includes production QA signoff checklist verification and passed.
-- Production QA decision log template verifier added and passed: `node src/tools/verify-opportunities-production-qa-decision-log-template.js --self-test` checks required decision fields, allowed decisions, evidence links, hold/rollback triggers, current no-decision state, Phase 5C remains open, and unsafe indexed-output fixtures.
-- Aggregate QA now includes production QA decision log template verification and passed.
-- Production QA go/no-go criteria verifier added and passed: `node src/tools/verify-opportunities-production-qa-go-no-go-criteria.js --self-test` checks required criteria groups, GO criteria, NO-GO criteria, HOLD criteria, current no-approval state, Phase 5C remains open, and unsafe indexed-output fixtures.
-- Aggregate QA now includes production QA go/no-go criteria verification and passed.
-- Production QA release notes template verifier added and passed: `node src/tools/verify-opportunities-production-qa-release-notes-template.js --self-test` checks required release note fields, user-facing summary, QA summary, risk summary, current no-release state, Phase 5C remains open, and unsafe indexed-output fixtures.
-- Aggregate QA now includes production QA release notes template verification and passed.
-- Production QA monitoring handoff checklist verifier added and passed: `node src/tools/verify-opportunities-production-qa-monitoring-handoff-checklist.js --self-test` checks required monitoring fields, monitoring checks, escalation triggers, closure evidence, current no-handoff state, Phase 5C remains open, and unsafe indexed-output fixtures.
-- Aggregate QA now includes production QA monitoring handoff verification and passed.
-- Production QA post-release watch checklist verifier added and passed: `node src/tools/verify-opportunities-production-qa-post-release-watch-checklist.js --self-test` checks required watch fields, watch checks, cadence, escalation triggers, closure evidence, current no-watch state, Phase 5C remains open, and unsafe indexed-output fixtures.
-- Aggregate QA now includes production QA post-release watch verification and passed.
-- Production QA search indexing request hold checklist added: `docs/opportunities/PVSIZE_OPPORTUNITIES_PRODUCTION_QA_SEARCH_INDEXING_REQUEST_HOLD_CHECKLIST.md` defines required-before-request hold, required fields, blocked conditions, release conditions, evidence requirements, and current no-request state.
-- Production QA search indexing hold verifier added and passed: `node src/tools/verify-opportunities-production-qa-search-indexing-request-hold-checklist.js --self-test` checks 6 hold markers, required fields, blocked conditions, release conditions, evidence requirements, current no-request state, Phase 5C remains open, and unsafe indexed-output fixtures.
-- Aggregate QA now includes production QA search indexing hold verification and passed.
+Phase 5C T02-T07 self-tests all PASS: published record preflight matrix (9/9), indexed output activation preflight matrix (8/8), newsletter activation hold checklist (7/7), artifact index (7 markers/12 docs/14 scripts/4 reports), Phase 5C indexed-release planning summary (5/5), Marvis handoff (9/9).
 
 ## Risks And Gaps
 
@@ -229,9 +144,7 @@ Phase 5A validation passed:
 
 ## Next Single Task
 
-Continue Phase 5C Publication Pipeline:
-
-Add indexed-release production QA incremental rollout and adoption strategy checklist for Opportunities. Do not deploy, add indexed output, add sitemap/RSS output, add JSON-LD output, add newsletter form/output, request indexing, approve indexed release, mark Phase 5C Closed, or change record publication states in the same task.
+Phase 5C T01-T07 planning gates complete. Stop here for Codex indexed-release acceptance review. See `PVSIZE_OPPORTUNITIES_PHASE5C_MARVIS_HANDOFF.md` for full handoff details. No deploy, no indexed output, no published record transitions, no Phase 5C Closed — until Codex approves next stage.
 
 ## User Decision Needed
 

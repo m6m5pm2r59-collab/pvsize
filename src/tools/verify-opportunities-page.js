@@ -31,6 +31,11 @@ const productionQaReleaseNotesTemplateVerifierPath = path.join(__dirname, 'verif
 const productionQaMonitoringHandoffChecklistVerifierPath = path.join(__dirname, 'verify-opportunities-production-qa-monitoring-handoff-checklist.js');
 const productionQaPostReleaseWatchChecklistVerifierPath = path.join(__dirname, 'verify-opportunities-production-qa-post-release-watch-checklist.js');
 const productionQaSearchIndexingHoldChecklistVerifierPath = path.join(__dirname, 'verify-opportunities-production-qa-search-indexing-request-hold-checklist.js');
+const publishedRecordPreflightMatrixVerifierPath = path.join(__dirname, 'verify-opportunities-published-record-preflight-matrix.js');
+const indexedOutputActivationPreflightMatrixVerifierPath = path.join(__dirname, 'verify-opportunities-indexed-output-activation-preflight-matrix.js');
+const newsletterActivationHoldChecklistVerifierPath = path.join(__dirname, 'verify-opportunities-newsletter-activation-hold-checklist.js');
+const phase5cIndexedReleasePlanningSummaryVerifierPath = path.join(__dirname, 'verify-opportunities-phase5c-indexed-release-planning-summary.js');
+const phase5cMarvisHandoffVerifierPath = path.join(__dirname, 'verify-opportunities-phase5c-marvis-handoff.js');
 const aggregateVerifierPath = path.join(__dirname, 'verify-opportunities-all.js');
 const productionNoindexVerifierPath = path.join(__dirname, 'verify-opportunities-production-noindex.js');
 const detailSlugs = [
@@ -139,6 +144,21 @@ if (!fs.existsSync(productionQaPostReleaseWatchChecklistVerifierPath)) {
 }
 if (!fs.existsSync(productionQaSearchIndexingHoldChecklistVerifierPath)) {
   errors.push('missing production QA search indexing hold checklist verifier');
+}
+if (!fs.existsSync(publishedRecordPreflightMatrixVerifierPath)) {
+  errors.push('missing published record preflight matrix verifier');
+}
+if (!fs.existsSync(indexedOutputActivationPreflightMatrixVerifierPath)) {
+  errors.push('missing indexed output activation preflight matrix verifier');
+}
+if (!fs.existsSync(newsletterActivationHoldChecklistVerifierPath)) {
+  errors.push('missing newsletter activation hold checklist verifier');
+}
+if (!fs.existsSync(phase5cIndexedReleasePlanningSummaryVerifierPath)) {
+  errors.push('missing Phase 5C indexed-release planning summary verifier');
+}
+if (!fs.existsSync(phase5cMarvisHandoffVerifierPath)) {
+  errors.push('missing Phase 5C Marvis handoff verifier');
 }
 
 if (!fs.existsSync(aggregateVerifierPath)) {

@@ -2,7 +2,7 @@
 
 Status: artifact index planning gate only
 
-Updated: 2026-08-01
+Updated: 2026-08-02
 
 ## Purpose
 
@@ -43,6 +43,12 @@ Current planning documents:
 - `docs/opportunities/PVSIZE_OPPORTUNITIES_INDEXED_RELEASE_FALLBACK_CHECKLIST.md`
 - `docs/opportunities/PVSIZE_OPPORTUNITIES_INDEXED_RELEASE_ARCHIVE_CLOSURE_CHECKLIST.md`
 - `docs/opportunities/PVSIZE_OPPORTUNITIES_INDEXED_RELEASE_READINESS_SEQUENCE.md`
+- `docs/opportunities/PVSIZE_OPPORTUNITIES_PRODUCTION_QA_SEARCH_INDEXING_REQUEST_HOLD_CHECKLIST.md`
+- `docs/opportunities/PVSIZE_OPPORTUNITIES_PUBLISHED_RECORD_PREFLIGHT_MATRIX.md`
+- `docs/opportunities/PVSIZE_OPPORTUNITIES_INDEXED_OUTPUT_ACTIVATION_PREFLIGHT_MATRIX.md`
+- `docs/opportunities/PVSIZE_OPPORTUNITIES_NEWSLETTER_ACTIVATION_HOLD_CHECKLIST.md`
+- `docs/opportunities/PVSIZE_OPPORTUNITIES_PHASE5C_INDEXED_RELEASE_PLANNING_SUMMARY.md`
+- `docs/opportunities/PVSIZE_OPPORTUNITIES_PHASE5C_MARVIS_HANDOFF.md`
 - `docs/opportunities/PVSIZE_OPPORTUNITIES_STATUS.md`
 
 ## Current Verification Scripts
@@ -56,6 +62,12 @@ Current verification scripts:
 - `src/tools/verify-opportunities-indexed-release-fallback-checklist.js`
 - `src/tools/verify-opportunities-indexed-release-archive-closure-checklist.js`
 - `src/tools/verify-opportunities-index-policy.js`
+- `src/tools/verify-opportunities-production-qa-search-indexing-request-hold-checklist.js`
+- `src/tools/verify-opportunities-published-record-preflight-matrix.js`
+- `src/tools/verify-opportunities-indexed-output-activation-preflight-matrix.js`
+- `src/tools/verify-opportunities-newsletter-activation-hold-checklist.js`
+- `src/tools/verify-opportunities-phase5c-indexed-release-planning-summary.js`
+- `src/tools/verify-opportunities-phase5c-marvis-handoff.js`
 - `src/tools/verify-opportunities-all.js`
 - `src/tools/verify-opportunities-page.js`
 - `src/tools/verify-opportunities-production-noindex.js`

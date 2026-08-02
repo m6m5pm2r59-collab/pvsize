@@ -40,6 +40,12 @@ const requiredDocs = [
   'PVSIZE_OPPORTUNITIES_INDEXED_RELEASE_FALLBACK_CHECKLIST.md',
   'PVSIZE_OPPORTUNITIES_INDEXED_RELEASE_ARCHIVE_CLOSURE_CHECKLIST.md',
   'PVSIZE_OPPORTUNITIES_INDEXED_RELEASE_READINESS_SEQUENCE.md',
+  'PVSIZE_OPPORTUNITIES_PRODUCTION_QA_SEARCH_INDEXING_REQUEST_HOLD_CHECKLIST.md',
+  'PVSIZE_OPPORTUNITIES_PUBLISHED_RECORD_PREFLIGHT_MATRIX.md',
+  'PVSIZE_OPPORTUNITIES_INDEXED_OUTPUT_ACTIVATION_PREFLIGHT_MATRIX.md',
+  'PVSIZE_OPPORTUNITIES_NEWSLETTER_ACTIVATION_HOLD_CHECKLIST.md',
+  'PVSIZE_OPPORTUNITIES_PHASE5C_INDEXED_RELEASE_PLANNING_SUMMARY.md',
+  'PVSIZE_OPPORTUNITIES_PHASE5C_MARVIS_HANDOFF.md',
   'PVSIZE_OPPORTUNITIES_STATUS.md',
 ];
 
@@ -54,6 +60,12 @@ const requiredScripts = [
   'verify-opportunities-indexed-release-fallback-checklist.js',
   'verify-opportunities-indexed-release-archive-closure-checklist.js',
   'verify-opportunities-index-policy.js',
+  'verify-opportunities-production-qa-search-indexing-request-hold-checklist.js',
+  'verify-opportunities-published-record-preflight-matrix.js',
+  'verify-opportunities-indexed-output-activation-preflight-matrix.js',
+  'verify-opportunities-newsletter-activation-hold-checklist.js',
+  'verify-opportunities-phase5c-indexed-release-planning-summary.js',
+  'verify-opportunities-phase5c-marvis-handoff.js',
   'verify-opportunities-all.js',
   'verify-opportunities-page.js',
   'verify-opportunities-production-noindex.js',
@@ -81,6 +93,11 @@ requiredReports.forEach((fileName) => {
   'Production QA execution checklist verification',
   'Indexed release fallback checklist verification',
   'Indexed release archive closure checklist verification',
+  'Production QA search indexing hold verification',
+  'Published record preflight matrix verification',
+  'Indexed output activation preflight matrix verification',
+  'Newsletter activation hold checklist verification',
+  'Phase 5C indexed-release planning summary verification',
 ].forEach((label) => {
   assert(aggregateQa.includes(label), `aggregate QA missing artifact group verifier: ${label}`);
 });
