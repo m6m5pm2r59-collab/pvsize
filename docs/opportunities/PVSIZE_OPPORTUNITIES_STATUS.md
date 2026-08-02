@@ -1,6 +1,6 @@
 # PVSize Opportunities Status
 
-Updated: 2026-08-02 18:20 CST
+Updated: 2026-08-02 18:50 CST
 
 ## Current Phase
 
@@ -118,6 +118,7 @@ The mainline has moved to Phase 5C Publication Pipeline. The first non-indexed `
 - Phase 5C L06 completed: `docs/opportunities/PVSIZE_OPPORTUNITIES_PHASE5C_STATUS_ROLLUP_TEMPLATE.md` and `src/tools/verify-opportunities-phase5c-status-rollup-template.js` added for uniform stage rollup reporting; verifier PASS (6/6 self-test, 51/51 real); aggregate QA 32 steps PASS.
 - Phase 5C L07 completed: `docs/opportunities/PVSIZE_OPPORTUNITIES_PHASE5C_PLANNING_ONLY_BOUNDARY_CONTRACT.md` and `src/tools/verify-opportunities-phase5c-planning-only-boundary-contract.js` added with 8 allowed actions (P1-P8), 10 forbidden actions (F1-F10), 3 planning zones, violation protocol, and evidence chain; verifier PASS (8/8 self-test, 68/68 real); aggregate QA 32 steps PASS.
 - Phase 5C L08 completed: `docs/opportunities/PVSIZE_OPPORTUNITIES_PHASE5C_INDEXED_IMPLEMENTATION_DEPENDENCY_MAP.md` and `src/tools/verify-opportunities-phase5c-indexed-implementation-dependency-map.js` added with 7 IS steps (IS-01 through IS-07), 10 hard dependencies (D1-D10), 26 IR references, planning-to-implementation mapping, and verification script routing; verifier PASS (8/8 self-test, 86/86 real); aggregate QA PASS.
+- Phase 5C L09 completed: `docs/opportunities/PVSIZE_OPPORTUNITIES_PHASE5C_IMPLEMENTATION_STAGE_PACKET_SKELETON.md` and `src/tools/verify-opportunities-phase5c-implementation-stage-packet-skeleton.js` added with 7 IS task slots, 8 entry gates (G1-G5, SG1-SG3), packet metadata slots, per-task pattern, verification script map, planning-only guardrails, and cross-references to L01-L08 and L10; verifier PASS (8/8 self-test, 66/66 real); aggregate QA pending.
 
 ## Current Constraints
 
@@ -128,11 +129,11 @@ The mainline has moved to Phase 5C Publication Pipeline. The first non-indexed `
 
 ## Last Commit
 
-`92bd5de Phase 5C L08: add indexed implementation dependency map`
+`(pending)`
 
 ## Last Verification
 
-Phase 5C L08 dependency map verifier PASS (8/8 self-test, 86/86 real), aggregate QA PASS, `git diff --check` PASS, no records published, no Opportunities sitemap/RSS/JSON-LD/newsletter output added, indexed release not approved, Phase 5C not closed.
+Phase 5C L09 packet skeleton verifier PASS (8/8 self-test, 66/66 real), aggregate QA pending, `git diff --check` pending, no records published, no Opportunities sitemap/RSS/JSON-LD/newsletter output added, indexed release not approved, Phase 5C not closed.
 
 ## Risks And Gaps
 
@@ -152,7 +153,7 @@ Phase 5C L08 dependency map verifier PASS (8/8 self-test, 86/86 real), aggregate
 
 ## Next Single Task
 
-Phase 5C planning-only long-run stage is now the active execution path. Continue `docs/opportunities/PVSIZE_OPPORTUNITIES_PHASE5C_PLANNING_ONLY_LONG_RUN_BOARD.md` from `L09 Add future implementation-stage packet skeleton`. Do not deploy, add indexed output, add newsletter form/output, request indexing, approve indexed release, close Phase 5C, or change record publication states.
+Phase 5C planning-only long-run stage is now the active execution path. Continue `docs/opportunities/PVSIZE_OPPORTUNITIES_PHASE5C_PLANNING_ONLY_LONG_RUN_BOARD.md` from `L10 Add stage handoff for Codex review`. Do not deploy, add indexed output, add newsletter form/output, request indexing, approve indexed release, close Phase 5C, or change record publication states.
 
 ## Codex Indexed-Release Planning Gates Acceptance Review
 
