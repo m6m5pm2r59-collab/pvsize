@@ -30,6 +30,7 @@ const steps = [
   ['Phase 5C status rollup template verification', ['src/tools/verify-opportunities-phase5c-status-rollup-template.js', '--self-test'], {}],
   ['Phase 5C indexed implementation dependency map verification', ['src/tools/verify-opportunities-phase5c-indexed-implementation-dependency-map.js', '--self-test'], {}],
   ['Phase 5C implementation stage packet skeleton verification', ['src/tools/verify-opportunities-phase5c-implementation-stage-packet-skeleton.js', '--self-test'], {}],
+  ['Phase 5C planning-only long-run handoff verification', ['src/tools/verify-opportunities-phase5c-planning-only-long-run-handoff.js', '--self-test'], {}],
   ['Page verification', ['src/tools/verify-opportunities-page.js'], {}],
   ['Indexed readiness verification', ['src/tools/verify-opportunities-indexed-readiness.js'], {}],
   ['Index policy verification', ['src/tools/verify-opportunities-index-policy.js', '--self-test'], {}],

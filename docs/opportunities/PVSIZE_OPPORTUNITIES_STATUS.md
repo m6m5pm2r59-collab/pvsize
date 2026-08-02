@@ -1,6 +1,6 @@
 # PVSize Opportunities Status
 
-Updated: 2026-08-02 18:50 CST
+Updated: 2026-08-02 19:45 CST
 
 ## Current Phase
 
@@ -119,6 +119,7 @@ The mainline has moved to Phase 5C Publication Pipeline. The first non-indexed `
 - Phase 5C L07 completed: `docs/opportunities/PVSIZE_OPPORTUNITIES_PHASE5C_PLANNING_ONLY_BOUNDARY_CONTRACT.md` and `src/tools/verify-opportunities-phase5c-planning-only-boundary-contract.js` added with 8 allowed actions (P1-P8), 10 forbidden actions (F1-F10), 3 planning zones, violation protocol, and evidence chain; verifier PASS (8/8 self-test, 68/68 real); aggregate QA 32 steps PASS.
 - Phase 5C L08 completed: `docs/opportunities/PVSIZE_OPPORTUNITIES_PHASE5C_INDEXED_IMPLEMENTATION_DEPENDENCY_MAP.md` and `src/tools/verify-opportunities-phase5c-indexed-implementation-dependency-map.js` added with 7 IS steps (IS-01 through IS-07), 10 hard dependencies (D1-D10), 26 IR references, planning-to-implementation mapping, and verification script routing; verifier PASS (8/8 self-test, 86/86 real); aggregate QA PASS.
 - Phase 5C L09 completed: `docs/opportunities/PVSIZE_OPPORTUNITIES_PHASE5C_IMPLEMENTATION_STAGE_PACKET_SKELETON.md` and `src/tools/verify-opportunities-phase5c-implementation-stage-packet-skeleton.js` added with 7 IS task slots, 8 entry gates (G1-G5, SG1-SG3), packet metadata slots, per-task pattern, verification script map, planning-only guardrails, and cross-references to L01-L08 and L10; verifier PASS (8/8 self-test, 66/66 real); aggregate QA PASS.
+- Phase 5C L10 completed: `docs/opportunities/PVSIZE_OPPORTUNITIES_PHASE5C_PLANNING_ONLY_LONG_RUN_HANDOFF.md` and `src/tools/verify-opportunities-phase5c-planning-only-long-run-handoff.js` added as final planning-only long-run stage handoff for Codex acceptance review, summarizing L01-L10 planning artifacts, verifier scripts, commit chain, state boundary, and Codex decision options; verifier PASS (8/8 self-test, 118/118 real); aggregate QA 35 steps PASS; automatic execution stops here. No deploy, no indexed output, no newsletter output, no search indexing request, no indexed release approval, no Phase 5C closure, no published record transitions.
 
 ## Current Constraints
 
@@ -129,11 +130,11 @@ The mainline has moved to Phase 5C Publication Pipeline. The first non-indexed `
 
 ## Last Commit
 
-`654c4df Phase 5C L09: add implementation-stage packet skeleton`
+`(pending) — Phase 5C L10: add stage handoff for Codex review`
 
 ## Last Verification
 
-Phase 5C L09 packet skeleton verifier PASS (8/8 self-test, 66/66 real), aggregate QA PASS (34 steps), `git diff --check` PASS, no records published, no Opportunities sitemap/RSS/JSON-LD/newsletter output added, indexed release not approved, Phase 5C not closed.
+Phase 5C L10 planning-only long-run handoff verifier PASS (8/8 self-test, 118/118 real), aggregate QA PASS (35 steps), `git diff --check` PASS, no records published, no Opportunities sitemap/RSS/JSON-LD/newsletter output added, indexed release not approved, Phase 5C not closed. Automatic execution stops. Awaiting Codex stage acceptance review.
 
 ## Risks And Gaps
 
@@ -153,7 +154,7 @@ Phase 5C L09 packet skeleton verifier PASS (8/8 self-test, 66/66 real), aggregat
 
 ## Next Single Task
 
-Phase 5C planning-only long-run stage is now the active execution path. Continue `docs/opportunities/PVSIZE_OPPORTUNITIES_PHASE5C_PLANNING_ONLY_LONG_RUN_BOARD.md` from `L10 Add stage handoff for Codex review`. Do not deploy, add indexed output, add newsletter form/output, request indexing, approve indexed release, close Phase 5C, or change record publication states.
+Stop. The Phase 5C planning-only long-run board stage (L01-L10) is complete. Awaiting Codex stage acceptance review. Do not proceed to any L11+ task or implementation-stage work until Codex records an acceptance decision in this status file under a new "Codex Long-Run Stage Acceptance Review" section.
 
 ## Codex Indexed-Release Planning Gates Acceptance Review
 
