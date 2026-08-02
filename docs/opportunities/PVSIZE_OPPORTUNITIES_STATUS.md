@@ -135,7 +135,7 @@ On 2026-08-02, the accepted next-stage direction changed from decision-pending t
 
 ## Last Commit
 
-`b81c722 Phase 5C: activate pre-implementation long-run board`
+`f66520a Phase 5C PI-01: add Opportunities aggregate QA entrypoint`
 
 ## Last Verification
 
