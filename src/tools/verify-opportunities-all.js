@@ -26,6 +26,7 @@ const steps = [
   ['Indexed output activation preflight matrix verification', ['src/tools/verify-opportunities-indexed-output-activation-preflight-matrix.js', '--self-test'], {}],
   ['Newsletter activation hold checklist verification', ['src/tools/verify-opportunities-newsletter-activation-hold-checklist.js', '--self-test'], {}],
   ['Phase 5C indexed-release planning summary verification', ['src/tools/verify-opportunities-phase5c-indexed-release-planning-summary.js', '--self-test'], {}],
+  ['Phase 5C planning-only long-run board verification', ['src/tools/verify-opportunities-phase5c-planning-only-long-run-board.js', '--self-test'], {}],
   ['Page verification', ['src/tools/verify-opportunities-page.js'], {}],
   ['Indexed readiness verification', ['src/tools/verify-opportunities-indexed-readiness.js'], {}],
   ['Index policy verification', ['src/tools/verify-opportunities-index-policy.js', '--self-test'], {}],

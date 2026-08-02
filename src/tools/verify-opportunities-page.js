@@ -35,6 +35,7 @@ const publishedRecordPreflightMatrixVerifierPath = path.join(__dirname, 'verify-
 const indexedOutputActivationPreflightMatrixVerifierPath = path.join(__dirname, 'verify-opportunities-indexed-output-activation-preflight-matrix.js');
 const newsletterActivationHoldChecklistVerifierPath = path.join(__dirname, 'verify-opportunities-newsletter-activation-hold-checklist.js');
 const phase5cIndexedReleasePlanningSummaryVerifierPath = path.join(__dirname, 'verify-opportunities-phase5c-indexed-release-planning-summary.js');
+const phase5cPlanningOnlyLongRunBoardVerifierPath = path.join(__dirname, 'verify-opportunities-phase5c-planning-only-long-run-board.js');
 const phase5cMarvisHandoffVerifierPath = path.join(__dirname, 'verify-opportunities-phase5c-marvis-handoff.js');
 const aggregateVerifierPath = path.join(__dirname, 'verify-opportunities-all.js');
 const productionNoindexVerifierPath = path.join(__dirname, 'verify-opportunities-production-noindex.js');
@@ -156,6 +157,9 @@ if (!fs.existsSync(newsletterActivationHoldChecklistVerifierPath)) {
 }
 if (!fs.existsSync(phase5cIndexedReleasePlanningSummaryVerifierPath)) {
   errors.push('missing Phase 5C indexed-release planning summary verifier');
+}
+if (!fs.existsSync(phase5cPlanningOnlyLongRunBoardVerifierPath)) {
+  errors.push('missing Phase 5C planning-only long-run board verifier');
 }
 if (!fs.existsSync(phase5cMarvisHandoffVerifierPath)) {
   errors.push('missing Phase 5C Marvis handoff verifier');

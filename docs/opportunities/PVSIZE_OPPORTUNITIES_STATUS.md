@@ -1,6 +1,6 @@
 # PVSize Opportunities Status
 
-Updated: 2026-08-02 14:00 CST
+Updated: 2026-08-02 15:20 CST
 
 ## Current Phase
 
@@ -110,6 +110,7 @@ The mainline has moved to Phase 5C Publication Pipeline. The first non-indexed `
 - Phase 5C T05 completed: refreshed artifact index and artifact-index verifier to include T01-T07 documents, verification scripts, and aggregate QA labels; `docs/opportunities/PVSIZE_OPPORTUNITIES_PRODUCTION_QA_ARTIFACT_INDEX.md` now indexes 12 planning documents and 14 verification scripts.
 - Phase 5C T06 completed: `docs/opportunities/PVSIZE_OPPORTUNITIES_PHASE5C_INDEXED_RELEASE_PLANNING_SUMMARY.md` and `src/tools/verify-opportunities-phase5c-indexed-release-planning-summary.js` added to define remaining indexed release planning summary and verify current no-deploy/indexed-output state; aggregate QA now includes Phase 5C indexed-release planning summary verification.
 - Phase 5C T07 completed: `docs/opportunities/PVSIZE_OPPORTUNITIES_PHASE5C_MARVIS_HANDOFF.md` and `src/tools/verify-opportunities-phase5c-marvis-handoff.js` added to define Marvis handoff to Codex for indexed release acceptance review; aggregate QA and page verifier now include Marvis handoff verification.
+- Phase 5C planning-only long-run board activated: `docs/opportunities/PVSIZE_OPPORTUNITIES_PHASE5C_PLANNING_ONLY_LONG_RUN_BOARD.md` and `src/tools/verify-opportunities-phase5c-planning-only-long-run-board.js` added so Marvis can continue a long-running planning-only stage from a single total board without per-task user copy/paste; aggregate QA and page verifier now include long-run board verification.
 
 ## Current Constraints
 
@@ -120,11 +121,11 @@ The mainline has moved to Phase 5C Publication Pipeline. The first non-indexed `
 
 ## Last Commit
 
-`18a9939 Phase 5C T02-T07: complete indexed-release planning gates` (remote main)
+`b94e8ca Phase 5C: Codex acceptance review + AIGC标记 reconciliation` (remote main)
 
 ## Last Verification
 
-Phase 5C T02-T07 self-tests all PASS: published record preflight matrix (9/9), indexed output activation preflight matrix (8/8), newsletter activation hold checklist (7/7), artifact index (7 markers/12 docs/14 scripts/4 reports), Phase 5C indexed-release planning summary (5/5), Marvis handoff (9/9).
+Codex acceptance review recorded at remote main `b94e8ca`: aggregate QA PASS (30 steps), `published_records=0`, no Opportunities sitemap/RSS/JSON-LD/newsletter output, indexed release not approved, Phase 5C not closed.
 
 ## Risks And Gaps
 
@@ -144,14 +145,14 @@ Phase 5C T02-T07 self-tests all PASS: published record preflight matrix (9/9), i
 
 ## Next Single Task
 
-Phase 5C indexed-release planning gates acceptance review completed by Codex. All T01-T07 PASS. No deploy, no indexed output, no published record transitions, no Phase 5C Closed. See acceptance review record below for full details.
+Phase 5C planning-only long-run stage is now the active execution path. Continue `docs/opportunities/PVSIZE_OPPORTUNITIES_PHASE5C_PLANNING_ONLY_LONG_RUN_BOARD.md` from `L02 Reconcile the report trail`. Do not deploy, add indexed output, add newsletter form/output, request indexing, approve indexed release, close Phase 5C, or change record publication states.
 
 ## Codex Indexed-Release Planning Gates Acceptance Review
 
 - **Date**: 2026-08-02
 - **Reviewer**: Codex (automated acceptance review)
 - **Decision**: ACCEPT — Phase 5C T01-T07 all PASS
-- **Remote main commit**: `18a9939 Phase 5C T02-T07: complete indexed-release planning gates`
+- **Remote main commit**: `b94e8ca Phase 5C: Codex acceptance review + AIGC标记 reconciliation`
 - **Aggregate QA**: 30 steps PASS (local aggregate QA: `node src/tools/verify-opportunities-all.js`)
 - **Published records**: `published_records=0` — no record has transitioned to published status; all five draft records remain at `review_status: discovered`
 - **Deploy status**: Not deployed — current MVP is noindex-only, production-verified at `https://pvsize.com/opportunities/` with noindex policy intact

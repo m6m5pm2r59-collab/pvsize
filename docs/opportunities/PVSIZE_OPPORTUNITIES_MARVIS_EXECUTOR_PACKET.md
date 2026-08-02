@@ -1,6 +1,6 @@
 # PVSize Opportunities Phase 5C Marvis Executor Packet
 
-Status: active AI executor packet
+Status: historical T01-T07 executor packet
 
 Updated: 2026-08-02
 
@@ -8,9 +8,15 @@ Updated: 2026-08-02
 
 You are Marvis, the execution agent taking over PVSize Opportunities Phase 5C work.
 
-Your job is to continue the Opportunities channel from the current noindex-only MVP state toward indexed-release readiness by executing one small verifiable task at a time from this packet and from the authoritative status file.
+Your job in this historical packet was to continue the Opportunities channel from the current noindex-only MVP state toward indexed-release readiness by executing one small verifiable task at a time from this packet and from the authoritative status file.
 
 Codex will later act as stage reviewer and acceptance checker, not as the per-task messenger.
+
+This packet is now complete as historical baseline only.
+
+For the active long-running planning-only stage, use:
+
+`docs/opportunities/PVSIZE_OPPORTUNITIES_PHASE5C_PLANNING_ONLY_LONG_RUN_BOARD.md`
 
 ## 1. Repository
 
