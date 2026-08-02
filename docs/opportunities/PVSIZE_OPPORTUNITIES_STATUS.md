@@ -1,6 +1,6 @@
 # PVSize Opportunities Status
 
-Updated: 2026-08-02 11:59 CST
+Updated: 2026-08-02 12:40 CST
 
 ## Current Phase
 
@@ -102,6 +102,7 @@ The mainline has moved to Phase 5C Publication Pipeline. The first non-indexed `
 - `docs/opportunities/PVSIZE_OPPORTUNITIES_PRODUCTION_QA_RELEASE_NOTES_TEMPLATE.md` and `src/tools/verify-opportunities-production-qa-release-notes-template.js` added to define future indexed-release production QA release notes requirements and verify that the current MVP still has no deploy, indexed output, newsletter output, sitemap/RSS output, JSON-LD output, indexing request, indexed release approval, Phase 5C closure, or published record transitions.
 - `docs/opportunities/PVSIZE_OPPORTUNITIES_PRODUCTION_QA_MONITORING_HANDOFF_CHECKLIST.md` and `src/tools/verify-opportunities-production-qa-monitoring-handoff-checklist.js` added to define future indexed-release production QA monitoring handoff requirements and verify that the current MVP still has no deploy, indexed output, newsletter output, sitemap/RSS output, JSON-LD output, indexing request, indexed release approval, Phase 5C closure, or published record transitions.
 - `docs/opportunities/PVSIZE_OPPORTUNITIES_PRODUCTION_QA_POST_RELEASE_WATCH_CHECKLIST.md` and `src/tools/verify-opportunities-production-qa-post-release-watch-checklist.js` added to define future indexed-release production QA post-release watch requirements and verify that the current MVP still has no deploy, indexed output, newsletter output, sitemap/RSS output, JSON-LD output, indexing request, indexed release approval, Phase 5C closure, or published record transitions.
+- `docs/opportunities/PVSIZE_OPPORTUNITIES_MARVIS_EXECUTOR_PACKET.md` added as the AI executor packet and repository-local total board for Marvis to continue the remaining Phase 5C indexed-release QA planning tasks without per-task user copy/paste.
 
 ## Current Constraints
 
@@ -112,7 +113,7 @@ The mainline has moved to Phase 5C Publication Pipeline. The first non-indexed `
 
 ## Last Commit
 
-`00752fa Add opportunities production QA post release watch checklist`
+Pending this run.
 
 ## Last Verification
 
