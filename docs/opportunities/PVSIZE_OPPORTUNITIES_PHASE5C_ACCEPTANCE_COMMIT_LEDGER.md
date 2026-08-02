@@ -102,7 +102,7 @@ Run `git log --oneline --all --format="%h %s" | grep -i opportunities` to verify
 
 | # | Task | Planning Artifact | Verifier | Commit | Report | QA Gate |
 |---|---|---|---|---|---|---|
-| 51 | L03 | Acceptance commit ledger | `verify-opportunities-phase5c-acceptance-commit-ledger.js` | `(pending)` | — | aggregate QA |
+| 51 | L03 | Acceptance commit ledger | `verify-opportunities-phase5c-acceptance-commit-ledger.js` | `d956ac5` | — | aggregate QA |
 
 ## Commit Index (Chronological)
 
@@ -155,7 +155,7 @@ Sorted oldest-to-newest for git log cross-reference.
 | `b94e8ca` | Codex acceptance review | 48 |
 | `9ee8338` | L01: planning-only long-run board | 49 |
 | `a01de58` | L02: report trail reconciliation | 50 |
-| `(pending)` | L03: acceptance commit ledger | 51 |
+| `d956ac5` | L03: acceptance commit ledger | 51 |
 
 ## Summary
 

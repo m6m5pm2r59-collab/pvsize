@@ -124,7 +124,7 @@ The mainline has moved to Phase 5C Publication Pipeline. The first non-indexed `
 
 ## Last Commit
 
-`(pending)`
+`d956ac5 Phase 5C L03: build acceptance commit ledger`
 
 ## Last Verification
 
