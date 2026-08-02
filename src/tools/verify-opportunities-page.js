@@ -29,6 +29,7 @@ const productionQaDecisionLogTemplateVerifierPath = path.join(__dirname, 'verify
 const productionQaGoNoGoCriteriaVerifierPath = path.join(__dirname, 'verify-opportunities-production-qa-go-no-go-criteria.js');
 const productionQaReleaseNotesTemplateVerifierPath = path.join(__dirname, 'verify-opportunities-production-qa-release-notes-template.js');
 const productionQaMonitoringHandoffChecklistVerifierPath = path.join(__dirname, 'verify-opportunities-production-qa-monitoring-handoff-checklist.js');
+const productionQaPostReleaseWatchChecklistVerifierPath = path.join(__dirname, 'verify-opportunities-production-qa-post-release-watch-checklist.js');
 const aggregateVerifierPath = path.join(__dirname, 'verify-opportunities-all.js');
 const productionNoindexVerifierPath = path.join(__dirname, 'verify-opportunities-production-noindex.js');
 const detailSlugs = [
@@ -131,6 +132,9 @@ if (!fs.existsSync(productionQaReleaseNotesTemplateVerifierPath)) {
 }
 if (!fs.existsSync(productionQaMonitoringHandoffChecklistVerifierPath)) {
   errors.push('missing production QA monitoring handoff checklist verifier');
+}
+if (!fs.existsSync(productionQaPostReleaseWatchChecklistVerifierPath)) {
+  errors.push('missing production QA post-release watch checklist verifier');
 }
 
 if (!fs.existsSync(aggregateVerifierPath)) {

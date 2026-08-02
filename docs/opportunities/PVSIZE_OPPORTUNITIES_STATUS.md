@@ -1,6 +1,6 @@
 # PVSize Opportunities Status
 
-Updated: 2026-08-01 23:16 CST
+Updated: 2026-08-02 11:59 CST
 
 ## Current Phase
 
@@ -101,6 +101,7 @@ The mainline has moved to Phase 5C Publication Pipeline. The first non-indexed `
 - `docs/opportunities/PVSIZE_OPPORTUNITIES_PRODUCTION_QA_GO_NO_GO_CRITERIA.md` and `src/tools/verify-opportunities-production-qa-go-no-go-criteria.js` added to define future indexed-release production QA go/no-go criteria and verify that the current MVP still has no deploy, indexed output, newsletter output, sitemap/RSS output, JSON-LD output, indexing request, indexed release approval, Phase 5C closure, or published record transitions.
 - `docs/opportunities/PVSIZE_OPPORTUNITIES_PRODUCTION_QA_RELEASE_NOTES_TEMPLATE.md` and `src/tools/verify-opportunities-production-qa-release-notes-template.js` added to define future indexed-release production QA release notes requirements and verify that the current MVP still has no deploy, indexed output, newsletter output, sitemap/RSS output, JSON-LD output, indexing request, indexed release approval, Phase 5C closure, or published record transitions.
 - `docs/opportunities/PVSIZE_OPPORTUNITIES_PRODUCTION_QA_MONITORING_HANDOFF_CHECKLIST.md` and `src/tools/verify-opportunities-production-qa-monitoring-handoff-checklist.js` added to define future indexed-release production QA monitoring handoff requirements and verify that the current MVP still has no deploy, indexed output, newsletter output, sitemap/RSS output, JSON-LD output, indexing request, indexed release approval, Phase 5C closure, or published record transitions.
+- `docs/opportunities/PVSIZE_OPPORTUNITIES_PRODUCTION_QA_POST_RELEASE_WATCH_CHECKLIST.md` and `src/tools/verify-opportunities-production-qa-post-release-watch-checklist.js` added to define future indexed-release production QA post-release watch requirements and verify that the current MVP still has no deploy, indexed output, newsletter output, sitemap/RSS output, JSON-LD output, indexing request, indexed release approval, Phase 5C closure, or published record transitions.
 
 ## Current Constraints
 
@@ -111,7 +112,7 @@ The mainline has moved to Phase 5C Publication Pipeline. The first non-indexed `
 
 ## Last Commit
 
-`bca5736 Add opportunities production QA monitoring handoff checklist`
+Pending this run.
 
 ## Last Verification
 
@@ -203,6 +204,8 @@ Phase 5A validation passed:
 - Aggregate QA now includes production QA release notes template verification and passed.
 - Production QA monitoring handoff checklist verifier added and passed: `node src/tools/verify-opportunities-production-qa-monitoring-handoff-checklist.js --self-test` checks required monitoring fields, monitoring checks, escalation triggers, closure evidence, current no-handoff state, Phase 5C remains open, and unsafe indexed-output fixtures.
 - Aggregate QA now includes production QA monitoring handoff verification and passed.
+- Production QA post-release watch checklist verifier added and passed: `node src/tools/verify-opportunities-production-qa-post-release-watch-checklist.js --self-test` checks required watch fields, watch checks, cadence, escalation triggers, closure evidence, current no-watch state, Phase 5C remains open, and unsafe indexed-output fixtures.
+- Aggregate QA now includes production QA post-release watch verification and passed.
 
 ## Risks And Gaps
 
@@ -224,7 +227,7 @@ Phase 5A validation passed:
 
 Continue Phase 5C Publication Pipeline:
 
-Add indexed-release production QA post-release watch checklist for Opportunities. Do not deploy, add indexed output, add newsletter form/output, request indexing, mark Phase 5C Closed, approve indexed release, or change record publication states in the same task.
+Add indexed-release production QA search indexing request hold checklist for Opportunities. Do not deploy, add indexed output, add newsletter form/output, request indexing, mark Phase 5C Closed, approve indexed release, or change record publication states in the same task.
 
 ## User Decision Needed
 
