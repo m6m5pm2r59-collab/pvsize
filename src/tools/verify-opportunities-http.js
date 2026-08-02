@@ -1,8 +1,10 @@
 const http = require('http');
+const path = require('path');
 const { spawn } = require('child_process');
 
 const port = Number(process.env.PVSIZE_OPPORTUNITIES_QA_PORT || 4199);
 const baseUrl = `http://127.0.0.1:${port}`;
+const projectRoot = path.resolve(__dirname, '..');
 const paths = [
   '/opportunities/',
   '/opportunities/usgs-communications-site-infrastructure-idiq/',
@@ -50,8 +52,8 @@ async function waitForServer() {
 }
 
 async function verify() {
-  const server = spawn('python3', ['-m', 'http.server', String(port), '--directory', 'src'], {
-    cwd: process.cwd(),
+  const server = spawn('python3', ['-m', 'http.server', String(port), '--directory', projectRoot], {
+    cwd: projectRoot,
     stdio: ['ignore', 'pipe', 'pipe'],
   });
 

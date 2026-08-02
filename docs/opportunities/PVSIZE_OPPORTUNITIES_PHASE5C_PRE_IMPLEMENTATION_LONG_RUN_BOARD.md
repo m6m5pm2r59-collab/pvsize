@@ -99,6 +99,18 @@ Objective:
 
 Create one canonical local command path for Opportunities aggregate QA so pre-implementation and future implementation stages no longer rely on ad hoc script discovery.
 
+Status:
+
+- Complete on 2026-08-02
+
+Execution evidence:
+
+- Canonical local entrypoint: `npm --prefix src run verify:opportunities`
+- Optional production noindex passthrough: `npm --prefix src run verify:opportunities:production-noindex`
+- Contract document: `docs/opportunities/PVSIZE_OPPORTUNITIES_PHASE5C_PRE_IMPLEMENTATION_COMMAND_CONTRACT.md`
+- Verifier: `src/tools/verify-opportunities-phase5c-pre-implementation-command-contract.js`
+- Next unlocked task: `PI-02 Add verifier orchestration matrix`
+
 Expected files:
 
 - `src/package.json`

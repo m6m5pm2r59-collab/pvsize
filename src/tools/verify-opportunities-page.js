@@ -40,6 +40,10 @@ const phase5cPreImplementationLongRunBoardVerifierPath = path.join(
   __dirname,
   'verify-opportunities-phase5c-pre-implementation-long-run-board.js'
 );
+const phase5cPreImplementationCommandContractVerifierPath = path.join(
+  __dirname,
+  'verify-opportunities-phase5c-pre-implementation-command-contract.js'
+);
 const phase5cMarvisHandoffVerifierPath = path.join(__dirname, 'verify-opportunities-phase5c-marvis-handoff.js');
 const aggregateVerifierPath = path.join(__dirname, 'verify-opportunities-all.js');
 const productionNoindexVerifierPath = path.join(__dirname, 'verify-opportunities-production-noindex.js');
@@ -167,6 +171,9 @@ if (!fs.existsSync(phase5cPlanningOnlyLongRunBoardVerifierPath)) {
 }
 if (!fs.existsSync(phase5cPreImplementationLongRunBoardVerifierPath)) {
   errors.push('missing Phase 5C pre-implementation long-run board verifier');
+}
+if (!fs.existsSync(phase5cPreImplementationCommandContractVerifierPath)) {
+  errors.push('missing Phase 5C pre-implementation command contract verifier');
 }
 if (!fs.existsSync(phase5cMarvisHandoffVerifierPath)) {
   errors.push('missing Phase 5C Marvis handoff verifier');

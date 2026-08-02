@@ -1,6 +1,6 @@
 # PVSize Opportunities Status
 
-Updated: 2026-08-02 21:05 CST
+Updated: 2026-08-02 21:40 CST
 
 ## Current Phase
 
@@ -124,6 +124,7 @@ On 2026-08-02, the accepted next-stage direction changed from decision-pending t
 - Phase 5C L10 completed: `docs/opportunities/PVSIZE_OPPORTUNITIES_PHASE5C_PLANNING_ONLY_LONG_RUN_HANDOFF.md` and `src/tools/verify-opportunities-phase5c-planning-only-long-run-handoff.js` added as final planning-only long-run stage handoff for Codex acceptance review, summarizing L01-L10 planning artifacts, verifier scripts, commit chain, state boundary, and Codex decision options; verifier PASS (8/8 self-test, 118/118 real); aggregate QA 35 steps PASS; automatic execution stops here. No deploy, no indexed output, no newsletter output, no search indexing request, no indexed release approval, no Phase 5C closure, no published record transitions.
 - Codex long-run stage acceptance review completed: L01-L10 planning-only long-run board stage ACCEPTED after fresh verification on remote main `3fc4259`; handoff verifier PASS (8/8 self-test, 118/118 real), aggregate QA PASS (35 steps), `git diff --check` PASS, `published_records=0`, no deploy, no indexed output, no newsletter output, no indexing submission, no indexed release approval, and Phase 5C remains open.
 - Phase 5C pre-implementation long-run board activated: `docs/opportunities/PVSIZE_OPPORTUNITIES_PHASE5C_PRE_IMPLEMENTATION_LONG_RUN_BOARD.md` and `src/tools/verify-opportunities-phase5c-pre-implementation-long-run-board.js` added so Marvis can continue the next infrastructure-only stage from a single total board; aggregate QA and page verifier now include pre-implementation board verification. This activation does not deploy, add indexed output, add newsletter output, request indexing, change record publication states, or change Opportunities product surfaces.
+- Phase 5C PI-01 completed: `src/package.json` now exposes the canonical local Opportunities aggregate QA entrypoint `npm --prefix src run verify:opportunities` plus the optional production noindex passthrough `npm --prefix src run verify:opportunities:production-noindex`; `docs/opportunities/PVSIZE_OPPORTUNITIES_PHASE5C_PRE_IMPLEMENTATION_COMMAND_CONTRACT.md` and `src/tools/verify-opportunities-phase5c-pre-implementation-command-contract.js` define and verify the command contract; aggregate QA and page verifier now include the new command-contract gate; `src/tools/verify-opportunities-all.js` and `src/tools/verify-opportunities-http.js` now resolve script/server paths from the script location so the canonical npm entrypoint works from `src/package.json` without `src/src` path failures. This task does not deploy, add indexed output, add newsletter output, request indexing, change record publication states, or change Opportunities product surfaces.
 
 ## Current Constraints
 
@@ -138,7 +139,7 @@ On 2026-08-02, the accepted next-stage direction changed from decision-pending t
 
 ## Last Verification
 
-Pre-implementation long-run board activation PASS: new board verifier self-test PASS, new board verifier real check PASS, aggregate QA PASS, `git diff --check` PASS, working tree clean, `published_records=0`, no Opportunities sitemap/RSS/JSON-LD/newsletter output added, no indexing submission, indexed release not approved, and Phase 5C remains open.
+PI-01 aggregate QA unified entrypoint PASS: command-contract verifier self-test PASS, command-contract verifier real check PASS, `npm --prefix src run verify:opportunities` PASS, `git diff --check` PASS, working tree clean, `published_records=0`, no Opportunities sitemap/RSS/JSON-LD/newsletter output added, no indexing submission, indexed release not approved, and Phase 5C remains open.
 
 ## Risks And Gaps
 
@@ -147,7 +148,7 @@ Pre-implementation long-run board activation PASS: new board verifier self-test 
 - Email handling is FormSubmit-based, not newsletter/subscription infrastructure.
 - No production scheduler exists for import jobs.
 - Analytics is log-based through `/api/event/` and Vercel logs.
-- Validation is local-only; it is not wired into an npm script or deployment gate because the repository has no root `package.json`.
+- Validation is local-only; it now has a canonical `src/package.json` entrypoint, but it is not yet wired into a CI or deployment gate because the repository has no root `package.json` and no Opportunities workflow yet.
 - Source candidates are still editorial candidates. They are not approved for automated ingestion or publication.
 - SAM.gov and Grants.gov are approved for draft-only discovery. EU and Japan sources remain `needs_review`.
 - No source is approved for automated ingestion or publication.
@@ -158,7 +159,7 @@ Pre-implementation long-run board activation PASS: new board verifier self-test 
 
 ## Next Single Task
 
-PI-01 Add aggregate QA unified entrypoint for the Phase 5C pre-implementation stage. Use `docs/opportunities/PVSIZE_OPPORTUNITIES_PHASE5C_PRE_IMPLEMENTATION_LONG_RUN_BOARD.md` as the only execution board. Do not deploy, add indexed output, add newsletter form/output, request indexing, change record publication states, or change Opportunities product surfaces in the same task.
+PI-02 Add verifier orchestration matrix for the Phase 5C pre-implementation stage. Use `docs/opportunities/PVSIZE_OPPORTUNITIES_PHASE5C_PRE_IMPLEMENTATION_LONG_RUN_BOARD.md` as the only execution board. Do not deploy, add indexed output, add newsletter form/output, request indexing, change record publication states, or change Opportunities product surfaces in the same task.
 
 ## Codex Indexed-Release Planning Gates Acceptance Review
 

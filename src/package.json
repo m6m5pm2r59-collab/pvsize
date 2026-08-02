@@ -11,6 +11,8 @@
     "report:traffic": "node tools/report-traffic.js",
     "report:traffic:local": "node tools/report-traffic.js --json-out ../reports/traffic-report.json",
     "update:city-path-strip:dry-run": "node tools/update-city-pages.js --path-strip-pilot --dry-run",
+    "verify:opportunities": "node tools/verify-opportunities-all.js",
+    "verify:opportunities:production-noindex": "PVSIZE_VERIFY_PRODUCTION=1 node tools/verify-opportunities-all.js",
     "verify:city-path-strip": "node tools/verify-city-path-strip.js",
     "verify:city-migrations": "node tools/verify-city-migrations.js"
   }
