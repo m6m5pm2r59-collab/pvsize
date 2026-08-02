@@ -136,7 +136,7 @@ On 2026-08-02, the accepted next-stage direction changed from decision-pending t
 
 ## Last Commit
 
-`(pending)`
+`8ba8f50 Phase 5C PI-02: add verifier orchestration matrix`
 
 ## Last Verification
 
