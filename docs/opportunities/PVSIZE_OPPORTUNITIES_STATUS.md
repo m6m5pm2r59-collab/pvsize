@@ -1,6 +1,6 @@
 # PVSize Opportunities Status
 
-Updated: 2026-08-02 16:55 CST
+Updated: 2026-08-02 17:15 CST
 
 ## Current Phase
 
@@ -111,10 +111,12 @@ The mainline has moved to Phase 5C Publication Pipeline. The first non-indexed `
 - Phase 5C T06 completed: `docs/opportunities/PVSIZE_OPPORTUNITIES_PHASE5C_INDEXED_RELEASE_PLANNING_SUMMARY.md` and `src/tools/verify-opportunities-phase5c-indexed-release-planning-summary.js` added to define remaining indexed release planning summary and verify current no-deploy/indexed-output state; aggregate QA now includes Phase 5C indexed-release planning summary verification.
 - Phase 5C T07 completed: `docs/opportunities/PVSIZE_OPPORTUNITIES_PHASE5C_MARVIS_HANDOFF.md` and `src/tools/verify-opportunities-phase5c-marvis-handoff.js` added to define Marvis handoff to Codex for indexed release acceptance review; aggregate QA and page verifier now include Marvis handoff verification.
 - Phase 5C planning-only long-run board activated: `docs/opportunities/PVSIZE_OPPORTUNITIES_PHASE5C_PLANNING_ONLY_LONG_RUN_BOARD.md` and `src/tools/verify-opportunities-phase5c-planning-only-long-run-board.js` added so Marvis can continue a long-running planning-only stage from a single total board without per-task user copy/paste; aggregate QA and page verifier now include long-run board verification.
-- Phase 5C L02 completed: `docs/opportunities/PVSIZE_OPPORTUNITIES_PHASE5C_REPORT_TRAIL_RECONCILIATION.md` and `src/tools/verify-opportunities-phase5c-report-trail-reconciliation.js` added to reconcile Stage 4 through Phase 5C T01-T07 to L01 into an auditable report trail; verifier self-test 27/27 PASS; aggregate QA PASS; `git diff --check` PASS; no records published; no indexed output added.
+- Phase 5C L01 completed: `docs/opportunities/PVSIZE_OPPORTUNITIES_PHASE5C_PLANNING_ONLY_LONG_RUN_BOARD.md` promoted as active long-run board; `src/tools/verify-opportunities-phase5c-planning-only-long-run-board.js` passes 10/10 self-test; old executor packet marked historical baseline.
+- Phase 5C L02 completed: `docs/opportunities/PVSIZE_OPPORTUNITIES_PHASE5C_REPORT_TRAIL_RECONCILIATION.md` and `src/tools/verify-opportunities-phase5c-report-trail-reconciliation.js` added; aggregate QA now includes report trail reconciliation verification (27/27 self-test, 40/40 real).
+- Phase 5C L03 completed: `docs/opportunities/PVSIZE_OPPORTUNITIES_PHASE5C_ACCEPTANCE_COMMIT_LEDGER.md` and `src/tools/verify-opportunities-phase5c-acceptance-commit-ledger.js` added; aggregate QA now includes acceptance commit ledger verification (116/116 PASS).
+- Phase 5C L04 completed: `docs/opportunities/PVSIZE_OPPORTUNITIES_PHASE5C_STOP_RESTART_PROTOCOL.md` and `src/tools/verify-opportunities-phase5c-stop-restart-protocol.js` added; aggregate QA now includes stop/restart protocol verification (51/51 PASS).
+- Phase 5C L05 completed: `docs/opportunities/PVSIZE_OPPORTUNITIES_PHASE5C_BLOCKED_RUN_EXCEPTION_PLAYBOOK.md` and `src/tools/verify-opportunities-phase5c-blocked-run-exception-playbook.js` added; aggregate QA now includes blocked-run exception playbook verification (55/55 PASS).
 - Phase 5C L02收口完成: AIGC frontmatter + 页脚改动 committed and pushed to origin main; git status clean.
-- Phase 5C L03 completed: `docs/opportunities/PVSIZE_OPPORTUNITIES_PHASE5C_ACCEPTANCE_COMMIT_LEDGER.md` and `src/tools/verify-opportunities-phase5c-acceptance-commit-ledger.js` added to map all 51 planning artifacts across 33 unique verifiers, 46 commits, and 4 reports into a single stage-level audit ledger; verifier 116/116 PASS; aggregate QA PASS; `git diff --check` PASS; no records published; no indexed output added.
-- Phase 5C L04 completed: `docs/opportunities/PVSIZE_OPPORTUNITIES_PHASE5C_STOP_RESTART_PROTOCOL.md` and `src/tools/verify-opportunities-phase5c-stop-restart-protocol.js` added to define stop triggers (S1-S14), state saving, restart protocol (Steps 1-5), and three handoff formats (completed, blocked, STAGE_CHECKPOINT); verifier 51/51 PASS; aggregate QA PASS; `git diff --check` PASS; no records published; no indexed output added.
 
 ## Current Constraints
 
@@ -125,11 +127,11 @@ The mainline has moved to Phase 5C Publication Pipeline. The first non-indexed `
 
 ## Last Commit
 
-`4a14ef8 Phase 5C L04: add stop and restart protocol`
+`(pending)`
 
 ## Last Verification
 
-Phase 5C L04 stop/restart protocol verifier PASS (`51/51`), aggregate QA PASS (`32` steps), `git diff --check` PASS, no records published, no Opportunities sitemap/RSS/JSON-LD/newsletter output added, indexed release not approved, Phase 5C not closed.
+Phase 5C L05 blocked-run exception playbook verifier PASS (`55/55`), aggregate QA PASS (`32` steps), `git diff --check` PASS, no records published, no Opportunities sitemap/RSS/JSON-LD/newsletter output added, indexed release not approved, Phase 5C not closed.
 
 ## Risks And Gaps
 
@@ -149,7 +151,7 @@ Phase 5C L04 stop/restart protocol verifier PASS (`51/51`), aggregate QA PASS (`
 
 ## Next Single Task
 
-Phase 5C planning-only long-run stage is now the active execution path. Continue `docs/opportunities/PVSIZE_OPPORTUNITIES_PHASE5C_PLANNING_ONLY_LONG_RUN_BOARD.md` from `L05 Add blocked-run exception playbook`. Do not deploy, add indexed output, add newsletter form/output, request indexing, approve indexed release, close Phase 5C, or change record publication states.
+Phase 5C planning-only long-run stage is now the active execution path. Continue `docs/opportunities/PVSIZE_OPPORTUNITIES_PHASE5C_PLANNING_ONLY_LONG_RUN_BOARD.md` from `L06 Add status rollup template`. Do not deploy, add indexed output, add newsletter form/output, request indexing, approve indexed release, close Phase 5C, or change record publication states.
 
 ## Codex Indexed-Release Planning Gates Acceptance Review
 
