@@ -1,6 +1,6 @@
 # PVSize Opportunities Status
 
-Updated: 2026-08-02 15:20 CST
+Updated: 2026-08-02 15:40 CST
 
 ## Current Phase
 
@@ -121,11 +121,11 @@ The mainline has moved to Phase 5C Publication Pipeline. The first non-indexed `
 
 ## Last Commit
 
-`b94e8ca Phase 5C: Codex acceptance review + AIGC标记 reconciliation` (remote main)
+`9ee8338 Add opportunities Phase 5C planning-only long-run board` (awaiting record commit / push)
 
 ## Last Verification
 
-Codex acceptance review recorded at remote main `b94e8ca`: aggregate QA PASS (30 steps), `published_records=0`, no Opportunities sitemap/RSS/JSON-LD/newsletter output, indexed release not approved, Phase 5C not closed.
+Phase 5C planning-only long-run board verification PASS (`10/10` self-test), aggregate QA PASS (`31` steps), `git diff --check` PASS, no records published, no Opportunities sitemap/RSS/JSON-LD/newsletter output added, indexed release not approved, Phase 5C not closed.
 
 ## Risks And Gaps
 
