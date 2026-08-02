@@ -23,7 +23,7 @@ Phase 5C: Publication Pipeline (planning-only long-run stage L01–L10 complete)
 
 ## STAGE_HANDOFF: LAST_COMMIT
 
-Pending this run.
+`66ce11e`
 
 ## STAGE_HANDOFF: STAGE_SUMMARY
 
@@ -111,7 +111,9 @@ The stage is now complete and hands back to Codex for acceptance review and next
 
 - **Document**: `docs/opportunities/PVSIZE_OPPORTUNITIES_PHASE5C_PLANNING_ONLY_LONG_RUN_HANDOFF.md`
 - **Verifier**: `src/tools/verify-opportunities-phase5c-planning-only-long-run-handoff.js`
-- **Commit**: (pending)
+- **Commit**: `66ce11e`
+- **Self-Test**: 8/8
+- **Real Checks**: 118/118
 
 ## STAGE_HANDOFF: FULL_VERIFIER_LIST
 
@@ -145,7 +147,7 @@ Run `git log --oneline --all --format="%h %s"` to verify independently.
 | L07 | `5586799` | Phase 5C L07: add planning-only boundary contract |
 | L08 | `92bd5de` | Phase 5C L08: add indexed implementation dependency map |
 | L09 | `654c4df` | Phase 5C L09: add implementation-stage packet skeleton |
-| L10 | (pending) | Phase 5C L10: add stage handoff for Codex review |
+| L10 | `66ce11e` | Phase 5C L10: add stage handoff for Codex review |
 
 ## STAGE_HANDOFF: COMMANDS_RUN
 

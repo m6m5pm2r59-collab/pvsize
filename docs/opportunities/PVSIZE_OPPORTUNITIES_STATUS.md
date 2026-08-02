@@ -130,7 +130,7 @@ The mainline has moved to Phase 5C Publication Pipeline. The first non-indexed `
 
 ## Last Commit
 
-`(pending) — Phase 5C L10: add stage handoff for Codex review`
+`66ce11e Phase 5C L10: add stage handoff for Codex review`
 
 ## Last Verification
 
