@@ -4,14 +4,50 @@
 # 应急流程：仅在明确传入 --emergency 时允许本地直推 Vercel。
 set -e
 
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+REPO_ROOT="$(git -C "$SCRIPT_DIR" rev-parse --show-toplevel)"
+PV_SCOPE="pv"
+
 EMERGENCY_MODE=0
 if [ "${1:-}" = "--emergency" ]; then
   EMERGENCY_MODE=1
 fi
 
+collect_non_pv_changes() {
+  git -C "$REPO_ROOT" status --porcelain=v1 --untracked-files=all | while IFS= read -r line; do
+    entry="${line:3}"
+    entry="${entry#\"}"
+    entry="${entry%\"}"
+
+    if [[ "$entry" == *" -> "* ]]; then
+      from_path="${entry%% -> *}"
+      to_path="${entry#* -> }"
+
+      if [[ "$from_path" != "$PV_SCOPE/"* || "$to_path" != "$PV_SCOPE/"* ]]; then
+        echo "$entry"
+      fi
+      continue
+    fi
+
+    if [[ "$entry" != "$PV_SCOPE/"* ]]; then
+      echo "$entry"
+    fi
+  done
+}
+
+cd "$REPO_ROOT"
+
 echo "[1/3] 检查文件变更..."
-git add -A
-if git diff --cached --quiet; then
+NON_PV_CHANGES="$(collect_non_pv_changes)"
+if [ -n "$NON_PV_CHANGES" ]; then
+  echo "检测到非 PV 工作区改动，已阻止本次发布提交："
+  echo "$NON_PV_CHANGES"
+  echo "仅允许提交 ${PV_SCOPE}/ 下的改动，请先清理或单独处理其他项目变更。"
+  exit 1
+fi
+
+git add -A -- "$PV_SCOPE"
+if git diff --cached --quiet -- "$PV_SCOPE"; then
   echo "无变更，跳过 git commit"
 else
   git commit -m "chore: sync PVSize changes $(date '+%Y-%m-%d %H:%M')"
